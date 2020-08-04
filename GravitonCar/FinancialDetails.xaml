@@ -1,0 +1,90 @@
+﻿<UserControl x:Class="GravitonCar.FinancialDetails"
+          xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GravitonCar"
+             mc:Ignorable="d" 
+             d:DesignHeight="760" d:DesignWidth="940" Background="White" >
+    <ScrollViewer VerticalScrollBarVisibility="Hidden" >
+        <Grid>
+
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="20"></ColumnDefinition>
+
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"></RowDefinition>
+
+                <RowDefinition Height="AUTO"></RowDefinition>
+                <RowDefinition Height="AUTO"></RowDefinition>
+                <RowDefinition Height="AUTO"></RowDefinition>
+                <RowDefinition Height="AUTO"></RowDefinition>
+                <RowDefinition Height="AUTO"></RowDefinition>
+                <RowDefinition Height="AUTO"></RowDefinition>
+                <RowDefinition Height="AUTO"></RowDefinition>
+                <RowDefinition Height="AUTO"></RowDefinition>
+                <RowDefinition Height="AUTO"></RowDefinition>
+                <RowDefinition Height="AUTO"></RowDefinition>
+                <RowDefinition Height="AUTO"></RowDefinition>
+                <RowDefinition Height="AUTO"></RowDefinition>
+                <RowDefinition Height="AUTO"></RowDefinition>
+                <RowDefinition Height="AUTO"></RowDefinition>
+                <RowDefinition Height="AUTO"></RowDefinition>
+                <RowDefinition Height="AUTO"></RowDefinition>
+                <RowDefinition Height="AUTO"></RowDefinition>
+                <RowDefinition Height="AUTO"></RowDefinition>
+                <RowDefinition Height="AUTO"></RowDefinition>
+                <RowDefinition Height="AUTO"></RowDefinition>
+                <RowDefinition Height="AUTO"></RowDefinition>
+                <RowDefinition Height="AUTO"></RowDefinition>
+                <RowDefinition Height="AUTO"></RowDefinition>
+                <RowDefinition Height="AUTO"></RowDefinition>
+                <RowDefinition Height="AUTO"></RowDefinition>
+
+                <RowDefinition Height="20"></RowDefinition>
+
+
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="1" Height="80" Grid.Column="1" Text="Financial Details Form"  HorizontalAlignment="Center" Foreground="#FF3399FF" FontSize="30" FontWeight="Light"></TextBlock>
+            <Label Margin="0,5,0,0" Grid.Row="2" Grid.Column="1" Content="Aadhar Number" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Left"></Label>
+            <Label Margin="0,5,0,0" Grid.Row="2" Grid.Column="1" Content="Pan Number" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Center"></Label>
+            <Label Margin="0,5,0,0" Grid.Row="2" Grid.Column="1" Content="Cibil Score" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Right"></Label>
+            <TextBox Margin="5,5,0,0" Grid.Row="3" Grid.Column="1" Width="200" x:Name="AadharNumberTextBox" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Left"></TextBox>
+            <TextBox Margin="5,5,0,0" Grid.Row="3" Grid.Column="1" Width="200" x:Name="PanNumberTextBox" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Center"></TextBox>
+            <TextBox Margin="5,5,0,0" Grid.Row="3" Grid.Column="1" Width="200" x:Name="CibilScoreTextBox" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="right"></TextBox>
+
+            <Label Margin="0,35,0,0" Grid.Row="4" Grid.Column="1" Content="Optional ID Type" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Left"></Label>
+            <Label Margin="0,35,0,0" Grid.Row="4" Grid.Column="1" Content="Optional ID Details" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Center"></Label>
+            <ComboBox  Margin="5,5,0,0"  Name="OptionalIdTypeComboBox"  Grid.Row="5" Grid.Column="1" Height="30" Width="200" HorizontalAlignment="Left" Background="White"></ComboBox>
+            <TextBox Margin="5,5,0,0" Grid.Row="5" Grid.Column="1" Width="200" x:Name="OptionalIdDetailsTextBox" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Center"></TextBox>
+
+
+           
+            <Label Margin="0,35,0,0" Grid.Row="6" Grid.Column="1" Content="Inhand Monthly Income" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Left"></Label>
+            <Label Margin="0,35,0,0" Grid.Row="6" Grid.Column="1" Content="Bank Name" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Center"></Label>
+            <Label Margin="0,35,0,0" Grid.Row="6" Grid.Column="1" Content="Account Number" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Right"></Label>
+            <TextBox Margin="5,5,0,0" Grid.Row="7" Grid.Column="1" Width="200" x:Name="InHandMonthlyIcomeTextBox" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Left"></TextBox>
+            <TextBox Margin="5,5,0,0" Grid.Row="7" Grid.Column="1" Width="200" x:Name="BankNameTextBox" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Center"></TextBox>
+            <TextBox Margin="5,5,0,0" Grid.Row="7" Grid.Column="1" Width="200" x:Name="AccountNumberTextBox" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="right"></TextBox>
+
+            <Label Margin="0,35,0,0" Grid.Row="8" Grid.Column="1" Content="IFSC Code" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Left"></Label>
+            <TextBox Margin="5,5,0,0" Grid.Row="9" Grid.Column="1" Width="200" x:Name="IFSCTextBox" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Left"></TextBox>
+            <Button Margin="5,10,0,0" Width="100" Height="30"   x:Name="AddLoanButton" Grid.Column="1" Grid.Row="10" Content="New Loan" BorderBrush="Transparent" Background="#03a9f4"  Foreground="#ffffff" FontSize="15" FontWeight="Light" HorizontalAlignment="Left" Click="AddLoanButton_Click" ></Button>
+
+            <StackPanel Margin="10" Orientation="Vertical" Grid.Row="11" Grid.Column="1" Height="auto" x:Name="Dynamic">
+
+            </StackPanel>
+            <Button  Margin="200,60,60,60" Width="200" Height="60"   x:Name="BackButton" Grid.Column="1" Grid.Row="12" Content="Back" BorderBrush="Transparent" Background="#03a9f4"  Foreground="#ffffff" FontSize="30" FontWeight="Light" HorizontalAlignment="Left" ></Button>
+            <Button  Margin="60,60,200,60" Width="200" Height="60"   x:Name="NextButton" Grid.Column="1" Grid.Row="12" Content="Next" BorderBrush="Transparent" Background="#03a9f4"  Foreground="#ffffff" FontSize="30" FontWeight="Light" HorizontalAlignment="Right" Click="NextButton_Click" ></Button>
+           
+
+
+        </Grid>
+
+    </ScrollViewer>
+
+</UserControl>
