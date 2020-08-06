@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GravitonCarLibrary.Models
 {
-    class DocumentTypeModel
+   public class DocumentTypeModel
     {
         /// <summary>
         /// Id Of The Document Type 

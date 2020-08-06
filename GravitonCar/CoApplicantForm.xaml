@@ -50,9 +50,21 @@
 
 
                 </Grid.RowDefinitions>
-            <TextBlock Grid.Row="1" Height="80" Grid.Column="1" Text="Co-Applicant/ Guarantor Form"  HorizontalAlignment="Center" Foreground="#FF3399FF" FontSize="30" FontWeight="Light"></TextBlock>
+                <TextBlock Grid.Row="1" Margin="0,0,0,00" Height="80" Grid.Column="1" Text="Co-Applicant Details Form"  HorizontalAlignment="Right" Foreground="Gray" VerticalAlignment="Top" FontSize="40" FontWeight="Normal"></TextBlock>
+                <TextBlock Grid.Row="1" Margin="180,45,0,00" Height="80" Grid.Column="1" Text="Next :Financial Details Form"  HorizontalAlignment="Right" VerticalAlignment="Bottom" Foreground="Gray" FontSize="20" FontWeight="Normal"></TextBlock>
+                <Separator Grid.Row="1" Grid.Column="1" Margin="0,140,0,0" Background="#FF3399FF"   ></Separator>
+                <!-- should disable on 2nd transition... -->
 
-                <Label Margin="0,5,0,0" Grid.Row="2" Grid.Column="1" Content="Co-Applicant/Gurantor" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Left"></Label>
+
+                <ProgressBar Grid.Row="1" Grid.Column="1" Height="100" Width="100" HorizontalAlignment="Left" Foreground="GreenYellow"
+                         Style="{StaticResource MaterialDesignCircularProgressBar}"
+              Value="50"
+              IsIndeterminate="True"
+              x:Name="IndeterminateToDeterminateCircularProgress" />
+
+                <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Content="2 of 4" VerticalAlignment="Center" Margin="20,0" Foreground="GreenYellow" FontSize="20" FontWeight="Light"></Label>
+
+                <Label Margin="0,15,0,0" Grid.Row="2" Grid.Column="1" Content="Co-Applicant/Gurantor" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Left"></Label>
                 <ComboBox Margin="5,5,0,0" Grid.Row="3" Grid.Column="1" Width="200" x:Name="GurantorComboBox" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Left"></ComboBox>
 
                 <Label Margin="0,5,0,0" Grid.Row="4" Grid.Column="1" Content="First Name" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Left"></Label>

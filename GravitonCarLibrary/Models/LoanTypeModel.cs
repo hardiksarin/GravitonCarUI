@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GravitonCarLibrary.Models
 {
-    class LoanTypeModel
+    public class LoanTypeModel
     {
         /// <summary>
         /// Id Of The Loan Type

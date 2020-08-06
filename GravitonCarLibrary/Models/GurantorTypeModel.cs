@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GravitonCarLibrary.Models
 {
-    class GurantorTypeModel
+   public class GurantorTypeModel
     {
         /// <summary>
         /// Id Of The Gurantor Type 

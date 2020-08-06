@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GravitonCarLibrary.Models
 {
-    class ProgressModel
+    public class ProgressModel
     {
         /// <summary>
         /// Id Of The Progress 

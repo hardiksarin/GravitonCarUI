@@ -78,12 +78,16 @@
     <Compile Include="DataAccess\IDataConnection.cs" />
     <Compile Include="DataAccess\SqlConnector.cs" />
     <Compile Include="GlobalConfig.cs" />
+    <Compile Include="Models\AccountModel.cs" />
     <Compile Include="Models\AcquaintanceModel.cs" />
     <Compile Include="Models\ApplicantModel.cs" />
     <Compile Include="Models\CasteModel.cs" />
     <Compile Include="Models\CategoryModel.cs" />
+    <Compile Include="Models\DocumentModel.cs" />
     <Compile Include="Models\DocumentTypeModel.cs" />
+    <Compile Include="Models\GurantorModel.cs" />
     <Compile Include="Models\GurantorTypeModel.cs" />
+    <Compile Include="Models\LoanModel.cs" />
     <Compile Include="Models\LoanTypeModel.cs" />
     <Compile Include="Models\MarriedStatusModel.cs" />
     <Compile Include="Models\ProgressModel.cs" />

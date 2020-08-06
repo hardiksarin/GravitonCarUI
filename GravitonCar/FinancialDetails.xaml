@@ -49,7 +49,19 @@
 
 
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="1" Height="80" Grid.Column="1" Text="Financial Details Form"  HorizontalAlignment="Center" Foreground="#FF3399FF" FontSize="30" FontWeight="Light"></TextBlock>
+            <TextBlock Grid.Row="1" Margin="0,0,0,00" Height="80" Grid.Column="1" Text="Financial Details Form"  HorizontalAlignment="Right" Foreground="Gray" VerticalAlignment="Top" FontSize="40" FontWeight="Normal"></TextBlock>
+            <TextBlock Grid.Row="1" Margin="180,45,0,00" Height="80" Grid.Column="1" Text="Final : Review"  HorizontalAlignment="Right" VerticalAlignment="Bottom" Foreground="Gray" FontSize="20" FontWeight="Normal"></TextBlock>
+            <Separator Grid.Row="1" Grid.Column="1" Margin="0,140,0,0" Background="#FF3399FF"   ></Separator>
+            <!-- should disable on 2nd transition... -->
+
+
+            <ProgressBar Grid.Row="1" Grid.Column="1" Height="100" Width="100" HorizontalAlignment="Left" Foreground="LightGreen"
+                         Style="{StaticResource MaterialDesignCircularProgressBar}"
+              Value="75"
+              IsIndeterminate="True"
+              x:Name="IndeterminateToDeterminateCircularProgress" />
+
+            <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Content="3 of 4" VerticalAlignment="Center" Margin="20,0" Foreground="LightGreen" FontSize="20" FontWeight="Light"></Label>
             <Label Margin="0,5,0,0" Grid.Row="2" Grid.Column="1" Content="Aadhar Number" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Left"></Label>
             <Label Margin="0,5,0,0" Grid.Row="2" Grid.Column="1" Content="Pan Number" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Center"></Label>
             <Label Margin="0,5,0,0" Grid.Row="2" Grid.Column="1" Content="Cibil Score" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Right"></Label>
@@ -78,8 +90,8 @@
             <StackPanel Margin="10" Orientation="Vertical" Grid.Row="11" Grid.Column="1" Height="auto" x:Name="Dynamic">
 
             </StackPanel>
-            <Button  Margin="200,60,60,60" Width="200" Height="60"   x:Name="BackButton" Grid.Column="1" Grid.Row="12" Content="Back" BorderBrush="Transparent" Background="#03a9f4"  Foreground="#ffffff" FontSize="30" FontWeight="Light" HorizontalAlignment="Left" ></Button>
-            <Button  Margin="60,60,200,60" Width="200" Height="60"   x:Name="NextButton" Grid.Column="1" Grid.Row="12" Content="Next" BorderBrush="Transparent" Background="#03a9f4"  Foreground="#ffffff" FontSize="30" FontWeight="Light" HorizontalAlignment="Right" Click="NextButton_Click" ></Button>
+            <Button  Margin="200,60,60,60" Width="200" Height="60"   x:Name="BackButton" Grid.Column="1" Grid.Row="12" Content="Co-Applicant" BorderBrush="Transparent" Background="#03a9f4"  Foreground="#ffffff" FontSize="30" FontWeight="Light" HorizontalAlignment="Left" ></Button>
+            <Button  Margin="60,60,200,60" Width="200" Height="60"   x:Name="ReviewButton" Grid.Column="1" Grid.Row="12" Content="Review" BorderBrush="Transparent" Background="#03a9f4"  Foreground="#ffffff" FontSize="30" FontWeight="Light" HorizontalAlignment="Right" Click="ReviewButton_Click" ></Button>
            
 
 

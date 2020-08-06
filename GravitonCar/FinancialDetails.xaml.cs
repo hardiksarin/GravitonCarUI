@@ -172,7 +172,7 @@ namespace GravitonCar
             }
         }
 
-        private void NextButton_Click(object sender, RoutedEventArgs e)
+        private void ReviewButton_Click(object sender, RoutedEventArgs e)
         {
             for (int j = 0;j<=i;j++)
             {
