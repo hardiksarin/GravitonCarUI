@@ -65,7 +65,7 @@ namespace GravitonCar
         }
 
         TextBox addLoanEmiAmount(int i)
-        {
+        {   
             TextBox LoanEmiAmount = new TextBox();
             LoanEmiAmount.Name = "LoanEmiAmountTextbox" + i.ToString();
             LoanEmiAmount.Margin = new Thickness(10);

@@ -55,9 +55,9 @@
 
 
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="1" Margin="0,0,0,00" Height="80" Grid.Column="1" Text="Applicant Details Form"  HorizontalAlignment="Right" Foreground="Gray" VerticalAlignment="Top" FontSize="40" FontWeight="Normal"></TextBlock>
+            <TextBlock Grid.Row="1" Margin="0,0,0,00" Height="80" Grid.Column="1" Text="Applicant Details Form"  HorizontalAlignment="Right" Foreground="#FF3399FF" VerticalAlignment="Top" FontSize="40" FontWeight="Light"></TextBlock>
             <TextBlock Grid.Row="1" Margin="180,45,0,00" Height="80" Grid.Column="1" Text="Next :Co-Applicant Form"  HorizontalAlignment="Right" VerticalAlignment="Bottom" Foreground="Gray" FontSize="20" FontWeight="Normal"></TextBlock>
-            <Separator Grid.Row="1" Grid.Column="1" Margin="0,140,0,0" Background="#FF3399FF"   ></Separator>
+            <Separator Grid.Row="1" Grid.Column="1" Margin="0,140,0,0" Background="Gray"   ></Separator>
             <!-- should disable on 2nd transition... -->
 
            
@@ -69,62 +69,39 @@
 
             <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Content="1 of 4" VerticalAlignment="Center" Margin="20,0" Foreground="Gray" FontSize="20" FontWeight="Light"></Label>
            
-        <Label Margin="0,25,0,0" Grid.Row="2" Grid.Column="1" Content="First Name" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Left"></Label>
-            <Label Margin="0,25,0,0" Grid.Row="2" Grid.Column="1" Content="Middle Name" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Center"></Label>
-            <Label Margin="0,25,0,0" Grid.Row="2" Grid.Column="1" Content="Last Name" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Right"></Label>
-            <TextBox Margin="5,5,0,0" Grid.Row="3" Grid.Column="1" Width="200" x:Name="FirstNameTextBox" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Left"></TextBox>
-            <TextBox Margin="5,5,0,0" Grid.Row="3" Grid.Column="1" Width="200" x:Name="MiddleNameTextBox" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Center"></TextBox>
-            <TextBox Margin="5,5,0,0" Grid.Row="3" Grid.Column="1" Width="200" x:Name="LastNameTextBox" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="right"></TextBox>
+            <TextBox  materialDesign:HintAssist.Hint="First Name"   Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="5,5,0,0" Grid.Row="3" Grid.Column="1" Width="200" x:Name="FirstNameTextBox"  Foreground="Gray" FontSize="20" FontWeight="Light" HorizontalAlignment="Left" BorderBrush="LightGray"></TextBox>
+            <TextBox materialDesign:HintAssist.Hint="Middle Name"   Style="{StaticResource MaterialDesignFloatingHintTextBox}"  Margin="5,5,0,0" Grid.Row="3" Grid.Column="1" Width="200" x:Name="MiddleNameTextBox" Foreground="Gray" FontSize="20" FontWeight="Light" HorizontalAlignment="Center"  BorderBrush="LightGray"></TextBox>
+            <TextBox materialDesign:HintAssist.Hint="Last Name"   Style="{StaticResource MaterialDesignFloatingHintTextBox}"  Margin="5,5,0,0" Grid.Row="3" Grid.Column="1" Width="200" x:Name="LastNameTextBox" Foreground="Gray" FontSize="20" FontWeight="Light" HorizontalAlignment="right"  BorderBrush="LightGray"></TextBox>
 
-            <Label Margin="0,35,0,0" Grid.Row="4" Grid.Column="1" Content="Acquaintance" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Left"></Label>
-            <Label Margin="0,35,0,0" Grid.Row="4" Grid.Column="1" Content="Acquaintance Name" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Center"></Label>
-            <ComboBox  Margin="5,5,0,0"  Name="AcquaintanceComboBox"  Grid.Row="5" Grid.Column="1" Height="30" Width="200" HorizontalAlignment="Left" Background="White"></ComboBox>
-            <TextBox Margin="5,5,0,0" Grid.Row="5" Grid.Column="1" Width="200" x:Name="AcquaintanceNameTextBox" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Center"></TextBox>
+            <ComboBox   materialDesign:HintAssist.Hint="Acquaintance" materialDesign:HintAssist.HintOpacity=".56" IsEditable="True" Margin="5,50,0,0"  Name="AcquaintanceComboBox"  Grid.Row="5" Grid.Column="1"  Width="200" HorizontalAlignment="Left" Background="White"  Foreground="Gray" FontSize="20" FontWeight="Light" VerticalAlignment="Bottom"  BorderBrush="LightGray"></ComboBox>
+            <TextBox  materialDesign:HintAssist.Hint="Acquaintance Name"   Style="{StaticResource MaterialDesignFloatingHintTextBox}"  Margin="5,50,0,0" Grid.Row="5" Grid.Column="1" Width="200" x:Name="AcquaintanceNameTextBox" Foreground="Gray" FontSize="20" FontWeight="Light" VerticalAlignment="Bottom" HorizontalAlignment="Center"  BorderBrush="LightGray"></TextBox>
+
+            <TextBox  materialDesign:HintAssist.Hint="Age"   Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="5,50,0,0" Grid.Row="7" Grid.Column="1" Width="200" x:Name="AgeTextBlock" Foreground="Gray" FontSize="20" FontWeight="Light" HorizontalAlignment="Center"  BorderBrush="LightGray"></TextBox>
+            <DatePicker  materialDesign:HintAssist.Hint="Date Of Birth  " Style="{StaticResource MaterialDesignFloatingHintDatePicker}"  Margin="5,50,0,0" IsTodayHighlighted="True" DisplayDate="10-12-2020" Grid.Row="7"  Grid.Column="1" Width="auto"  HorizontalAlignment="Left"  Name="DatePicker" Foreground="LightGray" FontSize="18" FontWeight="Light" VerticalAlignment="Bottom"  BorderBrush="LightGray"></DatePicker>
 
 
-            <Label Margin="0,35,0,0" Grid.Row="6" Grid.Column="1" Content="Date Of Birth" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Left"></Label>
-            <Label Margin="0,35,0,0" Grid.Row="6" Grid.Column="1" Content="Age" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Center"></Label>
+            <ComboBox materialDesign:HintAssist.Hint="Marital Status" materialDesign:HintAssist.HintOpacity=".56" IsEditable="True" Margin="5,50,0,0" Grid.Row="9" Grid.Column="1" Width="200" x:Name="MaritalStatusComboBox" Foreground="Gray" FontSize="20" FontWeight="Light" HorizontalAlignment="Left"  BorderBrush="LightGray"></ComboBox>
+            <ComboBox materialDesign:HintAssist.Hint="Caste" materialDesign:HintAssist.HintOpacity=".56" IsEditable="True" Margin="5,50,0,0" Grid.Row="9" Grid.Column="1" Width="200" x:Name="CasteComboBox" Foreground="Gray" FontSize="20" FontWeight="Light" HorizontalAlignment="Center"  BorderBrush="LightGray"></ComboBox>
+            <ComboBox materialDesign:HintAssist.Hint="Category" materialDesign:HintAssist.HintOpacity=".56" IsEditable="True" Margin="5,50,0,0" Grid.Row="9" Grid.Column="1" Width="200" x:Name="CategoryComboBox" Foreground="Gray" FontSize="20" FontWeight="Light" HorizontalAlignment="right"  BorderBrush="LightGray"></ComboBox>
 
-            <TextBox Margin="5,5,0,0" Grid.Row="7" Grid.Column="1" Width="200" x:Name="AgeTextBlock" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Center"></TextBox>
-            <DatePicker Margin="5,0,0,0" IsTodayHighlighted="True" DisplayDate="10-12-2020" Grid.Row="7"  Grid.Column="1" Width="auto"  HorizontalAlignment="Left"  Name="DatePicker" Foreground="LightGray" FontSize="18" FontWeight="Light"></DatePicker>
+            <ComboBox materialDesign:HintAssist.Hint="State" materialDesign:HintAssist.HintOpacity=".56" IsEditable="True" Margin="5,50,0,0" Grid.Row="11" Grid.Column="1" Width="200" x:Name="StateComboBox" Foreground="Gray" FontSize="20" FontWeight="Light" HorizontalAlignment="Left"  BorderBrush="LightGray"></ComboBox>
+            <ComboBox materialDesign:HintAssist.Hint="District" materialDesign:HintAssist.HintOpacity=".56" IsEditable="True" Margin="5,50,0,0" Grid.Row="11" Grid.Column="1" Width="200" x:Name="DistrictComboBox" Foreground="Gray" FontSize="20" FontWeight="Light" HorizontalAlignment="Center"  BorderBrush="LightGray"></ComboBox>
+            <TextBox  materialDesign:HintAssist.Hint="Pincode"   Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="5,50,0,0" Grid.Row="11" Grid.Column="1" Width="200" x:Name="PincodeTextBox" Foreground="Gray" FontSize="20" FontWeight="Light" HorizontalAlignment="right"  BorderBrush="LightGray"></TextBox>
 
-            <Label Margin="0,35,0,0" Grid.Row="8" Grid.Column="1" Content="Marital Status" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Left"></Label>
-            <Label Margin="0,35,0,0" Grid.Row="8" Grid.Column="1" Content="Caste" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Center"></Label>
-            <Label Margin="0,35,0,0" Grid.Row="8" Grid.Column="1" Content="Category" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Right"></Label>
-            <ComboBox Margin="5,5,0,0" Grid.Row="9" Grid.Column="1" Width="200" x:Name="MaritalStatusComboBox" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Left"></ComboBox>
-            <ComboBox Margin="5,5,0,0" Grid.Row="9" Grid.Column="1" Width="200" x:Name="CasteComboBox" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Center"></ComboBox>
-            <ComboBox Margin="5,5,0,0" Grid.Row="9" Grid.Column="1" Width="200" x:Name="CategoryComboBox" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="right"></ComboBox>
+            <TextBox  materialDesign:HintAssist.Hint="Address"   Style="{StaticResource MaterialDesignFloatingHintTextBox}" TextWrapping="Wrap" Margin="5,50,0,0" Grid.Row="13" Grid.Column="1" MinHeight="50" MaxHeight="80" Width="850"  VerticalScrollBarVisibility="Auto" x:Name="AddressTextBlock" Foreground="Gray" FontSize="20" FontWeight="Light" HorizontalAlignment="Left"  BorderBrush="LightGray"></TextBox>
 
-            <Label Margin="0,35,0,0" Grid.Row="10" Grid.Column="1" Content="State" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Left"></Label>
-            <Label Margin="0,35,0,0" Grid.Row="10" Grid.Column="1" Content="District" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Center"></Label>
-            <Label Margin="0,35,0,0" Grid.Row="10" Grid.Column="1" Content="Pincode" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Right"></Label>
-            <ComboBox Margin="5,5,0,0" Grid.Row="11" Grid.Column="1" Width="200" x:Name="StateComboBox" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Left"></ComboBox>
-            <ComboBox Margin="5,5,0,0" Grid.Row="11" Grid.Column="1" Width="200" x:Name="DistrictComboBox" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Center"></ComboBox>
-            <TextBox Margin="5,5,0,0" Grid.Row="11" Grid.Column="1" Width="200" x:Name="PincodeTextBox" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="right"></TextBox>
+            <TextBox materialDesign:HintAssist.Hint="Mobile Number"   Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="5,50,0,0" Grid.Row="15" Grid.Column="1" Width="200" x:Name="MobileNumberTextBox" Foreground="Gray" FontSize="20" FontWeight="Light" HorizontalAlignment="Left"  BorderBrush="LightGray"></TextBox>
+            <TextBox materialDesign:HintAssist.Hint="Office Number"   Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="5,50,0,0" Grid.Row="15" Grid.Column="1" Width="200" x:Name="OfficeNumberTextBox" Foreground="Gray" FontSize="20" FontWeight="Light" HorizontalAlignment="Center"  BorderBrush="LightGray"></TextBox>
 
-            <Label Margin="0,35,0,0" Grid.Row="12" Grid.Column="1" Content="Address" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Left"></Label>
-            <TextBox TextWrapping="Wrap" Margin="5,5,0,0" Grid.Row="13" Grid.Column="1" MinHeight="50" MaxHeight="80" Width="850"  VerticalScrollBarVisibility="Auto" x:Name="AddressTextBlock" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Left"></TextBox>
+            <TextBox materialDesign:HintAssist.Hint="Designation"   Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="5,50,0,0"  Grid.Row="17" Grid.Column="1"  Width="200" x:Name="DesignationTextBox"   Foreground="Gray" FontSize="20" FontWeight="Light"  HorizontalAlignment="Left"  BorderBrush="LightGray" ></TextBox>
+            <ComboBox materialDesign:HintAssist.Hint="Education" materialDesign:HintAssist.HintOpacity=".56" IsEditable="True" Margin="5,50,0,0" Grid.Row="17" Grid.Column="1" Width="200" x:Name="EducationComboBox" Foreground="Gray" FontSize="20" FontWeight="Light" HorizontalAlignment="Center"  BorderBrush="LightGray"></ComboBox>
 
-            <Label Margin="0,35,0,0" Grid.Row="14" Grid.Column="1" Content="Mobile Number" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Left"></Label>
-            <Label Margin="0,35,0,0" Grid.Row="14" Grid.Column="1" Content="Office Number" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Center"></Label>
-            <TextBox  Margin="5,5,0,0"  Name="MobileNumberTextBox"  Grid.Row="15" Grid.Column="1" Height="30" Width="200" HorizontalAlignment="Left" Background="White"></TextBox>
-            <TextBox Margin="5,5,0,0" Grid.Row="15" Grid.Column="1" Width="200" x:Name="OfficeNumberTextBox" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Center"></TextBox>
+            <TextBox materialDesign:HintAssist.Hint="Employer Name"   Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="5,50,0,0"  Grid.Row="19" Grid.Column="1" Width="200" x:Name="EmployerNameTextBox"    Foreground="Gray" FontSize="20" FontWeight="Light"  HorizontalAlignment="Left"   BorderBrush="LightGray"></TextBox>
 
-            <Label Margin="0,35,0,0" Grid.Row="16" Grid.Column="1" Content="Designation" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Left"></Label>
-            <Label Margin="0,35,0,0" Grid.Row="16" Grid.Column="1" Content="Education" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Center"></Label>
-            <TextBox  Margin="5,5,0,0"  Name="DesignationTextBox"  Grid.Row="17" Grid.Column="1" Height="30" Width="200" HorizontalAlignment="Left" Background="White"></TextBox>
-            <ComboBox Margin="5,5,0,0" Grid.Row="17" Grid.Column="1" Width="200" x:Name="EducationComboBox" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Center"></ComboBox>
+            <TextBox materialDesign:HintAssist.Hint="Office Address"   Style="{StaticResource MaterialDesignFloatingHintTextBox}" TextWrapping="Wrap" Margin="5,50,0,0" Grid.Row="21" Grid.Column="1" MinHeight="50" MaxHeight="80" Width="850"  VerticalScrollBarVisibility="Auto" x:Name="OfficeAddressTextBlock" Foreground="Gray" FontSize="20" FontWeight="Light" HorizontalAlignment="Left"  BorderBrush="LightGray"></TextBox>
 
-            <Label Margin="0,35,0,0" Grid.Row="18" Grid.Column="1" Content="Employer Name" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Left"></Label>
-            <TextBox  Margin="5,5,0,0"  Name="EmployerNameTextBox"  Grid.Row="19" Grid.Column="1" Height="30" Width="200" HorizontalAlignment="Left" Background="White"></TextBox>
-
-            <Label Margin="0,35,0,0" Grid.Row="20" Grid.Column="1" Content="Office Address" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Left"></Label>
-            <TextBox TextWrapping="Wrap" Margin="5,5,0,0" Grid.Row="21" Grid.Column="1" MinHeight="50" MaxHeight="80" Width="850"  VerticalScrollBarVisibility="Auto" x:Name="OfficeAddressTextBlock" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Left"></TextBox>
-
-            <Label Margin="0,35,0,0" Grid.Row="22" Grid.Column="1" Content="Distance To NE" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Left"></Label>
-            <Label Margin="0,35,0,0" Grid.Row="22" Grid.Column="1" Content="Nearest Branch" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Center"></Label>
-            <TextBox  Margin="5,5,0,0"  Name="DistanceToNeTextBox"  Grid.Row="23" Grid.Column="1" Height="30" Width="200" HorizontalAlignment="Left" Background="White"></TextBox>
-            <ComboBox Margin="5,5,0,0" Grid.Row="23" Grid.Column="1" Width="200" x:Name="NearestBranchComboBox" Foreground="#FF3399FF" FontSize="20" FontWeight="Light" HorizontalAlignment="Center"></ComboBox>
+            <TextBox materialDesign:HintAssist.Hint="Distance To NE"   Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="5,50,0,0"  Name="DistanceToNeTextBox"  Grid.Row="23" Grid.Column="1"  Width="200" HorizontalAlignment="Left"  Foreground="Gray" FontSize="20" FontWeight="Light"  BorderBrush="LightGray"></TextBox>
+            <ComboBox materialDesign:HintAssist.Hint="Nearest Branch" materialDesign:HintAssist.HintOpacity=".56" IsEditable="True" Margin="5,50,0,0" Grid.Row="23" Grid.Column="1" Width="200" x:Name="NearestBranchComboBox" Foreground="Gray" FontSize="20" FontWeight="Light" HorizontalAlignment="Center"  BorderBrush="LightGray"></ComboBox>
             <Button  Margin="60" Width="200" Height="60"   x:Name="NextButton" Grid.Column="1" Grid.Row="24" Content="Co-Applicant" BorderBrush="Transparent" Background="#03a9f4"  Foreground="#ffffff" FontSize="30" FontWeight="Light" HorizontalAlignment="Left" Click="NextButton_Click" ></Button>
             <Button  Margin="60" Width="200" Height="60"   x:Name="PrintButton" Grid.Column="1" Grid.Row="24" Content="Print" BorderBrush="Transparent" Background="#03a9f4"  Foreground="#ffffff" FontSize="30" FontWeight="Light" HorizontalAlignment="Right" Click="PrintButton_Click"></Button>
            
