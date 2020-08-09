@@ -85,7 +85,7 @@
             <StackPanel Margin="10" Orientation="Vertical" Grid.Row="11" Grid.Column="1" Height="auto" x:Name="Dynamic">
 
             </StackPanel>
-            <Button  Margin="200,60,60,60" Width="200" Height="60"   x:Name="BackButton" Grid.Column="1" Grid.Row="12" Content="Co-Applicant" BorderBrush="Transparent" Background="#03a9f4"  Foreground="#ffffff" FontSize="30" FontWeight="Light" HorizontalAlignment="Left" ></Button>
+            <Button  Margin="200,60,60,60" Width="200" Height="60"   x:Name="BackButton" Grid.Column="1" Grid.Row="12" Content="Co-Applicant" BorderBrush="Transparent" Background="#03a9f4"  Foreground="#ffffff" FontSize="30" FontWeight="Light" HorizontalAlignment="Left" Click="BackButton_Click" ></Button>
             <Button  Margin="60,60,200,60" Width="200" Height="60"   x:Name="ReviewButton" Grid.Column="1" Grid.Row="12" Content="Review" BorderBrush="Transparent" Background="#03a9f4"  Foreground="#ffffff" FontSize="30" FontWeight="Light" HorizontalAlignment="Right" Click="ReviewButton_Click" ></Button>
            
 

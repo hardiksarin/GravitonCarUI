@@ -123,6 +123,9 @@ namespace GravitonCarLibrary.DataAccess
         //Progress
 
 
+        //CAR
+        void CreateCar(CarModel model);
+
 
     }
 }

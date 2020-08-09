@@ -12,7 +12,6 @@
             <Grid>
             <Grid x:Name="print">
 
-
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="20"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
@@ -78,8 +77,8 @@
 
                 <TextBox  materialDesign:HintAssist.Hint="Office Address"   Style="{StaticResource MaterialDesignFloatingHintTextBox}" TextWrapping="Wrap" Margin="5,50,0,0" Grid.Row="9" Grid.Column="1" MinHeight="50" MaxHeight="80" Width="850"  VerticalScrollBarVisibility="Auto" x:Name="OfficeAddressTextBlock" Foreground="Gray" FontSize="20" FontWeight="Light" HorizontalAlignment="Left" BorderBrush="LightGray"></TextBox>
 
-                <Button  Margin="200,60,60,60" Width="200" Height="60"   x:Name="BackButton" Grid.Column="1" Grid.Row="10" Content="Back" BorderBrush="Transparent" Background="#03a9f4"  Foreground="#ffffff" FontSize="30" FontWeight="Light" HorizontalAlignment="Left" ></Button>
-                <Button  Margin="60,60,200,60" Width="200" Height="60"   x:Name="NextButton" Grid.Column="1" Grid.Row="10" Content="Next" BorderBrush="Transparent" Background="#03a9f4"  Foreground="#ffffff" FontSize="30" FontWeight="Light" HorizontalAlignment="Right" ></Button>
+                <Button  Margin="200,60,60,60" Width="200" Height="60"   x:Name="BackButton" Grid.Column="1" Grid.Row="10" Content="Back" BorderBrush="Transparent" Background="#03a9f4"  Foreground="#ffffff" FontSize="30" FontWeight="Light" HorizontalAlignment="Left" Click="BackButton_Click" ></Button>
+                <Button  Margin="60,60,200,60" Width="200" Height="60"   x:Name="NextButton" Grid.Column="1" Grid.Row="10" Content="Next" BorderBrush="Transparent" Background="#03a9f4"  Foreground="#ffffff" FontSize="30" FontWeight="Light" HorizontalAlignment="Right" Click="NextButton_Click" ></Button>
 
 
         </Grid>

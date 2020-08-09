@@ -1,4 +1,5 @@
 ﻿using GravitonCarLibrary;
+using GravitonCarLibrary.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +27,7 @@ namespace GravitonCar
             InitializeComponent();
             GlobalConfig.InitializeConnections();
             GridPrincipal.Children.Clear();
-            GridPrincipal.Children.Add(new FinancialDetails());
+            GridPrincipal.Children.Add(new ApplicantDetailsFormUserControl(this));
         }
 
 
@@ -64,10 +65,26 @@ namespace GravitonCar
                 Environment.Exit(0);
         }
 
-        public void CoApplicantForm()
+        public void CoApplicantForm(CarModel model)
         {
-            GridPrincipal.Children.Clear();
-            GridPrincipal.Children.Add(new CoApplicantForm());
+            //GridPrincipal.Children.Clear();
+            GridPrincipal.Children.Add(new CoApplicantForm(this, model));
+        }
+
+        public void FinancialScreen(CarModel model)
+        {
+            //GridPrincipal.Children.Clear();
+            GridPrincipal.Children.Add(new FinancialDetails(this, model));
+        }
+
+        public void RemoveCoApplicantScreen(UserControl control)
+        {
+            GridPrincipal.Children.Remove(control);
+        }
+
+        public void RemoveFinancialScreen(UserControl control)
+        {
+            GridPrincipal.Children.Remove(control);
         }
     }
 }

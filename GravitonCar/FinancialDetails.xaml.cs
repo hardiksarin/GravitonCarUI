@@ -1,4 +1,7 @@
-﻿using System;
+﻿using GravitonCar.Models;
+using GravitonCarLibrary;
+using GravitonCarLibrary.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -19,62 +22,74 @@ namespace GravitonCar
     public partial class FinancialDetails : UserControl
     {
         int i = 0;
-        public FinancialDetails()
+        List<NewLoanModel> existingLoans = new List<NewLoanModel>();
+        List<LoanTypeModel> loanTypes = new List<LoanTypeModel>();
+        List<LoanModel> loanModels = new List<LoanModel>();
+        List<DocumentTypeModel> documentModels = new List<DocumentTypeModel>();
+        IScreenRequester callingForm;
+        CarModel model = new CarModel();
+        public FinancialDetails(IScreenRequester caller, CarModel carModel)
         {
             InitializeComponent();
+            callingForm = caller;
+            model = carModel;
+            LoadListData();
+            WireUpList();
+        }
+
+        private void LoadListData()
+        {
+            loanTypes = GlobalConfig.Connection.GetLoanType_All();
+            documentModels = GlobalConfig.Connection.GetDocumentType_All();
+        }
+
+        private void WireUpList()
+        {
+            OptionalIdTypeComboBox.ItemsSource = null;
+            OptionalIdTypeComboBox.ItemsSource = documentModels;
+
+            OptionalIdTypeComboBox.DisplayMemberPath = "documenttype_name";
         }
 
         ComboBox addLoanType(int i)
-
         {
-           
-
             ComboBox LoanType = new ComboBox();
-            LoanType.Name = "LoanNameTextbox" + i.ToString();
+            LoanType.Name = $"LoanNameTextbox{i}";                                //"LoanNameTextbox" + i.ToString();
             LoanType.Width = 200;
             LoanType.Height = 30;
-
+            LoanType.ItemsSource = loanTypes;
+            LoanType.DisplayMemberPath = "loantype_name";
             return LoanType;
-
         }
 
         TextBox addLoanBankName(int i)
         {
             TextBox LoanBankName = new TextBox();
-            LoanBankName.Name = "LoanBankNameTextbox" + i.ToString();
+            LoanBankName.Name = $"LoanBankNameTextbox{i}";                        //"LoanBankNameTextbox" + i.ToString();
             LoanBankName.Margin = new Thickness(10);
             LoanBankName.Width = 200;
             LoanBankName.Height = 30;
-
-
             return LoanBankName;
-
         }
 
         TextBox addLoanAmount(int i)
         {
             TextBox LoanAmount = new TextBox();
-            LoanAmount.Name = "LoanLoanAmountTextbox" + i.ToString();
+            LoanAmount.Name = $"LoanLoanAmountTextbox{i}";                        //"LoanLoanAmountTextbox" + i.ToString();
             LoanAmount.Margin = new Thickness(10);
             LoanAmount.Width = 200;
             LoanAmount.Height = 30;
-
-
             return LoanAmount;
-
         }
 
         TextBox addLoanEmiAmount(int i)
         {   
             TextBox LoanEmiAmount = new TextBox();
-            LoanEmiAmount.Name = "LoanEmiAmountTextbox" + i.ToString();
+            LoanEmiAmount.Name = $"LoanEmiAmountTextbox{i}";                       //"LoanEmiAmountTextbox" + i.ToString();
             LoanEmiAmount.Margin = new Thickness(10);
             LoanEmiAmount.Width = 200;
             LoanEmiAmount.Height = 30;
-
-
             return LoanEmiAmount;
-
         }
 
         Expander addExpanderPannel(int i)
@@ -88,9 +103,7 @@ namespace GravitonCar
             LoanExpander.Content = s;
             LoanExpander.FontWeight = FontWeights.Light;
 
-
             return LoanExpander;
-
         }
 
         WrapPanel addLoanDetails(int i)
@@ -148,13 +161,16 @@ namespace GravitonCar
 
             LoanDetails.Children.Add(LoanTypeLabel);
             LoanDetails.Children.Add(LoanType);
+            this.Dynamic.RegisterName(LoanType.Name, LoanType);
             LoanDetails.Children.Add(LoanBankNameLabel);
             LoanDetails.Children.Add(LoanBankName);
+            this.Dynamic.RegisterName(LoanBankName.Name, LoanBankName);
             LoanDetails.Children.Add(LoanAmountLabel);
             LoanDetails.Children.Add(LoanAmount);
+            this.Dynamic.RegisterName(LoanAmount.Name, LoanAmount);
             LoanDetails.Children.Add(LoanEmiAmountLabel);
             LoanDetails.Children.Add(LoanEmiAmount);
-
+            this.Dynamic.RegisterName(LoanEmiAmount.Name, LoanEmiAmount);
 
 
             return LoanDetails;
@@ -163,21 +179,130 @@ namespace GravitonCar
 
         private void AddLoanButton_Click(object sender, RoutedEventArgs e)
         {
-            
+
+            Expander expander = addExpanderPannel(i);
+            this.Dynamic.Children.Add(expander);
+            this.Dynamic.RegisterName(expander.Name, expander);
+            // Add Loan Model
+            NewLoanModel loan = new NewLoanModel();
+            /*
+             * Loan Number - int
+             * Loan Expander ID Name - string
+             * Loan Type {ComboBox} - string
+             * Bank name - string
+             * Loan Amount - double
+             * Loan Emi Amount - double
+            */
+            loan.LoanNumber = i + 1;
+            loan.LoanExpanderName = $"LoanExpander{i}";
+            loan.LoanTypeLabel.Name = $"LoanNameTextbox{i}";
+            loan.LoanBankNameLabel.Name = $"LoanBankNameTextbox{i}";
+            loan.LoanAmountLabel.Name = $"LoanLoanAmountTextbox{i}";
+            loan.LoanEmiAmountLabel.Name = $"LoanEmiAmountTextbox{i}";
+            existingLoans.Add(loan);
+            i++;
+        }
+
+        /// <summary>
+        /// Validates Each new loan.
+        /// New Loan Model will provide the XAML ids of each component to this function.
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        private bool ValidateNewLoanForms(NewLoanModel model)
+        {
+            bool output = true;
+
+            if (model.LoanTypeLabel.SelectedItem == null)
             {
-                Expander expander = addExpanderPannel(i);
-                Dynamic.Children.Add(expander);
-                i++;
-                
+                output = false;
             }
+            if (model.LoanBankNameLabel.Text.Length == 0)
+            {
+                output = false;
+            }
+            if (model.LoanAmountLabel.Text.Length == 0)
+            {
+                output = false;
+            }
+            if (model.LoanEmiAmountLabel.Text.Length == 0)
+            {
+                output = false;
+            }
+            return output;
         }
 
         private void ReviewButton_Click(object sender, RoutedEventArgs e)
         {
-            for (int j = 0;j<=i;j++)
+            foreach (NewLoanModel loan in existingLoans)
             {
-/*                string s = ((TextBox)tableLayoutPanel1.Controls["TxtBox1"]).Text; MessageBox.Show(a.ToString());
-*/            }
+                loan.LoanBankNameLabel = (TextBox)this.Dynamic.FindName(loan.LoanBankNameLabel.Name);
+                loan.LoanAmountLabel = (TextBox)this.Dynamic.FindName(loan.LoanAmountLabel.Name);
+                loan.LoanEmiAmountLabel = (TextBox)this.Dynamic.FindName(loan.LoanEmiAmountLabel.Name);
+                loan.LoanTypeLabel = (ComboBox)this.Dynamic.FindName(loan.LoanTypeLabel.Name);
+                if (ValidateNewLoanForms(loan))
+                {
+                    LoanModel loanModel = new LoanModel();
+                    LoanTypeModel temp = (LoanTypeModel)loan.LoanTypeLabel.SelectedItem;
+                    loan.LoanType = temp.loantype_id;
+                    loan.LoanBankName = loan.LoanBankNameLabel.Text;
+                    loan.LoanAmount = double.Parse(loan.LoanAmountLabel.Text);
+                    loan.LoanEmiAmount = double.Parse(loan.LoanEmiAmountLabel.Text);
+                    loanModel.loan_type = loan.LoanType;
+                    loanModel.loan_bankname = loan.LoanBankName;
+                    loanModel.loan_amount = loan.LoanAmount;
+                    loanModel.loan_emi = loan.LoanEmiAmount;
+                    loanModel.loan_relatedaadhar = model.documentModel.document_aadhar;
+                    loanModel.loan_relatedpan = model.documentModel.document_pan;
+                    loanModels.Add(loanModel);
+                }
+            }
+            WireUpForm();
+        }
+
+        private void WireUpForm()
+        {
+            //Aadhar and Pan
+            model.documentModel.document_aadhar = AadharNumberTextBox.Text;
+            model.documentModel.document_pan = PanNumberTextBox.Text;
+
+            model.applicantModel.applicant_aadhar = AadharNumberTextBox.Text;
+            model.applicantModel.applicant_pan = PanNumberTextBox.Text;
+
+            model.gurantorModel.gurantor_realtedaadhar = AadharNumberTextBox.Text;
+            model.gurantorModel.gurantor_realtedpan = PanNumberTextBox.Text;
+
+            model.accountModel.account_relatedaadhar = AadharNumberTextBox.Text;
+            model.accountModel.account_relatedpan = PanNumberTextBox.Text;
+
+            //Cibil Score
+            model.documentModel.document_cibil = int.Parse(CibilScoreTextBox.Text);
+
+            //Optional ID
+            DocumentTypeModel documentType = (DocumentTypeModel)OptionalIdTypeComboBox.SelectedItem;
+            model.documentModel.document_id = documentType.documenttype_id;
+            model.documentModel.document_optional = OptionalIdDetailsTextBox.Text;
+
+            //In hand Income
+            model.accountModel.account_inhandsalary = int.Parse(InHandMonthlyIcomeTextBox.Text);
+
+            //Bank Name
+            model.accountModel.account_bankname = BankNameTextBox.Text;
+
+            //IFSC 
+            model.accountModel.account_ifsc = IFSCTextBox.Text;
+
+            //Accounnt Number
+            model.accountModel.account_number = long.Parse(AccountNumberTextBox.Text);
+
+            //Loans
+            model.loanModel = loanModels;
+
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            callingForm.RemoveFinancialScreen(this);
         }
     }
 }

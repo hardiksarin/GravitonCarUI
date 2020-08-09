@@ -414,6 +414,20 @@ namespace GravitonCarLibrary.DataAccess
                 return model;
             }
         }
-        //Progress
+
+
+        //CAR
+        public void CreateCar(CarModel model)
+        {
+            CreateDocument(model.documentModel);
+            CreateApplicant(model.applicantModel);
+            CreateGurantor(model.gurantorModel);
+            CreateAccount(model.accountModel);
+
+            foreach (LoanModel loan in model.loanModel)
+            {
+                CreateLoan(loan);
+            }
+        }
     }
 }

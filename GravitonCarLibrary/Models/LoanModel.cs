@@ -19,15 +19,15 @@ namespace GravitonCarLibrary.Models
         /// <summary>
         /// Amount Of the Loan
         /// </summary>
-        public int loan_amount { get; set; }
+        public double loan_amount { get; set; }
         /// <summary>
         /// Emi of the Loan
         /// </summary>
-        public int loan_emi { get; set; }
+        public double loan_emi { get; set; }
         /// <summary>
         /// Closure Date of the Loan
         /// </summary>
-        public int loan_closuredate { get; set; }
+        public string loan_closuredate { get; set; }
         /// <summary>
         /// Type Of Loan
         /// </summary>

@@ -81,6 +81,7 @@
     <Compile Include="Models\AccountModel.cs" />
     <Compile Include="Models\AcquaintanceModel.cs" />
     <Compile Include="Models\ApplicantModel.cs" />
+    <Compile Include="Models\CarModel.cs" />
     <Compile Include="Models\CasteModel.cs" />
     <Compile Include="Models\CategoryModel.cs" />
     <Compile Include="Models\DocumentModel.cs" />
