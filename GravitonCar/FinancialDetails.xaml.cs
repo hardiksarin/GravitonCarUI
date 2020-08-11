@@ -389,6 +389,7 @@ namespace GravitonCar
                 }
             }
             WireUpForm();
+            callingForm.PreviewScreen(model);
         }
 
         private void WireUpData()

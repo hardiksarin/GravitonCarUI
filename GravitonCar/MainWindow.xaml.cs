@@ -86,5 +86,10 @@ namespace GravitonCar
         {
             GridPrincipal.Children.Remove(control);
         }
+
+        public void PreviewScreen(CarModel model)
+        {
+            GridPrincipal.Children.Add(new Preview(this, model));
+        }
     }
 }

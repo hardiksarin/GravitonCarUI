@@ -76,8 +76,6 @@ namespace GravitonCar
             NearestBranchComboBox.ItemsSource = null;
             NearestBranchComboBox.ItemsSource = branchesList;
 
-
-
         }
         private void PrintButton_Click(object sender, RoutedEventArgs e)
         {
