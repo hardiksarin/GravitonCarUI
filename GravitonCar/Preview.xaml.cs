@@ -3,6 +3,7 @@ using GravitonCarLibrary;
 using GravitonCarLibrary.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -110,7 +111,7 @@ namespace GravitonCar
             LoanType.Height = 30;
             LoanType.ItemsSource = loanTypes;
             LoanType.DisplayMemberPath = "loantype_name";
-            LoanType.SelectedIndex = loan.loan_type;
+            LoanType.SelectedIndex = loan.loan_type - 1;
             return LoanType;
         }
 
@@ -232,6 +233,23 @@ namespace GravitonCar
 
         }
 
+        private int calculateAge(string current, string dob)
+        {
+            int age = 0;
+
+            string[] dobArray = dob.Split('-');
+            string[] todyaArray = current.Split('-');
+
+            int dobYear = int.Parse(dobArray[2]);
+            int currentYear = int.Parse(todyaArray[2]);
+
+            if (currentYear > dobYear)
+            {
+                age = currentYear - dobYear;
+            }
+            return age;
+        }
+
         private void createLoan(LoanModel loanModel)
         {
             Expander expander = addExpanderPannelDynamic(i, loanModel);
@@ -295,6 +313,15 @@ namespace GravitonCar
             Distance To NE - DistanceToNeTextBox
             Nearest Branch - NearestBranchComboBox
             */
+
+            string dobTemp = model.applicantModel.applicant_dob;
+            DateTime dobDate = Convert.ToDateTime(dobTemp);
+            DatePicker.SelectedDate = dobDate;
+
+            string today = DateTime.Today.ToString().Split(' ').First();
+            int a = calculateAge(today , dobTemp);
+
+            AgeTextBlock.Text = a.ToString();
 
             //Marital Status
             foreach (MarriedStatusModel married in maritalStatusList)
