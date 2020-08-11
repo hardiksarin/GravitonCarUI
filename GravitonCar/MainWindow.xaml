@@ -7,7 +7,7 @@
         
 
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="1000" SizeToContent="Manual" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
+        Title="MainWindow" Height="800" Width="1000" SizeToContent="Manual" ResizeMode="CanResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
 
 
 
