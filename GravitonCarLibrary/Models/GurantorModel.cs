@@ -28,7 +28,7 @@ namespace GravitonCarLibrary.Models
         /// <summary>
         /// Mobile Number of the gurantor
         /// </summary>
-        public long gurantor_mobile { get; set; }
+        public string gurantor_mobile { get; set; }
         /// <summary>
         /// Relationship of the Applicant With the gurantor
         /// </summary>

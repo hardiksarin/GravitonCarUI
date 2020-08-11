@@ -39,7 +39,7 @@ namespace GravitonCarLibrary.Models
         /// <summary>
         /// Pincode of the Applicant, Fixed Length 6
         /// </summary>
-        public long applicant_pincode { get; set; }
+        public string applicant_pincode { get; set; }
         /// <summary>
         ///  Current Address of the Applicant,Max Length 300
         /// </summary>
@@ -47,11 +47,11 @@ namespace GravitonCarLibrary.Models
         /// <summary>
         /// Mobile Number of the Applicant
         /// </summary>
-        public long applicant_mobile { get; set; }
+        public string applicant_mobile { get; set; }
         /// <summary>
         /// Office Number of the Applicant
         /// </summary>
-        public long applicant_officeno { get; set; }
+        public string applicant_officeno { get; set; }
         /// <summary>
         /// Designation of the Applicant,Max Length 20 
         /// </summary>

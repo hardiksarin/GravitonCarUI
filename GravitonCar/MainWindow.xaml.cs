@@ -61,7 +61,7 @@ namespace GravitonCar
       
         private void PackIcon_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (MessageBox.Show("Do you  want to close?", "", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            if (MessageBox.Show("Do you want to close?", "", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 Environment.Exit(0);
         }
 

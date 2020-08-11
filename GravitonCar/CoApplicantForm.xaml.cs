@@ -29,10 +29,11 @@ namespace GravitonCar
             callingForm = caller;
             model = carModel;
             LoadListData();
+            WireUpList();
             WireUpData();
         }
 
-        private void WireUpData()
+        private void WireUpList()
         {
             GurantorComboBox.ItemsSource = null;
             GurantorComboBox.ItemsSource = gurantorType;
@@ -46,6 +47,7 @@ namespace GravitonCar
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
+            WireUpForm();
             callingForm.RemoveCoApplicantScreen(this);
         }
 
@@ -53,6 +55,35 @@ namespace GravitonCar
         {
             WireUpForm();
             callingForm.FinancialScreen(model);
+        }
+
+        private void WireUpData()
+        {
+            if (model.gurantorModel.gurantor_firstname != null)
+            {
+                //Co Applicant or Gurantor
+                foreach (GurantorTypeModel gurantor in gurantorType)
+                {
+                    if (model.gurantorModel.gurantortype_id == gurantor.gurantortype_id)
+                    {
+                        GurantorComboBox.SelectedItem = gurantor;
+                    }
+                }
+
+                //First, Middle and Last Name
+                FirstNameTextBox.Text = model.gurantorModel.gurantor_firstname;
+                MiddleNameTextBox.Text = model.gurantorModel.gurantor_middlename;
+                LastNameTextBox.Text = model.gurantorModel.gurantor_lastname;
+
+                //Mobile
+                MobilNumberTextBox.Text = model.gurantorModel.gurantor_mobile;
+
+                //Relationship
+                RelationshipTextBox.Text = model.gurantorModel.gurantor_relation;
+
+                //Office Address
+                OfficeAddressTextBlock.Text = model.gurantorModel.gurantor_currentaddress; 
+            }
         }
 
         private void WireUpForm()
@@ -67,7 +98,7 @@ namespace GravitonCar
             model.gurantorModel.gurantor_lastname = LastNameTextBox.Text;
 
             //Mobile
-            model.gurantorModel.gurantor_mobile = long.Parse(MobilNumberTextBox.Text);
+            model.gurantorModel.gurantor_mobile = MobilNumberTextBox.Text;
 
             //Relationship
             model.gurantorModel.gurantor_relation = RelationshipTextBox.Text;

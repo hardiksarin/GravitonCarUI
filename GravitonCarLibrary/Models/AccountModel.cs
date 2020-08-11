@@ -20,7 +20,7 @@ namespace GravitonCarLibrary.Models
         /// <summary>
         /// Account Number of the Bank account, Max Length 50
         /// </summary>
-        public long account_number { get; set; }
+        public string account_number { get; set; }
         /// <summary>
         /// In Hand Salary of the Applicant, Max Length 30
         /// </summary>

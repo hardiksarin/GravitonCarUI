@@ -160,16 +160,16 @@ namespace GravitonCar
             model.applicantModel.applicant_district = (string)DistrictComboBox.SelectedItem;*/
 
             //Pincode
-            model.applicantModel.applicant_pincode = long.Parse(PincodeTextBox.Text);
+            model.applicantModel.applicant_pincode = PincodeTextBox.Text;
 
             //Address
             model.applicantModel.applicant_currentaddress = AddressTextBlock.Text;
 
             //Mobile Number
-            model.applicantModel.applicant_mobile = long.Parse(MobileNumberTextBox.Text);
+            model.applicantModel.applicant_mobile = MobileNumberTextBox.Text;
 
             //Office Number
-            model.applicantModel.applicant_officeno = long.Parse(OfficeNumberTextBox.Text);
+            model.applicantModel.applicant_officeno = OfficeNumberTextBox.Text;
 
             //Designation
             model.applicantModel.applicant_desgination = DesignationTextBox.Text;
