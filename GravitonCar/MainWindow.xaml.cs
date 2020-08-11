@@ -26,7 +26,7 @@ namespace GravitonCar
             InitializeComponent();
             GlobalConfig.InitializeConnections();
             GridPrincipal.Children.Clear();
-            GridPrincipal.Children.Add(new Preview());
+            GridPrincipal.Children.Add(new Search());
         }
 
 
