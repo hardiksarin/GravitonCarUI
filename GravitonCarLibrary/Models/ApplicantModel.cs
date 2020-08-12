@@ -1,17 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace GravitonCarLibrary.Models
 {
-    public class ApplicantModel
+    public class ApplicantModel : INotifyPropertyChanged
     {
+        private string fname;
         /// <summary>
         /// First Name of the Applicant,Max Length 50 
         /// </summary>
-        public string applicant_firstname { get; set; }
+        public string applicant_firstname { get { return fname;  } set { if (value != fname) { fname = value; OnPropertyChanged("applicant_firstname"); } } }
         /// <summary>
         /// Middle Name of the Applicant,Max Length 50 
         /// </summary>
@@ -100,6 +102,12 @@ namespace GravitonCarLibrary.Models
         ///  Aadhar Id of the Applicant, Fixed Length 12
         /// </summary>
         public string applicant_aadhar { get; set; }
-    
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

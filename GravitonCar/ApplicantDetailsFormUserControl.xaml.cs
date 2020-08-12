@@ -21,6 +21,7 @@ namespace GravitonCar
     /// </summary>
     public partial class ApplicantDetailsFormUserControl : UserControl
     {
+        public string fname { get; set; }
         IScreenRequester callingForm;
         List<MarriedStatusModel> maritalStatusList = new List<MarriedStatusModel>();
         List<AcquaintanceModel> acquaintanceList = new List<AcquaintanceModel>();
@@ -106,7 +107,7 @@ namespace GravitonCar
         private void WireUpForm()
         {
             //First, Middle and Last Name
-
+      
             model.applicantModel.applicant_firstname = FirstNameTextBox.Text;
             model.applicantModel.applicant_middlename = MiddleNameTextBox.Text;
             model.applicantModel.applicant_lastname = LastNameTextBox.Text;
