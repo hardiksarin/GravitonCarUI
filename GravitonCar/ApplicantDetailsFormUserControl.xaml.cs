@@ -2,6 +2,7 @@
 using GravitonCarLibrary.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -19,9 +20,169 @@ namespace GravitonCar
     /// <summary>
     /// Interaction logic for ApplicantDetailsFormUserControl.xaml
     /// </summary>
-    public partial class ApplicantDetailsFormUserControl : UserControl
+    public partial class ApplicantDetailsFormUserControl : UserControl, INotifyPropertyChanged
     {
-        public string fname { get; set; }
+        private string _applicant_firstname;
+        private string _applicant_lastname;
+        private string _applicant_middlename;
+        private string _applicant_dob;
+        private string _applicant_acquaintancename;
+        private string _applicant_state;
+        private int _applicant_distance;
+        private string _applicant_district;
+        private string _applicant_currentaddress;
+        private string _applicant_pincode;
+        private string _applicant_mobile;
+        private string applicant_officeno;
+        private string _applicant_desgination;
+        private string _applicant_education;
+        private string _applicant_employername;
+        private string _applicant_nearestbranch;
+        private string _applicant_officeaddress;
+
+        public string ApplicantFirstname
+        {
+            get { return _applicant_firstname; }
+            set { _applicant_firstname = value;
+                OnPropertyChanged("ApplicantFirstname");
+            }
+        }
+
+        public string ApplicantLastname
+        {
+            get { return _applicant_lastname; }
+            set { _applicant_lastname = value;
+                OnPropertyChanged("ApplicantLastname");
+            }
+        }
+
+        public string ApplicantMiddlename
+        {
+            get { return _applicant_middlename; }
+            set { _applicant_middlename = value;
+                OnPropertyChanged("ApplicantMiddlename");
+            }
+        }
+
+
+        public string ApplicantAcquaintance
+        {
+            get { return _applicant_acquaintancename; }
+            set { _applicant_acquaintancename = value;
+                OnPropertyChanged("ApplicantAcquaintance");
+            }
+        }
+
+        public string ApplicantDob
+        {
+            get { return _applicant_dob; }
+            set { _applicant_dob = value;
+                OnPropertyChanged("ApplicantDob");
+            }
+        }
+
+        public string ApplicantState
+        {
+            get { return _applicant_state; }
+            set { _applicant_state = value;
+                OnPropertyChanged("ApplicantState");
+            }
+        }
+
+        public string ApplicantDistrict
+        {
+            get { return _applicant_district; }
+            set { _applicant_district = value;
+                OnPropertyChanged("ApplicantDistrict");
+            }
+        }
+
+        public string ApplicantCurrentAddress
+        {
+            get { return _applicant_currentaddress; }
+            set { _applicant_currentaddress = value;
+                OnPropertyChanged("ApplicantCurrentAddress");
+            }
+        }
+
+        public string ApplicantPincode
+        {
+            get { return _applicant_pincode; }
+            set { _applicant_pincode = value;
+                OnPropertyChanged("ApplicantPincode");
+            }
+        }
+
+        public string ApplicantMobile
+        {
+            get { return _applicant_mobile; }
+            set { _applicant_mobile = value;
+                OnPropertyChanged("ApplicantMobile");
+            }
+        }
+
+        public string ApplicantOfficeNo
+        {
+            get { return applicant_officeno; }
+            set { applicant_officeno = value;
+                OnPropertyChanged("ApplicantOfficeNo");
+            }
+        }
+
+        public string ApplicantDesignation
+        {
+            get { return _applicant_desgination; }
+            set { _applicant_desgination = value;
+                OnPropertyChanged("ApplicantDesignation");
+            }
+        }
+
+        public string ApplicantEducation
+        {
+            get { return _applicant_education; }
+            set { _applicant_education = value;
+                OnPropertyChanged("ApplicantEducation");
+            }
+        }
+
+        public string ApplicantEmployer
+        {
+            get { return _applicant_employername; }
+            set { _applicant_employername = value;
+                OnPropertyChanged("ApplicantEmployer");
+            }
+        }
+
+        public string ApplicantOfficeAddress
+        {
+            get { return _applicant_officeaddress; }
+            set { _applicant_officeaddress = value;
+                OnPropertyChanged("ApplicantOfficeAddress");
+            }
+        }
+
+        public string ApplicantNearestBranch
+        {
+            get { return _applicant_nearestbranch; }
+            set { _applicant_nearestbranch = value;
+                OnPropertyChanged("ApplicantNearestBranch");
+            }
+        }
+
+        public int ApplicantDistance
+        {
+            get { return _applicant_distance; }
+            set { _applicant_distance = value;
+                OnPropertyChanged("ApplicantDistance");
+            }
+        }
+
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
         IScreenRequester callingForm;
         List<MarriedStatusModel> maritalStatusList = new List<MarriedStatusModel>();
         List<AcquaintanceModel> acquaintanceList = new List<AcquaintanceModel>();
@@ -32,9 +193,11 @@ namespace GravitonCar
         List<string> branchesList = new List<string>() { "Jaipur Office " };
         CarModel model = new CarModel();
 
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public ApplicantDetailsFormUserControl(IScreenRequester caller)
         {
+            DataContext = this;
             InitializeComponent();
             callingForm = caller;
             LoadListData();

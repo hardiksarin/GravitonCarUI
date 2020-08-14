@@ -2,6 +2,7 @@
 using GravitonCarLibrary.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,19 +19,86 @@ namespace GravitonCar
     /// <summary>
     /// Interaction logic for CoApplicantForm.xaml
     /// </summary>
-    public partial class CoApplicantForm : UserControl
+    public partial class CoApplicantForm : UserControl, INotifyPropertyChanged
     {
+        private string _gurantor_firstname;
+        private string _gurantor_middlename;
+        private string _gurantor_lastname;
+        private string _gurantor_currentaddress;
+        private string _gurantor_mobile;
+        private string _gurantor_relation;
+
+
+        public string GurantorFirstname
+        {
+            get { return _gurantor_firstname; }
+            set { _gurantor_firstname = value;
+                OnPropertyChanged("GurantorFirstname");
+            }
+        }
+
+        public string GurantorMiddlename
+        {
+            get { return _gurantor_middlename; }
+            set { _gurantor_middlename = value;
+                OnPropertyChanged("GurantorFirstname");
+            }
+        }
+
+        public string GurantorLastname
+        {
+            get { return _gurantor_lastname; }
+            set { _gurantor_lastname = value;
+                OnPropertyChanged("GurantorFirstname");
+            }
+        }
+
+        public string GurantorCurrentAddress
+        {
+            get { return _gurantor_currentaddress; }
+            set { _gurantor_currentaddress = value;
+                OnPropertyChanged("GurantorFirstname");
+            }
+        }
+
+        public string GurantorMobile
+        {
+            get { return _gurantor_mobile; }
+            set { _gurantor_mobile = value;
+                OnPropertyChanged("GurantorFirstname");
+            }
+        }
+
+        public string GurantorRelation
+        {
+            get { return _gurantor_relation; }
+            set { _gurantor_relation = value;
+                OnPropertyChanged("GurantorFirstname");
+            }
+        }
+
+
+
         IScreenRequester callingForm;
         CarModel model = new CarModel();
         List<GurantorTypeModel> gurantorType = new List<GurantorTypeModel>();
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public CoApplicantForm(IScreenRequester caller, CarModel carModel)
         {
+            DataContext = this;
             InitializeComponent();
             callingForm = caller;
             model = carModel;
             LoadListData();
             WireUpList();
             WireUpData();
+        }
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         private void WireUpList()

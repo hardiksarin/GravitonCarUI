@@ -3,6 +3,7 @@ using GravitonCarLibrary;
 using GravitonCarLibrary.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -19,8 +20,100 @@ namespace GravitonCar
     /// <summary>
     /// Interaction logic for FinancialDetails.xaml
     /// </summary>
-    public partial class FinancialDetails : UserControl
+    public partial class FinancialDetails : UserControl, INotifyPropertyChanged
     {
+
+        private string _document_aadhar;
+        private string _document_pan;
+        private int _document_cibil;
+        private string _document_optional;
+        private string _account_bankname;
+        private string _account_ifsc;
+        private string _account_number;
+        private int _account_inhandsalary;
+
+        public string DocumentAadhar
+        {
+            get { return _document_aadhar; }
+            set { _document_aadhar = value;
+                OnPropertyChanged("DocumentAadhar");
+            }
+        }
+
+
+        public string DocumentPan
+        {
+            get { return _document_pan; }
+            set { _document_pan = value;
+                OnPropertyChanged("DocumentPan");
+            }
+        }
+
+
+        public int DocumentCibil
+        {
+            get { return _document_cibil; }
+            set { _document_cibil = value;
+                OnPropertyChanged("DocumentCibil");
+            }
+        }
+
+
+        public string DocumentOptional
+        {
+            get { return _document_optional; }
+            set { _document_optional = value;
+                OnPropertyChanged("DocumentOptional");
+            }
+        }
+
+
+        public string AccountBankName
+        {
+            get { return _account_bankname; }
+            set { _account_bankname = value;
+                OnPropertyChanged("AccountBankName");
+            }
+        }
+
+
+        public string AccountIfsc
+        {
+            get { return _account_ifsc; }
+            set { _account_ifsc = value;
+                OnPropertyChanged("AccountIfsc");
+            }
+        }
+
+
+        public string AccountNumber
+        {
+            get { return _account_number; }
+            set { _account_number = value;
+                OnPropertyChanged("AccountNumber");
+            }
+        }
+
+
+        public int AccountSalary
+        {
+            get { return _account_inhandsalary; }
+            set { _account_inhandsalary = value;
+                OnPropertyChanged("AccountSalary");
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
         int i = 0;
         List<NewLoanModel> existingLoans = new List<NewLoanModel>();
         List<LoanTypeModel> loanTypes = new List<LoanTypeModel>();
@@ -28,14 +121,23 @@ namespace GravitonCar
         List<DocumentTypeModel> documentModels = new List<DocumentTypeModel>();
         IScreenRequester callingForm;
         CarModel model = new CarModel();
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public FinancialDetails(IScreenRequester caller, CarModel carModel)
         {
+            DataContext = this;
             InitializeComponent();
             callingForm = caller;
             model = carModel;
             LoadListData();
             WireUpList();
             WireUpData();
+        }
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         private void LoadListData()

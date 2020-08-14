@@ -17,7 +17,7 @@ namespace GravitonCarLibrary.DataAccess
         {
             using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
             {
-                int id = connection.ExecuteScalar<int>($"insert into account values(default,'{model.account_bankname}','{model.account_ifsc}','{model.account_number}','{model.account_inhandsalary}','{model.account_relatedpan}','{model.account_relatedaadhar}')");
+                int id = connection.ExecuteScalar<int>($"insert into account values('{model.account_bankname}','{model.account_ifsc}','{model.account_number}','{model.account_inhandsalary}','{model.account_relatedpan}','{model.account_relatedaadhar}')");
                 return model;
             }
         }
@@ -78,7 +78,7 @@ namespace GravitonCarLibrary.DataAccess
         {
             using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
             {
-                int id = connection.ExecuteScalar<int>($"insert into applicant values(default,'{model.applicant_firstname}','{model.applicant_middlename}','{model.applicant_lastname}','{model.applicant_acquaintancename}'," +
+                int id = connection.ExecuteScalar<int>($"insert into applicant values('{model.applicant_firstname}','{model.applicant_middlename}','{model.applicant_lastname}','{model.applicant_acquaintancename}'," +
                     $"'{model.applicant_dob}','{model.applicant_state}','{model.applicant_district}','{model.applicant_pincode}','{model.applicant_currentaddress}','{model.applicant_mobile}','{model.applicant_officeno}'," +
                     $"'{model.applicant_desgination}','{model.applicant_education}','{model.applicant_employername}','{model.applicant_officeaddress}','{model.applicant_nearestbranch}','{model.applicant_distance}'," +
                     $"'{model.applicant_acquaintanceid}','{model.applicant_maritalstatusid}','{model.applicant_casteid}','{model.applicant_categoryid}','{model.applicant_pan}','{model.applicant_aadhar}')");
@@ -196,7 +196,7 @@ namespace GravitonCarLibrary.DataAccess
         {
             using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
             {
-                int id = connection.ExecuteScalar<int>($"insert into document values(default,'{model.document_pan}','{model.document_aadhar}','{model.document_optional}','{model.document_cibil}','{model.document_remark}','{model.document_id}','{model.progress_id}')");
+                int id = connection.ExecuteScalar<int>($"insert into document values('{model.document_pan}','{model.document_aadhar}','{model.document_optional}',{model.document_cibil},'{model.document_remark}',{model.document_id})");
                 return model;
             }
         }
@@ -258,7 +258,7 @@ namespace GravitonCarLibrary.DataAccess
         {
             using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
             {
-                int id = connection.ExecuteScalar<int>($"insert into gurantor values(default,'{model.gurantor_firstname}','{model.gurantor_middlename}','{model.gurantor_lastname}','{model.gurantor_currentaddress}','{model.gurantor_mobile}','{model.gurantor_relation}','{model.gurantor_realtedpan}','{model.gurantor_realtedaadhar}','{model.gurantortype_id}')");
+                int id = connection.ExecuteScalar<int>($"insert into gurantor values('{model.gurantor_firstname}','{model.gurantor_middlename}','{model.gurantor_lastname}','{model.gurantor_currentaddress}','{model.gurantor_mobile}','{model.gurantor_relation}','{model.gurantor_realtedpan}','{model.gurantor_realtedaadhar}',{model.gurantortype_id})");
                 return model;
             }
         }
@@ -318,7 +318,7 @@ namespace GravitonCarLibrary.DataAccess
         {
             using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
             {
-                int id = connection.ExecuteScalar<int>($"insert into loan values(default,'{model.loan_id}','{model.loan_bankname}','{model.loan_amount}','{model.loan_emi}','{model.loan_closuredate}','{model.loan_closuredate}','{model.loan_type}','{model.loan_relatedpan}','{model.loan_relatedaadhar}')");
+                int id = connection.ExecuteScalar<int>($"insert into loan values(default,'{model.loan_bankname}',{model.loan_amount},{model.loan_emi},'2020-06-30',{model.loan_type},'{model.loan_relatedpan}','{model.loan_relatedaadhar}')");
                 return model;
             }
         }

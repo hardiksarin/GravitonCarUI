@@ -3,6 +3,7 @@ using GravitonCarLibrary;
 using GravitonCarLibrary.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -20,8 +21,367 @@ namespace GravitonCar
     /// <summary>
     /// Interaction logic for Preview.xaml
     /// </summary>
-    public partial class Preview : UserControl
+    public partial class Preview : UserControl, INotifyPropertyChanged
     {
+        private string _applicant_firstname;
+        private string _applicant_lastname;
+        private string _applicant_middlename;
+        private string _applicant_dob;
+        private string _applicant_acquaintancename;
+        private string _applicant_state;
+        private int _applicant_distance;
+        private string _applicant_district;
+        private string _applicant_currentaddress;
+        private string _applicant_pincode;
+        private string _applicant_mobile;
+        private string applicant_officeno;
+        private string _applicant_desgination;
+        private string _applicant_education;
+        private string _applicant_employername;
+        private string _applicant_nearestbranch;
+        private string _applicant_officeaddress;
+
+        private string _gurantor_firstname;
+        private string _gurantor_middlename;
+        private string _gurantor_lastname;
+        private string _gurantor_currentaddress;
+        private string _gurantor_mobile;
+        private string _gurantor_relation;
+
+        private string _document_aadhar;
+        private string _document_pan;
+        private int _document_cibil;
+        private string _document_optional;
+        private string _account_bankname;
+        private string _account_ifsc;
+        private string _account_number;
+        private int _account_inhandsalary;
+
+        public string ApplicantFirstname
+        {
+            get { return _applicant_firstname; }
+            set
+            {
+                _applicant_firstname = value;
+                OnPropertyChanged("ApplicantFirstname");
+            }
+        }
+
+        public string ApplicantLastname
+        {
+            get { return _applicant_lastname; }
+            set
+            {
+                _applicant_lastname = value;
+                OnPropertyChanged("ApplicantLastname");
+            }
+        }
+
+        public string ApplicantMiddlename
+        {
+            get { return _applicant_middlename; }
+            set
+            {
+                _applicant_middlename = value;
+                OnPropertyChanged("ApplicantMiddlename");
+            }
+        }
+
+
+        public string ApplicantAcquaintance
+        {
+            get { return _applicant_acquaintancename; }
+            set
+            {
+                _applicant_acquaintancename = value;
+                OnPropertyChanged("ApplicantAcquaintance");
+            }
+        }
+
+        public string ApplicantDob
+        {
+            get { return _applicant_dob; }
+            set
+            {
+                _applicant_dob = value;
+                OnPropertyChanged("ApplicantDob");
+            }
+        }
+
+        public string ApplicantState
+        {
+            get { return _applicant_state; }
+            set
+            {
+                _applicant_state = value;
+                OnPropertyChanged("ApplicantState");
+            }
+        }
+
+        public string ApplicantDistrict
+        {
+            get { return _applicant_district; }
+            set
+            {
+                _applicant_district = value;
+                OnPropertyChanged("ApplicantDistrict");
+            }
+        }
+
+        public string ApplicantCurrentAddress
+        {
+            get { return _applicant_currentaddress; }
+            set
+            {
+                _applicant_currentaddress = value;
+                OnPropertyChanged("ApplicantCurrentAddress");
+            }
+        }
+
+        public string ApplicantPincode
+        {
+            get { return _applicant_pincode; }
+            set
+            {
+                _applicant_pincode = value;
+                OnPropertyChanged("ApplicantPincode");
+            }
+        }
+
+        public string ApplicantMobile
+        {
+            get { return _applicant_mobile; }
+            set
+            {
+                _applicant_mobile = value;
+                OnPropertyChanged("ApplicantMobile");
+            }
+        }
+
+        public string ApplicantOfficeNo
+        {
+            get { return applicant_officeno; }
+            set
+            {
+                applicant_officeno = value;
+                OnPropertyChanged("ApplicantOfficeNo");
+            }
+        }
+
+        public string ApplicantDesignation
+        {
+            get { return _applicant_desgination; }
+            set
+            {
+                _applicant_desgination = value;
+                OnPropertyChanged("ApplicantDesignation");
+            }
+        }
+
+        public string ApplicantEducation
+        {
+            get { return _applicant_education; }
+            set
+            {
+                _applicant_education = value;
+                OnPropertyChanged("ApplicantEducation");
+            }
+        }
+
+        public string ApplicantEmployer
+        {
+            get { return _applicant_employername; }
+            set
+            {
+                _applicant_employername = value;
+                OnPropertyChanged("ApplicantEmployer");
+            }
+        }
+
+        public string ApplicantOfficeAddress
+        {
+            get { return _applicant_officeaddress; }
+            set
+            {
+                _applicant_officeaddress = value;
+                OnPropertyChanged("ApplicantOfficeAddress");
+            }
+        }
+
+        public string ApplicantNearestBranch
+        {
+            get { return _applicant_nearestbranch; }
+            set
+            {
+                _applicant_nearestbranch = value;
+                OnPropertyChanged("ApplicantNearestBranch");
+            }
+        }
+
+        public int ApplicantDistance
+        {
+            get { return _applicant_distance; }
+            set
+            {
+                _applicant_distance = value;
+                OnPropertyChanged("ApplicantDistance");
+            }
+        }
+
+        public string GurantorFirstname
+        {
+            get { return _gurantor_firstname; }
+            set
+            {
+                _gurantor_firstname = value;
+                OnPropertyChanged("GurantorFirstname");
+            }
+        }
+
+        public string GurantorMiddlename
+        {
+            get { return _gurantor_middlename; }
+            set
+            {
+                _gurantor_middlename = value;
+                OnPropertyChanged("GurantorFirstname");
+            }
+        }
+
+        public string GurantorLastname
+        {
+            get { return _gurantor_lastname; }
+            set
+            {
+                _gurantor_lastname = value;
+                OnPropertyChanged("GurantorFirstname");
+            }
+        }
+
+        public string GurantorCurrentAddress
+        {
+            get { return _gurantor_currentaddress; }
+            set
+            {
+                _gurantor_currentaddress = value;
+                OnPropertyChanged("GurantorFirstname");
+            }
+        }
+
+        public string GurantorMobile
+        {
+            get { return _gurantor_mobile; }
+            set
+            {
+                _gurantor_mobile = value;
+                OnPropertyChanged("GurantorFirstname");
+            }
+        }
+
+        public string GurantorRelation
+        {
+            get { return _gurantor_relation; }
+            set
+            {
+                _gurantor_relation = value;
+                OnPropertyChanged("GurantorFirstname");
+            }
+        }
+
+        public string DocumentAadhar
+        {
+            get { return _document_aadhar; }
+            set
+            {
+                _document_aadhar = value;
+                OnPropertyChanged("DocumentAadhar");
+            }
+        }
+
+
+        public string DocumentPan
+        {
+            get { return _document_pan; }
+            set
+            {
+                _document_pan = value;
+                OnPropertyChanged("DocumentPan");
+            }
+        }
+
+
+        public int DocumentCibil
+        {
+            get { return _document_cibil; }
+            set
+            {
+                _document_cibil = value;
+                OnPropertyChanged("DocumentCibil");
+            }
+        }
+
+
+        public string DocumentOptional
+        {
+            get { return _document_optional; }
+            set
+            {
+                _document_optional = value;
+                OnPropertyChanged("DocumentOptional");
+            }
+        }
+
+
+        public string AccountBankName
+        {
+            get { return _account_bankname; }
+            set
+            {
+                _account_bankname = value;
+                OnPropertyChanged("AccountBankName");
+            }
+        }
+
+
+        public string AccountIfsc
+        {
+            get { return _account_ifsc; }
+            set
+            {
+                _account_ifsc = value;
+                OnPropertyChanged("AccountIfsc");
+            }
+        }
+
+
+        public string AccountNumber
+        {
+            get { return _account_number; }
+            set
+            {
+                _account_number = value;
+                OnPropertyChanged("AccountNumber");
+            }
+        }
+
+
+        public int AccountSalary
+        {
+            get { return _account_inhandsalary; }
+            set
+            {
+                _account_inhandsalary = value;
+                OnPropertyChanged("AccountSalary");
+            }
+        }
+
+
+
+
+
+
+
+
         CarModel model = new CarModel();
         private List<MarriedStatusModel> maritalStatusList = new List<MarriedStatusModel>();
         private List<AcquaintanceModel> acquaintanceList = new List<AcquaintanceModel>();
@@ -37,13 +397,21 @@ namespace GravitonCar
         int i = 0;
         List<NewLoanModel> existingLoans = new List<NewLoanModel>();
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public Preview(IScreenRequester caller, CarModel carModel)
         {
+            DataContext = this;
             InitializeComponent();
             model = carModel;
             LoadListData();
             WireUpLists();
             WireUpPreviewForm();
+        }
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         private void LoadListData()
@@ -484,8 +852,11 @@ namespace GravitonCar
             Distance To NE - DistanceToNeTextBox
             Nearest Branch - NearestBranchComboBox
             */
+            string date = DatePicker.SelectedDate.ToString().Split(' ').First();
+            string[] dateList = date.Split('-');
 
-            model.applicantModel.applicant_dob = DatePicker.SelectedDate.ToString().Split(' ').First();
+            string actualDate = $"{dateList[2]}-{dateList[1]}-{dateList[0]}";
+            model.applicantModel.applicant_dob = actualDate;
 
             //Marital Status
             MarriedStatusModel marriedStatusModel = (MarriedStatusModel)MaritalStatusComboBox.SelectedItem;
@@ -803,6 +1174,8 @@ namespace GravitonCar
             SaveApplicantForm();
             SaveGurantorForm();
             SaveFinancialForm();
+
+            GlobalConfig.Connection.CreateCar(model);
         }
     }
 }
