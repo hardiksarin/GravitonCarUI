@@ -125,7 +125,7 @@ namespace GravitonCarLibrary.DataAccess
 
         //CAR
         void CreateCar(CarModel model);
-
+        CarModel GetCar_ById(string aadhar, string pan);
 
     }
 }

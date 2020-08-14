@@ -13,6 +13,8 @@ namespace GravitonCar.Validators
    public class OnlyNumericRule : ValidationRule
     {
 
+        public IValidateError errorForm { get; set; }
+
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
            string v = value as string;
@@ -24,6 +26,7 @@ namespace GravitonCar.Validators
 
             else 
             {
+                errorForm.DisableButton();
                 return new ValidationResult(false, $"Please Enter Numeric Charcters!");
 
             }

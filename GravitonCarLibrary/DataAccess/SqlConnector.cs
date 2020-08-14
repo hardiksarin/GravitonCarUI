@@ -429,5 +429,12 @@ namespace GravitonCarLibrary.DataAccess
                 CreateLoan(loan);
             }
         }
+
+        public CarModel GetCar_ById(string aadhar, string pan)
+        {
+            CarModel model = new CarModel();
+
+            return model;
+        }
     }
 }

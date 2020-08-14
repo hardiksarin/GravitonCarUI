@@ -20,7 +20,7 @@ namespace GravitonCar
     /// <summary>
     /// Interaction logic for ApplicantDetailsFormUserControl.xaml
     /// </summary>
-    public partial class ApplicantDetailsFormUserControl : UserControl, INotifyPropertyChanged
+    public partial class ApplicantDetailsFormUserControl : UserControl, INotifyPropertyChanged, IValidateError
     {
         private string _applicant_firstname;
         private string _applicant_lastname;
@@ -375,6 +375,11 @@ namespace GravitonCar
             string today = now.ToString().Split(' ').First();
             int age = calculateAge(today, dob);
             AgeTextBlock.Text = age.ToString();
+        }
+
+        public void DisableButton()
+        {
+            throw new NotImplementedException();
         }
     }
 }
