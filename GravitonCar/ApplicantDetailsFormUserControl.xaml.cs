@@ -47,7 +47,6 @@ namespace GravitonCar
             acquaintanceList = GlobalConfig.Connection.GetAcquaintance_All();
             casteList = GlobalConfig.Connection.GetCaste_All();
             categoryList = GlobalConfig.Connection.GetCategory_All();
-
         }
 
         private void WireUpList()

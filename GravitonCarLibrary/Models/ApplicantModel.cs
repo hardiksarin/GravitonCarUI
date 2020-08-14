@@ -13,7 +13,7 @@ namespace GravitonCarLibrary.Models
         /// <summary>
         /// First Name of the Applicant,Max Length 50 
         /// </summary>
-        public string applicant_firstname { get { return fname;  } set { if (value != fname) { fname = value; OnPropertyChanged("applicant_firstname"); } } }
+        public string applicant_firstname { get; set; }
         /// <summary>
         /// Middle Name of the Applicant,Max Length 50 
         /// </summary>

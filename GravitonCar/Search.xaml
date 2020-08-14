@@ -41,21 +41,10 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                             ToolTip="Use Customer's Name" VerticalAlignment="Top" Margin="10,40">
                     <TextBlock Text="New KYC" FontWeight="Light" />
                 </Button>
+                <ListBox Grid.Row="2" Grid.Column="1" Grid.RowSpan="3" x:Name="ListBoxItems" Margin="40,90,40,0"  FontSize="25"  FontWeight="Light" Foreground="#FF3399FF" HorizontalContentAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Hidden"/>
 
-                <Grid Grid.Row="2" Grid.Column="1"
-                    Width="124" VerticalAlignment="Center">
-                    <Button Foreground="White" Background="#FF3399FF"
-                            Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                            materialDesign:HintAssist.Hint="Search KYC"
-                            
-                            Height="50"
-                            materialDesign:ButtonAssist.CornerRadius="25"
-                            ToolTip="Use Customer's Name">
-                        <TextBlock Text="Search" FontWeight="Light" />
-                    </Button>
-               
-                </Grid>
-                <TextBox Grid.Row="2" Grid.Column="1"  Foreground="#FF3399FF" FontSize="40" FontWeight="UltraLight"  BorderBrush="LightGray" Width="800" VerticalAlignment="Top"
+
+                <TextBox TextChanged="CommentTextBox_TextChanged" Grid.Row="2" Grid.Column="1"  Foreground="#FF3399FF" FontSize="40" FontWeight="UltraLight"  BorderBrush="LightGray" Width="800" VerticalAlignment="Top"
                           x:Name="CommentTextBox"
                           materialDesign:HintAssist.Hint="Search KYC"
                            materialDesign:TextFieldAssist.HasClearButton="True"
