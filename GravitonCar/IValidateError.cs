@@ -7,5 +7,7 @@ namespace GravitonCar
     public interface IValidateError
     {
         void DisableButton();
+        void EnableButton();
+
     }
 }

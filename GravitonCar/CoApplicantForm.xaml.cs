@@ -19,7 +19,7 @@ namespace GravitonCar
     /// <summary>
     /// Interaction logic for CoApplicantForm.xaml
     /// </summary>
-    public partial class CoApplicantForm : UserControl, INotifyPropertyChanged
+    public partial class CoApplicantForm : UserControl, INotifyPropertyChanged, IValidateError
     {
         private string _gurantor_firstname;
         private string _gurantor_middlename;
@@ -89,6 +89,7 @@ namespace GravitonCar
         {
             DataContext = this;
             InitializeComponent();
+            ApplicantDetailsFormUserControl.errorForm = this;
             callingForm = caller;
             model = carModel;
             LoadListData();
@@ -173,6 +174,16 @@ namespace GravitonCar
 
             //Office Address
             model.gurantorModel.gurantor_currentaddress = OfficeAddressTextBlock.Text;
+        }
+
+        public void DisableButton()
+        {
+            NextButton.IsEnabled = false;
+        }
+
+        public void EnableButton()
+        {
+            NextButton.IsEnabled = true;
         }
     }
 }

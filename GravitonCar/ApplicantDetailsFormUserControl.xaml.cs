@@ -184,6 +184,7 @@ namespace GravitonCar
         }
 
         IScreenRequester callingForm;
+        public static IValidateError errorForm { get; set; }
         List<MarriedStatusModel> maritalStatusList = new List<MarriedStatusModel>();
         List<AcquaintanceModel> acquaintanceList = new List<AcquaintanceModel>();
         List<CasteModel> casteList = new List<CasteModel>();
@@ -199,6 +200,7 @@ namespace GravitonCar
         {
             DataContext = this;
             InitializeComponent();
+            errorForm = this;
             callingForm = caller;
             LoadListData();
             WireUpList();
@@ -379,7 +381,12 @@ namespace GravitonCar
 
         public void DisableButton()
         {
-            throw new NotImplementedException();
+            NextButton.IsEnabled = false;
+        }
+
+        public void EnableButton()
+        {
+            NextButton.IsEnabled = true;
         }
     }
 }

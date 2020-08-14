@@ -20,7 +20,7 @@ namespace GravitonCar
     /// <summary>
     /// Interaction logic for FinancialDetails.xaml
     /// </summary>
-    public partial class FinancialDetails : UserControl, INotifyPropertyChanged
+    public partial class FinancialDetails : UserControl, INotifyPropertyChanged, IValidateError
     {
 
         private string _document_aadhar;
@@ -128,6 +128,7 @@ namespace GravitonCar
         {
             DataContext = this;
             InitializeComponent();
+            ApplicantDetailsFormUserControl.errorForm = this;
             callingForm = caller;
             model = carModel;
             LoadListData();
@@ -628,6 +629,16 @@ namespace GravitonCar
             }
             WireUpForm();
             callingForm.RemoveFinancialScreen(this);
+        }
+
+        public void DisableButton()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void EnableButton()
+        {
+            throw new NotImplementedException();
         }
     }
 }

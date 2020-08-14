@@ -13,22 +13,22 @@ namespace GravitonCar.Validators
    public class OnlyNumericRule : ValidationRule
     {
 
-        public IValidateError errorForm { get; set; }
 
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
            string v = value as string;
             if (v.All(char.IsDigit))
             {
+                ApplicantDetailsFormUserControl.errorForm.EnableButton();
+
                 return (new ValidationResult(true, null));
 
                              }
 
             else 
             {
-                errorForm.DisableButton();
+                ApplicantDetailsFormUserControl.errorForm.DisableButton();
                 return new ValidationResult(false, $"Please Enter Numeric Charcters!");
-
             }
 
         }

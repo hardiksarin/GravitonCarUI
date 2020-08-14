@@ -4,6 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GravitonCar"
+             xmlns:local1="clr-namespace:GravitonCar.Validators"
+
+             
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
 
              mc:Ignorable="d" 
@@ -71,7 +74,7 @@
                     <TextBox.Text>
                         <Binding Path="GurantorFirstname" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                             <Binding.ValidationRules>
-                                <local:MinimumCharacterRule MinimumCharacters="5"></local:MinimumCharacterRule>
+                                <local1:OnlyNumericRule></local1:OnlyNumericRule>
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>

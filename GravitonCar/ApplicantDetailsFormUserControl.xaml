@@ -74,7 +74,7 @@
                 <TextBox.Text>
                     <Binding Path="ApplicantFirstname" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <local:MinimumCharacterRule MinimumCharacters="5"></local:MinimumCharacterRule>
+                            <rule:OnlyNumericRule></rule:OnlyNumericRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
