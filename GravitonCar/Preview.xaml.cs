@@ -2,9 +2,11 @@
 using GravitonCar.Validators;
 using GravitonCarLibrary;
 using GravitonCarLibrary.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -1265,7 +1267,8 @@ namespace GravitonCar
             SaveApplicantForm();
             SaveGurantorForm();
             SaveFinancialForm();
-
+            string output = JsonConvert.SerializeObject(model);
+            Debug.WriteLine(output);
             GlobalConfig.Connection.CreateCar(model);
         }
 
