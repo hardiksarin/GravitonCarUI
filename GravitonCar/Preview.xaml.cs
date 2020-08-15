@@ -21,7 +21,7 @@ namespace GravitonCar
     /// <summary>
     /// Interaction logic for Preview.xaml
     /// </summary>
-    public partial class Preview : UserControl, INotifyPropertyChanged
+    public partial class Preview : UserControl, INotifyPropertyChanged, IValidateError
     {
         private string _applicant_firstname;
         private string _applicant_lastname;
@@ -403,6 +403,7 @@ namespace GravitonCar
         {
             DataContext = this;
             InitializeComponent();
+            ApplicantDetailsFormUserControl.errorForm = this;
             model = carModel;
             LoadListData();
             WireUpLists();
@@ -604,8 +605,17 @@ namespace GravitonCar
         private int calculateAge(string current, string dob)
         {
             int age = 0;
+            string[] dobArray;
+            if (dob.Length < 13)
+            {
+                dobArray = dob.Split('-');
+            }
+            else
+            {
+                string t = dob.Split(' ').First();
+                dobArray = t.Split('/');
+            }
 
-            string[] dobArray = dob.Split('-');
             string[] todyaArray = current.Split('-');
 
             int dobYear = int.Parse(dobArray[2]);
@@ -948,8 +958,8 @@ namespace GravitonCar
                     loanModel.loan_bankname = loan.LoanBankName;
                     loanModel.loan_amount = loan.LoanAmount;
                     loanModel.loan_emi = loan.LoanEmiAmount;
-                    loanModel.loan_relatedaadhar = model.documentModel.document_aadhar;
-                    loanModel.loan_relatedpan = model.documentModel.document_pan;
+                    loanModel.account_realtedaadhar = model.documentModel.document_aadhar;
+                    loanModel.account_realtedpan = model.documentModel.document_pan;
                     loanModels.Add(loanModel);
                 }
             }
@@ -968,8 +978,8 @@ namespace GravitonCar
             model.gurantorModel.gurantor_realtedaadhar = AadharNumberTextBox.Text;
             model.gurantorModel.gurantor_realtedpan = PanNumberTextBox.Text;
 
-            model.accountModel.account_relatedaadhar = AadharNumberTextBox.Text;
-            model.accountModel.account_relatedpan = PanNumberTextBox.Text;
+            model.accountModel.account_realtedaadhar = AadharNumberTextBox.Text;
+            model.accountModel.account_realtedpan = PanNumberTextBox.Text;
 
             //Cibil Score
             model.documentModel.document_cibil = int.Parse(CibilScoreTextBox.Text);
@@ -1176,6 +1186,16 @@ namespace GravitonCar
             SaveFinancialForm();
 
             GlobalConfig.Connection.CreateCar(model);
+        }
+
+        public void DisableButton()
+        {
+            SubmitButton.IsEnabled = false;
+        }
+
+        public void EnableButton()
+        {
+            SubmitButton.IsEnabled = true;
         }
     }
 }

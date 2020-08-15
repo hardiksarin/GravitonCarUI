@@ -486,8 +486,8 @@ namespace GravitonCar
                     loanModel.loan_bankname = loan.LoanBankName;
                     loanModel.loan_amount = loan.LoanAmount;
                     loanModel.loan_emi = loan.LoanEmiAmount;
-                    loanModel.loan_relatedaadhar = model.documentModel.document_aadhar;
-                    loanModel.loan_relatedpan = model.documentModel.document_pan;
+                    loanModel.account_realtedaadhar = model.documentModel.document_aadhar;
+                    loanModel.account_realtedpan = model.documentModel.document_pan;
                     loanModels.Add(loanModel);
                 }
             }
@@ -596,7 +596,7 @@ namespace GravitonCar
                 model.documentModel.document_aadhar = AadharNumberTextBox.Text;
                 model.applicantModel.applicant_aadhar = AadharNumberTextBox.Text;
                 model.gurantorModel.gurantor_realtedaadhar = AadharNumberTextBox.Text;
-                model.accountModel.account_relatedaadhar = AadharNumberTextBox.Text;
+                model.accountModel.account_realtedaadhar = AadharNumberTextBox.Text;
             }
 
             if (PanNumberTextBox.Text.Length != 0)
@@ -604,7 +604,7 @@ namespace GravitonCar
                 model.documentModel.document_pan = PanNumberTextBox.Text;
                 model.applicantModel.applicant_pan = PanNumberTextBox.Text;
                 model.gurantorModel.gurantor_realtedpan = PanNumberTextBox.Text;
-                model.accountModel.account_relatedpan = PanNumberTextBox.Text; 
+                model.accountModel.account_realtedpan = PanNumberTextBox.Text; 
             }
 
             //Cibil Score
@@ -676,8 +676,8 @@ namespace GravitonCar
                     loanModel.loan_bankname = loan.LoanBankName;
                     loanModel.loan_amount = loan.LoanAmount;
                     loanModel.loan_emi = loan.LoanEmiAmount;
-                    loanModel.loan_relatedaadhar = model.documentModel.document_aadhar;
-                    loanModel.loan_relatedpan = model.documentModel.document_pan;
+                    loanModel.account_realtedaadhar = model.documentModel.document_aadhar;
+                    loanModel.account_realtedpan = model.documentModel.document_pan;
                     loanModels.Add(loanModel);
                 }
             }

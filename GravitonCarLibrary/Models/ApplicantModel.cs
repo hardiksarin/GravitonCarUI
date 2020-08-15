@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace GravitonCarLibrary.Models
 {
-    public class ApplicantModel : INotifyPropertyChanged
+    public class ApplicantModel
     {
-        private string fname;
         /// <summary>
         /// First Name of the Applicant,Max Length 50 
         /// </summary>
@@ -103,11 +102,14 @@ namespace GravitonCarLibrary.Models
         /// </summary>
         public string applicant_aadhar { get; set; }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        public string DisplaySearch { 
+            get 
+            {
+                string output = "";
+                output = $"{applicant_firstname}   :   {applicant_aadhar}";
+                return output;
+            } 
         }
+
     }
 }

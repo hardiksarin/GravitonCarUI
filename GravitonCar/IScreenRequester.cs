@@ -8,6 +8,7 @@ namespace GravitonCar
 {
     public interface IScreenRequester
     {
+        void ApplicantForm();
         void CoApplicantForm(CarModel model);
         void FinancialScreen(CarModel model);
         void RemoveCoApplicantScreen(UserControl control);

@@ -22,11 +22,15 @@ namespace GravitonCar
     {
         List<string> searchList = new List<string>();
         List<ApplicantModel> applicantList = new List<ApplicantModel>();
-        public Search()
+        IScreenRequester callingForm;
+        public Search(IScreenRequester caller)
         {
             InitializeComponent();
+            callingForm = caller;
             LoadListData();
-            GetSearchList();
+            WireUpList();
+            //GetSearchList();
+            CarNumber.Text = applicantList.Count.ToString();
         }
 
         private void LoadListData()
@@ -37,17 +41,19 @@ namespace GravitonCar
         private void WireUpList()
         {
             ListBoxItems.ItemsSource = null;
-            ListBoxItems.ItemsSource = searchList;
+            ListBoxItems.ItemsSource = applicantList;
+
+            ListBoxItems.DisplayMemberPath = "DisplaySearch";
         }
 
-        private void GetSearchList()
+        /*private void GetSearchList()
         {
             foreach (ApplicantModel applicant in applicantList)
             {
                 string temp = $"{applicant.applicant_firstname} - {applicant.applicant_aadhar}";
                 searchList.Add(temp);
             }
-        }
+        }*/
 
         private void CommentTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -56,9 +62,9 @@ namespace GravitonCar
                 //ListBoxItems.Items.Clear();
                 ListBoxItems.ItemsSource = null;
                 ListBoxItems.Items.Clear();
-                foreach (string str in searchList)
+                foreach (ApplicantModel str in applicantList)
                 {
-                    if (str.Contains(CommentTextBox.Text))
+                    if (str.DisplaySearch.Contains(CommentTextBox.Text))
                     {
                         ListBoxItems.Items.Add(str);
                     }
@@ -68,7 +74,7 @@ namespace GravitonCar
             else if (CommentTextBox.Text == "")
             {
                 ListBoxItems.Items.Clear();
-                foreach (string str in searchList)
+                foreach (ApplicantModel str in applicantList)
                 {
                     WireUpList();
                     //ListBoxItems.Items.Add(str);
@@ -76,13 +82,23 @@ namespace GravitonCar
             }
         }
 
-        private CarModel GetCar()
+        private CarModel GetCar(string pan, string aadhar)
         {
             CarModel car = new CarModel();
-            string pan = "";
-            string aadhar = "";
             car = GlobalConfig.Connection.GetCar_ById(aadhar, pan);
             return car;
+        }
+
+        private void ListBoxItems_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ApplicantModel applicant = (ApplicantModel)ListBoxItems.SelectedItem;
+            CarModel model = GetCar(applicant.applicant_pan, applicant.applicant_aadhar);
+            callingForm.PreviewScreen(model);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            callingForm.ApplicantForm();
         }
     }
 }
