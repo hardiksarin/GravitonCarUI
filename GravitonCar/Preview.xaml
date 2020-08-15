@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GravitonCar"
+             xmlns:rule="clr-namespace:GravitonCar.Validators"  
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="760" d:DesignWidth="940" Background="White">
@@ -86,7 +87,10 @@
                 <TextBox.Text>
                     <Binding Path="ApplicantFirstname" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <local:MinimumCharacterRule MinimumCharacters="5"></local:MinimumCharacterRule>
+                            <rule:NonEmptyRule></rule:NonEmptyRule>
+                            <local:MinimumCharacterRule MinimumCharacters="2"></local:MinimumCharacterRule>
+                            <rule:MaximumCharacterRule MaximumCharacters="50"></rule:MaximumCharacterRule>
+                            <rule:OnlyAlphabetsRule></rule:OnlyAlphabetsRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -95,7 +99,8 @@
                 <TextBox.Text>
                     <Binding Path="ApplicantMiddlename" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <local:MinimumCharacterRule MinimumCharacters="5"></local:MinimumCharacterRule>
+                            <rule:MaximumCharacterRule MaximumCharacters="50"></rule:MaximumCharacterRule>
+                            <rule:OnlyAlphabetsRule></rule:OnlyAlphabetsRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -104,7 +109,10 @@
                 <TextBox.Text>
                     <Binding Path="ApplicantLastname" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <local:MinimumCharacterRule MinimumCharacters="5"></local:MinimumCharacterRule>
+                            <rule:NonEmptyRule></rule:NonEmptyRule>
+                            <local:MinimumCharacterRule MinimumCharacters="2"></local:MinimumCharacterRule>
+                            <rule:MaximumCharacterRule MaximumCharacters="50"></rule:MaximumCharacterRule>
+                            <rule:OnlyAlphabetsRule></rule:OnlyAlphabetsRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -115,7 +123,10 @@
                 <TextBox.Text>
                     <Binding Path="ApplicantAcquaintance" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <local:MinimumCharacterRule MinimumCharacters="5"></local:MinimumCharacterRule>
+                            <rule:NonEmptyRule></rule:NonEmptyRule>
+                            <local:MinimumCharacterRule MinimumCharacters="2"></local:MinimumCharacterRule>
+                            <rule:MaximumCharacterRule MaximumCharacters="50"></rule:MaximumCharacterRule>
+                            <rule:OnlyAlphabetsRule></rule:OnlyAlphabetsRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -135,7 +146,9 @@
                 <TextBox.Text>
                     <Binding Path="ApplicantPincode" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <local:MinimumCharacterRule MinimumCharacters="5"></local:MinimumCharacterRule>
+                            <rule:NonEmptyRule></rule:NonEmptyRule>
+                            <rule:FixedLengthRule FixedCharacters="6"></rule:FixedLengthRule>
+                            <rule:OnlyNumericRule></rule:OnlyNumericRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -145,7 +158,9 @@
                 <TextBox.Text>
                     <Binding Path="ApplicantCurrentAddress" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <local:MinimumCharacterRule MinimumCharacters="5"></local:MinimumCharacterRule>
+                            <rule:NonEmptyRule></rule:NonEmptyRule>
+                            <local:MinimumCharacterRule MinimumCharacters="10"></local:MinimumCharacterRule>
+                            <rule:MaximumCharacterRule MaximumCharacters="300"></rule:MaximumCharacterRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -155,7 +170,9 @@
                 <TextBox.Text>
                     <Binding Path="ApplicantMobile" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <local:MinimumCharacterRule MinimumCharacters="5"></local:MinimumCharacterRule>
+                            <rule:OnlyNumericRule></rule:OnlyNumericRule>
+                            <rule:NonEmptyRule></rule:NonEmptyRule>
+                            <rule:FixedLengthRule FixedCharacters="10"></rule:FixedLengthRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -164,7 +181,9 @@
                 <TextBox.Text>
                     <Binding Path="ApplicantOfficeNo" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <local:MinimumCharacterRule MinimumCharacters="5"></local:MinimumCharacterRule>
+                            <rule:OnlyNumericRule></rule:OnlyNumericRule>
+                            <rule:NonEmptyRule></rule:NonEmptyRule>
+                            <rule:FixedLengthRule FixedCharacters="10"></rule:FixedLengthRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -174,7 +193,10 @@
                 <TextBox.Text>
                     <Binding Path="ApplicantDesignation" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <local:MinimumCharacterRule MinimumCharacters="5"></local:MinimumCharacterRule>
+                            <rule:OnlyAlphabetsRule></rule:OnlyAlphabetsRule>
+                            <rule:NonEmptyRule></rule:NonEmptyRule>
+                            <local:MinimumCharacterRule MinimumCharacters="2"></local:MinimumCharacterRule>
+                            <rule:MaximumCharacterRule MaximumCharacters="20"></rule:MaximumCharacterRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -185,7 +207,9 @@
                 <TextBox.Text>
                     <Binding Path="ApplicantEmployer" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <local:MinimumCharacterRule MinimumCharacters="5"></local:MinimumCharacterRule>
+                            <rule:NonEmptyRule></rule:NonEmptyRule>
+                            <local:MinimumCharacterRule MinimumCharacters="2"></local:MinimumCharacterRule>
+                            <rule:MaximumCharacterRule MaximumCharacters="50"></rule:MaximumCharacterRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -195,7 +219,9 @@
                 <TextBox.Text>
                     <Binding Path="ApplicantOfficeAddress" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <local:MinimumCharacterRule MinimumCharacters="5"></local:MinimumCharacterRule>
+                            <rule:NonEmptyRule></rule:NonEmptyRule>
+                            <local:MinimumCharacterRule MinimumCharacters="10"></local:MinimumCharacterRule>
+                            <rule:MaximumCharacterRule MaximumCharacters="300"></rule:MaximumCharacterRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -205,7 +231,10 @@
                 <TextBox.Text>
                     <Binding Path="ApplicantDistance" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <local:MinimumCharacterRule MinimumCharacters="5"></local:MinimumCharacterRule>
+                            <rule:NonEmptyRule></rule:NonEmptyRule>
+                            <local:MinimumCharacterRule MinimumCharacters="1"></local:MinimumCharacterRule>
+                            <rule:MaximumCharacterRule MaximumCharacters="5"></rule:MaximumCharacterRule>
+                            <rule:OnlyNumericRule></rule:OnlyNumericRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -223,7 +252,10 @@
                 <TextBox.Text>
                     <Binding Path="GurantorFirstname" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <local:MinimumCharacterRule MinimumCharacters="5"></local:MinimumCharacterRule>
+                            <rule:NonEmptyRule></rule:NonEmptyRule>
+                            <local:MinimumCharacterRule MinimumCharacters="2"></local:MinimumCharacterRule>
+                            <rule:MaximumCharacterRule MaximumCharacters="50"></rule:MaximumCharacterRule>
+                            <rule:OnlyAlphabetsRule></rule:OnlyAlphabetsRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -232,7 +264,8 @@
                 <TextBox.Text>
                     <Binding Path="GurantorMiddlename" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <local:MinimumCharacterRule MinimumCharacters="5"></local:MinimumCharacterRule>
+                            <rule:MaximumCharacterRule MaximumCharacters="50"></rule:MaximumCharacterRule>
+                            <rule:OnlyAlphabetsRule></rule:OnlyAlphabetsRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -241,7 +274,10 @@
                 <TextBox.Text>
                     <Binding Path="GurantorLastname" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <local:MinimumCharacterRule MinimumCharacters="5"></local:MinimumCharacterRule>
+                            <rule:NonEmptyRule></rule:NonEmptyRule>
+                            <local:MinimumCharacterRule MinimumCharacters="2"></local:MinimumCharacterRule>
+                            <rule:MaximumCharacterRule MaximumCharacters="50"></rule:MaximumCharacterRule>
+                            <rule:OnlyAlphabetsRule></rule:OnlyAlphabetsRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -251,7 +287,9 @@
                 <TextBox.Text>
                     <Binding Path="GurantorMobile" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <local:MinimumCharacterRule MinimumCharacters="5"></local:MinimumCharacterRule>
+                            <rule:NonEmptyRule></rule:NonEmptyRule>
+                            <rule:FixedLengthRule FixedCharacters="10"></rule:FixedLengthRule>
+                            <rule:OnlyNumericRule></rule:OnlyNumericRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -260,7 +298,10 @@
                 <TextBox.Text>
                     <Binding Path="GurantorRelation" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <local:MinimumCharacterRule MinimumCharacters="5"></local:MinimumCharacterRule>
+                            <rule:NonEmptyRule></rule:NonEmptyRule>
+                            <local:MinimumCharacterRule MinimumCharacters="2"></local:MinimumCharacterRule>
+                            <rule:MaximumCharacterRule MaximumCharacters="50"></rule:MaximumCharacterRule>
+                            <rule:OnlyAlphabetsRule></rule:OnlyAlphabetsRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -271,7 +312,9 @@
                 <TextBox.Text>
                     <Binding Path="GurantorCurrentAddress" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <local:MinimumCharacterRule MinimumCharacters="5"></local:MinimumCharacterRule>
+                            <rule:NonEmptyRule></rule:NonEmptyRule>
+                            <local:MinimumCharacterRule MinimumCharacters="10"></local:MinimumCharacterRule>
+                            <rule:MaximumCharacterRule MaximumCharacters="300"></rule:MaximumCharacterRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -286,7 +329,10 @@
                 <TextBox.Text>
                     <Binding Path="DocumentAadhar" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <local:MinimumCharacterRule MinimumCharacters="5"></local:MinimumCharacterRule>
+                            <rule:OnlyNumericRule></rule:OnlyNumericRule>
+                            <rule:NonEmptyRule></rule:NonEmptyRule>
+                            <rule:FixedLengthRule FixedCharacters="12"></rule:FixedLengthRule>
+                            <rule:AadharValidationRule></rule:AadharValidationRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -295,7 +341,9 @@
                 <TextBox.Text>
                     <Binding Path="DocumentPan" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <local:MinimumCharacterRule MinimumCharacters="5"></local:MinimumCharacterRule>
+                            <rule:NonEmptyRule></rule:NonEmptyRule>
+                            <rule:FixedLengthRule FixedCharacters="10"></rule:FixedLengthRule>
+                            <rule:PanValidationRules></rule:PanValidationRules>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -304,7 +352,10 @@
                 <TextBox.Text>
                     <Binding Path="DocumentCibil" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <local:MinimumCharacterRule MinimumCharacters="5"></local:MinimumCharacterRule>
+                            <rule:NonEmptyRule></rule:NonEmptyRule>
+                            <rule:FixedLengthRule FixedCharacters="3"></rule:FixedLengthRule>
+                            <rule:IsWithinRange MinimumValue="300" MaximumValue="900"></rule:IsWithinRange>
+                            <rule:OnlyNumericRule></rule:OnlyNumericRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -327,7 +378,10 @@
                 <TextBox.Text>
                     <Binding Path="AccountSalary" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <local:MinimumCharacterRule MinimumCharacters="5"></local:MinimumCharacterRule>
+                            <rule:OnlyNumericRule></rule:OnlyNumericRule>
+                            <rule:NonEmptyRule></rule:NonEmptyRule>
+                            <rule:MaximumCharacterRule MaximumCharacters="12"></rule:MaximumCharacterRule>
+                            <local:MinimumCharacterRule MinimumCharacters="4"></local:MinimumCharacterRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -336,7 +390,10 @@
                 <TextBox.Text>
                     <Binding Path="AccountBankName" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <local:MinimumCharacterRule MinimumCharacters="5"></local:MinimumCharacterRule>
+                            <rule:OnlyAlphabetsRule></rule:OnlyAlphabetsRule>
+                            <rule:NonEmptyRule></rule:NonEmptyRule>
+                            <local:MinimumCharacterRule MinimumCharacters="2"></local:MinimumCharacterRule>
+                            <rule:MaximumCharacterRule MaximumCharacters="50"></rule:MaximumCharacterRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -345,7 +402,10 @@
                 <TextBox.Text>
                     <Binding Path="AccountNumber" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <local:MinimumCharacterRule MinimumCharacters="5"></local:MinimumCharacterRule>
+                            <rule:OnlyNumericRule></rule:OnlyNumericRule>
+                            <rule:NonEmptyRule></rule:NonEmptyRule>
+                            <local:MinimumCharacterRule MinimumCharacters="11" ></local:MinimumCharacterRule>
+                            <rule:MaximumCharacterRule MaximumCharacters="16"></rule:MaximumCharacterRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -355,7 +415,8 @@
                 <TextBox.Text>
                     <Binding Path="AccountIfsc" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <local:MinimumCharacterRule MinimumCharacters="5"></local:MinimumCharacterRule>
+                            <rule:NonEmptyRule></rule:NonEmptyRule>
+                            <rule:FixedLengthRule FixedCharacters="11"></rule:FixedLengthRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
