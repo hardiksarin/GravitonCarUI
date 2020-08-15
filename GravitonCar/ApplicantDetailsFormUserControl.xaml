@@ -121,7 +121,7 @@
             </TextBox>
             <DatePicker SelectedDateChanged="DatePicker_SelectedDateChanged" materialDesign:HintAssist.Hint="Date Of Birth  " Style="{StaticResource MaterialDesignFloatingHintDatePicker}"  Margin="5,50,0,0" IsTodayHighlighted="True" DisplayDate="10-12-2020" Grid.Row="7"  Grid.Column="1" Width="auto"  HorizontalAlignment="Left"  Name="DatePicker" Foreground="LightGray" FontSize="18" FontWeight="Light" VerticalAlignment="Bottom"  BorderBrush="LightGray"></DatePicker>
 
-            <TextBox  materialDesign:HintAssist.Hint="Age"   Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="5,50,0,0" Grid.Row="7" Grid.Column="1" Width="200" x:Name="AgeTextBlock" Foreground="Gray" FontSize="20" FontWeight="Light" HorizontalAlignment="Center"  BorderBrush="LightGray"></TextBox>
+            <TextBlock  materialDesign:HintAssist.Hint="Age"  Margin="5,50,0,0" Grid.Row="7" Grid.Column="1" Width="200" x:Name="AgeTextBlock" Foreground="Gray" FontSize="20" FontWeight="Light" HorizontalAlignment="Center" ></TextBlock>
 
 
             <ComboBox materialDesign:HintAssist.Hint="Marital Status" materialDesign:HintAssist.HintOpacity=".56" IsEditable="False" Margin="5,50,0,0" Grid.Row="9" Grid.Column="1" Width="200" x:Name="MaritalStatusComboBox" Foreground="Gray" FontSize="20" FontWeight="Light" HorizontalAlignment="Left"  BorderBrush="LightGray"></ComboBox>
