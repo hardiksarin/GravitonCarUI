@@ -35,11 +35,11 @@ namespace GravitonCarLibrary.Models
         /// <summary>
         /// Pan Related To the Loan, Fix length 10
         /// </summary>
-        public string loan_relatedpan { get; set; }
+        public string account_realtedpan { get; set; }
         /// <summary>
         /// Aadhar Related to the Loan,Fix length 12
         /// </summary>
-        public string loan_relatedaadhar { get; set; }
+        public string account_realtedaadhar { get; set; }
 
 
     }

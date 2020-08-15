@@ -188,7 +188,11 @@ namespace GravitonCar
             }
             if (MiddleNameTextBox.Text.Length !=0)
             {
-                model.gurantorModel.gurantor_middlename = MiddleNameTextBox.Text; 
+                model.gurantorModel.gurantor_middlename = MiddleNameTextBox.Text;
+            }
+            else
+            {
+                model.gurantorModel.gurantor_middlename = "";
             }
             if (LastNameTextBox.Text.Length != 0)
             {

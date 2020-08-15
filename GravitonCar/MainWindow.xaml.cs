@@ -27,7 +27,7 @@ namespace GravitonCar
             InitializeComponent();
             GlobalConfig.InitializeConnections();
             GridPrincipal.Children.Clear();
-            GridPrincipal.Children.Add(new ApplicantDetailsFormUserControl(this));
+            GridPrincipal.Children.Add(new Search(this));
         }
 
 
@@ -90,6 +90,12 @@ namespace GravitonCar
         public void PreviewScreen(CarModel model)
         {
             GridPrincipal.Children.Add(new Preview(this, model));
+        }
+
+        public void ApplicantForm()
+        {
+            GridPrincipal.Children.Clear();
+            GridPrincipal.Children.Add(new ApplicantDetailsFormUserControl(this));
         }
     }
 }

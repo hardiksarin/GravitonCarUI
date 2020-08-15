@@ -1,4 +1,5 @@
 ﻿using GravitonCar.Models;
+using GravitonCar.Validators;
 using GravitonCarLibrary;
 using GravitonCarLibrary.Models;
 using System;
@@ -21,7 +22,7 @@ namespace GravitonCar
     /// <summary>
     /// Interaction logic for Preview.xaml
     /// </summary>
-    public partial class Preview : UserControl, INotifyPropertyChanged
+    public partial class Preview : UserControl, INotifyPropertyChanged, IValidateError
     {
         private string _applicant_firstname;
         private string _applicant_lastname;
@@ -56,6 +57,9 @@ namespace GravitonCar
         private string _account_ifsc;
         private string _account_number;
         private int _account_inhandsalary;
+        private string _loan_bankname;
+        private double _loan_amount;
+        private double _loan_emi;
 
         public string ApplicantFirstname
         {
@@ -375,6 +379,38 @@ namespace GravitonCar
             }
         }
 
+        public string LoanBankName
+        {
+            get { return _loan_bankname; }
+            set
+            {
+                _loan_bankname = value;
+                OnPropertyChanged("LoanBankName");
+            }
+        }
+
+
+        public double LoanAmount
+        {
+            get { return _loan_amount; }
+            set
+            {
+                _loan_amount = value;
+                OnPropertyChanged("LoanAmount");
+            }
+        }
+
+
+        public double LoanEmi
+        {
+            get { return _loan_emi; }
+            set
+            {
+                _loan_emi = value;
+                OnPropertyChanged("LoanEmi");
+            }
+        }
+
 
 
 
@@ -403,6 +439,7 @@ namespace GravitonCar
         {
             DataContext = this;
             InitializeComponent();
+            ApplicantDetailsFormUserControl.errorForm = this;
             model = carModel;
             LoadListData();
             WireUpLists();
@@ -486,6 +523,14 @@ namespace GravitonCar
         TextBox addLoanBankNameDynamic(int i, LoanModel loan)
         {
             TextBox LoanBankName = new TextBox();
+            /*Binding binding = new Binding("LoanBankName");
+            binding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
+            binding.ValidatesOnDataErrors = true;
+            binding.Mode = BindingMode.TwoWay;
+            MinimumCharacterRule mcr = new MinimumCharacterRule();
+            mcr.MinimumCharacters = 3;
+            binding.ValidationRules.Add(mcr);
+            LoanBankName.SetBinding(TextBox.TextProperty, binding);*/
             LoanBankName.Name = $"LoanBankNameTextbox{i}";                        //"LoanBankNameTextbox" + i.ToString();
             LoanBankName.Margin = new Thickness(10);
             LoanBankName.Width = 200;
@@ -497,6 +542,13 @@ namespace GravitonCar
         TextBox addLoanAmountDynamic(int i, LoanModel loan)
         {
             TextBox LoanAmount = new TextBox();
+            /*Binding binding = new Binding("LoanAmount");
+            binding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
+            binding.ValidatesOnDataErrors = true;
+            binding.Mode = BindingMode.TwoWay;
+            OnlyNumericRule onr = new OnlyNumericRule();
+            binding.ValidationRules.Add(onr);
+            LoanAmount.SetBinding(TextBox.TextProperty, binding);*/
             LoanAmount.Name = $"LoanLoanAmountTextbox{i}";                        //"LoanLoanAmountTextbox" + i.ToString();
             LoanAmount.Margin = new Thickness(10);
             LoanAmount.Width = 200;
@@ -508,6 +560,13 @@ namespace GravitonCar
         TextBox addLoanEmiAmountDynamic(int i, LoanModel loan)
         {
             TextBox LoanEmiAmount = new TextBox();
+            /*Binding binding = new Binding("LoanEmi");
+            binding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
+            binding.ValidatesOnDataErrors = true;
+            binding.Mode = BindingMode.TwoWay;
+            OnlyNumericRule onr = new OnlyNumericRule();
+            binding.ValidationRules.Add(onr);
+            LoanEmiAmount.SetBinding(TextBox.TextProperty, binding);*/
             LoanEmiAmount.Name = $"LoanEmiAmountTextbox{i}";                       //"LoanEmiAmountTextbox" + i.ToString();
             LoanEmiAmount.Margin = new Thickness(10);
             LoanEmiAmount.Width = 200;
@@ -604,8 +663,17 @@ namespace GravitonCar
         private int calculateAge(string current, string dob)
         {
             int age = 0;
+            string[] dobArray;
+            if (dob.Length < 13)
+            {
+                dobArray = dob.Split('-');
+            }
+            else
+            {
+                string t = dob.Split(' ').First();
+                dobArray = t.Split('/');
+            }
 
-            string[] dobArray = dob.Split('-');
             string[] todyaArray = current.Split('-');
 
             int dobYear = int.Parse(dobArray[2]);
@@ -817,6 +885,7 @@ namespace GravitonCar
             {
                 createLoan(loan);
             }
+
         }
 
         private void SaveApplicantForm()
@@ -948,8 +1017,8 @@ namespace GravitonCar
                     loanModel.loan_bankname = loan.LoanBankName;
                     loanModel.loan_amount = loan.LoanAmount;
                     loanModel.loan_emi = loan.LoanEmiAmount;
-                    loanModel.loan_relatedaadhar = model.documentModel.document_aadhar;
-                    loanModel.loan_relatedpan = model.documentModel.document_pan;
+                    loanModel.account_realtedaadhar = model.documentModel.document_aadhar;
+                    loanModel.account_realtedpan = model.documentModel.document_pan;
                     loanModels.Add(loanModel);
                 }
             }
@@ -968,8 +1037,8 @@ namespace GravitonCar
             model.gurantorModel.gurantor_realtedaadhar = AadharNumberTextBox.Text;
             model.gurantorModel.gurantor_realtedpan = PanNumberTextBox.Text;
 
-            model.accountModel.account_relatedaadhar = AadharNumberTextBox.Text;
-            model.accountModel.account_relatedpan = PanNumberTextBox.Text;
+            model.accountModel.account_realtedaadhar = AadharNumberTextBox.Text;
+            model.accountModel.account_realtedpan = PanNumberTextBox.Text;
 
             //Cibil Score
             model.documentModel.document_cibil = int.Parse(CibilScoreTextBox.Text);
@@ -1142,6 +1211,14 @@ namespace GravitonCar
         TextBox addLoanBankName(int i)
         {
             TextBox LoanBankName = new TextBox();
+            Binding binding = new Binding("LoanBankName");
+            binding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
+            binding.ValidatesOnDataErrors = true;
+            binding.Mode = BindingMode.TwoWay;
+            MinimumCharacterRule mcr = new MinimumCharacterRule();
+            mcr.MinimumCharacters = 3;
+            binding.ValidationRules.Add(mcr);
+            LoanBankName.SetBinding(TextBox.TextProperty, binding);
             LoanBankName.Name = $"LoanBankNameTextbox{i}";                        //"LoanBankNameTextbox" + i.ToString();
             LoanBankName.Margin = new Thickness(10);
             LoanBankName.Width = 200;
@@ -1152,6 +1229,13 @@ namespace GravitonCar
         TextBox addLoanAmount(int i)
         {
             TextBox LoanAmount = new TextBox();
+            Binding binding = new Binding("LoanAmount");
+            binding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
+            binding.ValidatesOnDataErrors = true;
+            binding.Mode = BindingMode.TwoWay;
+            OnlyNumericRule onr = new OnlyNumericRule();
+            binding.ValidationRules.Add(onr);
+            LoanAmount.SetBinding(TextBox.TextProperty, binding);
             LoanAmount.Name = $"LoanLoanAmountTextbox{i}";                        //"LoanLoanAmountTextbox" + i.ToString();
             LoanAmount.Margin = new Thickness(10);
             LoanAmount.Width = 200;
@@ -1162,6 +1246,13 @@ namespace GravitonCar
         TextBox addLoanEmiAmount(int i)
         {
             TextBox LoanEmiAmount = new TextBox();
+            Binding binding = new Binding("LoanEmi");
+            binding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
+            binding.ValidatesOnDataErrors = true;
+            binding.Mode = BindingMode.TwoWay;
+            OnlyNumericRule onr = new OnlyNumericRule();
+            binding.ValidationRules.Add(onr);
+            LoanEmiAmount.SetBinding(TextBox.TextProperty, binding);
             LoanEmiAmount.Name = $"LoanEmiAmountTextbox{i}";                       //"LoanEmiAmountTextbox" + i.ToString();
             LoanEmiAmount.Margin = new Thickness(10);
             LoanEmiAmount.Width = 200;
@@ -1176,6 +1267,16 @@ namespace GravitonCar
             SaveFinancialForm();
 
             GlobalConfig.Connection.CreateCar(model);
+        }
+
+        public void DisableButton()
+        {
+            SubmitButton.IsEnabled = false;
+        }
+
+        public void EnableButton()
+        {
+            SubmitButton.IsEnabled = true;
         }
     }
 }
