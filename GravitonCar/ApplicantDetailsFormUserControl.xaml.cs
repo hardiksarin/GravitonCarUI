@@ -273,7 +273,14 @@ namespace GravitonCar
             //First, Middle and Last Name
       
             model.applicantModel.applicant_firstname = FirstNameTextBox.Text;
-            model.applicantModel.applicant_middlename = MiddleNameTextBox.Text;
+            if (MiddleNameTextBox.Text.Length != 0)
+            {
+                model.applicantModel.applicant_middlename = MiddleNameTextBox.Text;
+            }
+            else
+            {
+                model.applicantModel.applicant_middlename = "";
+            }
             model.applicantModel.applicant_lastname = LastNameTextBox.Text;
 
             //Get Aquaintance
