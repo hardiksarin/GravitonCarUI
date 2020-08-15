@@ -74,10 +74,10 @@
                 <TextBox.Text>
                     <Binding Path="ApplicantFirstname" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
+                            <rule:OnlyAlphabetsRule></rule:OnlyAlphabetsRule>
                             <rule:NonEmptyRule></rule:NonEmptyRule>
                             <local:MinimumCharacterRule MinimumCharacters="2"></local:MinimumCharacterRule>
                             <rule:MaximumCharacterRule MaximumCharacters="50"></rule:MaximumCharacterRule>
-                            <rule:OnlyAlphabetsRule></rule:OnlyAlphabetsRule>
                             
                         </Binding.ValidationRules>
                     </Binding>
@@ -87,8 +87,9 @@
                 <TextBox.Text>
                     <Binding Path="ApplicantMiddlename" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <rule:MaximumCharacterRule MaximumCharacters="50"></rule:MaximumCharacterRule>
                             <rule:OnlyAlphabetsRule></rule:OnlyAlphabetsRule>
+
+                            <rule:MaximumCharacterRule MaximumCharacters="50"></rule:MaximumCharacterRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -97,10 +98,11 @@
                 <TextBox.Text>
                     <Binding Path="ApplicantLastname" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
+                            <rule:OnlyAlphabetsRule></rule:OnlyAlphabetsRule>
                             <rule:NonEmptyRule></rule:NonEmptyRule>
                             <local:MinimumCharacterRule MinimumCharacters="2"></local:MinimumCharacterRule>
                             <rule:MaximumCharacterRule MaximumCharacters="50"></rule:MaximumCharacterRule>
-                            <rule:OnlyAlphabetsRule></rule:OnlyAlphabetsRule>
+
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
