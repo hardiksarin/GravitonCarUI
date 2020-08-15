@@ -13,13 +13,20 @@ namespace GravitonCar
             
 
                 string inputString = value as string;
-                if (inputString.Length < MinimumCharacters)
-                {
-                    return new ValidationResult(false, $"Please Enter Minimum {MinimumCharacters} Characters!");
+            if (inputString.Length < MinimumCharacters)
+            {
+                ApplicantDetailsFormUserControl.errorForm.DisableButton();
 
-                }
+                return new ValidationResult(false, $"Please Enter Minimum {MinimumCharacters} Characters!");
+
+            }
+            else
+            {
+
+                ApplicantDetailsFormUserControl.errorForm.EnableButton();
+
                 return (new ValidationResult(true, null));
-            
+            }
         }
     }
 }

@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:GravitonCar"
+             xmlns:rule="clr-namespace:GravitonCar.Validators"
              mc:Ignorable="d" 
              d:DesignHeight="760" d:DesignWidth="940" Background="White" >
     <ScrollViewer VerticalScrollBarVisibility="Hidden" >
@@ -70,16 +71,21 @@
                 <TextBox.Text>
                     <Binding Path="DocumentAadhar" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <local:MinimumCharacterRule MinimumCharacters="5"></local:MinimumCharacterRule>
+                            <rule:NonEmptyRule></rule:NonEmptyRule>
+                            <rule:FixedLengthRule FixedCharacters="12"></rule:FixedLengthRule>
+                            <rule:AadharValidationRule></rule:AadharValidationRule>
+                            <rule:OnlyNumericRule></rule:OnlyNumericRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
             </TextBox>
-            <TextBox materialDesign:HintAssist.Hint="Pan Number"   Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="5,50,0,0" Grid.Row="3" Grid.Column="1" Width="200" x:Name="PanNumberTextBox" Foreground="Gray" FontSize="20" FontWeight="Light" HorizontalAlignment="Center" BorderBrush="LightGray">
+            <TextBox materialDesign:HintAssist.Hint="Pan Number"  CharacterCasing="Upper"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="5,50,0,0" Grid.Row="3" Grid.Column="1" Width="200" x:Name="PanNumberTextBox" Foreground="Gray" FontSize="20" FontWeight="Light" HorizontalAlignment="Center" BorderBrush="LightGray">
                 <TextBox.Text>
                     <Binding Path="DocumentPan" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <local:MinimumCharacterRule MinimumCharacters="5"></local:MinimumCharacterRule>
+                            <rule:NonEmptyRule></rule:NonEmptyRule>
+                            <rule:FixedLengthRule FixedCharacters="10"></rule:FixedLengthRule>
+                            <rule:PanValidationRules></rule:PanValidationRules>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -88,7 +94,10 @@
                 <TextBox.Text>
                     <Binding Path="DocumentCibil" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <local:MinimumCharacterRule MinimumCharacters="5"></local:MinimumCharacterRule>
+                            <rule:NonEmptyRule></rule:NonEmptyRule>
+                            <rule:FixedLengthRule FixedCharacters="3"></rule:FixedLengthRule>
+                            <rule:IsWithinRange MinimumValue="300" MaximumValue="900"></rule:IsWithinRange>
+                            <rule:OnlyNumericRule></rule:OnlyNumericRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -111,7 +120,10 @@
                 <TextBox.Text>
                     <Binding Path="AccountSalary" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <local:MinimumCharacterRule MinimumCharacters="5"></local:MinimumCharacterRule>
+                            <rule:NonEmptyRule></rule:NonEmptyRule>
+                            <rule:MaximumCharacterRule MaximumCharacters="12"></rule:MaximumCharacterRule>
+                            <local:MinimumCharacterRule MinimumCharacters="4"></local:MinimumCharacterRule>
+                            <rule:OnlyNumericRule></rule:OnlyNumericRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -120,7 +132,11 @@
                 <TextBox.Text>
                     <Binding Path="AccountBankName" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <local:MinimumCharacterRule MinimumCharacters="5"></local:MinimumCharacterRule>
+                            <rule:NonEmptyRule></rule:NonEmptyRule>
+                            <local:MinimumCharacterRule MinimumCharacters="2"></local:MinimumCharacterRule>
+                            <rule:MaximumCharacterRule MaximumCharacters="50"></rule:MaximumCharacterRule>
+                            <rule:OnlyAlphabetsRule></rule:OnlyAlphabetsRule>
+
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -129,7 +145,10 @@
                 <TextBox.Text>
                     <Binding Path="AccountNumber" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <local:MinimumCharacterRule MinimumCharacters="5"></local:MinimumCharacterRule>
+                            <rule:NonEmptyRule></rule:NonEmptyRule>
+                            <local:MinimumCharacterRule MinimumCharacters="11" ></local:MinimumCharacterRule>
+                            <rule:MaximumCharacterRule MaximumCharacters="16"></rule:MaximumCharacterRule>
+                            <rule:OnlyNumericRule></rule:OnlyNumericRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -139,7 +158,8 @@
                 <TextBox.Text>
                     <Binding Path="AccountIfsc" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <local:MinimumCharacterRule MinimumCharacters="5"></local:MinimumCharacterRule>
+                            <rule:NonEmptyRule></rule:NonEmptyRule>
+                            <rule:FixedLengthRule FixedCharacters="11"></rule:FixedLengthRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>

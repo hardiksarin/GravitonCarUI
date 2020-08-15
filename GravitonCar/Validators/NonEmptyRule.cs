@@ -1,28 +1,29 @@
-﻿using System;
+﻿using System.Windows.Controls;
+using System;
 using System.Globalization;
 using System.Text;
-using System.Windows.Controls;
+using System.Linq;
+
 
 namespace GravitonCar.Validators
 {
-    class MaximumCharacterRule : ValidationRule
+    class NonEmptyRule : ValidationRule
     {
-
-        public int MaximumCharacters { get; set; }
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
 
 
             string inputString = value as string;
-            if (inputString.Length > MaximumCharacters)
+            if (string.IsNullOrEmpty(inputString))
             {
                 ApplicantDetailsFormUserControl.errorForm.DisableButton();
 
-                return new ValidationResult(false, $"Please Enter Maximum {MaximumCharacters} Characters!");
+                return new ValidationResult(false, $"Field Can't Be Empty");
 
             }
             else
             {
+
                 ApplicantDetailsFormUserControl.errorForm.EnableButton();
 
                 return (new ValidationResult(true, null));

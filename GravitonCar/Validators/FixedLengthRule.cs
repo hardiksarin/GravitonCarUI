@@ -2,27 +2,28 @@
 using System.Globalization;
 using System.Text;
 using System.Windows.Controls;
-
+using System.Linq;
 namespace GravitonCar.Validators
 {
-    class MaximumCharacterRule : ValidationRule
+    class FixedLengthRule : ValidationRule
     {
+        public int FixedCharacters { get; set; }
+        public string TypeOfData { get; set; }
 
-        public int MaximumCharacters { get; set; }
+
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
-
-
             string inputString = value as string;
-            if (inputString.Length > MaximumCharacters)
+            if (inputString.Length != FixedCharacters)
             {
                 ApplicantDetailsFormUserControl.errorForm.DisableButton();
 
-                return new ValidationResult(false, $"Please Enter Maximum {MaximumCharacters} Characters!");
+                return new ValidationResult(false, $"Please Enter {FixedCharacters} {TypeOfData}!");
 
             }
             else
             {
+
                 ApplicantDetailsFormUserControl.errorForm.EnableButton();
 
                 return (new ValidationResult(true, null));

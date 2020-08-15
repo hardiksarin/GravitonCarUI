@@ -633,12 +633,12 @@ namespace GravitonCar
 
         public void DisableButton()
         {
-            throw new NotImplementedException();
+            ReviewButton.IsEnabled = false;
         }
 
         public void EnableButton()
         {
-            throw new NotImplementedException();
+            ReviewButton.IsEnabled = true;
         }
     }
 }

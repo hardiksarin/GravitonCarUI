@@ -74,7 +74,11 @@
                 <TextBox.Text>
                     <Binding Path="ApplicantFirstname" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <rule:OnlyNumericRule></rule:OnlyNumericRule>
+                            <rule:NonEmptyRule></rule:NonEmptyRule>
+                            <local:MinimumCharacterRule MinimumCharacters="2"></local:MinimumCharacterRule>
+                            <rule:MaximumCharacterRule MaximumCharacters="50"></rule:MaximumCharacterRule>
+                            <rule:OnlyAlphabetsRule></rule:OnlyAlphabetsRule>
+                            
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -83,7 +87,8 @@
                 <TextBox.Text>
                     <Binding Path="ApplicantMiddlename" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <local:MinimumCharacterRule MinimumCharacters="5"></local:MinimumCharacterRule>
+                            <rule:MaximumCharacterRule MaximumCharacters="50"></rule:MaximumCharacterRule>
+                            <rule:OnlyAlphabetsRule></rule:OnlyAlphabetsRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -92,38 +97,46 @@
                 <TextBox.Text>
                     <Binding Path="ApplicantLastname" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <local:MinimumCharacterRule MinimumCharacters="5"></local:MinimumCharacterRule>
+                            <rule:NonEmptyRule></rule:NonEmptyRule>
+                            <local:MinimumCharacterRule MinimumCharacters="2"></local:MinimumCharacterRule>
+                            <rule:MaximumCharacterRule MaximumCharacters="50"></rule:MaximumCharacterRule>
+                            <rule:OnlyAlphabetsRule></rule:OnlyAlphabetsRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
             </TextBox>
 
-            <ComboBox   materialDesign:HintAssist.Hint="Acquaintance" materialDesign:HintAssist.HintOpacity=".56" IsEditable="True" Margin="5,50,0,0"  Name="AcquaintanceComboBox"  Grid.Row="5" Grid.Column="1"  Width="200" HorizontalAlignment="Left" Background="White"  Foreground="Gray" FontSize="20" FontWeight="Light" VerticalAlignment="Bottom"  BorderBrush="LightGray"></ComboBox>
+            <ComboBox   materialDesign:HintAssist.Hint="Acquaintance" materialDesign:HintAssist.HintOpacity=".56" IsEditable="False" Margin="5,50,0,0"  Name="AcquaintanceComboBox"  Grid.Row="5" Grid.Column="1"  Width="200" HorizontalAlignment="Left" Background="White"  Foreground="Gray" FontSize="20" FontWeight="Light" VerticalAlignment="Bottom"  BorderBrush="LightGray"></ComboBox>
             <TextBox  materialDesign:HintAssist.Hint="Acquaintance Name"   Style="{StaticResource MaterialDesignFloatingHintTextBox}"  Margin="5,50,0,0" Grid.Row="5" Grid.Column="1" Width="200" x:Name="AcquaintanceNameTextBox" Foreground="Gray" FontSize="20" FontWeight="Light" VerticalAlignment="Bottom" HorizontalAlignment="Center"  BorderBrush="LightGray">
                 <TextBox.Text>
                     <Binding Path="ApplicantAcquaintance" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <local:MinimumCharacterRule MinimumCharacters="5"></local:MinimumCharacterRule>
+                            <rule:NonEmptyRule></rule:NonEmptyRule>
+                            <local:MinimumCharacterRule MinimumCharacters="2"></local:MinimumCharacterRule>
+                            <rule:MaximumCharacterRule MaximumCharacters="50"></rule:MaximumCharacterRule>
+                            <rule:OnlyAlphabetsRule></rule:OnlyAlphabetsRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
             </TextBox>
-
-            <TextBox  materialDesign:HintAssist.Hint="Age"   Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="5,50,0,0" Grid.Row="7" Grid.Column="1" Width="200" x:Name="AgeTextBlock" Foreground="Gray" FontSize="20" FontWeight="Light" HorizontalAlignment="Center"  BorderBrush="LightGray"></TextBox>
             <DatePicker SelectedDateChanged="DatePicker_SelectedDateChanged" materialDesign:HintAssist.Hint="Date Of Birth  " Style="{StaticResource MaterialDesignFloatingHintDatePicker}"  Margin="5,50,0,0" IsTodayHighlighted="True" DisplayDate="10-12-2020" Grid.Row="7"  Grid.Column="1" Width="auto"  HorizontalAlignment="Left"  Name="DatePicker" Foreground="LightGray" FontSize="18" FontWeight="Light" VerticalAlignment="Bottom"  BorderBrush="LightGray"></DatePicker>
 
+            <TextBox  materialDesign:HintAssist.Hint="Age"   Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="5,50,0,0" Grid.Row="7" Grid.Column="1" Width="200" x:Name="AgeTextBlock" Foreground="Gray" FontSize="20" FontWeight="Light" HorizontalAlignment="Center"  BorderBrush="LightGray"></TextBox>
 
-            <ComboBox materialDesign:HintAssist.Hint="Marital Status" materialDesign:HintAssist.HintOpacity=".56" IsEditable="True" Margin="5,50,0,0" Grid.Row="9" Grid.Column="1" Width="200" x:Name="MaritalStatusComboBox" Foreground="Gray" FontSize="20" FontWeight="Light" HorizontalAlignment="Left"  BorderBrush="LightGray"></ComboBox>
-            <ComboBox materialDesign:HintAssist.Hint="Caste" materialDesign:HintAssist.HintOpacity=".56" IsEditable="True" Margin="5,50,0,0" Grid.Row="9" Grid.Column="1" Width="200" x:Name="CasteComboBox" Foreground="Gray" FontSize="20" FontWeight="Light" HorizontalAlignment="Center"  BorderBrush="LightGray"></ComboBox>
-            <ComboBox materialDesign:HintAssist.Hint="Category" materialDesign:HintAssist.HintOpacity=".56" IsEditable="True" Margin="5,50,0,0" Grid.Row="9" Grid.Column="1" Width="200" x:Name="CategoryComboBox" Foreground="Gray" FontSize="20" FontWeight="Light" HorizontalAlignment="right"  BorderBrush="LightGray"></ComboBox>
 
-            <ComboBox materialDesign:HintAssist.Hint="State" materialDesign:HintAssist.HintOpacity=".56" IsEditable="True" Margin="5,50,0,0" Grid.Row="11" Grid.Column="1" Width="200" x:Name="StateComboBox" Foreground="Gray" FontSize="20" FontWeight="Light" HorizontalAlignment="Left"  BorderBrush="LightGray"></ComboBox>
-            <ComboBox materialDesign:HintAssist.Hint="District" materialDesign:HintAssist.HintOpacity=".56" IsEditable="True" Margin="5,50,0,0" Grid.Row="11" Grid.Column="1" Width="200" x:Name="DistrictComboBox" Foreground="Gray" FontSize="20" FontWeight="Light" HorizontalAlignment="Center"  BorderBrush="LightGray"></ComboBox>
+            <ComboBox materialDesign:HintAssist.Hint="Marital Status" materialDesign:HintAssist.HintOpacity=".56" IsEditable="False" Margin="5,50,0,0" Grid.Row="9" Grid.Column="1" Width="200" x:Name="MaritalStatusComboBox" Foreground="Gray" FontSize="20" FontWeight="Light" HorizontalAlignment="Left"  BorderBrush="LightGray"></ComboBox>
+            <ComboBox materialDesign:HintAssist.Hint="Caste" materialDesign:HintAssist.HintOpacity=".56" IsEditable="False" Margin="5,50,0,0" Grid.Row="9" Grid.Column="1" Width="200" x:Name="CasteComboBox" Foreground="Gray" FontSize="20" FontWeight="Light" HorizontalAlignment="Center"  BorderBrush="LightGray"></ComboBox>
+            <ComboBox materialDesign:HintAssist.Hint="Category" materialDesign:HintAssist.HintOpacity=".56" IsEditable="False" Margin="5,50,0,0" Grid.Row="9" Grid.Column="1" Width="200" x:Name="CategoryComboBox" Foreground="Gray" FontSize="20" FontWeight="Light" HorizontalAlignment="right"  BorderBrush="LightGray"></ComboBox>
+
+            <ComboBox materialDesign:HintAssist.Hint="State" materialDesign:HintAssist.HintOpacity=".56" IsEditable="False" Margin="5,50,0,0" Grid.Row="11" Grid.Column="1" Width="200" x:Name="StateComboBox" Foreground="Gray" FontSize="20" FontWeight="Light" HorizontalAlignment="Left"  BorderBrush="LightGray"></ComboBox>
+            <ComboBox materialDesign:HintAssist.Hint="District" materialDesign:HintAssist.HintOpacity=".56" IsEditable="False" Margin="5,50,0,0" Grid.Row="11" Grid.Column="1" Width="200" x:Name="DistrictComboBox" Foreground="Gray" FontSize="20" FontWeight="Light" HorizontalAlignment="Center"  BorderBrush="LightGray"></ComboBox>
             <TextBox  materialDesign:HintAssist.Hint="Pincode"   Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="5,50,0,0" Grid.Row="11" Grid.Column="1" Width="200" x:Name="PincodeTextBox" Foreground="Gray" FontSize="20" FontWeight="Light" HorizontalAlignment="right"  BorderBrush="LightGray">
                 <TextBox.Text>
                     <Binding Path="ApplicantPincode" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <local:MinimumCharacterRule MinimumCharacters="5"></local:MinimumCharacterRule>
+                            <rule:NonEmptyRule></rule:NonEmptyRule>
+                            <rule:FixedLengthRule FixedCharacters="6"></rule:FixedLengthRule>
+                            <rule:OnlyNumericRule></rule:OnlyNumericRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -133,7 +146,9 @@
                 <TextBox.Text>
                     <Binding Path="ApplicantCurrentAddress" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <local:MinimumCharacterRule MinimumCharacters="5"></local:MinimumCharacterRule>
+                            <rule:NonEmptyRule></rule:NonEmptyRule>
+                            <local:MinimumCharacterRule MinimumCharacters="10"></local:MinimumCharacterRule>
+                            <rule:MaximumCharacterRule MaximumCharacters="300"></rule:MaximumCharacterRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -143,7 +158,9 @@
                 <TextBox.Text>
                     <Binding Path="ApplicantMobile" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <local:MinimumCharacterRule MinimumCharacters="5"></local:MinimumCharacterRule>
+                            <rule:NonEmptyRule></rule:NonEmptyRule>
+                            <rule:FixedLengthRule FixedCharacters="10"></rule:FixedLengthRule>
+                            <rule:OnlyNumericRule></rule:OnlyNumericRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -152,7 +169,9 @@
                 <TextBox.Text>
                     <Binding Path="ApplicantOfficeNo" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <local:MinimumCharacterRule MinimumCharacters="5"></local:MinimumCharacterRule>
+                            <rule:NonEmptyRule></rule:NonEmptyRule>
+                            <rule:FixedLengthRule FixedCharacters="10"></rule:FixedLengthRule>
+                            <rule:OnlyNumericRule></rule:OnlyNumericRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -162,18 +181,23 @@
                 <TextBox.Text>
                     <Binding Path="ApplicantDesignation" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <local:MinimumCharacterRule MinimumCharacters="5"></local:MinimumCharacterRule>
+                            <rule:NonEmptyRule></rule:NonEmptyRule>
+                            <local:MinimumCharacterRule MinimumCharacters="2"></local:MinimumCharacterRule>
+                            <rule:MaximumCharacterRule MaximumCharacters="20"></rule:MaximumCharacterRule>
+                            <rule:OnlyAlphabetsRule></rule:OnlyAlphabetsRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
             </TextBox>
-            <ComboBox materialDesign:HintAssist.Hint="Education" materialDesign:HintAssist.HintOpacity=".56" IsEditable="True" Margin="5,50,0,0" Grid.Row="17" Grid.Column="1" Width="200" x:Name="EducationComboBox" Foreground="Gray" FontSize="20" FontWeight="Light" HorizontalAlignment="Center"  BorderBrush="LightGray"></ComboBox>
+            <ComboBox materialDesign:HintAssist.Hint="Education" materialDesign:HintAssist.HintOpacity=".56" IsEditable="False" Margin="5,50,0,0" Grid.Row="17" Grid.Column="1" Width="200" x:Name="EducationComboBox" Foreground="Gray" FontSize="20" FontWeight="Light" HorizontalAlignment="Center"  BorderBrush="LightGray"></ComboBox>
 
             <TextBox materialDesign:HintAssist.Hint="Employer Name"   Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="5,50,0,0"  Grid.Row="19" Grid.Column="1" Width="200" x:Name="EmployerNameTextBox"    Foreground="Gray" FontSize="20" FontWeight="Light"  HorizontalAlignment="Left"   BorderBrush="LightGray">
                 <TextBox.Text>
                     <Binding Path="ApplicantEmployer" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <local:MinimumCharacterRule MinimumCharacters="5"></local:MinimumCharacterRule>
+                            <rule:NonEmptyRule></rule:NonEmptyRule>
+                            <local:MinimumCharacterRule MinimumCharacters="2"></local:MinimumCharacterRule>
+                            <rule:MaximumCharacterRule MaximumCharacters="50"></rule:MaximumCharacterRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -183,7 +207,9 @@
                 <TextBox.Text>
                     <Binding Path="ApplicantOfficeAddress" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <local:MinimumCharacterRule MinimumCharacters="5"></local:MinimumCharacterRule>
+                            <rule:NonEmptyRule></rule:NonEmptyRule>
+                            <local:MinimumCharacterRule MinimumCharacters="10"></local:MinimumCharacterRule>
+                            <rule:MaximumCharacterRule MaximumCharacters="300"></rule:MaximumCharacterRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -193,12 +219,15 @@
                 <TextBox.Text>
                     <Binding Path="ApplicantDistance" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <local:MinimumCharacterRule MinimumCharacters="5"></local:MinimumCharacterRule>
+                            <rule:NonEmptyRule></rule:NonEmptyRule>
+                            <local:MinimumCharacterRule MinimumCharacters="1"></local:MinimumCharacterRule>
+                            <rule:MaximumCharacterRule MaximumCharacters="5"></rule:MaximumCharacterRule>
+                            <rule:OnlyNumericRule></rule:OnlyNumericRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
             </TextBox>
-            <ComboBox materialDesign:HintAssist.Hint="Nearest Branch" materialDesign:HintAssist.HintOpacity=".56" IsEditable="True" Margin="5,50,0,0" Grid.Row="23" Grid.Column="1" Width="200" x:Name="NearestBranchComboBox" Foreground="Gray" FontSize="20" FontWeight="Light" HorizontalAlignment="Center"  BorderBrush="LightGray"></ComboBox>
+            <ComboBox materialDesign:HintAssist.Hint="Nearest Branch" materialDesign:HintAssist.HintOpacity=".56" IsEditable="False" Margin="5,50,0,0" Grid.Row="23" Grid.Column="1" Width="200" x:Name="NearestBranchComboBox" Foreground="Gray" FontSize="20" FontWeight="Light" HorizontalAlignment="Center"  BorderBrush="LightGray"></ComboBox>
             <Button  Margin="60" Width="200" Height="60"   x:Name="NextButton" Grid.Column="1" Grid.Row="24" Content="Co-Applicant" BorderBrush="Transparent" Background="#03a9f4"  Foreground="#ffffff" FontSize="30" FontWeight="Light" HorizontalAlignment="Left" Click="NextButton_Click" ></Button>
             <Button  Margin="60" Width="200" Height="60"   x:Name="PrintButton" Grid.Column="1" Grid.Row="24" Content="Print" BorderBrush="Transparent" Background="#03a9f4"  Foreground="#ffffff" FontSize="30" FontWeight="Light" HorizontalAlignment="Right" Click="PrintButton_Click"></Button>
         </Grid>
