@@ -128,29 +128,46 @@ namespace GravitonCar
 
         private void WireUpData()
         {
-            if (model.gurantorModel.gurantor_firstname != null)
+            if (model.gurantorModel.gurantortype_id != 0)
             {
-                //Co Applicant or Gurantor
                 foreach (GurantorTypeModel gurantor in gurantorType)
                 {
                     if (model.gurantorModel.gurantortype_id == gurantor.gurantortype_id)
                     {
                         GurantorComboBox.SelectedItem = gurantor;
                     }
-                }
+                } 
+            }
 
-                //First, Middle and Last Name
-                FirstNameTextBox.Text = model.gurantorModel.gurantor_firstname;
-                MiddleNameTextBox.Text = model.gurantorModel.gurantor_middlename;
-                LastNameTextBox.Text = model.gurantorModel.gurantor_lastname;
+            //First, Middle and Last Name
+            if (model.gurantorModel.gurantor_firstname != null)
+            {
+                FirstNameTextBox.Text = model.gurantorModel.gurantor_firstname; 
+            }
+            if (model.gurantorModel.gurantor_middlename != null)
+            {
+                MiddleNameTextBox.Text = model.gurantorModel.gurantor_middlename; 
+            }
+            if (model.gurantorModel.gurantor_lastname != null)
+            {
+                LastNameTextBox.Text = model.gurantorModel.gurantor_lastname; 
+            }
 
-                //Mobile
-                MobilNumberTextBox.Text = model.gurantorModel.gurantor_mobile;
+            //Mobile
+            if (model.gurantorModel.gurantor_mobile != null)
+            {
+                MobilNumberTextBox.Text = model.gurantorModel.gurantor_mobile; 
+            }
 
-                //Relationship
-                RelationshipTextBox.Text = model.gurantorModel.gurantor_relation;
+            //Relationship
+            if (model.gurantorModel.gurantor_relation != null)
+            {
+                RelationshipTextBox.Text = model.gurantorModel.gurantor_relation; 
+            }
 
-                //Office Address
+            //Office Address
+            if (model.gurantorModel.gurantor_currentaddress != null)
+            {
                 OfficeAddressTextBlock.Text = model.gurantorModel.gurantor_currentaddress; 
             }
         }
@@ -158,22 +175,43 @@ namespace GravitonCar
         private void WireUpForm()
         {
             //Co Applicant or Gurantor
-            GurantorTypeModel gurantorTypeModel = (GurantorTypeModel)GurantorComboBox.SelectedItem;
-            model.gurantorModel.gurantortype_id = gurantorTypeModel.gurantortype_id;
+            if (GurantorComboBox.SelectedItem != null)
+            {
+                GurantorTypeModel gurantorTypeModel = (GurantorTypeModel)GurantorComboBox.SelectedItem;
+                model.gurantorModel.gurantortype_id = gurantorTypeModel.gurantortype_id; 
+            }
 
             //First, Middle and Last Name
-            model.gurantorModel.gurantor_firstname = FirstNameTextBox.Text;
-            model.gurantorModel.gurantor_middlename = MiddleNameTextBox.Text;
-            model.gurantorModel.gurantor_lastname = LastNameTextBox.Text;
+            if (FirstNameTextBox.Text.Length != 0)
+            {
+                model.gurantorModel.gurantor_firstname = FirstNameTextBox.Text; 
+            }
+            if (MiddleNameTextBox.Text.Length !=0)
+            {
+                model.gurantorModel.gurantor_middlename = MiddleNameTextBox.Text; 
+            }
+            if (LastNameTextBox.Text.Length != 0)
+            {
+                model.gurantorModel.gurantor_lastname = LastNameTextBox.Text; 
+            }
 
             //Mobile
-            model.gurantorModel.gurantor_mobile = MobilNumberTextBox.Text;
+            if (MobilNumberTextBox.Text.Length != 0)
+            {
+                model.gurantorModel.gurantor_mobile = MobilNumberTextBox.Text; 
+            }
 
             //Relationship
-            model.gurantorModel.gurantor_relation = RelationshipTextBox.Text;
+            if (RelationshipTextBox.Text.Length != 0)
+            {
+                model.gurantorModel.gurantor_relation = RelationshipTextBox.Text; 
+            }
 
             //Office Address
-            model.gurantorModel.gurantor_currentaddress = OfficeAddressTextBlock.Text;
+            if (OfficeAddressTextBlock.Text.Length != 0)
+            {
+                model.gurantorModel.gurantor_currentaddress = OfficeAddressTextBlock.Text; 
+            }
         }
 
         public void DisableButton()

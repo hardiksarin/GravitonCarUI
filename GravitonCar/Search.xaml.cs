@@ -75,5 +75,14 @@ namespace GravitonCar
                 }
             }
         }
+
+        private CarModel GetCar()
+        {
+            CarModel car = new CarModel();
+            string pan = "";
+            string aadhar = "";
+            car = GlobalConfig.Connection.GetCar_ById(aadhar, pan);
+            return car;
+        }
     }
 }
