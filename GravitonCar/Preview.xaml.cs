@@ -746,7 +746,7 @@ namespace GravitonCar
             Education - EducationComboBox
             Employer Name - EmployerNameTextBox
             Office Address - OfficeAddressTextBlock
-            Distance To NE - DistanceToNeTextBox
+            Distance To NE - DistanceToNeTextBoxm,
             Nearest Branch - NearestBranchComboBox
             */
 
