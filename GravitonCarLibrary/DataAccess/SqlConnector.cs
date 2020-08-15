@@ -433,8 +433,62 @@ namespace GravitonCarLibrary.DataAccess
         public CarModel GetCar_ById(string aadhar, string pan)
         {
             CarModel model = new CarModel();
-
+            model.documentModel = GetDocument_ById(aadhar, pan);
+            model.applicantModel = GetApplicant_ById(aadhar, pan);
+            model.gurantorModel = GetGurantor_ById(aadhar, pan);
+            model.accountModel = GetAccount_ById(aadhar, pan);
+            model.loanModel = GetLoan_ById(aadhar, pan);
             return model;
+        }
+
+        public AccountModel GetAccount_ById(string aadhar, string pan)
+        {
+            AccountModel output = new AccountModel();
+            using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
+            {
+                output = connection.ExecuteScalar<AccountModel>($"select * from account where account_realtedpan = '{pan}' and account_realtedaadhar = '{aadhar}'");
+                return output;
+            }
+        }
+
+        public DocumentModel GetDocument_ById(string aadhar, string pan)
+        {
+            DocumentModel output = new DocumentModel();
+            using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
+            {
+                output = connection.ExecuteScalar<DocumentModel>($"select * from document where document_pan = '{pan}' and document_aadhar = '{aadhar}'");
+                return output;
+            }
+        }
+
+        public ApplicantModel GetApplicant_ById(string aadhar, string pan)
+        {
+            ApplicantModel output = new ApplicantModel();
+            using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
+            {
+                output = connection.ExecuteScalar<ApplicantModel>($"select * from applicant where applicant_pan = '{pan}' and applicant_aadhar = '{aadhar}'");
+                return output;
+            }
+        }
+
+        public GurantorModel GetGurantor_ById(string aadhar, string pan)
+        {
+            GurantorModel output = new GurantorModel();
+            using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
+            {
+                output = connection.ExecuteScalar<GurantorModel>($"select * from gurantor where gurantor_realtedpan = '{pan}' and gurantor_realtedaadhar = '{aadhar}'");
+                return output;
+            }
+        }
+
+        public List<LoanModel> GetLoan_ById(string aadhar, string pan)
+        {
+            List<LoanModel> output = new List<LoanModel>();
+            using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
+            {
+                output = connection.Query<LoanModel>($"select * from loan where account_realtedpan = '{pan}' and account_realtedaadhar = '{aadhar}'").ToList();
+                return output;
+            }
         }
     }
 }

@@ -14,6 +14,7 @@ namespace GravitonCarLibrary.DataAccess
         AccountModel CreateAccount(AccountModel model);
         void UpdateAccount(AccountModel model);
         List<AccountModel> GetAccounts_All();
+        AccountModel GetAccount_ById(string aadhar, string pan);
         //Account
 
         //Acquaintance
@@ -29,6 +30,7 @@ namespace GravitonCarLibrary.DataAccess
         List<ApplicantModel> GetApplicant_All();
         void UpdateApplicant(ApplicantModel model);
         ApplicantModel CreateApplicant(ApplicantModel model);
+        ApplicantModel GetApplicant_ById(string aadhar, string pan);
         //Applicant
 
         //Caste
@@ -51,6 +53,7 @@ namespace GravitonCarLibrary.DataAccess
         List<DocumentModel> GetDocument_All();
         void UpdateDocument(DocumentModel model);
         DocumentModel CreateDocument(DocumentModel model);
+        DocumentModel GetDocument_ById(string aadhar, string pan);
 
         //Documents
 
@@ -68,6 +71,7 @@ namespace GravitonCarLibrary.DataAccess
         List<GurantorModel> GetGurantor_All();
         void UpdateGurantor(GurantorModel model);
         GurantorModel CreateGurantor(GurantorModel model);
+        GurantorModel GetGurantor_ById(string aadhar, string pan);
 
 
 
@@ -91,6 +95,7 @@ namespace GravitonCarLibrary.DataAccess
         List<LoanModel> GetLoan_All();
         void UpdateLoan(LoanModel model);
         LoanModel CreateLoan(LoanModel model);
+        List<LoanModel> GetLoan_ById(string aadhar, string pan);
 
 
         //Loan
