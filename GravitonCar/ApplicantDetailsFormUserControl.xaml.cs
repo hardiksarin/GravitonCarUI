@@ -1,8 +1,10 @@
 ﻿using GravitonCarLibrary;
 using GravitonCarLibrary.Models;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -189,10 +191,11 @@ namespace GravitonCar
         List<AcquaintanceModel> acquaintanceList = new List<AcquaintanceModel>();
         List<CasteModel> casteList = new List<CasteModel>();
         List<CategoryModel> categoryList = new List<CategoryModel>();
-        List<string> stateList = new List<string>() { "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jammu and Kashmir", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttarakhand", "Uttar Pradesh", "West Bengal", "Andaman and Nicobar Islands", "Chandigarh", "Dadra and Nagar Haveli", "Daman and Diu", "Delhi", "Lakshadweep", "Puducherry" };
+        List<string> stateList = new List<string>() { "Andaman and Nicobar Islands", "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chandigarh", "Chhattisgarh", "Dadra and Nagar Haveli", "Delhi", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jammu and Kashmir", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Puducherry", "Punjab", "Rajasthan", "Tamil Nadu", "Telangana", "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal" };
         List<string> educationList = new List<string>() { "Postgraduate ", "Undergraduate", "Higher secondary", "Matriculation"};
         List<string> branchesList = new List<string>() { "Jaipur Office " };
         CarModel model = new CarModel();
+        JObject jsonDistrict;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -212,6 +215,7 @@ namespace GravitonCar
             acquaintanceList = GlobalConfig.Connection.GetAcquaintance_All();
             casteList = GlobalConfig.Connection.GetCaste_All();
             categoryList = GlobalConfig.Connection.GetCategory_All();
+            jsonDistrict = JObject.Parse(File.ReadAllText("dist.json"));
         }
 
         private void WireUpList()
@@ -333,8 +337,8 @@ namespace GravitonCar
             //State
             model.applicantModel.applicant_state = (string)StateComboBox.SelectedItem;
 
-            /*//District
-            model.applicantModel.applicant_district = (string)DistrictComboBox.SelectedItem;*/
+            //District
+            model.applicantModel.applicant_district = (string)DistrictComboBox.SelectedItem;
 
             //Pincode
             model.applicantModel.applicant_pincode = PincodeTextBox.Text;
@@ -408,6 +412,10 @@ namespace GravitonCar
                 output = false;
             }
             if(StateComboBox.SelectedItem == null)
+            {
+                output = false;
+            }
+            if(DistrictComboBox.SelectedItem == null)
             {
                 output = false;
             }
@@ -489,6 +497,22 @@ namespace GravitonCar
         public void EnableButton()
         {
             NextButton.IsEnabled = true;
+        }
+
+        private void StateComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string state = (string)StateComboBox.SelectedItem;
+            List<string> temp = new List<string>();
+            var obj1 = jsonDistrict[state];
+            int x = obj1.Count();
+
+            for (int i = 0; i < x; i++)
+            {
+                var obj = jsonDistrict[state][i];
+                temp.Add(obj.ToString());
+            }
+            DistrictComboBox.ItemsSource = null;
+            DistrictComboBox.ItemsSource = temp;
         }
     }
 }

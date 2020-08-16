@@ -813,6 +813,11 @@ namespace GravitonCar
 
 
             //District
+            /*List<string> dist = new List<string>();
+            dist.Add(model.applicantModel.applicant_district);
+            DistrictComboBox.ItemsSource = null;
+            DistrictComboBox.ItemsSource = dist;*/
+            DistrictComboBox.Text = model.applicantModel.applicant_district;
 
             //Pincode
             PincodeTextBox.Text = model.applicantModel.applicant_pincode;

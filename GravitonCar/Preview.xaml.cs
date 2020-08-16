@@ -3,6 +3,7 @@ using GravitonCar.Validators;
 using GravitonCarLibrary;
 using GravitonCarLibrary.Models;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -426,13 +427,14 @@ namespace GravitonCar
         private List<AcquaintanceModel> acquaintanceList = new List<AcquaintanceModel>();
         private List<CasteModel> casteList = new List<CasteModel>();
         private List<CategoryModel> categoryList = new List<CategoryModel>();
-        private List<string> stateList = new List<string>() { "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jammu and Kashmir", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttarakhand", "Uttar Pradesh", "West Bengal", "Andaman and Nicobar Islands", "Chandigarh", "Dadra and Nagar Haveli", "Daman and Diu", "Delhi", "Lakshadweep", "Puducherry" };
+        List<string> stateList = new List<string>() { "Andaman and Nicobar Islands", "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chandigarh", "Chhattisgarh", "Dadra and Nagar Haveli", "Delhi", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jammu and Kashmir", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Puducherry", "Punjab", "Rajasthan", "Tamil Nadu", "Telangana", "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal" };
         private List<string> educationList = new List<string>() { "Postgraduate ", "Undergraduate", "Higher secondary", "Matriculation" };
         private List<string> branchesList = new List<string>() { "Jaipur Office " };
         private List<GurantorTypeModel> gurantorType = new List<GurantorTypeModel>();
         private List<LoanTypeModel> loanTypes = new List<LoanTypeModel>();
         private List<DocumentTypeModel> documentModels = new List<DocumentTypeModel>();
         List<LoanModel> loanModels = new List<LoanModel>();
+        JObject jsonDistrict;
         int i = 0;
         List<NewLoanModel> existingLoans = new List<NewLoanModel>();
         IScreenRequester callingForm;
@@ -467,6 +469,8 @@ namespace GravitonCar
 
             loanTypes = GlobalConfig.Connection.GetLoanType_All();
             documentModels = GlobalConfig.Connection.GetDocumentType_All();
+
+            jsonDistrict = JObject.Parse(File.ReadAllText("dist.json"));
         }
 
         private void WireUpLists()
@@ -798,6 +802,7 @@ namespace GravitonCar
             StateComboBox.SelectedItem = model.applicantModel.applicant_state;
 
             //District
+            DistrictComboBox.SelectedItem = model.applicantModel.applicant_district;
 
             //Pincode
             PincodeTextBox.Text = model.applicantModel.applicant_pincode;
@@ -953,8 +958,8 @@ namespace GravitonCar
             //State
             model.applicantModel.applicant_state = (string)StateComboBox.SelectedItem;
 
-            /*//District
-            model.applicantModel.applicant_district = (string)DistrictComboBox.SelectedItem;*/
+            //District
+            model.applicantModel.applicant_district = (string)DistrictComboBox.SelectedItem;
 
             //Pincode
             model.applicantModel.applicant_pincode = PincodeTextBox.Text;
@@ -1258,11 +1263,13 @@ namespace GravitonCar
             try
             {
                 GlobalConfig.Connection.CreateCar(model);
-            }catch(Exception a)
+                MessageBox.Show("New KYC Created!");
+            }
+            catch(Exception a)
             {
                 MessageBox.Show(a.Message);
             }
-            MessageBox.Show("CAR from created!");
+            
             WriteJson(output);
             callingForm.SearchScreen();
         }
@@ -1296,6 +1303,22 @@ namespace GravitonCar
         public void EnableButton()
         {
             SubmitButton.IsEnabled = true;
+        }
+
+        private void StateComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string state = (string)StateComboBox.SelectedItem;
+            List<string> temp = new List<string>();
+            var obj1 = jsonDistrict[state];
+            int x = obj1.Count();
+
+            for (int i = 0; i < x; i++)
+            {
+                var obj = jsonDistrict[state][i];
+                temp.Add(obj.ToString());
+            }
+            DistrictComboBox.ItemsSource = null;
+            DistrictComboBox.ItemsSource = temp;
         }
     }
 }
