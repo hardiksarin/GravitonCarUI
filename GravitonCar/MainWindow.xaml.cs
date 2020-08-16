@@ -2,6 +2,8 @@
 using GravitonCarLibrary.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,9 +30,40 @@ namespace GravitonCar
             GlobalConfig.InitializeConnections();
             GridPrincipal.Children.Clear();
             GridPrincipal.Children.Add(new Search(this));
+            GetPath();
         }
 
+        private void GetPath()
+        {
+            if (!File.Exists("D:\\Path.txt"))
+            {
+                PathVariable form = new PathVariable(this);
+                form.Show();
+            }
+            else
+            {
+                string line;
+                try
+                {
+                    //Pass the file path and file name to the StreamReader constructor
+                    StreamReader sr = new StreamReader("D:\\Path.txt");
+                    //Read the first line of text
+                    line = sr.ReadLine();
 
+                    GlobalConfig.FilePath = line;
+                    //close the file
+                    sr.Close();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Exception " + e.Message);
+                }
+                finally
+                {
+                    Debug.WriteLine("Executing finally block.");
+                }
+            }
+        }
 
       /*  private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
         {
@@ -96,6 +129,27 @@ namespace GravitonCar
         {
             GridPrincipal.Children.Clear();
             GridPrincipal.Children.Add(new ApplicantDetailsFormUserControl(this));
+        }
+
+        public void SetSystemPath(string path)
+        {
+            try
+            {
+                //Pass the filepath and filename to the StreamWriter Constructor
+                StreamWriter sw = new StreamWriter("D:\\Path.txt");
+                //Write a line of text
+                sw.WriteLine(path);
+                //Close the file
+                sw.Close();
+            }
+            catch (Exception a)
+            {
+                MessageBox.Show("Exception: " + a.Message);
+            }
+            finally
+            {
+                Debug.WriteLine("Executing finally block.");
+            }
         }
     }
 }
