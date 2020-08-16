@@ -93,7 +93,7 @@ namespace GravitonCar
         {
             ApplicantModel applicant = (ApplicantModel)ListBoxItems.SelectedItem;
             CarModel model = GetCar(applicant.applicant_pan, applicant.applicant_aadhar);
-            callingForm.PreviewScreen(model);
+            callingForm.DisplayScreen(model);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

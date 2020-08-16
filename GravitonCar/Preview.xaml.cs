@@ -1278,7 +1278,7 @@ namespace GravitonCar
             try
             {
                 //Pass the filepath and filename to the StreamWriter Constructor
-                StreamWriter sw = new StreamWriter(GlobalConfig.FilePath);
+                StreamWriter sw = new StreamWriter($"{GlobalConfig.FilePath}\\JsonBackup.txt");
                 //Write a line of text
                 sw.WriteLine(json);
                 //Close the file

@@ -122,7 +122,7 @@ namespace GravitonCar
 
         public void PreviewScreen(CarModel model)
         {
-            GridPrincipal.Children.Add(new Display(this, model));
+            GridPrincipal.Children.Add(new Preview(this, model));
         }
 
         public void ApplicantForm()
@@ -150,6 +150,11 @@ namespace GravitonCar
             {
                 Debug.WriteLine("Executing finally block.");
             }
+        }
+
+        public void DisplayScreen(CarModel model)
+        {
+            GridPrincipal.Children.Add(new Display(this, model));
         }
     }
 }
