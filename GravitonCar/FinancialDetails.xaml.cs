@@ -199,14 +199,6 @@ namespace GravitonCar
         TextBox addLoanBankName(int i)
         {
             TextBox LoanBankName = new TextBox();
-            Binding binding = new Binding("LoanBankName");
-            binding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
-            binding.ValidatesOnDataErrors = true;
-            binding.Mode = BindingMode.TwoWay;
-            MinimumCharacterRule mcr = new MinimumCharacterRule();
-            mcr.MinimumCharacters = 3;
-            binding.ValidationRules.Add(mcr);
-            LoanBankName.SetBinding(TextBox.TextProperty, binding);
             LoanBankName.Name = $"LoanBankNameTextbox{i}";                        //"LoanBankNameTextbox" + i.ToString();
             LoanBankName.Margin = new Thickness(10);
             LoanBankName.Width = 200;
@@ -217,13 +209,6 @@ namespace GravitonCar
         TextBox addLoanAmount(int i)
         {
             TextBox LoanAmount = new TextBox();
-            Binding binding = new Binding("LoanAmount");
-            binding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
-            binding.ValidatesOnDataErrors = true;
-            binding.Mode = BindingMode.TwoWay;
-            OnlyNumericRule onr = new OnlyNumericRule();
-            binding.ValidationRules.Add(onr);
-            LoanAmount.SetBinding(TextBox.TextProperty, binding);
             LoanAmount.Name = $"LoanLoanAmountTextbox{i}";                        //"LoanLoanAmountTextbox" + i.ToString();
             LoanAmount.Margin = new Thickness(10);
             LoanAmount.Width = 200;
@@ -234,13 +219,6 @@ namespace GravitonCar
         TextBox addLoanEmiAmount(int i)
         {   
             TextBox LoanEmiAmount = new TextBox();
-            Binding binding = new Binding("LoanEmi");
-            binding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
-            binding.ValidatesOnDataErrors = true;
-            binding.Mode = BindingMode.TwoWay;
-            OnlyNumericRule onr = new OnlyNumericRule();
-            binding.ValidationRules.Add(onr);
-            LoanEmiAmount.SetBinding(TextBox.TextProperty, binding);
             LoanEmiAmount.Name = $"LoanEmiAmountTextbox{i}";                       //"LoanEmiAmountTextbox" + i.ToString();
             LoanEmiAmount.Margin = new Thickness(10);
             LoanEmiAmount.Width = 200;
@@ -542,31 +520,38 @@ namespace GravitonCar
 
         private void ReviewButton_Click(object sender, RoutedEventArgs e)
         {
-            foreach (NewLoanModel loan in existingLoans)
+            if (ValidateFinancialForm())
             {
-                loan.LoanBankNameLabel = (TextBox)this.Dynamic.FindName(loan.LoanBankNameLabel.Name);
-                loan.LoanAmountLabel = (TextBox)this.Dynamic.FindName(loan.LoanAmountLabel.Name);
-                loan.LoanEmiAmountLabel = (TextBox)this.Dynamic.FindName(loan.LoanEmiAmountLabel.Name);
-                loan.LoanTypeLabel = (ComboBox)this.Dynamic.FindName(loan.LoanTypeLabel.Name);
-                if (ValidateNewLoanForms(loan))
+                foreach (NewLoanModel loan in existingLoans)
                 {
-                    LoanModel loanModel = new LoanModel();
-                    LoanTypeModel temp = (LoanTypeModel)loan.LoanTypeLabel.SelectedItem;
-                    loan.LoanType = temp.loantype_id;
-                    loan.LoanBankName = loan.LoanBankNameLabel.Text;
-                    loan.LoanAmount = double.Parse(loan.LoanAmountLabel.Text);
-                    loan.LoanEmiAmount = double.Parse(loan.LoanEmiAmountLabel.Text);
-                    loanModel.loan_type = loan.LoanType;
-                    loanModel.loan_bankname = loan.LoanBankName;
-                    loanModel.loan_amount = loan.LoanAmount;
-                    loanModel.loan_emi = loan.LoanEmiAmount;
-                    loanModel.account_realtedaadhar = model.documentModel.document_aadhar;
-                    loanModel.account_realtedpan = model.documentModel.document_pan;
-                    loanModels.Add(loanModel);
+                    loan.LoanBankNameLabel = (TextBox)this.Dynamic.FindName(loan.LoanBankNameLabel.Name);
+                    loan.LoanAmountLabel = (TextBox)this.Dynamic.FindName(loan.LoanAmountLabel.Name);
+                    loan.LoanEmiAmountLabel = (TextBox)this.Dynamic.FindName(loan.LoanEmiAmountLabel.Name);
+                    loan.LoanTypeLabel = (ComboBox)this.Dynamic.FindName(loan.LoanTypeLabel.Name);
+                    if (ValidateNewLoanForms(loan))
+                    {
+                        LoanModel loanModel = new LoanModel();
+                        LoanTypeModel temp = (LoanTypeModel)loan.LoanTypeLabel.SelectedItem;
+                        loan.LoanType = temp.loantype_id;
+                        loan.LoanBankName = loan.LoanBankNameLabel.Text;
+                        loan.LoanAmount = double.Parse(loan.LoanAmountLabel.Text);
+                        loan.LoanEmiAmount = double.Parse(loan.LoanEmiAmountLabel.Text);
+                        loanModel.loan_type = loan.LoanType;
+                        loanModel.loan_bankname = loan.LoanBankName;
+                        loanModel.loan_amount = loan.LoanAmount;
+                        loanModel.loan_emi = loan.LoanEmiAmount;
+                        loanModel.account_realtedaadhar = model.documentModel.document_aadhar;
+                        loanModel.account_realtedpan = model.documentModel.document_pan;
+                        loanModels.Add(loanModel);
+                    }
                 }
+                WireUpForm();
+                callingForm.PreviewScreen(model);
             }
-            WireUpForm();
-            callingForm.PreviewScreen(model);
+            else
+            {
+                MessageBox.Show("Please enter all fields");
+            }
         }
 
         private void WireUpData()
@@ -728,6 +713,50 @@ namespace GravitonCar
                 model.loanModel = loanModels; 
             }
 
+        }
+
+        private bool ValidateFinancialForm()
+        {
+            bool output = true;
+
+            if(AadharNumberTextBox.Text.Length == 0)
+            {
+                output = false;
+            }
+            if(PanNumberTextBox.Text.Length == 0)
+            {
+                output = false;
+            }
+            if(CibilScoreTextBox.Text.Length == 0)
+            {
+                output = false;
+            }
+            if(OptionalIdTypeComboBox.SelectedItem == null)
+            {
+                output = false;
+            }
+            if(OptionalIdDetailsTextBox.Text.Length == 0)
+            {
+                output = false;
+            }
+            if(InHandMonthlyIcomeTextBox.Text.Length == 0)
+            {
+                output = false;
+            }
+            if(BankNameTextBox.Text.Length == 0)
+            {
+                output = false;
+            }
+            if(IFSCTextBox.Text.Length == 0)
+            {
+                output = false;
+            }
+            if(AccountNumberTextBox.Text.Length == 0)
+            {
+                output = false;
+            }
+
+            return output;
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)

@@ -28,7 +28,7 @@ namespace GravitonCar
             InitializeComponent();
             callingForm = caller;
             LoadListData();
-            WireUpList();
+            //WireUpList();
             //GetSearchList();
             CarNumber.Text = applicantList.Count.ToString();
         }
@@ -74,11 +74,11 @@ namespace GravitonCar
             else if (CommentTextBox.Text == "")
             {
                 ListBoxItems.Items.Clear();
-                foreach (ApplicantModel str in applicantList)
+                /*foreach (ApplicantModel str in applicantList)
                 {
                     WireUpList();
                     //ListBoxItems.Items.Add(str);
-                }
+                }*/
             }
         }
 

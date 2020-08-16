@@ -122,8 +122,15 @@ namespace GravitonCar
 
         private void NextButton_Click(object sender, RoutedEventArgs e)
         {
-            WireUpForm();
-            callingForm.FinancialScreen(model);
+            if (ValidateCoapplicantForm())
+            {
+                WireUpForm();
+                callingForm.FinancialScreen(model);
+            }
+            else
+            {
+                MessageBox.Show("Please enter all fields");
+            }
         }
 
         private void WireUpData()
@@ -216,6 +223,42 @@ namespace GravitonCar
             {
                 model.gurantorModel.gurantor_currentaddress = OfficeAddressTextBlock.Text; 
             }
+        }
+
+        private bool ValidateCoapplicantForm()
+        {
+            bool output = true;
+
+            if(GurantorComboBox.SelectedItem == null)
+            {
+                output = false;
+            }
+            if(FirstNameTextBox.Text.Length == 0)
+            {
+                output = false;
+            }
+            if(MiddleNameTextBox.Text.Length == 0)
+            {
+                output = false;
+            }
+            if(LastNameTextBox.Text.Length == 0)
+            {
+                output = false;
+            }
+            if(MobilNumberTextBox.Text.Length == 0)
+            {
+                output = false;
+            }
+            if(RelationshipTextBox.Text.Length == 0)
+            {
+                output = false;
+            }
+            if(OfficeAddressTextBlock.Text.Length == 0)
+            {
+                output = false;
+            }
+
+            return output;
         }
 
         public void DisableButton()

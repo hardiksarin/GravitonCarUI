@@ -42,7 +42,7 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                             ToolTip="Use Customer's Name" VerticalAlignment="Top" Margin="10,40" Click="Button_Click">
                     <TextBlock Text="New KYC" FontWeight="Light" />
                 </Button>
-                <ListBox HorizontalContentAlignment="Stretch" SelectionChanged="ListBoxItems_SelectionChanged" Grid.Row="2" Grid.Column="1" Grid.RowSpan="3" x:Name="ListBoxItems" Margin="00,90,00,0" Width="800"  FontSize="25"  FontWeight="UltraLight" Foreground="#FF3399FF" ScrollViewer.VerticalScrollBarVisibility="Hidden" ForceCursor="True" Cursor="Hand"/>
+                <ListBox HorizontalContentAlignment="Stretch" DisplayMemberPath="DisplaySearch" SelectionChanged="ListBoxItems_SelectionChanged" Grid.Row="2" Grid.Column="1" Grid.RowSpan="3" x:Name="ListBoxItems" Margin="00,90,00,0" Width="800"  FontSize="25"  FontWeight="UltraLight" Foreground="#FF3399FF" ScrollViewer.VerticalScrollBarVisibility="Hidden" ForceCursor="True" Cursor="Hand"/>
 
 
                 <TextBox TextChanged="CommentTextBox_TextChanged" Grid.Row="2" Grid.Column="1"  Foreground="#FF3399FF" FontSize="40" FontWeight="UltraLight"  BorderBrush="LightGray" Width="800" VerticalAlignment="Top"

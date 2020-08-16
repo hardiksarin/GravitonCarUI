@@ -264,8 +264,15 @@ namespace GravitonCar
         }
         private void NextButton_Click(object sender, RoutedEventArgs e)
         {
-            WireUpForm();
-            callingForm.CoApplicantForm(model);
+            if (ValidateApplicantForm())
+            {
+                WireUpForm();
+                callingForm.CoApplicantForm(model);
+            }
+            else
+            {
+                MessageBox.Show("Please enter all fields");
+            }
         }
 
         private void WireUpForm()
@@ -358,6 +365,94 @@ namespace GravitonCar
 
             //Nearest Branch
             model.applicantModel.applicant_nearestbranch = (string)NearestBranchComboBox.SelectedItem;
+        }
+
+        private bool ValidateApplicantForm()
+        {
+            bool output = true;
+
+            if(FirstNameTextBox.Text.Length == 0)
+            {
+                output = false;
+            }
+            if(MiddleNameTextBox.Text.Length == 0)
+            {
+                output = false;
+            }
+            if(LastNameTextBox.Text.Length == 0)
+            {
+                output = false;
+            }
+            if(AcquaintanceComboBox.SelectedItem == null)
+            {
+                output = false;
+            }
+            if(AcquaintanceNameTextBox.Text.Length == 0)
+            {
+                output = false;
+            }
+            if(DatePicker.SelectedDate == null)
+            {
+                output = false;
+            }
+            if(MaritalStatusComboBox.SelectedItem == null)
+            {
+                output = false;
+            }
+            if(CasteComboBox.SelectedItem == null)
+            {
+                output = false;
+            }
+            if(CategoryComboBox.SelectedItem == null)
+            {
+                output = false;
+            }
+            if(StateComboBox.SelectedItem == null)
+            {
+                output = false;
+            }
+            if(PincodeTextBox.Text.Length == 0)
+            {
+                output = false;
+            }
+            if(AddressTextBlock.Text.Length == 0)
+            {
+                output = false;
+            }
+            if(MobileNumberTextBox.Text.Length == 0)
+            {
+                output = false;
+            }
+            if(OfficeNumberTextBox.Text.Length == 0)
+            {
+                output = false;
+            }
+            if(DesignationTextBox.Text.Length == 0)
+            {
+                output = false;
+            }
+            if(EducationComboBox.SelectedItem == null)
+            {
+                output = false;
+            }
+            if(EmployerNameTextBox.Text.Length == 0)
+            {
+                output = false;
+            }
+            if(OfficeAddressTextBlock.Text.Length == 0)
+            {
+                output = false;
+            }
+            if(DistanceToNeTextBox.Text.Length == 0)
+            {
+                output = false;
+            }
+            if(NearestBranchComboBox.SelectedItem == null)
+            {
+                output = false;
+            }
+
+            return output;
         }
 
         private int calculateAge(string current, string dob)

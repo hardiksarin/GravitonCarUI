@@ -719,7 +719,10 @@ namespace GravitonCar
             //First, Middle and Last Name
 
             FirstNameTextBox.Text = model.applicantModel.applicant_firstname;
-            MiddleNameTextBox.Text = model.applicantModel.applicant_middlename;
+            if (model.applicantModel.applicant_middlename != null)
+            {
+                MiddleNameTextBox.Text = model.applicantModel.applicant_middlename; 
+            }
             LastNameTextBox.Text = model.applicantModel.applicant_lastname;
 
             //Get Aquaintance
@@ -838,7 +841,10 @@ namespace GravitonCar
 
             //First, Middle and Last Name
             FirstNameApplicantTextBox.Text = model.gurantorModel.gurantor_firstname;
-            MiddleNameApplicantTextBox.Text = model.gurantorModel.gurantor_middlename;
+            if (model.gurantorModel.gurantor_middlename != null)
+            {
+                MiddleNameApplicantTextBox.Text = model.gurantorModel.gurantor_middlename; 
+            }
             LastNameApplicantTextBox.Text = model.gurantorModel.gurantor_lastname;
 
             //Mobile
@@ -1214,14 +1220,6 @@ namespace GravitonCar
         TextBox addLoanBankName(int i)
         {
             TextBox LoanBankName = new TextBox();
-            Binding binding = new Binding("LoanBankName");
-            binding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
-            binding.ValidatesOnDataErrors = true;
-            binding.Mode = BindingMode.TwoWay;
-            MinimumCharacterRule mcr = new MinimumCharacterRule();
-            mcr.MinimumCharacters = 3;
-            binding.ValidationRules.Add(mcr);
-            LoanBankName.SetBinding(TextBox.TextProperty, binding);
             LoanBankName.Name = $"LoanBankNameTextbox{i}";                        //"LoanBankNameTextbox" + i.ToString();
             LoanBankName.Margin = new Thickness(10);
             LoanBankName.Width = 200;
@@ -1232,13 +1230,6 @@ namespace GravitonCar
         TextBox addLoanAmount(int i)
         {
             TextBox LoanAmount = new TextBox();
-            Binding binding = new Binding("LoanAmount");
-            binding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
-            binding.ValidatesOnDataErrors = true;
-            binding.Mode = BindingMode.TwoWay;
-            OnlyNumericRule onr = new OnlyNumericRule();
-            binding.ValidationRules.Add(onr);
-            LoanAmount.SetBinding(TextBox.TextProperty, binding);
             LoanAmount.Name = $"LoanLoanAmountTextbox{i}";                        //"LoanLoanAmountTextbox" + i.ToString();
             LoanAmount.Margin = new Thickness(10);
             LoanAmount.Width = 200;
@@ -1249,13 +1240,6 @@ namespace GravitonCar
         TextBox addLoanEmiAmount(int i)
         {
             TextBox LoanEmiAmount = new TextBox();
-            Binding binding = new Binding("LoanEmi");
-            binding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
-            binding.ValidatesOnDataErrors = true;
-            binding.Mode = BindingMode.TwoWay;
-            OnlyNumericRule onr = new OnlyNumericRule();
-            binding.ValidationRules.Add(onr);
-            LoanEmiAmount.SetBinding(TextBox.TextProperty, binding);
             LoanEmiAmount.Name = $"LoanEmiAmountTextbox{i}";                       //"LoanEmiAmountTextbox" + i.ToString();
             LoanEmiAmount.Margin = new Thickness(10);
             LoanEmiAmount.Width = 200;
@@ -1269,16 +1253,27 @@ namespace GravitonCar
             SaveGurantorForm();
             SaveFinancialForm();
             string output = JsonConvert.SerializeObject(model);
+            try
+            {
+                GlobalConfig.Connection.CreateCar(model);
+            }catch(Exception a)
+            {
+                MessageBox.Show(a.Message);
+            }
+            MessageBox.Show("CAR from created!");
             WriteJson(output);
-            GlobalConfig.Connection.CreateCar(model);
         }
 
         private void WriteJson(string json)
         {
             try
             {
+                if (!Directory.Exists($"{GlobalConfig.FilePath}\\JsonBackup"))
+                {
+                    System.IO.Directory.CreateDirectory($"{GlobalConfig.FilePath}\\JsonBackup");
+                }
                 //Pass the filepath and filename to the StreamWriter Constructor
-                StreamWriter sw = new StreamWriter($"{GlobalConfig.FilePath}\\JsonBackup.txt");
+                StreamWriter sw = new StreamWriter($"{GlobalConfig.FilePath}\\JsonBackup\\jsonBackup_{model.applicantModel.applicant_aadhar}.txt");
                 //Write a line of text
                 sw.WriteLine(json);
                 //Close the file
