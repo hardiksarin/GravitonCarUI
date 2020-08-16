@@ -32,7 +32,7 @@ namespace GravitonCar
 
 
 
-        private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
+      /*  private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
         {
             ButtonOpenMenu.Visibility = Visibility.Collapsed;
             ButtonCloseMenu.Visibility = Visibility.Visible;
@@ -43,7 +43,7 @@ namespace GravitonCar
             ButtonOpenMenu.Visibility = Visibility.Visible;
             ButtonCloseMenu.Visibility = Visibility.Collapsed;
         }
-
+*/
         public void CtrShortcut1(Object sender, ExecutedRoutedEventArgs e)
         {
             ButtonPopUpQuit.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));

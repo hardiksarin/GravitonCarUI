@@ -7,7 +7,7 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
 
              mc:Ignorable="d" 
-             d:DesignHeight="760" d:DesignWidth="940" Background="White" >
+             d:DesignHeight="760" d:DesignWidth="1000" Background="White" >
     <ScrollViewer VerticalScrollBarVisibility="Hidden" >
         <Grid>
             <Grid x:Name="print">
@@ -34,7 +34,7 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                 </Grid.RowDefinitions>
                 <TextBlock x:Name="CarNumber" Margin="50.0" TextAlignment="Left" Grid.Row="1" Grid.Column="1" Width="300" HorizontalAlignment="Left" Height="50" VerticalAlignment="Center" Text="100" FontSize="35"  FontWeight="UltraLight" Opacity="0.56" Foreground="#FF3399FF" ></TextBlock>
 
-                <Button Foreground="#FF3399FF" Background="White" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right"
+                <Button Cursor="Hand" Foreground="#FF3399FF" Background="White" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right"
                             Style="{StaticResource MaterialDesignRaisedDarkButton}"
                             materialDesign:HintAssist.Hint="Search KYC"
                             Height="50" Width="100"
@@ -42,7 +42,7 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                             ToolTip="Use Customer's Name" VerticalAlignment="Top" Margin="10,40" Click="Button_Click">
                     <TextBlock Text="New KYC" FontWeight="Light" />
                 </Button>
-                <ListBox SelectionChanged="ListBoxItems_SelectionChanged" Grid.Row="2" Grid.Column="1" Grid.RowSpan="3" x:Name="ListBoxItems" Margin="40,90,40,0"  FontSize="25"  FontWeight="Light" Foreground="#FF3399FF" HorizontalContentAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Hidden"/>
+                <ListBox HorizontalContentAlignment="Stretch" SelectionChanged="ListBoxItems_SelectionChanged" Grid.Row="2" Grid.Column="1" Grid.RowSpan="3" x:Name="ListBoxItems" Margin="00,90,00,0" Width="800"  FontSize="25"  FontWeight="UltraLight" Foreground="#FF3399FF" ScrollViewer.VerticalScrollBarVisibility="Hidden" ForceCursor="True" Cursor="Hand"/>
 
 
                 <TextBox TextChanged="CommentTextBox_TextChanged" Grid.Row="2" Grid.Column="1"  Foreground="#FF3399FF" FontSize="40" FontWeight="UltraLight"  BorderBrush="LightGray" Width="800" VerticalAlignment="Top"

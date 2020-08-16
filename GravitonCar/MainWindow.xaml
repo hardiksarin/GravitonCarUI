@@ -7,13 +7,13 @@
         
 
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="1000" SizeToContent="Manual"  WindowStartupLocation="CenterScreen">
+        Title="The Three Finance" Height="800" Width="1000" SizeToContent="Manual"  WindowStartupLocation="CenterScreen">
 
 
 
 
 
-    <Window.Resources>
+    <!--<Window.Resources>
 
         <RoutedUICommand x:Key="Ctr1" Text="Another Text" />
         <Storyboard x:Key="MenuOpen">
@@ -49,16 +49,23 @@
     </Window.InputBindings>
     <Window.CommandBindings>
         <CommandBinding Command="{StaticResource Ctr1}" Executed="CtrShortcut1" />
-    </Window.CommandBindings>
+    </Window.CommandBindings>-->
 
     <Grid>
-        <Grid x:Name="GridPrincipal" Margin="60 40 0 0" Background="White"></Grid>
+        <Grid x:Name="GridPrincipal" Margin="0 40 0 0" Background="White"></Grid>
+        
 
 
-        <Grid Height="40" VerticalAlignment="Top" Background="#FF3399FF">
-            <TextBlock HorizontalAlignment="Center" Text="G R A V I T O N" Foreground="White" VerticalAlignment="Center" FontWeight="Light" FontSize="30" ></TextBlock>
+        <Grid Height="40" VerticalAlignment="Top" >
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#00c6ff" Offset="0.0" />
+                    <GradientStop Color="#0072ff" Offset="1.0" />
+                </LinearGradientBrush>
+            </Grid.Background>
+            <TextBlock HorizontalAlignment="Center" Text="THE THREE FINANCE" Foreground="White" VerticalAlignment="Center" FontWeight="Light" FontSize="30" ></TextBlock>
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal">
-                <TextBlock Text="Amit Arora" Foreground="White" VerticalAlignment="Center" FontWeight="Light" FontSize="18" ></TextBlock>
+                <TextBlock Text="VT Road" Foreground="White" VerticalAlignment="Center" FontWeight="Light" FontSize="18" ></TextBlock>
                 <materialDesign:PopupBox Margin="5" Foreground="LightGoldenrodYellow" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" >
                     <DockPanel Margin="0,0,0,-10" Width="740" Height="auto" Background="#FF3399FF" >
                         <Button x:Name="PaymentVoucherCreate" Foreground="White" Content="Payment Voucher" ></Button>
@@ -72,7 +79,7 @@
                 </materialDesign:PopupBox>
             </StackPanel>
         </Grid>
-        <Grid x:Name="GridMenu" Width="60" HorizontalAlignment="Left" Background="CornflowerBlue"  >
+        <!--<Grid x:Name="GridMenu" Width="60" HorizontalAlignment="Left" Background="CornflowerBlue"  >
             <StackPanel>
                 <Grid Height="150" Background="WhiteSmoke">
                     <Button x:Name="ButtonCloseMenu" Height="60" Width="60" VerticalAlignment="Top" HorizontalAlignment="Right" Background="{x:Null}" BorderBrush="{x:Null}" Visibility="Collapsed" Click="ButtonCloseMenu_Click" >
@@ -83,13 +90,13 @@
                     </Button>
                 </Grid>
                 <ListView Name="ListViewMenu" Foreground="White" Background="CornflowerBlue" ScrollViewer.HorizontalScrollBarVisibility="Disabled"  SelectedIndex="0">
-                    <!--<ListView.ItemContainerStyle>
+                    --><!--<ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="BorderThickness" Value="0"/>
                             <Setter Property="Margin" Value="0"/>
                             <Setter Property="Padding" Value="20"/>
                         </Style>
-                    </ListView.ItemContainerStyle>-->
+                    </ListView.ItemContainerStyle>--><!--
                     <ListViewItem Height="60">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Margin="10" Kind="NotebookMultiple" Width="30" Height="30"></materialDesign:PackIcon>
@@ -116,7 +123,7 @@
                     </ListViewItem>
                 </ListView>
             </StackPanel>
-        </Grid>
+        </Grid>-->
 
 
     </Grid>

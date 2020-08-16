@@ -67,21 +67,22 @@
 
 
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="1" Margin="0,0,0,00" Height="80" Grid.Column="1" Text="Review Applicantion"  HorizontalAlignment="Center" Foreground="Gray" VerticalAlignment="Top" FontSize="50" FontWeight="Normal"></TextBlock>
+            <TextBlock Grid.Row="1" Margin="0,0,0,00" Height="80" Grid.Column="1" Text="Review Applicantion"  HorizontalAlignment="Left" Foreground="Gray" VerticalAlignment="Top" FontSize="50" FontWeight="UltraLight"></TextBlock>
+            <materialDesign:PackIcon  Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,10,0" Kind="Edit" Foreground="Gray" Height="30" Width="30"></materialDesign:PackIcon>
             <!-- should disable on 2nd transition... -->
 
 
 
-            <ProgressBar Grid.Row="1" Grid.Column="1" Height="100" Width="100" HorizontalAlignment="Left" Foreground="LightGreen"
-                         Style="{StaticResource MaterialDesignCircularProgressBar}"
-              Value="99"
-              IsIndeterminate="False"
-                   
-              x:Name="IndeterminateToDeterminateCircularProgress" />
 
-            <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Content="Review" VerticalAlignment="Center" Margin="20,0" Foreground="LightGreen" FontSize="20" FontWeight="Regular"></Label>
-
-            <Label   Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Content="Personal Infromation" VerticalAlignment="Center" Margin="0,10,0,10" Foreground="#03a9f4"  FontSize="30" FontWeight="Regular"></Label>
+            <Grid Grid.Row="2" Grid.Column="1"  Margin="0,50,0,0" Opacity="0.7">
+                <Grid.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#00c6ff" Offset="0.0" />
+                        <GradientStop Color="#0072ff" Offset="1.0" />
+                    </LinearGradientBrush>
+                </Grid.Background>
+            </Grid>
+            <Label   Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Content="Personal Infromation" VerticalAlignment="Center" Margin="0,50,0,0" Foreground="White"  FontSize="30" FontWeight="UltraLight"></Label>
 
             <TextBox  materialDesign:HintAssist.Hint="First Name"   Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="5,5,0,0" Grid.Row="3" Grid.Column="1" Width="200" x:Name="FirstNameTextBox"  Foreground="Gray" FontSize="20" FontWeight="Regular" HorizontalAlignment="Left" BorderBrush="LightGray">
                 <TextBox.Text>
@@ -241,9 +242,17 @@
             </TextBox>
             <ComboBox materialDesign:HintAssist.Hint="Nearest Branch" materialDesign:HintAssist.HintOpacity=".56" IsEditable="True" Margin="5,50,0,0" Grid.Row="23" Grid.Column="1" Width="200" x:Name="NearestBranchComboBox" Foreground="Black" FontSize="20" FontWeight="Regular" HorizontalAlignment="Center"  BorderBrush="LightGray"></ComboBox>
 
+            <Grid Grid.Row="25" Grid.Column="1"  Margin="0,50,0,0" Opacity="0.7">
+                <Grid.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#00c6ff" Offset="0.0" />
+                        <GradientStop Color="#0072ff" Offset="1.0" />
+                    </LinearGradientBrush>
+                </Grid.Background>
+            </Grid>
 
 
-            <Label   Grid.Row="25" Grid.Column="1" HorizontalAlignment="Center" Content="Co-Applicant Infromation" VerticalAlignment="Center" Margin="0,50,0,0" Foreground="#03a9f4"  FontSize="30" FontWeight="Regular"></Label>
+            <Label   Grid.Row="25" Grid.Column="1" HorizontalAlignment="Left" Content="Co-Applicant Infromation" VerticalAlignment="Center" Margin="0,50,0,0" Foreground="White"  FontSize="30" FontWeight="UltraLight"></Label>
 
 
             <ComboBox  materialDesign:HintAssist.Hint="Co-Applicant/Gurantor" materialDesign:HintAssist.HintOpacity=".56" IsEditable="True" Margin="5,50,0,0" Grid.Row="26" Grid.Column="1" Width="200" x:Name="GurantorComboBox" Foreground="Black" FontSize="20" FontWeight="Regular" HorizontalAlignment="Left" BorderBrush="LightGray"></ComboBox>
@@ -320,9 +329,16 @@
                 </TextBox.Text>
             </TextBox>
 
+            <Grid Grid.Row="31" Grid.Column="1"  Margin="0,50,0,0">
+                <Grid.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#00c6ff" Offset="0.0" />
+                    <GradientStop Color="#0072ff" Offset="1.0" />
+                </LinearGradientBrush>
+                </Grid.Background>
+            </Grid>
 
-
-            <Label   Grid.Row="31" Grid.Column="1" HorizontalAlignment="Center" Content="Financial Infromation" VerticalAlignment="Center" Margin="0,50,0,0" Foreground="#03a9f4"  FontSize="30" FontWeight="Regular"></Label>
+            <Label   Grid.Row="31" Grid.Column="1" HorizontalAlignment="Left" Content="Financial Infromation" VerticalAlignment="Top" Margin="0,50,0,0" Foreground="White"  FontSize="30" FontWeight="UltraLight"></Label>
 
 
             <TextBox materialDesign:HintAssist.Hint="Aadhar Number"   Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="5,50,0,0" Grid.Row="32" Grid.Column="1" Width="200" x:Name="AadharNumberTextBox" Foreground="Gray" FontSize="20" FontWeight="Regular" HorizontalAlignment="Left" BorderBrush="LightGray">
