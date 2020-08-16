@@ -275,7 +275,7 @@ namespace GravitonCar
             }
             else
             {
-                MessageBox.Show("Please enter all fields");
+                MessageBox.Show("Please Complete The Form To Proceed");
             }
         }
 
@@ -513,6 +513,11 @@ namespace GravitonCar
             }
             DistrictComboBox.ItemsSource = null;
             DistrictComboBox.ItemsSource = temp;
+        }
+
+        private void QuitButton_Click(object sender, RoutedEventArgs e)
+        {
+            callingForm.SearchScreen();
         }
     }
 }

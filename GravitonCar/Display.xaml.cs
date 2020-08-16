@@ -434,7 +434,7 @@ namespace GravitonCar
         List<LoanModel> loanModels = new List<LoanModel>();
         int i = 0;
         List<NewLoanModel> existingLoans = new List<NewLoanModel>();
-
+        IScreenRequester callingForm;
         public event PropertyChangedEventHandler PropertyChanged;
 
         public Display(IScreenRequester caller, CarModel carModel)
@@ -442,6 +442,7 @@ namespace GravitonCar
             DataContext = this;
             InitializeComponent();
             ApplicantDetailsFormUserControl.errorForm = this;
+            callingForm = caller;
             model = carModel;
             LoadListData();
             WireUpLists();
@@ -1328,6 +1329,11 @@ namespace GravitonCar
         public void EnableButton()
         {
             //SubmitButton.IsEnabled = true;
+        }
+
+        private void PackIcon_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            callingForm.SearchScreen();
         }
     }
 }

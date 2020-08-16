@@ -68,10 +68,10 @@
                 <TextBlock Text="VT Road" Foreground="White" VerticalAlignment="Center" FontWeight="Light" FontSize="18" ></TextBlock>
                 <materialDesign:PopupBox Margin="5" Foreground="LightGoldenrodYellow" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" >
                     <DockPanel Margin="0,0,0,-10" Width="740" Height="auto" Background="#FF3399FF" >
-                        <Button x:Name="PaymentVoucherCreate" Foreground="White" Content="Payment Voucher" ></Button>
+                        <!--<Button x:Name="PaymentVoucherCreate" Foreground="White" Content="Payment Voucher" ></Button>
                         <Button  Foreground="White" Content="Receipt Voucher" ></Button>
                         <Button  Foreground="White" Content="Contra Voucher"></Button>
-                        <Button  Foreground="White" Content="Journal Voucher"></Button>
+                        <Button  Foreground="White" Content="Journal Voucher"></Button>-->
 
                         <Button Foreground="White" x:Name="ButtonPopUpQuit" Content="Quit App" Click="ButtonPopUpQuit_Click" ></Button>
                         <materialDesign:PackIcon  Background="Transparent"  Cursor="Hand"  Margin="10"  Foreground="White" Kind="Shutdown" Width="30" Height="30" HorizontalAlignment="Right" MouseDown="PackIcon_MouseDown"></materialDesign:PackIcon>
