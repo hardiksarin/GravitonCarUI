@@ -35,7 +35,7 @@ namespace GravitonCar
             if(e.Key == Key.Return)
             {
                 GetPath();
-                this.Close();
+                this.Close();  
             }
         }
     }

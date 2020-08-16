@@ -35,8 +35,34 @@ namespace GravitonCar
 
         private void GetPath()
         {
-            PathVariable form = new PathVariable(this);
-            form.Show();
+            if (!File.Exists("D:\\Path.txt"))
+            {
+                PathVariable form = new PathVariable(this);
+                form.Show();
+            }
+            else
+            {
+                string line;
+                try
+                {
+                    //Pass the file path and file name to the StreamReader constructor
+                    StreamReader sr = new StreamReader("D:\\Path.txt");
+                    //Read the first line of text
+                    line = sr.ReadLine();
+
+                    GlobalConfig.FilePath = line;
+                    //close the file
+                    sr.Close();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Exception " + e.Message);
+                }
+                finally
+                {
+                    Debug.WriteLine("Executing finally block.");
+                }
+            }
         }
 
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
@@ -110,7 +136,7 @@ namespace GravitonCar
             try
             {
                 //Pass the filepath and filename to the StreamWriter Constructor
-                StreamWriter sw = new StreamWriter("D:\\Test.txt");
+                StreamWriter sw = new StreamWriter("D:\\Path.txt");
                 //Write a line of text
                 sw.WriteLine(path);
                 //Close the file
@@ -118,7 +144,7 @@ namespace GravitonCar
             }
             catch (Exception a)
             {
-                Debug.WriteLine("Exception: " + a.Message);
+                MessageBox.Show("Exception: " + a.Message);
             }
             finally
             {

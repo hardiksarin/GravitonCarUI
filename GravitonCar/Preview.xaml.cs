@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -1268,8 +1269,25 @@ namespace GravitonCar
             SaveGurantorForm();
             SaveFinancialForm();
             string output = JsonConvert.SerializeObject(model);
-            Debug.WriteLine(output);
+            WriteJson(output);
             GlobalConfig.Connection.CreateCar(model);
+        }
+
+        private void WriteJson(string json)
+        {
+            try
+            {
+                //Pass the filepath and filename to the StreamWriter Constructor
+                StreamWriter sw = new StreamWriter(GlobalConfig.FilePath);
+                //Write a line of text
+                sw.WriteLine(json);
+                //Close the file
+                sw.Close();
+            }
+            catch (Exception a)
+            {
+                MessageBox.Show("Exception: " + a.Message);
+            }
         }
 
         public void DisableButton()
