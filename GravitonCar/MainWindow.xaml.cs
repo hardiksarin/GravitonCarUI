@@ -38,7 +38,7 @@ namespace GravitonCar
             if (!File.Exists("Path.txt"))
             {
                 PathVariable form = new PathVariable(this);
-                form.Show();
+                form.ShowDialog();
             }
             else
             {
