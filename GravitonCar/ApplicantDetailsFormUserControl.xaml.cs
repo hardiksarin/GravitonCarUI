@@ -271,7 +271,7 @@ namespace GravitonCar
             }
             else
             {
-                MessageBox.Show("Please enter all fields");
+                MessageBox.Show("Please Complete The Form To Proceed","Error : Invalid Entry");
             }
         }
 
@@ -375,10 +375,7 @@ namespace GravitonCar
             {
                 output = false;
             }
-            if(MiddleNameTextBox.Text.Length == 0)
-            {
-                output = false;
-            }
+           
             if(LastNameTextBox.Text.Length == 0)
             {
                 output = false;
