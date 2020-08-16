@@ -190,7 +190,6 @@ namespace GravitonCar
             ComboBox LoanType = new ComboBox();
             LoanType.Name = $"LoanNameTextbox{i}";                                //"LoanNameTextbox" + i.ToString();
             LoanType.Width = 200;
-            LoanType.Height = 30;
             LoanType.ItemsSource = loanTypes;
             LoanType.DisplayMemberPath = "loantype_name";
             return LoanType;
