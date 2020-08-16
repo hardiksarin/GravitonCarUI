@@ -17,9 +17,26 @@ namespace GravitonCar
     /// </summary>
     public partial class PathVariable : Window
     {
-        public PathVariable()
+        IScreenRequester callingForm;
+        public PathVariable(IScreenRequester caller)
         {
             InitializeComponent();
+            callingForm = caller;
+        }
+
+        private void GetPath()
+        {
+            string temp = SystemPath.Text;
+            callingForm.SetSystemPath(temp);
+        }
+
+        private void SystemPath_KeyUp(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Return)
+            {
+                GetPath();
+                this.Close();
+            }
         }
     }
 }

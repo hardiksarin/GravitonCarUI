@@ -2,6 +2,8 @@
 using GravitonCarLibrary.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,9 +30,14 @@ namespace GravitonCar
             GlobalConfig.InitializeConnections();
             GridPrincipal.Children.Clear();
             GridPrincipal.Children.Add(new Search(this));
+            GetPath();
         }
 
-
+        private void GetPath()
+        {
+            PathVariable form = new PathVariable(this);
+            form.Show();
+        }
 
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
         {
@@ -96,6 +103,27 @@ namespace GravitonCar
         {
             GridPrincipal.Children.Clear();
             GridPrincipal.Children.Add(new ApplicantDetailsFormUserControl(this));
+        }
+
+        public void SetSystemPath(string path)
+        {
+            try
+            {
+                //Pass the filepath and filename to the StreamWriter Constructor
+                StreamWriter sw = new StreamWriter("D:\\Test.txt");
+                //Write a line of text
+                sw.WriteLine(path);
+                //Close the file
+                sw.Close();
+            }
+            catch (Exception a)
+            {
+                Debug.WriteLine("Exception: " + a.Message);
+            }
+            finally
+            {
+                Debug.WriteLine("Executing finally block.");
+            }
         }
     }
 }

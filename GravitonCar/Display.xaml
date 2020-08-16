@@ -421,12 +421,12 @@
                     </Binding>
                 </TextBox.Text>
             </TextBox>
-            <Button Margin="5,10,0,0" Width="100" Height="30"   x:Name="AddLoanButton" Grid.Column="1" Grid.Row="36" Content="New Loan" BorderBrush="Transparent" Background="#03a9f4"  Foreground="#ffffff" FontSize="15" FontWeight="Light" HorizontalAlignment="Left" Click="AddLoanButton_Click"  ></Button>
+            <Button Margin="5,10,0,0" Width="100" Height="30"   x:Name="AddLoanButton" Grid.Column="1" Grid.Row="36" Content="New Loan" BorderBrush="Transparent" Background="#03a9f4"  Foreground="#ffffff" FontSize="15" FontWeight="Light" HorizontalAlignment="Left"  ></Button>
 
             <StackPanel Margin="10" Orientation="Vertical" Grid.Row="37" Grid.Column="1" Height="auto" x:Name="Dynamic">
 
             </StackPanel>
-            <Button  Margin="0,60,0,60" Width="200" Height="60"   x:Name="SubmitButton" Grid.Column="1" Grid.Row="38" Content="Submit" BorderBrush="Transparent" Background="#03a9f4"  Foreground="#ffffff" FontSize="30" FontWeight="Light" HorizontalAlignment="Center" Click="SubmitButton_Click" ></Button>
+            <Button  Margin="0,60,0,60" Width="200" Height="60"   x:Name="SubmitButton" Grid.Column="1" Grid.Row="38" Content="Submit" BorderBrush="Transparent" Background="#03a9f4"  Foreground="#ffffff" FontSize="30" FontWeight="Light" HorizontalAlignment="Center" ></Button>
 
 
         </Grid>

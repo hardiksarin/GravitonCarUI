@@ -14,5 +14,6 @@ namespace GravitonCar
         void RemoveCoApplicantScreen(UserControl control);
         void RemoveFinancialScreen(UserControl control);
         void PreviewScreen(CarModel model);
+        void SetSystemPath(string path);
     }
 }
