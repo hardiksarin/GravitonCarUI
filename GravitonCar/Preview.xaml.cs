@@ -435,6 +435,7 @@ namespace GravitonCar
         List<LoanModel> loanModels = new List<LoanModel>();
         int i = 0;
         List<NewLoanModel> existingLoans = new List<NewLoanModel>();
+        IScreenRequester callingForm;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -443,6 +444,7 @@ namespace GravitonCar
             DataContext = this;
             InitializeComponent();
             ApplicantDetailsFormUserControl.errorForm = this;
+            callingForm = caller;
             model = carModel;
             LoadListData();
             WireUpLists();
@@ -1262,6 +1264,7 @@ namespace GravitonCar
             }
             MessageBox.Show("CAR from created!");
             WriteJson(output);
+            callingForm.SearchScreen();
         }
 
         private void WriteJson(string json)

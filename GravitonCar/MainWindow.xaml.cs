@@ -156,5 +156,11 @@ namespace GravitonCar
         {
             GridPrincipal.Children.Add(new Display(this, model));
         }
+
+        public void SearchScreen()
+        {
+            GridPrincipal.Children.Clear();
+            GridPrincipal.Children.Add(new Search(this));
+        }
     }
 }
