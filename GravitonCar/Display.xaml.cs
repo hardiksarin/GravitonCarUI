@@ -516,7 +516,6 @@ namespace GravitonCar
             ComboBox LoanType = new ComboBox();
             LoanType.Name = $"LoanNameTextbox{i}";                                //"LoanNameTextbox" + i.ToString();
             LoanType.Width = 200;
-            LoanType.Height = 30;
             LoanType.ItemsSource = loanTypes;
             LoanType.DisplayMemberPath = "loantype_name";
             LoanType.SelectedIndex = loan.loan_type - 1;
@@ -538,7 +537,6 @@ namespace GravitonCar
             LoanBankName.Name = $"LoanBankNameTextbox{i}";                        //"LoanBankNameTextbox" + i.ToString();
             LoanBankName.Margin = new Thickness(10);
             LoanBankName.Width = 200;
-            LoanBankName.Height = 30;
             LoanBankName.Text = loan.loan_bankname;
             LoanBankName.IsEnabled = false;
             return LoanBankName;
@@ -557,7 +555,6 @@ namespace GravitonCar
             LoanAmount.Name = $"LoanLoanAmountTextbox{i}";                        //"LoanLoanAmountTextbox" + i.ToString();
             LoanAmount.Margin = new Thickness(10);
             LoanAmount.Width = 200;
-            LoanAmount.Height = 30;
             LoanAmount.Text = loan.loan_amount.ToString();
             LoanAmount.IsEnabled = false;
             return LoanAmount;
@@ -576,7 +573,6 @@ namespace GravitonCar
             LoanEmiAmount.Name = $"LoanEmiAmountTextbox{i}";                       //"LoanEmiAmountTextbox" + i.ToString();
             LoanEmiAmount.Margin = new Thickness(10);
             LoanEmiAmount.Width = 200;
-            LoanEmiAmount.Height = 30;
             LoanEmiAmount.Text = loan.loan_emi.ToString();
             LoanEmiAmount.IsEnabled = false;
             return LoanEmiAmount;
@@ -638,8 +634,8 @@ namespace GravitonCar
             LoanAmountLabel.FontWeight = FontWeights.Light;
             LoanEmiAmountLabel.FontWeight = FontWeights.Light;
 
-            LoanType.Margin = new Thickness(5);
-            LoanBankName.Margin = new Thickness(5);
+            LoanType.Margin = new Thickness(0);
+            LoanBankName.Margin = new Thickness(0);
             LoanAmount.Margin = new Thickness(5);
             LoanEmiAmount.Margin = new Thickness(5);
             LoanTypeLabel.Margin = new Thickness(5);
@@ -1190,7 +1186,6 @@ namespace GravitonCar
             WrapPanel s = addLoanDetails(i);
             LoanExpander.Header = "Loan Number :" + (i + 1).ToString(); ;
             LoanExpander.Foreground = new SolidColorBrush(Colors.CornflowerBlue);
-            LoanExpander.FontSize = 20;
             LoanExpander.Content = s;
             LoanExpander.FontWeight = FontWeights.Light;
 
@@ -1223,8 +1218,8 @@ namespace GravitonCar
 
 
 
-            LoanTypeLabel.Foreground = new SolidColorBrush(Colors.CornflowerBlue);
-            LoanBankNameLabel.Foreground = new SolidColorBrush(Colors.CornflowerBlue);
+            LoanTypeLabel.Foreground = new SolidColorBrush(Colors.Black);
+            LoanBankNameLabel.Foreground = new SolidColorBrush(Colors.Black);
             LoanAmountLabel.Foreground = new SolidColorBrush(Colors.CornflowerBlue);
             LoanEmiAmountLabel.Foreground = new SolidColorBrush(Colors.CornflowerBlue);
 
@@ -1239,14 +1234,14 @@ namespace GravitonCar
             LoanAmountLabel.FontWeight = FontWeights.Light;
             LoanEmiAmountLabel.FontWeight = FontWeights.Light;
 
-            LoanType.Margin = new Thickness(5);
-            LoanBankName.Margin = new Thickness(5);
-            LoanAmount.Margin = new Thickness(5);
-            LoanEmiAmount.Margin = new Thickness(5);
-            LoanTypeLabel.Margin = new Thickness(5);
-            LoanBankNameLabel.Margin = new Thickness(5);
-            LoanAmountLabel.Margin = new Thickness(5);
-            LoanEmiAmountLabel.Margin = new Thickness(5);
+            LoanType.Margin = new Thickness(0);
+            LoanBankName.Margin = new Thickness(0);
+            LoanAmount.Margin = new Thickness(0);
+            LoanEmiAmount.Margin = new Thickness(0);
+            LoanTypeLabel.Margin = new Thickness(0);
+            LoanBankNameLabel.Margin = new Thickness(0);
+            LoanAmountLabel.Margin = new Thickness(0);
+            LoanEmiAmountLabel.Margin = new Thickness(0);
 
 
 
@@ -1273,7 +1268,9 @@ namespace GravitonCar
             ComboBox LoanType = new ComboBox();
             LoanType.Name = $"LoanNameTextbox{i}";                                //"LoanNameTextbox" + i.ToString();
             LoanType.Width = 200;
-            LoanType.Height = 30;
+            LoanType.Height = 20;
+            LoanType.FontSize = 10;
+            LoanType.Margin = new Thickness(10);
             LoanType.ItemsSource = loanTypes;
             LoanType.DisplayMemberPath = "loantype_name";
             return LoanType;
@@ -1283,7 +1280,6 @@ namespace GravitonCar
         {
             TextBox LoanBankName = new TextBox();
             LoanBankName.Name = $"LoanBankNameTextbox{i}";                        //"LoanBankNameTextbox" + i.ToString();
-            LoanBankName.Margin = new Thickness(10);
             LoanBankName.Width = 200;
             LoanBankName.Height = 30;
             return LoanBankName;
