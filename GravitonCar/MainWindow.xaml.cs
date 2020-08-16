@@ -35,7 +35,7 @@ namespace GravitonCar
 
         private void GetPath()
         {
-            if (!File.Exists("D:\\Path.txt"))
+            if (!File.Exists("Path.txt"))
             {
                 PathVariable form = new PathVariable(this);
                 form.Show();
@@ -46,7 +46,7 @@ namespace GravitonCar
                 try
                 {
                     //Pass the file path and file name to the StreamReader constructor
-                    StreamReader sr = new StreamReader("D:\\Path.txt");
+                    StreamReader sr = new StreamReader("Path.txt");
                     //Read the first line of text
                     line = sr.ReadLine();
 
@@ -136,7 +136,7 @@ namespace GravitonCar
             try
             {
                 //Pass the filepath and filename to the StreamWriter Constructor
-                StreamWriter sw = new StreamWriter("D:\\Path.txt");
+                StreamWriter sw = new StreamWriter("Path.txt");
                 //Write a line of text
                 sw.WriteLine(path);
                 //Close the file

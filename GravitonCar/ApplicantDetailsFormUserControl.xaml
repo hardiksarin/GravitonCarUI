@@ -74,8 +74,8 @@
                 <TextBox.Text>
                     <Binding Path="ApplicantFirstname" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <rule:OnlyAlphabetsRule></rule:OnlyAlphabetsRule>
                             <rule:NonEmptyRule></rule:NonEmptyRule>
+                            <rule:OnlyAlphabetsRule ></rule:OnlyAlphabetsRule>
                             <local:MinimumCharacterRule MinimumCharacters="2"></local:MinimumCharacterRule>
                             <rule:MaximumCharacterRule MaximumCharacters="50"></rule:MaximumCharacterRule>
                             

@@ -72,9 +72,10 @@
                     <Binding Path="DocumentAadhar" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <rule:NonEmptyRule></rule:NonEmptyRule>
+                            <rule:OnlyNumericRule></rule:OnlyNumericRule>
                             <rule:FixedLengthRule FixedCharacters="12"></rule:FixedLengthRule>
                             <rule:AadharValidationRule></rule:AadharValidationRule>
-                            <rule:OnlyNumericRule></rule:OnlyNumericRule>
+                            <rule:AadharUniqueRule></rule:AadharUniqueRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -86,6 +87,7 @@
                             <rule:NonEmptyRule></rule:NonEmptyRule>
                             <rule:FixedLengthRule FixedCharacters="10"></rule:FixedLengthRule>
                             <rule:PanValidationRules></rule:PanValidationRules>
+                            <rule:PanUniqueRule></rule:PanUniqueRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
