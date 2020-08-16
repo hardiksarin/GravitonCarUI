@@ -89,7 +89,7 @@ namespace GravitonCar
 
         public void PreviewScreen(CarModel model)
         {
-            GridPrincipal.Children.Add(new Preview(this, model));
+            GridPrincipal.Children.Add(new Display(this, model));
         }
 
         public void ApplicantForm()
