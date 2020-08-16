@@ -14,19 +14,19 @@ namespace GravitonCar.Validators
     {
 
 
-            List<ApplicantModel> applicants = new List<ApplicantModel>();
+            List<DocumentModel> documents = new List<DocumentModel>();
 
             public PanUniqueRule()
             {
-                applicants = GlobalConfig.Connection.GetApplicant_All();
+                documents = GlobalConfig.Connection.GetDocument_All();
             }
             public override ValidationResult Validate(object value, CultureInfo cultureInfo)
             {
                 string v = value as string;
 
-                foreach (ApplicantModel applicant in applicants)
+                foreach (DocumentModel document in documents)
                 {
-                    if (applicant.applicant_pan == v)
+                    if (document.document_pan == v)
                     {
                         ApplicantDetailsFormUserControl.errorForm.DisableButton();
 

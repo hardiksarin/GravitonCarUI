@@ -487,5 +487,10 @@ namespace GravitonCar
         {
             NextButton.IsEnabled = true;
         }
+
+        private void QuitButton_Click(object sender, RoutedEventArgs e)
+        {
+            callingForm.SearchScreen();
+        }
     }
 }
