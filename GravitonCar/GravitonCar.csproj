@@ -15,4 +15,10 @@
     <ProjectReference Include="..\GravitonCarLibrary\GravitonCarLibrary.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="dist.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

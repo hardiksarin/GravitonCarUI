@@ -10,7 +10,7 @@ using GravitonCarLibrary;
 
 namespace GravitonCar.Validators
 {
-    class PanUniqueRule : ValidationRule
+  public  class PanUniqueRule : ValidationRule
     {
 
 

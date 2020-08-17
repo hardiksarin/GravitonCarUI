@@ -10,7 +10,7 @@ using GravitonCarLibrary;
 
 namespace GravitonCar.Validators
 {
-    class AadharUniqueRule : ValidationRule
+   public class AadharUniqueRule : ValidationRule
     {
         List<DocumentModel> documents = new List<DocumentModel>();
 
