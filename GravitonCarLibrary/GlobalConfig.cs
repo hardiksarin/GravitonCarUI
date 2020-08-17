@@ -18,11 +18,11 @@ namespace GravitonCarLibrary
         }
         public static string getDatabaseConnectionString()
         {
-            string server = "mydb.ctmbums33jwn.ap-south-1.rds.amazonaws.com";
+            string server = "thethreefinanceprod.chohi5ea8jhs.ap-south-1.rds.amazonaws.com";
             string port = "5432";
-            string user = "postgres";
-            string password = "postgres";
-            string database = "postgres";
+            string user = "kugelblitzroot";
+            string password = "Ashish3099";
+            string database = "test123";
             string connectionString = String.Format("Server={0};Port={1};" +
                     "User Id={2};Password={3};Database={4};",
                     server, port, user, password, database);

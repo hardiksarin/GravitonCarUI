@@ -73,7 +73,7 @@
                         <Binding.ValidationRules>
                             <rule:NonEmptyRule></rule:NonEmptyRule>
                             <rule:OnlyNumericRule></rule:OnlyNumericRule>
-                            <rule:FixedLengthRule FixedCharacters="12"></rule:FixedLengthRule>
+                            <rule:FixedLengthRule FixedCharacters="12" TypeOfData="Digits"></rule:FixedLengthRule>
                             <rule:AadharValidationRule></rule:AadharValidationRule>
                             <rule:AadharUniqueRule></rule:AadharUniqueRule>
                         </Binding.ValidationRules>
@@ -85,7 +85,7 @@
                     <Binding Path="DocumentPan" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <rule:NonEmptyRule></rule:NonEmptyRule>
-                            <rule:FixedLengthRule FixedCharacters="10"></rule:FixedLengthRule>
+                            <rule:FixedLengthRule FixedCharacters="10" TypeOfData="Characters"></rule:FixedLengthRule>
                             <rule:PanValidationRules></rule:PanValidationRules>
                             <rule:PanUniqueRule></rule:PanUniqueRule>
                         </Binding.ValidationRules>
@@ -97,7 +97,7 @@
                     <Binding Path="DocumentCibil" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <rule:NonEmptyRule></rule:NonEmptyRule>
-                            <rule:FixedLengthRule FixedCharacters="3"></rule:FixedLengthRule>
+                            <rule:FixedLengthRule FixedCharacters="3" TypeOfData="Digits"></rule:FixedLengthRule>
                             <rule:IsWithinRange MinimumValue="300" MaximumValue="900"></rule:IsWithinRange>
                             <rule:OnlyNumericRule></rule:OnlyNumericRule>
                         </Binding.ValidationRules>
@@ -161,7 +161,7 @@
                     <Binding Path="AccountIfsc" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <rule:NonEmptyRule></rule:NonEmptyRule>
-                            <rule:FixedLengthRule FixedCharacters="11"></rule:FixedLengthRule>
+                            <rule:FixedLengthRule FixedCharacters="11" TypeOfData="Characters"></rule:FixedLengthRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>

@@ -111,7 +111,7 @@
                         <Binding Path="GurantorMobile" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                             <Binding.ValidationRules>
                                 <rule:NonEmptyRule></rule:NonEmptyRule>
-                                <rule:FixedLengthRule FixedCharacters="10"></rule:FixedLengthRule>
+                                <rule:FixedLengthRule FixedCharacters="10" TypeOfData="Digits"></rule:FixedLengthRule>
                                 <rule:OnlyNumericRule></rule:OnlyNumericRule>
                             </Binding.ValidationRules>
                         </Binding>

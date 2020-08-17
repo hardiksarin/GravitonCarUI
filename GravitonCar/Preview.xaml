@@ -126,7 +126,7 @@
             </TextBox>
 
             <ComboBox   materialDesign:HintAssist.Hint="Acquaintance" materialDesign:HintAssist.HintOpacity=".56" IsEditable="True" Margin="5,50,0,0"  Name="AcquaintanceComboBox"  Grid.Row="5" Grid.Column="1"  Width="200" HorizontalAlignment="Left" Background="White"  Foreground="Gray" FontSize="20" FontWeight="Light" VerticalAlignment="Bottom"  BorderBrush="LightGray"></ComboBox>
-            <TextBox  materialDesign:HintAssist.Hint="Acquaintance Name"   Style="{StaticResource MaterialDesignFloatingHintTextBox}"  Margin="5,50,0,0" Grid.Row="5" Grid.Column="1" Width="200" x:Name="AcquaintanceNameTextBox" Foreground="Gray" FontSize="20" FontWeight="Light" VerticalAlignment="Bottom" HorizontalAlignment="Center"  BorderBrush="LightGray">
+            <TextBox  materialDesign:HintAssist.Hint="Acquaintance Name"   Style="{StaticResource MaterialDesignFloatingHintTextBox}"  Margin="5,50,0,0" Grid.Row="5" Grid.Column="1" Width="200"  x:Name="AcquaintanceNameTextBox" Foreground="Gray" FontSize="20" FontWeight="Light" VerticalAlignment="Bottom" HorizontalAlignment="Center"  BorderBrush="LightGray">
                 <TextBox.Text>
                     <Binding Path="ApplicantAcquaintance" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
@@ -154,7 +154,7 @@
                     <Binding Path="ApplicantPincode" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <rule:NonEmptyRule></rule:NonEmptyRule>
-                            <rule:FixedLengthRule FixedCharacters="6"></rule:FixedLengthRule>
+                            <rule:FixedLengthRule FixedCharacters="6" TypeOfData="Digits"></rule:FixedLengthRule>
                             <rule:OnlyNumericRule></rule:OnlyNumericRule>
                         </Binding.ValidationRules>
                     </Binding>
@@ -179,7 +179,7 @@
                         <Binding.ValidationRules>
                             <rule:OnlyNumericRule></rule:OnlyNumericRule>
                             <rule:NonEmptyRule></rule:NonEmptyRule>
-                            <rule:FixedLengthRule FixedCharacters="10"></rule:FixedLengthRule>
+                            <rule:FixedLengthRule FixedCharacters="10" TypeOfData="Digits"></rule:FixedLengthRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -190,7 +190,7 @@
                         <Binding.ValidationRules>
                             <rule:OnlyNumericRule></rule:OnlyNumericRule>
                             <rule:NonEmptyRule></rule:NonEmptyRule>
-                            <rule:FixedLengthRule FixedCharacters="10"></rule:FixedLengthRule>
+                            <rule:FixedLengthRule FixedCharacters="10" TypeOfData="Digits"></rule:FixedLengthRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -306,7 +306,7 @@
                     <Binding Path="GurantorMobile" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <rule:NonEmptyRule></rule:NonEmptyRule>
-                            <rule:FixedLengthRule FixedCharacters="10"></rule:FixedLengthRule>
+                            <rule:FixedLengthRule FixedCharacters="10" TypeOfData="Digits"></rule:FixedLengthRule>
                             <rule:OnlyNumericRule></rule:OnlyNumericRule>
                         </Binding.ValidationRules>
                     </Binding>
@@ -359,7 +359,7 @@
                         <Binding.ValidationRules>
                             <rule:OnlyNumericRule></rule:OnlyNumericRule>
                             <rule:NonEmptyRule></rule:NonEmptyRule>
-                            <rule:FixedLengthRule FixedCharacters="12"></rule:FixedLengthRule>
+                            <rule:FixedLengthRule FixedCharacters="12" TypeOfData="Digits"></rule:FixedLengthRule>
                             <rule:AadharValidationRule></rule:AadharValidationRule>
                         </Binding.ValidationRules>
                     </Binding>
@@ -370,7 +370,7 @@
                     <Binding Path="DocumentPan" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <rule:NonEmptyRule></rule:NonEmptyRule>
-                            <rule:FixedLengthRule FixedCharacters="10"></rule:FixedLengthRule>
+                            <rule:FixedLengthRule FixedCharacters="10" TypeOfData="Characters"></rule:FixedLengthRule>
                             <rule:PanValidationRules></rule:PanValidationRules>
                         </Binding.ValidationRules>
                     </Binding>
@@ -381,7 +381,7 @@
                     <Binding Path="DocumentCibil" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <rule:NonEmptyRule></rule:NonEmptyRule>
-                            <rule:FixedLengthRule FixedCharacters="3"></rule:FixedLengthRule>
+                            <rule:FixedLengthRule FixedCharacters="3" TypeOfData="Digits"></rule:FixedLengthRule>
                             <rule:IsWithinRange MinimumValue="300" MaximumValue="900"></rule:IsWithinRange>
                             <rule:OnlyNumericRule></rule:OnlyNumericRule>
                         </Binding.ValidationRules>
@@ -444,7 +444,7 @@
                     <Binding Path="AccountIfsc" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <rule:NonEmptyRule></rule:NonEmptyRule>
-                            <rule:FixedLengthRule FixedCharacters="11"></rule:FixedLengthRule>
+                            <rule:FixedLengthRule FixedCharacters="11" TypeOfData="Characters"></rule:FixedLengthRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>

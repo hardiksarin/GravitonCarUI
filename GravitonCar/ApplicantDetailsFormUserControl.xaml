@@ -76,7 +76,7 @@
                         <Binding.ValidationRules>
                             <rule:NonEmptyRule></rule:NonEmptyRule>
                             <rule:OnlyAlphabetsRule ></rule:OnlyAlphabetsRule>
-                            <local:MinimumCharacterRule MinimumCharacters="2"></local:MinimumCharacterRule>
+                            <local:MinimumCharacterRule MinimumCharacters="2" ></local:MinimumCharacterRule>
                             <rule:MaximumCharacterRule MaximumCharacters="50"></rule:MaximumCharacterRule>
                             
                         </Binding.ValidationRules>
@@ -137,7 +137,7 @@
                     <Binding Path="ApplicantPincode" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <rule:NonEmptyRule></rule:NonEmptyRule>
-                            <rule:FixedLengthRule FixedCharacters="6"></rule:FixedLengthRule>
+                            <rule:FixedLengthRule FixedCharacters="6" TypeOfData="Digits"></rule:FixedLengthRule>
                             <rule:OnlyNumericRule></rule:OnlyNumericRule>
                         </Binding.ValidationRules>
                     </Binding>
@@ -161,7 +161,7 @@
                     <Binding Path="ApplicantMobile" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <rule:NonEmptyRule></rule:NonEmptyRule>
-                            <rule:FixedLengthRule FixedCharacters="10"></rule:FixedLengthRule>
+                            <rule:FixedLengthRule FixedCharacters="10" TypeOfData="Digits"></rule:FixedLengthRule>
                             <rule:OnlyNumericRule></rule:OnlyNumericRule>
                         </Binding.ValidationRules>
                     </Binding>
@@ -172,7 +172,7 @@
                     <Binding Path="ApplicantOfficeNo" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <rule:NonEmptyRule></rule:NonEmptyRule>
-                            <rule:FixedLengthRule FixedCharacters="10"></rule:FixedLengthRule>
+                            <rule:FixedLengthRule FixedCharacters="10" TypeOfData="Digits"></rule:FixedLengthRule>
                             <rule:OnlyNumericRule></rule:OnlyNumericRule>
                         </Binding.ValidationRules>
                     </Binding>
