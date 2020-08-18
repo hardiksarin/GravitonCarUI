@@ -9,7 +9,7 @@
   <Identity
     Name="bce5eeee-bad0-4c6b-96e2-1441edc8d87a"
     Publisher="CN=Kugelblitz Technologies LLP"
-    Version="1.0.0.0" />
+    Version="1.0.1.0" />
 
   <Properties>
     <DisplayName>TheThreeFinanceInstaller</DisplayName>

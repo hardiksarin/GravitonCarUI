@@ -7,7 +7,7 @@
         
 
         mc:Ignorable="d"
-        Title="The Three Finance" Height="800" Width="1000" SizeToContent="Manual"  WindowStartupLocation="CenterScreen">
+        Title="Graviton" Height="800" Width="1000" SizeToContent="Manual"  WindowStartupLocation="CenterScreen" Icon="GravitonLogo.ico" >
 
 
 
