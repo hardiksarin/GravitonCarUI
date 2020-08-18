@@ -878,7 +878,12 @@ namespace GravitonCar
                 }
             }
 
-            OptionalIdDetailsTextBox.Text = model.documentModel.document_optional;
+            DocumentTypeModel x = (DocumentTypeModel)OptionalIdTypeComboBox.SelectedItem;
+
+            if (x.documenttype_name != "None")
+            {
+                OptionalIdDetailsTextBox.Text = model.documentModel.document_optional; 
+            }
 
             //In hand Income
             InHandMonthlyIcomeTextBox.Text = model.accountModel.account_inhandsalary.ToString();
@@ -1072,7 +1077,15 @@ namespace GravitonCar
             //Optional ID
             DocumentTypeModel documentType = (DocumentTypeModel)OptionalIdTypeComboBox.SelectedItem;
             model.documentModel.document_id = documentType.documenttype_id;
-            model.documentModel.document_optional = OptionalIdDetailsTextBox.Text;
+
+            if (documentType.documenttype_name == "None")
+            {
+                model.documentModel.document_optional = null;
+            }
+            else
+            {
+                model.documentModel.document_optional = OptionalIdDetailsTextBox.Text;
+            }
 
             //In hand Income
             model.accountModel.account_inhandsalary = int.Parse(InHandMonthlyIcomeTextBox.Text);
@@ -1270,7 +1283,8 @@ namespace GravitonCar
             SaveGurantorForm();
             SaveFinancialForm();
             string output = JsonConvert.SerializeObject(model);
-            try
+            GlobalConfig.Connection.CreateCar(model);
+            /*try
             {
                 GlobalConfig.Connection.CreateCar(model);
                 MessageBox.Show("New KYC Created!");
@@ -1278,7 +1292,7 @@ namespace GravitonCar
             catch(Exception a)
             {
                 MessageBox.Show(a.Message);
-            }
+            }*/
             
             WriteJson(output);
             callingForm.SearchScreen();
@@ -1340,10 +1354,12 @@ namespace GravitonCar
                 OptionalIdDetailsTextBox.Clear();
                 OptionalIdDetailsTextBox.IsEnabled = false;
                 SubmitButton.IsEnabled = true;
+                OptionalIdDetailsTextBox.Visibility = Visibility.Hidden;
             }
             else
             {
                 OptionalIdDetailsTextBox.IsEnabled = true;
+                OptionalIdDetailsTextBox.Visibility = Visibility.Visible;
             }
         }
     }

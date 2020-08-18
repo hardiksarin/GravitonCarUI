@@ -734,11 +734,14 @@ namespace GravitonCar
             {
                 output = false;
             }
-            if(OptionalIdDetailsTextBox.Text.Length == 0)
+            if (OptionalIdDetailsTextBox.IsEnabled)
             {
-                output = false;
+                if (OptionalIdDetailsTextBox.Text.Length == 0)
+                {
+                    output = false;
+                } 
             }
-            if(InHandMonthlyIcomeTextBox.Text.Length == 0)
+            if (InHandMonthlyIcomeTextBox.Text.Length == 0)
             {
                 output = false;
             }
@@ -806,10 +809,12 @@ namespace GravitonCar
                 OptionalIdDetailsTextBox.Clear();
                 OptionalIdDetailsTextBox.IsEnabled = false;
                 ReviewButton.IsEnabled = true;
+                OptionalIdDetailsTextBox.Visibility = Visibility.Hidden;
             }
             else
             {
                 OptionalIdDetailsTextBox.IsEnabled = true;
+                OptionalIdDetailsTextBox.Visibility = Visibility.Visible;
             }
         }
     }

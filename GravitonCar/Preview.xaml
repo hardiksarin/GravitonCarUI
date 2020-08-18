@@ -381,9 +381,8 @@
                     <Binding Path="DocumentCibil" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <rule:NonEmptyRule></rule:NonEmptyRule>
-                            <rule:FixedLengthRule FixedCharacters="3" TypeOfData="Digits"></rule:FixedLengthRule>
-                            <rule:IsWithinRange MinimumValue="300" MaximumValue="900"></rule:IsWithinRange>
                             <rule:OnlyNumericRule></rule:OnlyNumericRule>
+                            <rule:CibilScoreRule MinimumValue="300" MaximumValue="900"></rule:CibilScoreRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
