@@ -1337,8 +1337,9 @@ namespace GravitonCar
 
             if (selectedModel.documenttype_name == "None")
             {
-                OptionalIdDetailsTextBox.Text = "";
+                OptionalIdDetailsTextBox.Clear();
                 OptionalIdDetailsTextBox.IsEnabled = false;
+                SubmitButton.IsEnabled = true;
             }
             else
             {
