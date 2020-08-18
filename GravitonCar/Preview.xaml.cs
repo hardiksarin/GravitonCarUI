@@ -905,7 +905,14 @@ namespace GravitonCar
             //First, Middle and Last Name
 
             model.applicantModel.applicant_firstname = FirstNameTextBox.Text;
-            model.applicantModel.applicant_middlename = MiddleNameTextBox.Text;
+            if (MiddleNameTextBox.Text.Length != 0)
+            {
+                model.applicantModel.applicant_middlename = MiddleNameTextBox.Text;
+            }
+            else
+            {
+                model.applicantModel.applicant_middlename = "";
+            }
             model.applicantModel.applicant_lastname = LastNameTextBox.Text;
 
             //Get Aquaintance
@@ -996,7 +1003,14 @@ namespace GravitonCar
 
             //First, Middle and Last Name
             model.gurantorModel.gurantor_firstname = FirstNameApplicantTextBox.Text;
-            model.gurantorModel.gurantor_middlename = MiddleNameApplicantTextBox.Text;
+            if (MiddleNameApplicantTextBox.Text.Length != 0)
+            {
+                model.gurantorModel.gurantor_middlename = MiddleNameApplicantTextBox.Text;
+            }
+            else
+            {
+                model.gurantorModel.gurantor_middlename = "";
+            }
             model.gurantorModel.gurantor_lastname = LastNameApplicantTextBox.Text;
 
             //Mobile
@@ -1325,6 +1339,10 @@ namespace GravitonCar
             {
                 OptionalIdDetailsTextBox.Text = "";
                 OptionalIdDetailsTextBox.IsEnabled = false;
+            }
+            else
+            {
+                OptionalIdDetailsTextBox.IsEnabled = true;
             }
         }
     }

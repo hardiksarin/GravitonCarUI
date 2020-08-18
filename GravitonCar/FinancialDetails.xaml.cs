@@ -806,6 +806,10 @@ namespace GravitonCar
                 OptionalIdDetailsTextBox.Text = "";
                 OptionalIdDetailsTextBox.IsEnabled = false;
             }
+            else
+            {
+                OptionalIdDetailsTextBox.IsEnabled = true;
+            }
         }
     }
 }

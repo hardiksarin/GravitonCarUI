@@ -382,10 +382,6 @@ namespace GravitonCar
             {
                 output = false;
             }
-            if(MiddleNameTextBox.Text.Length == 0)
-            {
-                output = false;
-            }
             if(LastNameTextBox.Text.Length == 0)
             {
                 output = false;
