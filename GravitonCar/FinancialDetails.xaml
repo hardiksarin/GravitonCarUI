@@ -123,9 +123,9 @@
                     <Binding Path="AccountSalary" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <rule:NonEmptyRule></rule:NonEmptyRule>
-                            <rule:MaximumCharacterRule MaximumCharacters="12"></rule:MaximumCharacterRule>
-                            <local:MinimumCharacterRule MinimumCharacters="4"></local:MinimumCharacterRule>
                             <rule:OnlyNumericRule></rule:OnlyNumericRule>
+                            <local:MinimumCharacterRule MinimumCharacters="4"></local:MinimumCharacterRule>
+                            <rule:MaximumCharacterRule MaximumCharacters="12"></rule:MaximumCharacterRule>
                         </Binding.ValidationRules>
                     </Binding> 
                 </TextBox.Text>
