@@ -1283,17 +1283,15 @@ namespace GravitonCar
             SaveGurantorForm();
             SaveFinancialForm();
             string output = JsonConvert.SerializeObject(model);
-            GlobalConfig.Connection.CreateCar(model);
-            /*try
+            try
             {
                 GlobalConfig.Connection.CreateCar(model);
                 MessageBox.Show("New KYC Created!");
             }
-            catch(Exception a)
+            catch (Exception a)
             {
                 MessageBox.Show(a.Message);
-            }*/
-            
+            }
             WriteJson(output);
             callingForm.SearchScreen();
         }
