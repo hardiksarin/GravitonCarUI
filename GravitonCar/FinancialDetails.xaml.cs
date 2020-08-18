@@ -796,5 +796,16 @@ namespace GravitonCar
         {
             ReviewButton.IsEnabled = true;
         }
+
+        private void OptionalIdTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DocumentTypeModel selectedModel = (DocumentTypeModel)OptionalIdTypeComboBox.SelectedItem;
+
+            if(selectedModel.documenttype_name == "None")
+            {
+                OptionalIdDetailsTextBox.Text = "";
+                OptionalIdDetailsTextBox.IsEnabled = false;
+            }
+        }
     }
 }

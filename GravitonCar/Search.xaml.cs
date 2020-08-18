@@ -34,8 +34,18 @@ namespace GravitonCar
         }
 
         private void LoadListData()
+            
         {
-            applicantList = GlobalConfig.Connection.GetApplicant_All();
+            try {
+                applicantList = GlobalConfig.Connection.GetApplicant_All();
+
+            }
+            catch(Exception e)
+            {
+                if (MessageBox.Show($" Exception : {e.Message} ", "Graviton - Connection Error", MessageBoxButton.OK) == MessageBoxResult.OK)
+                    Environment.Exit(0);
+            }
+
         }
 
         private void WireUpList()

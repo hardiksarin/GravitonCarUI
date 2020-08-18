@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -15,6 +16,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
+using System.Windows.Resources;
 using System.Windows.Shapes;
 
 
@@ -216,7 +218,7 @@ namespace GravitonCar
             acquaintanceList = GlobalConfig.Connection.GetAcquaintance_All();
             casteList = GlobalConfig.Connection.GetCaste_All();
             categoryList = GlobalConfig.Connection.GetCategory_All();
-            jsonDistrict = JObject.Parse(File.ReadAllText("dist.json"));
+            jsonDistrict = JObject.Parse(GlobalConfig.json);
         }
 
         private void WireUpList()

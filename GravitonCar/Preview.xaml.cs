@@ -470,7 +470,7 @@ namespace GravitonCar
             loanTypes = GlobalConfig.Connection.GetLoanType_All();
             documentModels = GlobalConfig.Connection.GetDocumentType_All();
 
-            jsonDistrict = JObject.Parse(File.ReadAllText("dist.json"));
+            jsonDistrict = JObject.Parse(GlobalConfig.json);
         }
 
         private void WireUpLists()
@@ -522,7 +522,6 @@ namespace GravitonCar
             ComboBox LoanType = new ComboBox();
             LoanType.Name = $"LoanNameTextbox{i}";                                //"LoanNameTextbox" + i.ToString();
             LoanType.Width = 200;
-            LoanType.Height = 30;
             LoanType.ItemsSource = loanTypes;
             LoanType.DisplayMemberPath = "loantype_name";
             LoanType.SelectedIndex = loan.loan_type - 1;
@@ -543,7 +542,6 @@ namespace GravitonCar
             LoanBankName.Name = $"LoanBankNameTextbox{i}";                        //"LoanBankNameTextbox" + i.ToString();
             LoanBankName.Margin = new Thickness(10);
             LoanBankName.Width = 200;
-            LoanBankName.Height = 30;
             LoanBankName.Text = loan.loan_bankname;
             return LoanBankName;
         }
@@ -561,7 +559,6 @@ namespace GravitonCar
             LoanAmount.Name = $"LoanLoanAmountTextbox{i}";                        //"LoanLoanAmountTextbox" + i.ToString();
             LoanAmount.Margin = new Thickness(10);
             LoanAmount.Width = 200;
-            LoanAmount.Height = 30;
             LoanAmount.Text = loan.loan_amount.ToString();
             return LoanAmount;
         }
@@ -579,7 +576,6 @@ namespace GravitonCar
             LoanEmiAmount.Name = $"LoanEmiAmountTextbox{i}";                       //"LoanEmiAmountTextbox" + i.ToString();
             LoanEmiAmount.Margin = new Thickness(10);
             LoanEmiAmount.Width = 200;
-            LoanEmiAmount.Height = 30;
             LoanEmiAmount.Text = loan.loan_emi.ToString();
             return LoanEmiAmount;
         }
@@ -1319,6 +1315,17 @@ namespace GravitonCar
             }
             DistrictComboBox.ItemsSource = null;
             DistrictComboBox.ItemsSource = temp;
+        }
+
+        private void OptionalIdTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DocumentTypeModel selectedModel = (DocumentTypeModel)OptionalIdTypeComboBox.SelectedItem;
+
+            if (selectedModel.documenttype_name == "None")
+            {
+                OptionalIdDetailsTextBox.Text = "";
+                OptionalIdDetailsTextBox.IsEnabled = false;
+            }
         }
     }
 }

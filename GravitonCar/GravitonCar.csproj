@@ -4,7 +4,15 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
+    <Platforms>AnyCPU;x64;x86</Platforms>
   </PropertyGroup>
+
+
+  <ItemGroup>
+    <Resource Include="dist.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="MaterialDesignThemes" Version="3.1.3" />
@@ -13,12 +21,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GravitonCarLibrary\GravitonCarLibrary.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="dist.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
 </Project>
