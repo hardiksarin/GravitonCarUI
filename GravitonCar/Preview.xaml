@@ -203,7 +203,7 @@
                             <rule:OnlyAlphabetsRule></rule:OnlyAlphabetsRule>
                             <rule:NonEmptyRule></rule:NonEmptyRule>
                             <local:MinimumCharacterRule MinimumCharacters="2"></local:MinimumCharacterRule>
-                            <rule:MaximumCharacterRule MaximumCharacters="20"></rule:MaximumCharacterRule>
+                            <rule:MaximumCharacterRule MaximumCharacters="50"></rule:MaximumCharacterRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -420,7 +420,7 @@
                             <rule:OnlyAlphabetsRule></rule:OnlyAlphabetsRule>
                             <rule:NonEmptyRule></rule:NonEmptyRule>
                             <local:MinimumCharacterRule MinimumCharacters="2"></local:MinimumCharacterRule>
-                            <rule:MaximumCharacterRule MaximumCharacters="50"></rule:MaximumCharacterRule>
+                            <rule:MaximumCharacterRule MaximumCharacters="100"></rule:MaximumCharacterRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>

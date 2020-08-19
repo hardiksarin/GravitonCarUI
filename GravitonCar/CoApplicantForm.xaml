@@ -142,9 +142,8 @@
                         </Binding>
                     </TextBox.Text>
                 </TextBox>
-
-                <Button  Margin="200,60,60,60" Width="200" Height="60"   x:Name="BackButton" Grid.Column="1" Grid.Row="10" Content="Back" BorderBrush="Transparent" Background="#03a9f4"  Foreground="#ffffff" FontSize="30" FontWeight="Light" HorizontalAlignment="Left" Click="BackButton_Click" ></Button>
                 <Button  Margin="60,60,200,60" Width="200" Height="60"   x:Name="NextButton" Grid.Column="1" Grid.Row="10" Content="Next" BorderBrush="Transparent" Background="#03a9f4"  Foreground="#ffffff" FontSize="30" FontWeight="Light" HorizontalAlignment="Right" Click="NextButton_Click" ></Button>
+                <Button  Margin="200,60,60,60" Width="200" Height="60"   x:Name="BackButton" Grid.Column="1" Grid.Row="10" Content="Back" BorderBrush="Transparent" Background="LightGray"  Foreground="#ffffff" FontSize="30" FontWeight="Light" HorizontalAlignment="Left" Click="BackButton_Click" ></Button>
 
 
         </Grid>

@@ -8,7 +8,6 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 
              mc:Ignorable="d" 
              d:DesignHeight="760" d:DesignWidth="1000" Background="White" >
-    <ScrollViewer VerticalScrollBarVisibility="Hidden" >
         <Grid>
             <Grid x:Name="print">
 
@@ -55,7 +54,6 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 
             </Grid>
         </Grid>
-    </ScrollViewer>
 
 </UserControl>
 

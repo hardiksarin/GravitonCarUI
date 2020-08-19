@@ -135,7 +135,7 @@
                         <Binding.ValidationRules>
                             <rule:NonEmptyRule></rule:NonEmptyRule>
                             <local:MinimumCharacterRule MinimumCharacters="2"></local:MinimumCharacterRule>
-                            <rule:MaximumCharacterRule MaximumCharacters="50"></rule:MaximumCharacterRule>
+                            <rule:MaximumCharacterRule MaximumCharacters="100"></rule:MaximumCharacterRule>
                             <rule:OnlyAlphabetsRule></rule:OnlyAlphabetsRule>
 
                         </Binding.ValidationRules>
