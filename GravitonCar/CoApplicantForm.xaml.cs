@@ -81,7 +81,7 @@ namespace GravitonCar
 
         IScreenRequester callingForm;
         CarModel model = new CarModel();
-        List<GurantorTypeModel> gurantorType = new List<GurantorTypeModel>();
+        //List<GurantorTypeModel> gurantorType = new List<GurantorTypeModel>();
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -92,7 +92,7 @@ namespace GravitonCar
             ApplicantDetailsFormUserControl.errorForm = this;
             callingForm = caller;
             model = carModel;
-            LoadListData();
+            //LoadListData();
             WireUpList();
             WireUpData();
         }
@@ -105,14 +105,14 @@ namespace GravitonCar
         private void WireUpList()
         {
             GurantorComboBox.ItemsSource = null;
-            GurantorComboBox.ItemsSource = gurantorType;
+            GurantorComboBox.ItemsSource = Search.gurantorType;
             GurantorComboBox.DisplayMemberPath = "gurantortype_name";
         }
 
-        private void LoadListData()
+        /*private void LoadListData()
         {
             gurantorType = GlobalConfig.Connection.GetGurantorType_All();
-        }
+        }*/
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
@@ -137,7 +137,7 @@ namespace GravitonCar
         {
             if (model.gurantorModel.gurantortype_id != 0)
             {
-                foreach (GurantorTypeModel gurantor in gurantorType)
+                foreach (GurantorTypeModel gurantor in Search.gurantorType)
                 {
                     if (model.gurantorModel.gurantortype_id == gurantor.gurantortype_id)
                     {

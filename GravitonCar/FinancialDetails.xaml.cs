@@ -146,9 +146,9 @@ namespace GravitonCar
 
         int i = 0;
         List<NewLoanModel> existingLoans = new List<NewLoanModel>();
-        List<LoanTypeModel> loanTypes = new List<LoanTypeModel>();
         List<LoanModel> loanModels = new List<LoanModel>();
-        List<DocumentTypeModel> documentModels = new List<DocumentTypeModel>();
+        /*List<DocumentTypeModel> documentModels = new List<DocumentTypeModel>();
+        List<LoanTypeModel> loanTypes = new List<LoanTypeModel>();*/
         IScreenRequester callingForm;
         CarModel model = new CarModel();
 
@@ -161,7 +161,7 @@ namespace GravitonCar
             ApplicantDetailsFormUserControl.errorForm = this;
             callingForm = caller;
             model = carModel;
-            LoadListData();
+            //LoadListData();
             WireUpList();
             WireUpData();
         }
@@ -171,16 +171,16 @@ namespace GravitonCar
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        private void LoadListData()
+        /*private void LoadListData()
         {
             loanTypes = GlobalConfig.Connection.GetLoanType_All();
             documentModels = GlobalConfig.Connection.GetDocumentType_All();
-        }
+        }*/
 
         private void WireUpList()
         {
             OptionalIdTypeComboBox.ItemsSource = null;
-            OptionalIdTypeComboBox.ItemsSource = documentModels;
+            OptionalIdTypeComboBox.ItemsSource = Search.documentModels;
 
             OptionalIdTypeComboBox.DisplayMemberPath = "documenttype_name";
         }
@@ -190,7 +190,7 @@ namespace GravitonCar
             ComboBox LoanType = new ComboBox();
             LoanType.Name = $"LoanNameTextbox{i}";                                //"LoanNameTextbox" + i.ToString();
             LoanType.Width = 200;
-            LoanType.ItemsSource = loanTypes;
+            LoanType.ItemsSource = Search.loanTypes;
             LoanType.DisplayMemberPath = "loantype_name";
             return LoanType;
         }
@@ -231,7 +231,7 @@ namespace GravitonCar
             LoanType.Name = $"LoanNameTextbox{i}";                                //"LoanNameTextbox" + i.ToString();
             LoanType.Width = 200;
             LoanType.Height = 30;
-            LoanType.ItemsSource = loanTypes;
+            LoanType.ItemsSource = Search.loanTypes;
             LoanType.DisplayMemberPath = "loantype_name";
             LoanType.SelectedIndex = loan.loan_type;
             return LoanType;
@@ -574,7 +574,7 @@ namespace GravitonCar
             //Optional ID
             if (model.documentModel.document_id != 0)
             {
-                foreach (DocumentTypeModel document in documentModels)
+                foreach (DocumentTypeModel document in Search.documentModels)
                 {
                     if (document.documenttype_id == model.documentModel.document_id)
                     {

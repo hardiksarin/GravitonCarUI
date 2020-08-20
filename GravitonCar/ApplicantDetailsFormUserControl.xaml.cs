@@ -190,13 +190,13 @@ namespace GravitonCar
 
         IScreenRequester callingForm;
         public static IValidateError errorForm { get; set; }
-        List<MarriedStatusModel> maritalStatusList = new List<MarriedStatusModel>();
+        /*List<MarriedStatusModel> maritalStatusList = new List<MarriedStatusModel>();
         List<AcquaintanceModel> acquaintanceList = new List<AcquaintanceModel>();
         List<CasteModel> casteList = new List<CasteModel>();
         List<CategoryModel> categoryList = new List<CategoryModel>();
         List<string> stateList = new List<string>() { "Andaman and Nicobar Islands", "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chandigarh", "Chhattisgarh", "Dadra and Nagar Haveli", "Delhi", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jammu and Kashmir", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Puducherry", "Punjab", "Rajasthan", "Tamil Nadu", "Telangana", "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal" };
         List<string> educationList = new List<string>() { "Postgraduate ", "Undergraduate", "Higher secondary", "Matriculation"};
-        List<string> branchesList = new List<string>() { "Jaipur Office " };
+        List<string> branchesList = new List<string>() { "Jaipur Office " };*/
         CarModel model = new CarModel();
         JObject jsonDistrict;
 
@@ -214,39 +214,39 @@ namespace GravitonCar
 
         private void LoadListData()
         {
-            maritalStatusList = GlobalConfig.Connection.GetMarried_All();
+            /*maritalStatusList = GlobalConfig.Connection.GetMarried_All();
             acquaintanceList = GlobalConfig.Connection.GetAcquaintance_All();
             casteList = GlobalConfig.Connection.GetCaste_All();
-            categoryList = GlobalConfig.Connection.GetCategory_All();
+            categoryList = GlobalConfig.Connection.GetCategory_All();*/
             jsonDistrict = JObject.Parse(GlobalConfig.json);
         }
 
         private void WireUpList()
         {
             MaritalStatusComboBox.ItemsSource = null;
-            MaritalStatusComboBox.ItemsSource = maritalStatusList;
+            MaritalStatusComboBox.ItemsSource = Search.maritalStatusList;
             MaritalStatusComboBox.DisplayMemberPath = "maritalstatus_name";
 
             AcquaintanceComboBox.ItemsSource = null;
-            AcquaintanceComboBox.ItemsSource = acquaintanceList;
+            AcquaintanceComboBox.ItemsSource = Search.acquaintanceList;
             AcquaintanceComboBox.DisplayMemberPath = "acquaintance_name";
 
             CasteComboBox.ItemsSource = null;
-            CasteComboBox.ItemsSource = casteList;
+            CasteComboBox.ItemsSource = Search.casteList;
             CasteComboBox.DisplayMemberPath = "caste_name";
 
             CategoryComboBox.ItemsSource = null;
-            CategoryComboBox.ItemsSource = categoryList;
+            CategoryComboBox.ItemsSource = Search.categoryList;
             CategoryComboBox.DisplayMemberPath = "category_name";
 
             StateComboBox.ItemsSource = null;
-            StateComboBox.ItemsSource = stateList;
+            StateComboBox.ItemsSource = Search.stateList;
 
             EducationComboBox.ItemsSource = null;
-            EducationComboBox.ItemsSource = educationList;
+            EducationComboBox.ItemsSource = Search.educationList;
 
             NearestBranchComboBox.ItemsSource = null;
-            NearestBranchComboBox.ItemsSource = branchesList;
+            NearestBranchComboBox.ItemsSource = Search.branchesList;
 
         }
         private void PrintButton_Click(object sender, RoutedEventArgs e)

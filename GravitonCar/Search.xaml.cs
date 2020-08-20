@@ -22,6 +22,16 @@ namespace GravitonCar
     {
         List<string> searchList = new List<string>();
         List<ApplicantModel> applicantList = new List<ApplicantModel>();
+        public static List<MarriedStatusModel> maritalStatusList = new List<MarriedStatusModel>();
+        public static List<AcquaintanceModel> acquaintanceList = new List<AcquaintanceModel>();
+        public static List<CasteModel> casteList = new List<CasteModel>();
+        public static List<CategoryModel> categoryList = new List<CategoryModel>();
+        public static List<string> stateList = new List<string>() { "Andaman and Nicobar Islands", "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chandigarh", "Chhattisgarh", "Dadra and Nagar Haveli", "Delhi", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jammu and Kashmir", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Puducherry", "Punjab", "Rajasthan", "Tamil Nadu", "Telangana", "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal" };
+        public static List<string> educationList = new List<string>() { "Postgraduate ", "Undergraduate", "Higher secondary", "Matriculation" };
+        public static List<string> branchesList = new List<string>() { "Jaipur Office " };
+        public static List<GurantorTypeModel> gurantorType = new List<GurantorTypeModel>();
+        public static List<LoanTypeModel> loanTypes = new List<LoanTypeModel>();
+        public static List<DocumentTypeModel> documentModels = new List<DocumentTypeModel>();
         IScreenRequester callingForm;
         public Search(IScreenRequester caller)
         {
@@ -44,6 +54,44 @@ namespace GravitonCar
             {
                 if (MessageBox.Show($" Exception : {e.Message} ", "Graviton - Connection Error", MessageBoxButton.OK) == MessageBoxResult.OK)
                     Environment.Exit(0);
+            }
+
+            try
+            {
+                if (maritalStatusList.Count == 0)
+                {
+                    maritalStatusList = GlobalConfig.Connection.GetMarried_All(); 
+                }
+                if (acquaintanceList.Count == 0)
+                {
+                    acquaintanceList = GlobalConfig.Connection.GetAcquaintance_All(); 
+                }
+                if (casteList.Count == 0)
+                {
+                    casteList = GlobalConfig.Connection.GetCaste_All(); 
+                }
+                if (categoryList.Count == 0)
+                {
+                    categoryList = GlobalConfig.Connection.GetCategory_All(); 
+                }
+
+                if (gurantorType.Count == 0)
+                {
+                    gurantorType = GlobalConfig.Connection.GetGurantorType_All(); 
+                }
+
+                if (loanTypes.Count == 0)
+                {
+                    loanTypes = GlobalConfig.Connection.GetLoanType_All(); 
+                }
+                if (documentModels.Count == 0)
+                {
+                    documentModels = GlobalConfig.Connection.GetDocumentType_All(); 
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Exception : " + e);
             }
 
         }

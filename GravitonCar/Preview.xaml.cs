@@ -423,7 +423,7 @@ namespace GravitonCar
 
 
         CarModel model = new CarModel();
-        private List<MarriedStatusModel> maritalStatusList = new List<MarriedStatusModel>();
+        /*private List<MarriedStatusModel> maritalStatusList = new List<MarriedStatusModel>();
         private List<AcquaintanceModel> acquaintanceList = new List<AcquaintanceModel>();
         private List<CasteModel> casteList = new List<CasteModel>();
         private List<CategoryModel> categoryList = new List<CategoryModel>();
@@ -432,7 +432,7 @@ namespace GravitonCar
         private List<string> branchesList = new List<string>() { "Jaipur Office " };
         private List<GurantorTypeModel> gurantorType = new List<GurantorTypeModel>();
         private List<LoanTypeModel> loanTypes = new List<LoanTypeModel>();
-        private List<DocumentTypeModel> documentModels = new List<DocumentTypeModel>();
+        private List<DocumentTypeModel> documentModels = new List<DocumentTypeModel>();*/
         List<LoanModel> loanModels = new List<LoanModel>();
         JObject jsonDistrict;
         int i = 0;
@@ -460,7 +460,7 @@ namespace GravitonCar
 
         private void LoadListData()
         {
-            maritalStatusList = GlobalConfig.Connection.GetMarried_All();
+            /*maritalStatusList = GlobalConfig.Connection.GetMarried_All();
             acquaintanceList = GlobalConfig.Connection.GetAcquaintance_All();
             casteList = GlobalConfig.Connection.GetCaste_All();
             categoryList = GlobalConfig.Connection.GetCategory_All();
@@ -468,7 +468,7 @@ namespace GravitonCar
             gurantorType = GlobalConfig.Connection.GetGurantorType_All();
 
             loanTypes = GlobalConfig.Connection.GetLoanType_All();
-            documentModels = GlobalConfig.Connection.GetDocumentType_All();
+            documentModels = GlobalConfig.Connection.GetDocumentType_All();*/
 
             jsonDistrict = JObject.Parse(GlobalConfig.json);
         }
@@ -476,36 +476,36 @@ namespace GravitonCar
         private void WireUpLists()
         {
             MaritalStatusComboBox.ItemsSource = null;
-            MaritalStatusComboBox.ItemsSource = maritalStatusList;
+            MaritalStatusComboBox.ItemsSource = Search.maritalStatusList;
             MaritalStatusComboBox.DisplayMemberPath = "maritalstatus_name";
 
             AcquaintanceComboBox.ItemsSource = null;
-            AcquaintanceComboBox.ItemsSource = acquaintanceList;
+            AcquaintanceComboBox.ItemsSource = Search.acquaintanceList;
             AcquaintanceComboBox.DisplayMemberPath = "acquaintance_name";
 
             CasteComboBox.ItemsSource = null;
-            CasteComboBox.ItemsSource = casteList;
+            CasteComboBox.ItemsSource = Search.casteList;
             CasteComboBox.DisplayMemberPath = "caste_name";
 
             CategoryComboBox.ItemsSource = null;
-            CategoryComboBox.ItemsSource = categoryList;
+            CategoryComboBox.ItemsSource = Search.categoryList;
             CategoryComboBox.DisplayMemberPath = "category_name";
 
             StateComboBox.ItemsSource = null;
-            StateComboBox.ItemsSource = stateList;
+            StateComboBox.ItemsSource = Search.stateList;
 
             EducationComboBox.ItemsSource = null;
-            EducationComboBox.ItemsSource = educationList;
+            EducationComboBox.ItemsSource = Search.educationList;
 
             NearestBranchComboBox.ItemsSource = null;
-            NearestBranchComboBox.ItemsSource = branchesList;
+            NearestBranchComboBox.ItemsSource = Search.branchesList;
 
             GurantorComboBox.ItemsSource = null;
-            GurantorComboBox.ItemsSource = gurantorType;
+            GurantorComboBox.ItemsSource = Search.gurantorType;
             GurantorComboBox.DisplayMemberPath = "gurantortype_name";
 
             OptionalIdTypeComboBox.ItemsSource = null;
-            OptionalIdTypeComboBox.ItemsSource = documentModels;
+            OptionalIdTypeComboBox.ItemsSource = Search.documentModels;
 
             OptionalIdTypeComboBox.DisplayMemberPath = "documenttype_name";
         }
@@ -522,7 +522,7 @@ namespace GravitonCar
             ComboBox LoanType = new ComboBox();
             LoanType.Name = $"LoanNameTextbox{i}";                                //"LoanNameTextbox" + i.ToString();
             LoanType.Width = 200;
-            LoanType.ItemsSource = loanTypes;
+            LoanType.ItemsSource = Search.loanTypes;
             LoanType.DisplayMemberPath = "loantype_name";
             LoanType.SelectedIndex = loan.loan_type - 1;
             return LoanType;
@@ -728,7 +728,7 @@ namespace GravitonCar
             LastNameTextBox.Text = model.applicantModel.applicant_lastname;
 
             //Get Aquaintance
-            foreach (AcquaintanceModel acquaintance in acquaintanceList)
+            foreach (AcquaintanceModel acquaintance in Search.acquaintanceList)
             {
                 if(acquaintance.acquaintance_id == model.applicantModel.applicant_acquaintanceid)
                 {
@@ -768,7 +768,7 @@ namespace GravitonCar
             AgeTextBlock.Text = a.ToString();
 
             //Marital Status
-            foreach (MarriedStatusModel married in maritalStatusList)
+            foreach (MarriedStatusModel married in Search.maritalStatusList)
             {
                 if(married.maritalstatus_id == model.applicantModel.applicant_maritalstatusid)
                 {
@@ -777,7 +777,7 @@ namespace GravitonCar
             }
 
             //Caste
-            foreach (CasteModel caste in casteList)
+            foreach (CasteModel caste in Search.casteList)
             {
                 if(caste.caste_id == model.applicantModel.applicant_casteid)
                 {
@@ -786,7 +786,7 @@ namespace GravitonCar
             }
 
             //Category
-            foreach (CategoryModel category in categoryList)
+            foreach (CategoryModel category in Search.categoryList)
             {
                 if(category.category_id == model.applicantModel.applicant_categoryid)
                 {
@@ -834,7 +834,7 @@ namespace GravitonCar
         private void WireUpGurantorForm()
         {
             //Co Applicant or Gurantor
-            foreach (GurantorTypeModel gurantor in gurantorType)
+            foreach (GurantorTypeModel gurantor in Search.gurantorType)
             {
                 if (model.gurantorModel.gurantortype_id == gurantor.gurantortype_id)
                 {
@@ -870,7 +870,7 @@ namespace GravitonCar
             CibilScoreTextBox.Text = model.documentModel.document_cibil.ToString();
 
             //Optional ID
-            foreach (DocumentTypeModel document in documentModels)
+            foreach (DocumentTypeModel document in Search.documentModels)
             {
                 if (document.documenttype_id == model.documentModel.document_id)
                 {
@@ -1242,7 +1242,7 @@ namespace GravitonCar
             LoanType.Name = $"LoanNameTextbox{i}";                                //"LoanNameTextbox" + i.ToString();
             LoanType.Width = 200;
             LoanType.Height = 30;
-            LoanType.ItemsSource = loanTypes;
+            LoanType.ItemsSource = Search.loanTypes;
             LoanType.DisplayMemberPath = "loantype_name";
             return LoanType;
         }
