@@ -47,7 +47,10 @@ namespace GravitonCar
             
         {
             try {
-                applicantList = GlobalConfig.Connection.GetApplicant_All();
+                if (applicantList.Count == 0)
+                {
+                    applicantList = GlobalConfig.Connection.GetApplicant_All(); 
+                }
 
             }
             catch(Exception e)

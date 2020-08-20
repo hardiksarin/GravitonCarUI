@@ -182,17 +182,11 @@ namespace GravitonCar
         private void WireUpForm()
         {
             //Co Applicant or Gurantor
-            if (GurantorComboBox.SelectedItem != null)
-            {
-                GurantorTypeModel gurantorTypeModel = (GurantorTypeModel)GurantorComboBox.SelectedItem;
-                model.gurantorModel.gurantortype_id = gurantorTypeModel.gurantortype_id; 
-            }
+            GurantorTypeModel gurantorTypeModel = (GurantorTypeModel)GurantorComboBox.SelectedItem;
+            model.gurantorModel.gurantortype_id = gurantorTypeModel.gurantortype_id;
 
             //First, Middle and Last Name
-            if (FirstNameTextBox.Text.Length != 0)
-            {
-                model.gurantorModel.gurantor_firstname = FirstNameTextBox.Text; 
-            }
+            model.gurantorModel.gurantor_firstname = FirstNameTextBox.Text;
             if (MiddleNameTextBox.Text.Length !=0)
             {
                 model.gurantorModel.gurantor_middlename = MiddleNameTextBox.Text;
@@ -201,28 +195,16 @@ namespace GravitonCar
             {
                 model.gurantorModel.gurantor_middlename = "";
             }
-            if (LastNameTextBox.Text.Length != 0)
-            {
-                model.gurantorModel.gurantor_lastname = LastNameTextBox.Text; 
-            }
+            model.gurantorModel.gurantor_lastname = LastNameTextBox.Text;
 
             //Mobile
-            if (MobilNumberTextBox.Text.Length != 0)
-            {
-                model.gurantorModel.gurantor_mobile = MobilNumberTextBox.Text; 
-            }
+            model.gurantorModel.gurantor_mobile = MobilNumberTextBox.Text;
 
             //Relationship
-            if (RelationshipTextBox.Text.Length != 0)
-            {
-                model.gurantorModel.gurantor_relation = RelationshipTextBox.Text; 
-            }
+            model.gurantorModel.gurantor_relation = RelationshipTextBox.Text;
 
             //Office Address
-            if (OfficeAddressTextBlock.Text.Length != 0)
-            {
-                model.gurantorModel.gurantor_currentaddress = OfficeAddressTextBlock.Text; 
-            }
+            model.gurantorModel.gurantor_currentaddress = OfficeAddressTextBlock.Text;
         }
 
         private bool ValidateCoapplicantForm()

@@ -666,45 +666,25 @@ namespace GravitonCar
             }
 
             //Cibil Score
-            if (CibilScoreTextBox.Text.Length != 0)
-            {
-                model.documentModel.document_cibil = int.Parse(CibilScoreTextBox.Text); 
-            }
+            model.documentModel.document_cibil = int.Parse(CibilScoreTextBox.Text);
 
             //Optional ID
-            if (OptionalIdTypeComboBox.SelectedItem != null)
-            {
-                DocumentTypeModel documentType = (DocumentTypeModel)OptionalIdTypeComboBox.SelectedItem;
-                model.documentModel.document_id = documentType.documenttype_id; 
-            }
-            if (OptionalIdDetailsTextBox.Text.Length != 0)
-            {
-                model.documentModel.document_optional = OptionalIdDetailsTextBox.Text; 
-            }
+            DocumentTypeModel documentType = (DocumentTypeModel)OptionalIdTypeComboBox.SelectedItem;
+            model.documentModel.document_id = documentType.documenttype_id;
+
+            model.documentModel.document_optional = OptionalIdDetailsTextBox.Text;
 
             //In hand Income
-            if (InHandMonthlyIcomeTextBox.Text.Length != 0)
-            {
-                model.accountModel.account_inhandsalary = int.Parse(InHandMonthlyIcomeTextBox.Text); 
-            }
+            model.accountModel.account_inhandsalary = int.Parse(InHandMonthlyIcomeTextBox.Text);
 
             //Bank Name
-            if (BankNameTextBox.Text.Length != 0)
-            {
-                model.accountModel.account_bankname = BankNameTextBox.Text; 
-            }
+            model.accountModel.account_bankname = BankNameTextBox.Text;
 
             //IFSC 
-            if (IFSCTextBox.Text.Length != 0)
-            {
-                model.accountModel.account_ifsc = IFSCTextBox.Text; 
-            }
+            model.accountModel.account_ifsc = IFSCTextBox.Text;
 
             //Accounnt Number
-            if (AccountNumberTextBox.Text.Length != 0)
-            {
-                model.accountModel.account_number = AccountNumberTextBox.Text; 
-            }
+            model.accountModel.account_number = AccountNumberTextBox.Text;
 
             //Loans
             if (loanModels.Count != 0)
