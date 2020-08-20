@@ -248,5 +248,21 @@ namespace GravitonCar
         {
             NextButton.IsEnabled = true;
         }
+
+        private void AddressCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+            
+                OfficeAddressTextBlock.Clear();
+            OfficeAddressTextBlock.Text = "Ashish Yaha Applicant ka Address Chaiye";
+                OfficeAddressTextBlock.IsReadOnly = true;
+            
+            
+        }
+
+        private void AddressCheckbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            OfficeAddressTextBlock.Clear();
+            OfficeAddressTextBlock.IsReadOnly = false;
+        }
     }
 }

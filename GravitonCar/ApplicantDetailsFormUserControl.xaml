@@ -62,17 +62,12 @@
             <!-- should disable on 2nd transition... -->
 
            
-            <ProgressBar Grid.Row="1" Grid.Column="1" Height="100" Width="100" HorizontalAlignment="Left" Foreground="#4b4b4b"
-                         Style="{StaticResource MaterialDesignCircularProgressBar}"
-              Value="25"
-              IsIndeterminate="True"
-              x:Name="IndeterminateToDeterminateCircularProgress" />
-
-            <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Content="1 of 4" VerticalAlignment="Center" Margin="20,0" Foreground="#4b4b4b" FontSize="20" FontWeight="Light"></Label>
+           
+            <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Content="1 / 4" VerticalAlignment="Top" Margin="0,0" Foreground="#4b4b4b" FontSize="40" FontWeight="Light"></Label>
 
             <TextBox x:Name="FirstNameTextBox" materialDesign:HintAssist.Hint="First Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="5,5,0,0" Grid.Row="3" Grid.Column="1" Width="200" Foreground="#4b4b4b" FontSize="20" FontWeight="Light" HorizontalAlignment="Left" BorderBrush="Gray">
                 <TextBox.Text>
-                    <Binding Path="ApplicantFirstname" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="ApplicantFirstname" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <rule:NonEmptyRule></rule:NonEmptyRule>
                             <rule:OnlyAlphabetsRule ></rule:OnlyAlphabetsRule>
@@ -85,7 +80,7 @@
             </TextBox>
             <TextBox materialDesign:HintAssist.Hint="Middle Name"   Style="{StaticResource MaterialDesignFloatingHintTextBox}"  Margin="5,5,0,0" Grid.Row="3" Grid.Column="1" Width="200" x:Name="MiddleNameTextBox" Foreground="#4b4b4b" FontSize="20" FontWeight="Light" HorizontalAlignment="Center"  BorderBrush="Gray">
                 <TextBox.Text>
-                    <Binding Path="ApplicantMiddlename" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="ApplicantMiddlename" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <rule:OnlyAlphabetsRule></rule:OnlyAlphabetsRule>
 
@@ -96,7 +91,7 @@
             </TextBox>
             <TextBox materialDesign:HintAssist.Hint="Last Name"   Style="{StaticResource MaterialDesignFloatingHintTextBox}"  Margin="5,5,0,0" Grid.Row="3" Grid.Column="1" Width="200" x:Name="LastNameTextBox" Foreground="#4b4b4b" FontSize="20" FontWeight="Light" HorizontalAlignment="right"  BorderBrush="Gray">
                 <TextBox.Text>
-                    <Binding Path="ApplicantLastname" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="ApplicantLastname" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <rule:OnlyAlphabetsRule></rule:OnlyAlphabetsRule>
                             <rule:NonEmptyRule></rule:NonEmptyRule>
@@ -111,7 +106,7 @@
             <ComboBox  materialDesign:HintAssist.Hint="Acquaintance" materialDesign:HintAssist.HintOpacity=".56" IsEditable="False" Margin="5,50,0,0"  Name="AcquaintanceComboBox"  Grid.Row="5" Grid.Column="1"  Width="200" HorizontalAlignment="Left"  Foreground="#4b4b4b" FontSize="20" FontWeight="Light" VerticalAlignment="Bottom"  BorderBrush="Gray"></ComboBox>
             <TextBox  materialDesign:HintAssist.Hint="Acquaintance Name"   Style="{StaticResource MaterialDesignFloatingHintTextBox}"  Margin="5,50,0,0" Grid.Row="5" Grid.Column="1" Width="200" x:Name="AcquaintanceNameTextBox" Foreground="#4b4b4b" FontSize="20" FontWeight="Light" VerticalAlignment="Bottom" HorizontalAlignment="Center"  BorderBrush="Gray">
                 <TextBox.Text>
-                    <Binding Path="ApplicantAcquaintance" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="ApplicantAcquaintance" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <rule:NonEmptyRule></rule:NonEmptyRule>
                             <local:MinimumCharacterRule MinimumCharacters="2"></local:MinimumCharacterRule>
@@ -134,7 +129,7 @@
             <ComboBox materialDesign:HintAssist.Hint="District" materialDesign:HintAssist.HintOpacity=".56" IsEditable="False" Margin="5,50,0,0" Grid.Row="11" Grid.Column="1" Width="200" x:Name="DistrictComboBox" Foreground="#4b4b4b" FontSize="20" FontWeight="Light" HorizontalAlignment="Center"  BorderBrush="Gray"></ComboBox>
             <TextBox  materialDesign:HintAssist.Hint="Pincode"   Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="5,50,0,0" Grid.Row="11" Grid.Column="1" Width="200" x:Name="PincodeTextBox" Foreground="#4b4b4b" FontSize="20" FontWeight="Light" HorizontalAlignment="right"  BorderBrush="Gray">
                 <TextBox.Text>
-                    <Binding Path="ApplicantPincode" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="ApplicantPincode" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <rule:NonEmptyRule></rule:NonEmptyRule>
                             <rule:FixedLengthRule FixedCharacters="6" TypeOfData="Digits"></rule:FixedLengthRule>
@@ -146,7 +141,7 @@
 
             <TextBox  materialDesign:HintAssist.Hint="Address"   Style="{StaticResource MaterialDesignFloatingHintTextBox}" TextWrapping="Wrap" Margin="5,50,0,0" Grid.Row="13" Grid.Column="1" MinHeight="50" MaxHeight="80" Width="850"  VerticalScrollBarVisibility="Auto" x:Name="AddressTextBlock" Foreground="#4b4b4b" FontSize="20" FontWeight="Light" HorizontalAlignment="Left"  BorderBrush="Gray">
                 <TextBox.Text>
-                    <Binding Path="ApplicantCurrentAddress" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="ApplicantCurrentAddress" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <rule:NonEmptyRule></rule:NonEmptyRule>
                             <local:MinimumCharacterRule MinimumCharacters="10"></local:MinimumCharacterRule>
@@ -158,7 +153,7 @@
 
             <TextBox materialDesign:HintAssist.Hint="Mobile Number"   Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="5,50,0,0" Grid.Row="15" Grid.Column="1" Width="200" x:Name="MobileNumberTextBox" Foreground="#4b4b4b" FontSize="20" FontWeight="Light" HorizontalAlignment="Left"  BorderBrush="Gray">
                 <TextBox.Text>
-                    <Binding Path="ApplicantMobile" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="ApplicantMobile" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <rule:NonEmptyRule></rule:NonEmptyRule>
                             <rule:FixedLengthRule FixedCharacters="10" TypeOfData="Digits"></rule:FixedLengthRule>
@@ -169,7 +164,7 @@
             </TextBox>
             <TextBox materialDesign:HintAssist.Hint="Office Number"   Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="5,50,0,0" Grid.Row="15" Grid.Column="1" Width="200" x:Name="OfficeNumberTextBox" Foreground="#4b4b4b" FontSize="20" FontWeight="Light" HorizontalAlignment="Center"  BorderBrush="Gray">
                 <TextBox.Text>
-                    <Binding Path="ApplicantOfficeNo" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="ApplicantOfficeNo" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <rule:NonEmptyRule></rule:NonEmptyRule>
                             <rule:FixedLengthRule FixedCharacters="10" TypeOfData="Digits"></rule:FixedLengthRule>
@@ -181,7 +176,7 @@
 
             <TextBox materialDesign:HintAssist.Hint="Designation"   Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="5,50,0,0"  Grid.Row="17" Grid.Column="1"  Width="200" x:Name="DesignationTextBox"   Foreground="#4b4b4b" FontSize="20" FontWeight="Light"  HorizontalAlignment="Left"  BorderBrush="Gray" >
                 <TextBox.Text>
-                    <Binding Path="ApplicantDesignation" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="ApplicantDesignation" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <rule:NonEmptyRule></rule:NonEmptyRule>
                             <local:MinimumCharacterRule MinimumCharacters="2"></local:MinimumCharacterRule>
@@ -195,9 +190,10 @@
 
             <TextBox materialDesign:HintAssist.Hint="Employer Name"   Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="5,50,0,0"  Grid.Row="19" Grid.Column="1" Width="200" x:Name="EmployerNameTextBox"    Foreground="#4b4b4b" FontSize="20" FontWeight="Light"  HorizontalAlignment="Left"   BorderBrush="Gray">
                 <TextBox.Text>
-                    <Binding Path="ApplicantEmployer" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="ApplicantEmployer" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <rule:NonEmptyRule></rule:NonEmptyRule>
+                            <rule:OnlyAlphabetsRule></rule:OnlyAlphabetsRule>
                             <local:MinimumCharacterRule MinimumCharacters="2"></local:MinimumCharacterRule>
                             <rule:MaximumCharacterRule MaximumCharacters="50"></rule:MaximumCharacterRule>
                         </Binding.ValidationRules>
@@ -207,7 +203,7 @@
 
             <TextBox materialDesign:HintAssist.Hint="Office Address"   Style="{StaticResource MaterialDesignFloatingHintTextBox}" TextWrapping="Wrap" Margin="5,50,0,0" Grid.Row="21" Grid.Column="1" MinHeight="50" MaxHeight="80" Width="850"  VerticalScrollBarVisibility="Auto" x:Name="OfficeAddressTextBlock" Foreground="#4b4b4b" FontSize="20" FontWeight="Light" HorizontalAlignment="Left"  BorderBrush="Gray">
                 <TextBox.Text>
-                    <Binding Path="ApplicantOfficeAddress" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="ApplicantOfficeAddress" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <rule:NonEmptyRule></rule:NonEmptyRule>
                             <local:MinimumCharacterRule MinimumCharacters="10"></local:MinimumCharacterRule>
@@ -219,7 +215,7 @@
 
             <TextBox   materialDesign:TextFieldAssist.SuffixText="Kms" materialDesign:HintAssist.Hint="Distance To NE"   Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="5,50,0,0"  Name="DistanceToNeTextBox"  Grid.Row="23" Grid.Column="1"  Width="200" HorizontalAlignment="Left"  Foreground="#4b4b4b" FontSize="20" FontWeight="Light"  BorderBrush="Gray">
                 <TextBox.Text>
-                    <Binding Path="ApplicantDistance" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="ApplicantDistance" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <rule:NonEmptyRule></rule:NonEmptyRule>
                             <local:MinimumCharacterRule MinimumCharacters="1"></local:MinimumCharacterRule>
