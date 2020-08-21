@@ -135,15 +135,6 @@ namespace GravitonCar
 
 
 
-
-
-
-
-
-
-
-
-
         int i = 0;
         List<NewLoanModel> existingLoans = new List<NewLoanModel>();
         List<LoanModel> loanModels = new List<LoanModel>();
