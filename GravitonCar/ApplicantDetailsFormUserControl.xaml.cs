@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -273,7 +274,12 @@ namespace GravitonCar
         {
             if (ValidateApplicantForm())
             {
-                WireUpForm();
+                //WireUpForm();
+                this.Dispatcher.Invoke(() =>
+                {
+                    WireUpForm();
+                    //wireFormThread.Start();
+                });
                 callingForm.CoApplicantForm(model);
             }
             else
@@ -516,7 +522,10 @@ namespace GravitonCar
 
         private void QuitButton_Click(object sender, RoutedEventArgs e)
         {
-            callingForm.SearchScreen();
+            if (MessageBox.Show("Are you sure?\nYour changes will be removed!", "", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                callingForm.SearchScreen();
+            }
         }
     }
 }
