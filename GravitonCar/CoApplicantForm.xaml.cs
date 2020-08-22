@@ -77,6 +77,8 @@ namespace GravitonCar
             }
         }
 
+        public static bool AddressChecked;
+
 
 
         IScreenRequester callingForm;
@@ -172,22 +174,38 @@ namespace GravitonCar
                 RelationshipTextBox.Text = model.gurantorModel.gurantor_relation; 
             }
 
+            //Office Address Checkbox
+            AddressCheckbox.IsChecked = AddressChecked;
+
             //Office Address
             if (model.gurantorModel.gurantor_currentaddress != null)
             {
-                OfficeAddressTextBlock.Text = model.gurantorModel.gurantor_currentaddress; 
+                if(AddressChecked == true)
+                {
+                    OfficeAddressTextBlock.Text = model.applicantModel.applicant_currentaddress;
+                }
+                else
+                {
+                    OfficeAddressTextBlock.Text = model.gurantorModel.gurantor_currentaddress;
+                }
             }
         }
 
         private void WireUpForm()
         {
             //Co Applicant or Gurantor
-            GurantorTypeModel gurantorTypeModel = (GurantorTypeModel)GurantorComboBox.SelectedItem;
-            model.gurantorModel.gurantortype_id = gurantorTypeModel.gurantortype_id;
+            if (GurantorComboBox.SelectedItem != null)
+            {
+                GurantorTypeModel gurantorTypeModel = (GurantorTypeModel)GurantorComboBox.SelectedItem;
+                model.gurantorModel.gurantortype_id = gurantorTypeModel.gurantortype_id;
+            }
 
             //First, Middle and Last Name
-            model.gurantorModel.gurantor_firstname = FirstNameTextBox.Text;
-            if (MiddleNameTextBox.Text.Length !=0)
+            if (FirstNameTextBox.Text.Length != 0)
+            {
+                model.gurantorModel.gurantor_firstname = FirstNameTextBox.Text;
+            }
+            if (MiddleNameTextBox.Text.Length != 0)
             {
                 model.gurantorModel.gurantor_middlename = MiddleNameTextBox.Text;
             }
@@ -195,16 +213,28 @@ namespace GravitonCar
             {
                 model.gurantorModel.gurantor_middlename = "";
             }
-            model.gurantorModel.gurantor_lastname = LastNameTextBox.Text;
+            if (LastNameTextBox.Text.Length != 0)
+            {
+                model.gurantorModel.gurantor_lastname = LastNameTextBox.Text;
+            }
 
             //Mobile
-            model.gurantorModel.gurantor_mobile = MobilNumberTextBox.Text;
+            if (MobilNumberTextBox.Text.Length != 0)
+            {
+                model.gurantorModel.gurantor_mobile = MobilNumberTextBox.Text;
+            }
 
             //Relationship
-            model.gurantorModel.gurantor_relation = RelationshipTextBox.Text;
+            if (RelationshipTextBox.Text.Length != 0)
+            {
+                model.gurantorModel.gurantor_relation = RelationshipTextBox.Text;
+            }
 
             //Office Address
-            model.gurantorModel.gurantor_currentaddress = OfficeAddressTextBlock.Text;
+            if (OfficeAddressTextBlock.Text.Length != 0)
+            {
+                model.gurantorModel.gurantor_currentaddress = OfficeAddressTextBlock.Text;
+            }
         }
 
         private bool ValidateCoapplicantForm()
@@ -252,9 +282,15 @@ namespace GravitonCar
         private void AddressCheckbox_Checked(object sender, RoutedEventArgs e)
         {
             
-                OfficeAddressTextBlock.Clear();
-            OfficeAddressTextBlock.Text = "Ashish Yaha Applicant ka Address Chaiye";
-                OfficeAddressTextBlock.IsReadOnly = true;
+            OfficeAddressTextBlock.Clear();
+
+            if (model.applicantModel.applicant_currentaddress != null)
+            {
+                OfficeAddressTextBlock.Text = model.applicantModel.applicant_currentaddress; 
+            }
+            OfficeAddressTextBlock.IsReadOnly = true;
+
+            AddressChecked = true;
             
             
         }
@@ -263,6 +299,8 @@ namespace GravitonCar
         {
             OfficeAddressTextBlock.Clear();
             OfficeAddressTextBlock.IsReadOnly = false;
+
+            AddressChecked = false;
         }
     }
 }

@@ -653,29 +653,49 @@ namespace GravitonCar
                 model.documentModel.document_pan = PanNumberTextBox.Text;
                 model.applicantModel.applicant_pan = PanNumberTextBox.Text;
                 model.gurantorModel.gurantor_realtedpan = PanNumberTextBox.Text;
-                model.accountModel.account_realtedpan = PanNumberTextBox.Text; 
+                model.accountModel.account_realtedpan = PanNumberTextBox.Text;
             }
 
             //Cibil Score
-            model.documentModel.document_cibil = int.Parse(CibilScoreTextBox.Text);
+            if (CibilScoreTextBox.Text.Length != 0)
+            {
+                model.documentModel.document_cibil = int.Parse(CibilScoreTextBox.Text);
+            }
 
             //Optional ID
-            DocumentTypeModel documentType = (DocumentTypeModel)OptionalIdTypeComboBox.SelectedItem;
-            model.documentModel.document_id = documentType.documenttype_id;
-
-            model.documentModel.document_optional = OptionalIdDetailsTextBox.Text;
+            if (OptionalIdTypeComboBox.SelectedItem != null)
+            {
+                DocumentTypeModel documentType = (DocumentTypeModel)OptionalIdTypeComboBox.SelectedItem;
+                model.documentModel.document_id = documentType.documenttype_id;
+            }
+            if (OptionalIdDetailsTextBox.Text.Length != 0)
+            {
+                model.documentModel.document_optional = OptionalIdDetailsTextBox.Text;
+            }
 
             //In hand Income
-            model.accountModel.account_inhandsalary = int.Parse(InHandMonthlyIcomeTextBox.Text);
+            if (InHandMonthlyIcomeTextBox.Text.Length != 0)
+            {
+                model.accountModel.account_inhandsalary = int.Parse(InHandMonthlyIcomeTextBox.Text);
+            }
 
             //Bank Name
-            model.accountModel.account_bankname = BankNameTextBox.Text;
+            if (BankNameTextBox.Text.Length != 0)
+            {
+                model.accountModel.account_bankname = BankNameTextBox.Text;
+            }
 
             //IFSC 
-            model.accountModel.account_ifsc = IFSCTextBox.Text;
+            if (IFSCTextBox.Text.Length != 0)
+            {
+                model.accountModel.account_ifsc = IFSCTextBox.Text;
+            }
 
             //Accounnt Number
-            model.accountModel.account_number = AccountNumberTextBox.Text;
+            if (AccountNumberTextBox.Text.Length != 0)
+            {
+                model.accountModel.account_number = AccountNumberTextBox.Text;
+            }
 
             //Loans
             if (loanModels.Count != 0)
