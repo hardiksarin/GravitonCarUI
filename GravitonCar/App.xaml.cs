@@ -19,8 +19,8 @@ namespace GravitonCar
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            AppCenter.Start("c1b6d11d-9b34-4151-b8c1-81ba07bfc737",
-                   typeof(Analytics), typeof(Crashes));
+            AppCenter.Start("96fd8f8e-3df7-4d20-949d-bc5eab673d5e",
+                    typeof(Analytics), typeof(Crashes));
         }
     }
 }
