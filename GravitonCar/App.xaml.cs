@@ -13,5 +13,11 @@ namespace GravitonCar
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+            AppCenter.Start("c1b6d11d-9b34-4151-b8c1-81ba07bfc737",
+                   typeof(Analytics), typeof(Crashes));
+        }
     }
 }
