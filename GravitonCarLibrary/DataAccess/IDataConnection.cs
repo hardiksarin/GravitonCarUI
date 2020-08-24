@@ -10,6 +10,10 @@ namespace GravitonCarLibrary.DataAccess
     public interface IDataConnection
     {
 
+        //Login
+        UserModel GetUserModel(string username, string password);
+        List<UserModel> GetUser_All();
+
         //Account
         AccountModel CreateAccount(AccountModel model);
         void UpdateAccount(AccountModel model);

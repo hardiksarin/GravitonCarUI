@@ -132,6 +132,7 @@
     <Compile Include="Models\LoanTypeModel.cs" />
     <Compile Include="Models\MarriedStatusModel.cs" />
     <Compile Include="Models\ProgressModel.cs" />
+    <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

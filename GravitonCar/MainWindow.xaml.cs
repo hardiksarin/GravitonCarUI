@@ -1,5 +1,6 @@
 ﻿using GravitonCarLibrary;
 using GravitonCarLibrary.Models;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -24,13 +25,34 @@ namespace GravitonCar
     /// </summary>
     public partial class MainWindow : Window,IScreenRequester
     {
-        public MainWindow()
+        JObject permission;
+        UserModel user = new UserModel();
+        public static string userPermission;
+        public MainWindow(UserModel userModel)
         {
             InitializeComponent();
-            GlobalConfig.InitializeConnections();
+            user = userModel;
+            CheckPermission();
+            //GlobalConfig.InitializeConnections();
             GridPrincipal.Children.Clear();
-            GridPrincipal.Children.Add(new NewUserForm());
+            GridPrincipal.Children.Add(new Search(this));
             GetPath();
+        }
+
+        private void CheckPermission()
+        {
+            permission = JObject.Parse(user.permissions);
+            //var obj = permission["Admin"];
+            bool isAdminTrue = permission.SelectToken("Admin").Value<bool>();
+
+            if (isAdminTrue)
+            {
+                userPermission = "Admin";
+            }
+            else
+            {
+                userPermission = "";
+            }
         }
 
         private void GetPath()
@@ -161,6 +183,25 @@ namespace GravitonCar
         {
             GridPrincipal.Children.Clear();
             GridPrincipal.Children.Add(new Search(this));
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (userPermission == "Admin")
+            {
+                GridPrincipal.Children.Clear();
+                GridPrincipal.Children.Add(new AdminPanel(this));
+            }
+            else
+            {
+                MessageBox.Show("Access Denied");
+            }
+        }
+
+        public void NewUser()
+        {
+            GridPrincipal.Children.Clear();
+            GridPrincipal.Children.Add(new NewUserForm(this));
         }
     }
 }

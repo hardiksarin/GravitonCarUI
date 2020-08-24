@@ -62,6 +62,7 @@
             <Label Grid.Row="0" Grid.Column="0" Content="THE&#10;THREE&#10;FINANCE&#10;" FontSize="50" FontWeight="Regular" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
             <Label Grid.Row="0" Grid.Column="0" Content="MADE WITH ❤️ IN INDIA&#10;KUGELBLITZ TECHNOLOGIES&#10;" FontSize="12" FontWeight="UltraLight" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Bottom"  ></Label>
             <TextBox
+                Name="UsernameTextbox"
                 FontSize="15"
                BorderBrush="Gray"
 
@@ -74,6 +75,7 @@
             Margin="150,357,150,0"
                          />
             <PasswordBox
+                Name="PasswordTextbox"
             FontSize="15"
             Style="{StaticResource MaterialDesignOutlinedPasswordFieldPasswordBox}"
             VerticalAlignment="Top"
@@ -97,7 +99,7 @@
 
 
                 Style="{StaticResource MaterialDesignRaisedLightButton}"
-                ToolTip="Resource name: MaterialDesignRaisedLightButton" >
+                ToolTip="Resource name: MaterialDesignRaisedLightButton" Click="Button_Click" >
                 Login
                 <Button.Background>
 

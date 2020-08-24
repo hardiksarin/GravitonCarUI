@@ -18,9 +18,11 @@ namespace GravitonCar
     /// </summary>
     public partial class NewUserForm : UserControl
     {
-        public NewUserForm()
+        IScreenRequester callingForm;
+        public NewUserForm(IScreenRequester caller)
         {
             InitializeComponent();
+            callingForm = caller;
         }
     }
 }

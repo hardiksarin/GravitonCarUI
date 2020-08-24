@@ -490,5 +490,32 @@ namespace GravitonCarLibrary.DataAccess
                 return output;
             }
         }
+
+
+        //User
+
+        public UserModel GetUserModel(string username, string password)
+        {
+            List<UserModel> output = new List<UserModel>();
+            using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
+            {
+                output = connection.Query<UserModel>($"select * from login where username = '{username}' and password = '{password}'").ToList();
+                if(output.Count != 0)
+                {
+                    return output[0];
+                }
+                return null;
+            }
+        }
+
+        public List<UserModel> GetUser_All()
+        {
+            List<UserModel> output = new List<UserModel>();
+            using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
+            {
+                output = connection.Query<UserModel>($"select * from login").ToList();
+                return output;
+            }
+        }
     }
 }
