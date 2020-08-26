@@ -517,5 +517,22 @@ namespace GravitonCarLibrary.DataAccess
                 return output;
             }
         }
+
+        public UserModel CreateUser(UserModel user)
+        {
+            using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
+            {
+                int id = connection.ExecuteScalar<int>($"insert into login values(default,'{user.full_name}','{user.username}','{user.designation}','{user.user_dob}','{user.password}','{user.permissions}'");
+                return user;
+            }
+        }
+
+        public void DeleteUser(UserModel user)
+        {
+            using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
+            {
+                connection.ExecuteScalar<int>($"delete from login where user_id = {user.user_id}");
+            }
+        }
     }
 }

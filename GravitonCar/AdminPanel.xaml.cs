@@ -3,6 +3,7 @@ using GravitonCarLibrary.Models;
 using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -122,20 +123,22 @@ namespace GravitonCar
             cardGrid.Children.Add(textBlock1);
 
             PackIcon deleteIcon = new PackIcon();
+            string name = user.full_name.Split(' ').First();
+            deleteIcon.Name = $"{name}_{user.designation}_delete";
             deleteIcon.Kind = PackIconKind.Delete;
             deleteIcon.HorizontalAlignment = HorizontalAlignment.Right;
             deleteIcon.VerticalAlignment = VerticalAlignment.Center;
             deleteIcon.Height = 20;
             deleteIcon.Width = 20;
             deleteIcon.Margin = new Thickness(10, 10, 5, 10);
-            //Mouse.cursor = 
-
             deleteIcon.Cursor = Cursors.Hand;
             deleteIcon.Background = Brushes.Transparent;
+            deleteIcon.MouseDown += new MouseButtonEventHandler(deleteIconOnClick);
             Grid.SetRow(deleteIcon, 3);
             cardGrid.Children.Add(deleteIcon);
 
             PackIcon lockIcon = new PackIcon();
+            lockIcon.Name = $"{name}_{user.designation}_lock";
             lockIcon.Kind = PackIconKind.Lock;
             lockIcon.HorizontalAlignment = HorizontalAlignment.Right;
             lockIcon.VerticalAlignment = VerticalAlignment.Center;
@@ -144,10 +147,49 @@ namespace GravitonCar
             lockIcon.Margin = new Thickness(10, 10, 40, 10);
             lockIcon.Cursor = Cursors.Hand;
             lockIcon.Background = Brushes.Transparent;
+            lockIcon.MouseDown += new MouseButtonEventHandler(lockIconOnClick);
             Grid.SetRow(lockIcon, 3);
             cardGrid.Children.Add(lockIcon);
 
             CardsWrapper.Children.Add(card);
+        }
+
+        void deleteIconOnClick(object sender, MouseButtonEventArgs e)
+        {
+            PackIcon icon = (PackIcon)sender;
+            string iconName = icon.Name.Split('_').First();
+            UserModel thisUser = new UserModel();
+            foreach (UserModel user in allUsers)
+            {
+                string name = user.full_name.Split(' ').First();
+                if (name.Equals(iconName))
+                {
+                    thisUser = user;
+                }
+            }
+            //Delete thisUser
+            if (MessageBox.Show($"Do you want to delete {thisUser.full_name} as user", "", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                GlobalConfig.Connection.DeleteUser(thisUser);
+                LoadUserList();
+                UserListBuilder();
+            }
+        }
+
+        void lockIconOnClick(object sender, MouseButtonEventArgs e)
+        {
+            PackIcon icon = (PackIcon)sender;
+            string iconName = icon.Name.Split('_').First();
+            UserModel thisUser = new UserModel();
+            foreach (UserModel user in allUsers)
+            {
+                string name = user.full_name.Split(' ').First();
+                if (name.Equals(iconName))
+                {
+                    thisUser = user;
+                }
+            }
+            
         }
     }
 }
