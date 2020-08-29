@@ -128,6 +128,7 @@
                 Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" />
 
             <TextBox
+                x:Name="PhoneNumberTextbox"
                 Grid.Column="1"
                 Grid.ColumnSpan="2"
                 Margin="150,420,150,0"
@@ -139,6 +140,7 @@
                 Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" />
 
             <TextBox
+                x:Name="PasswordTextbox"
                 Grid.Column="1"
                 Grid.ColumnSpan="2"
                 Margin="150,490,150,0"
@@ -149,6 +151,7 @@
                 IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedPasswordFieldPasswordBoxEnabledComboBox}"
                 Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" />
             <PasswordBox
+                x:Name="ConfirmPasswordBox"
                 Grid.Column="1"
                 Grid.ColumnSpan="2"
                 Margin="150,560,150,0"

@@ -116,6 +116,7 @@ namespace GravitonCarLibrary.DataAccess
         List<UserModel> GetUser_All();
         UserModel CreateUser(UserModel user);
         void DeleteUser(UserModel user);
+        UserModel GetUser_ByPan(string aadhar, string pan);
         //Login
 
 

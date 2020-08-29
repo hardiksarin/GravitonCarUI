@@ -568,5 +568,23 @@ namespace GravitonCarLibrary.DataAccess
                 connection.ExecuteScalar($"update login set full_name = '{user.full_name}', username = '{user.username}', designation = '{user.designation}', user_dob = '{user.user_dob}', password = '{user.password}', permissions = '{user.permissions}' where user_id = {user.user_id}");
             }
         }
+
+        public UserModel GetUser_ByPan(string aadhar, string pan)
+        {
+            List<KYCLogModel> userList = new List<KYCLogModel>();
+            KYCLogModel user = new KYCLogModel();
+            using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
+            {
+                userList = connection.Query<KYCLogModel>($"select * from user_kyc_log where related_aadhar = '{aadhar}' and related_pan = '{pan}'").ToList();
+                user = userList[0];
+
+                UserModel u = new UserModel();
+                List<UserModel> uList = new List<UserModel>();
+                uList = connection.Query<UserModel>($"select * from login where user_id = {u.user_id}").ToList();
+                u = uList[0];
+
+                return u;
+            }
+        }
     }
 }
