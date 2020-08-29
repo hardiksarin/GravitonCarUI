@@ -128,6 +128,7 @@
     <Compile Include="Models\DocumentTypeModel.cs" />
     <Compile Include="Models\GurantorModel.cs" />
     <Compile Include="Models\GurantorTypeModel.cs" />
+    <Compile Include="Models\KYCLogModel.cs" />
     <Compile Include="Models\LoanModel.cs" />
     <Compile Include="Models\LoanTypeModel.cs" />
     <Compile Include="Models\MarriedStatusModel.cs" />

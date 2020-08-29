@@ -24,10 +24,12 @@ namespace GravitonCar
     {
         IScreenRequester callingForm;
         List<UserModel> allUsers = new List<UserModel>();
+        private string todaysDate;
         public AdminPanel(IScreenRequester caller)
         {
             InitializeComponent();
             callingForm = caller;
+            getTodayesDate();
             LoadUserList();
             UserListBuilder();
         }
@@ -41,8 +43,26 @@ namespace GravitonCar
         {
             foreach (UserModel u in allUsers)
             {
-                CreateCard(u);
+                int count = getCarCount(u.user_id);
+                CreateCard(u, count);
             }
+        }
+
+        private void getTodayesDate()
+        {
+            if (todaysDate == null)
+            {
+                DateTime date = DateTime.Now;
+                string today = date.ToString().Split(' ').First();
+                string[] dateList = today.Split('-');
+
+                todaysDate = $"{dateList[2]}-{dateList[1]}-{dateList[0]}"; 
+            }
+        }
+
+        private int getCarCount(int id)
+        {
+            return GlobalConfig.Connection.GetCount_USer(id, todaysDate);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -50,7 +70,7 @@ namespace GravitonCar
             callingForm.NewUser();
         }
 
-        private void CreateCard(UserModel user)
+        private void CreateCard(UserModel user, int count)
         {
             Card card = new Card();
             RowDefinition gridRow1 = new RowDefinition();
@@ -114,7 +134,7 @@ namespace GravitonCar
             cardGrid.Children.Add(separator);
 
             TextBlock textBlock1 = new TextBlock();
-            textBlock1.Text = "Today : 10";
+            textBlock1.Text = $"Today : {count}";
             textBlock1.FontSize = 20;
             textBlock1.FontWeight = FontWeights.UltraLight;
             textBlock1.HorizontalAlignment = HorizontalAlignment.Left;
@@ -171,6 +191,7 @@ namespace GravitonCar
             if (MessageBox.Show($"Do you want to delete {thisUser.full_name} as user", "", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 GlobalConfig.Connection.DeleteUser(thisUser);
+                CardsWrapper.Children.Clear();
                 LoadUserList();
                 UserListBuilder();
             }

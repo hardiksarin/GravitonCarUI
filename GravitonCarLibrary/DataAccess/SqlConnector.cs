@@ -417,7 +417,7 @@ namespace GravitonCarLibrary.DataAccess
 
 
         //CAR
-        public void CreateCar(CarModel model)
+        public void CreateCar(CarModel model, UserModel user)
         {
             CreateDocument(model.documentModel);
             CreateApplicant(model.applicantModel);
@@ -428,6 +428,13 @@ namespace GravitonCarLibrary.DataAccess
             {
                 CreateLoan(loan);
             }
+
+            KYCLogModel log = new KYCLogModel();
+            log.user_id = user.user_id;
+            log.related_pan = model.documentModel.document_pan;
+            log.related_aadhar = model.documentModel.document_aadhar;
+
+            CreateKYCLog(log);
         }
 
         public CarModel GetCar_ById(string aadhar, string pan)
@@ -532,6 +539,25 @@ namespace GravitonCarLibrary.DataAccess
             using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
             {
                 connection.ExecuteScalar<int>($"delete from login where user_id = {user.user_id}");
+            }
+        }
+
+
+        //User KYC Log
+        public void CreateKYCLog(KYCLogModel model)
+        {
+            using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
+            {
+                connection.ExecuteScalar<int>($"insert into user_kyc_log values(default,{model.user_id},'{model.related_aadhar}','{model.related_pan}',default)");
+            }
+        }
+
+        public int GetCount_USer(int user_id, string date)
+        {
+            using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
+            {
+                int count =  connection.ExecuteScalar<int>($"select count(user_id) from user_kyc_log where user_id = {user_id} and kyc_date = '{date}'");
+                return count;
             }
         }
     }

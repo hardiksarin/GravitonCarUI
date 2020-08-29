@@ -26,7 +26,7 @@ namespace GravitonCar
     public partial class MainWindow : Window,IScreenRequester
     {
         JObject permission;
-        UserModel user = new UserModel();
+        public static UserModel user = new UserModel();
         public static string userPermission;
         public MainWindow(UserModel userModel)
         {

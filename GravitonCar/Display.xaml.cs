@@ -1323,7 +1323,7 @@ namespace GravitonCar
             SaveFinancialForm();
             string output = JsonConvert.SerializeObject(model);
             Debug.WriteLine(output);
-            GlobalConfig.Connection.CreateCar(model);
+            GlobalConfig.Connection.CreateCar(model, MainWindow.user);
         }
 
         public void DisableButton()
