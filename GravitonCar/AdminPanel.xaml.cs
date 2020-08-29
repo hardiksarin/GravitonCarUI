@@ -20,7 +20,7 @@ namespace GravitonCar
     /// <summary>
     /// Interaction logic for AdminPanel.xaml
     /// </summary>
-    public partial class AdminPanel : UserControl, IAdminPasswordRequester
+    public partial class AdminPanel : UserControl, IAdminPasswordRequester, IUserCredentialRequester
     {
         IScreenRequester callingForm;
         List<UserModel> allUsers = new List<UserModel>();
@@ -186,15 +186,16 @@ namespace GravitonCar
             PackIcon icon = (PackIcon)sender;
             string iconName = icon.Name.Split('_').First();
             UserModel thisUser = new UserModel();
-            foreach (UserModel user in allUsers)
+            foreach (UserModel u in allUsers)
             {
-                string name = user.full_name.Split(' ').First();
+                string name = u.full_name.Split(' ').First();
                 if (name.Equals(iconName))
                 {
-                    thisUser = user;
+                    thisUser = u;
                 }
             }
-            
+            UserCredenitalsWindow form = new UserCredenitalsWindow(this, thisUser, icon);
+            form.Show();    
         }
 
         public void GetAdminPassword(bool isAdmin, PackIcon icon)
@@ -221,6 +222,15 @@ namespace GravitonCar
             else
             {
                 MessageBox.Show("Authorisation Failed!");
+            }
+        }
+
+        public void UserCredentials(bool isChanged, UserModel user, PackIcon icon)
+        {
+            if (isChanged)
+            {
+                //update user
+                GlobalConfig.Connection.UpdateUserPassword(user);
             }
         }
     }

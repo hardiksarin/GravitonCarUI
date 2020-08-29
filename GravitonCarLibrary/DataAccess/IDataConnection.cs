@@ -112,6 +112,7 @@ namespace GravitonCarLibrary.DataAccess
 
         //Login
         UserModel GetUserModel(string username, string password);
+        void UpdateUserPassword(UserModel user);
         List<UserModel> GetUser_All();
         UserModel CreateUser(UserModel user);
         void DeleteUser(UserModel user);

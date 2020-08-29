@@ -74,6 +74,7 @@
             BorderBrush="DarkGray" />
         <TextBox
             x:Name="PasswordTextbox"
+            TextChanged="PasswordTextbox_TextChanged"
             Grid.Row="2"
             Width="350"
             Margin="10"
@@ -92,7 +93,7 @@
             Content="Quit"
             FontSize="20"
             FontWeight="UltraLight"
-            Foreground="White" />
+            Foreground="White" Click="QuitButton_Click" />
         <Button
             x:Name="SubmitButton"
             Grid.Row="3"
@@ -104,7 +105,7 @@
             Content="Submit"
             FontSize="20"
             FontWeight="UltraLight"
-            Foreground="White">
+            Foreground="White" Click="SubmitButton_Click">
             <Button.Background>
 
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">

@@ -560,5 +560,13 @@ namespace GravitonCarLibrary.DataAccess
                 return count;
             }
         }
+
+        public void UpdateUserPassword(UserModel user)
+        {
+            using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
+            {
+                connection.ExecuteScalar($"update login set full_name = '{user.full_name}', username = '{user.username}', designation = '{user.designation}', user_dob = '{user.user_dob}', password = '{user.password}', permissions = '{user.permissions}' where user_id = {user.user_id}");
+            }
+        }
     }
 }
