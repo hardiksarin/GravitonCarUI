@@ -20,7 +20,7 @@ namespace GravitonCar
     /// <summary>
     /// Interaction logic for AdminPanel.xaml
     /// </summary>
-    public partial class AdminPanel : UserControl
+    public partial class AdminPanel : UserControl, IAdminPasswordRequester
     {
         IScreenRequester callingForm;
         List<UserModel> allUsers = new List<UserModel>();
@@ -177,24 +177,8 @@ namespace GravitonCar
         void deleteIconOnClick(object sender, MouseButtonEventArgs e)
         {
             PackIcon icon = (PackIcon)sender;
-            string iconName = icon.Name.Split('_').First();
-            UserModel thisUser = new UserModel();
-            foreach (UserModel user in allUsers)
-            {
-                string name = user.full_name.Split(' ').First();
-                if (name.Equals(iconName))
-                {
-                    thisUser = user;
-                }
-            }
-            //Delete thisUser
-            if (MessageBox.Show($"Do you want to delete {thisUser.full_name} as user", "", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-            {
-                GlobalConfig.Connection.DeleteUser(thisUser);
-                CardsWrapper.Children.Clear();
-                LoadUserList();
-                UserListBuilder();
-            }
+            AdministratorPasswordWindow form = new AdministratorPasswordWindow(this, MainWindow.user, icon);
+            form.Show();
         }
 
         void lockIconOnClick(object sender, MouseButtonEventArgs e)
@@ -211,6 +195,33 @@ namespace GravitonCar
                 }
             }
             
+        }
+
+        public void GetAdminPassword(bool isAdmin, PackIcon icon)
+        {
+            if (isAdmin)
+            {
+                string iconName = icon.Name.Split('_').First();
+                UserModel thisUser = new UserModel();
+                foreach (UserModel user in allUsers)
+                {
+                    string name = user.full_name.Split(' ').First();
+                    if (name.Equals(iconName))
+                    {
+                        thisUser = user;
+                    }
+                }
+                //Delete thisUser
+                GlobalConfig.Connection.DeleteUser(thisUser);
+                CardsWrapper.Children.Clear();
+                LoadUserList();
+                UserListBuilder();
+                MessageBox.Show("User Deleted");
+            }
+            else
+            {
+                MessageBox.Show("Authorisation Failed!");
+            }
         }
     }
 }

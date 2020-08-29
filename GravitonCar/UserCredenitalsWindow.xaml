@@ -66,6 +66,7 @@
             Foreground="DarkGray" />
         <TextBox
             x:Name="UsernameTextbox"
+            IsEnabled="False"
             Grid.Row="1"
             Width="350"
             Margin="10"
