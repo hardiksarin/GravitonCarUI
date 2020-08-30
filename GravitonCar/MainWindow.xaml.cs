@@ -203,5 +203,11 @@ namespace GravitonCar
             GridPrincipal.Children.Clear();
             GridPrincipal.Children.Add(new NewUserForm(this));
         }
+
+        public void AdminPanel()
+        {
+            GridPrincipal.Children.Clear();
+            GridPrincipal.Children.Add(new AdminPanel(this));
+        }
     }
 }

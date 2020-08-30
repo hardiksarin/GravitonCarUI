@@ -529,7 +529,7 @@ namespace GravitonCarLibrary.DataAccess
         {
             using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
             {
-                int id = connection.ExecuteScalar<int>($"insert into login values(default,'{user.full_name}','{user.username}','{user.designation}','{user.user_dob}','{user.password}','{user.permissions}'");
+                int id = connection.ExecuteScalar<int>($"insert into login values(default,'{user.full_name}','{user.username}','{user.designation}','{user.user_mobile}','{user.password}','{user.permissions}')");
                 return user;
             }
         }
@@ -565,7 +565,7 @@ namespace GravitonCarLibrary.DataAccess
         {
             using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
             {
-                connection.ExecuteScalar($"update login set full_name = '{user.full_name}', username = '{user.username}', designation = '{user.designation}', user_dob = '{user.user_dob}', password = '{user.password}', permissions = '{user.permissions}' where user_id = {user.user_id}");
+                connection.ExecuteScalar($"update login set full_name = '{user.full_name}', username = '{user.username}', designation = '{user.designation}', user_mobile = '{user.user_mobile}', password = '{user.password}', permissions = '{user.permissions}' where user_id = {user.user_id}");
             }
         }
 
@@ -580,7 +580,7 @@ namespace GravitonCarLibrary.DataAccess
 
                 UserModel u = new UserModel();
                 List<UserModel> uList = new List<UserModel>();
-                uList = connection.Query<UserModel>($"select * from login where user_id = {u.user_id}").ToList();
+                uList = connection.Query<UserModel>($"select * from login where user_id = {user.user_id}").ToList();
                 u = uList[0];
 
                 return u;

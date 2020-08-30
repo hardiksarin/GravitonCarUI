@@ -184,7 +184,7 @@
                 FontWeight="Light"
                 Foreground="White"
                 Style="{StaticResource MaterialDesignRaisedLightButton}"
-                ToolTip="Resource name: MaterialDesignRaisedLightButton">
+                ToolTip="Resource name: MaterialDesignRaisedLightButton" Click="Button_Click">
                 Create
                 <Button.Background>
 

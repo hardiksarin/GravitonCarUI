@@ -18,5 +18,6 @@ namespace GravitonCar
         void SetSystemPath(string path);
         void SearchScreen();
         void NewUser();
+        void AdminPanel();
     }
 }
