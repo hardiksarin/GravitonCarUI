@@ -26,7 +26,7 @@ namespace GravitonCar
     public partial class MainWindow : Window,IScreenRequester
     {
         JObject permission;
-        UserModel user = new UserModel();
+        public static UserModel user = new UserModel();
         public static string userPermission;
         public MainWindow(UserModel userModel)
         {
@@ -202,6 +202,12 @@ namespace GravitonCar
         {
             GridPrincipal.Children.Clear();
             GridPrincipal.Children.Add(new NewUserForm(this));
+        }
+
+        public void AdminPanel()
+        {
+            GridPrincipal.Children.Clear();
+            GridPrincipal.Children.Add(new AdminPanel(this));
         }
     }
 }

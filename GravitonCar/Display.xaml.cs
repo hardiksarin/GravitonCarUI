@@ -465,6 +465,10 @@ namespace GravitonCar
 
             loanTypes = GlobalConfig.Connection.GetLoanType_All();
             documentModels = GlobalConfig.Connection.GetDocumentType_All();
+
+            UserModel user = new UserModel();
+            user = GlobalConfig.Connection.GetUser_ByPan(model.documentModel.document_aadhar, model.documentModel.document_pan);
+            SubmittedByLabel.Text = $"Submitted By : {user.full_name}";
         }
 
         private void WireUpLists()
@@ -1323,7 +1327,7 @@ namespace GravitonCar
             SaveFinancialForm();
             string output = JsonConvert.SerializeObject(model);
             Debug.WriteLine(output);
-            GlobalConfig.Connection.CreateCar(model);
+            GlobalConfig.Connection.CreateCar(model, MainWindow.user);
         }
 
         public void DisableButton()

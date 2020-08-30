@@ -1285,7 +1285,7 @@ namespace GravitonCar
             string output = JsonConvert.SerializeObject(model);
             try
             {
-                GlobalConfig.Connection.CreateCar(model);
+                GlobalConfig.Connection.CreateCar(model, MainWindow.user);
                 MessageBox.Show("New KYC Created!");
             }
             catch (Exception a)

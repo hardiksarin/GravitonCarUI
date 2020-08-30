@@ -12,7 +12,7 @@ namespace GravitonCarLibrary.Models
         public string full_name { get; set; }
         public string username { get; set; }
         public string designation { get; set; }
-        public string user_dob { get; set; }
+        public string user_mobile { get; set; }
         public string password { get; set; }
         public string permissions { get; set; }
     }

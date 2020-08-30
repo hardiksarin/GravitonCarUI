@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GravitonCarLibrary.Models;
+using MaterialDesignThemes.Wpf;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -17,9 +19,41 @@ namespace GravitonCar
     /// </summary>
     public partial class AdministratorPasswordWindow : Window
     {
-        public AdministratorPasswordWindow()
+        IAdminPasswordRequester callingForm;
+        UserModel userModel = new UserModel();
+        PackIcon pack = new PackIcon();
+        public AdministratorPasswordWindow(IAdminPasswordRequester caller, UserModel user, PackIcon icon)
         {
             InitializeComponent();
+            callingForm = caller;
+            userModel = user;
+            pack = icon;
+        }
+
+
+        private void getAdminData()
+        {
+            string password = AdminPasswordTextBox.Password;
+            if (password.Equals(userModel.password))
+            {
+                callingForm.GetAdminPassword(true, pack);
+                this.Close();
+            }
+            else
+            {
+                callingForm.GetAdminPassword(false, pack);
+                this.Close();
+            }
+        }
+
+        private void SubmitButton_Click(object sender, RoutedEventArgs e)
+        {
+            getAdminData();
+        }
+
+        private void QuitButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

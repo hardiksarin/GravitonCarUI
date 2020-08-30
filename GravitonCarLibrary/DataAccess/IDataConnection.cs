@@ -10,11 +10,7 @@ namespace GravitonCarLibrary.DataAccess
     public interface IDataConnection
     {
 
-        //Login
-        UserModel GetUserModel(string username, string password);
-        List<UserModel> GetUser_All();
-        UserModel CreateUser(UserModel user);
-        void DeleteUser(UserModel user);
+        
 
         //Account
         AccountModel CreateAccount(AccountModel model);
@@ -113,6 +109,17 @@ namespace GravitonCarLibrary.DataAccess
         LoanTypeModel CreateLoanType(LoanTypeModel model);
 
         //LoanType
+
+        //Login
+        UserModel GetUserModel(string username, string password);
+        void UpdateUserPassword(UserModel user);
+        List<UserModel> GetUser_All();
+        UserModel CreateUser(UserModel user);
+        void DeleteUser(UserModel user);
+        UserModel GetUser_ByPan(string aadhar, string pan);
+        //Login
+
+
         //Maried Status
 
         List<MarriedStatusModel> GetMarried_All();
@@ -135,8 +142,12 @@ namespace GravitonCarLibrary.DataAccess
 
 
         //CAR
-        void CreateCar(CarModel model);
+        void CreateCar(CarModel model, UserModel user);
         CarModel GetCar_ById(string aadhar, string pan);
+
+        //User KYC Log
+        void CreateKYCLog(KYCLogModel model);
+        int GetCount_USer(int user_id, string date);
 
     }
 }
