@@ -35,7 +35,7 @@ namespace GravitonCar
             CheckPermission();
             //GlobalConfig.InitializeConnections();
             GridPrincipal.Children.Clear();
-            GridPrincipal.Children.Add(new FieldInvestigationForm());
+            GridPrincipal.Children.Add(new Search(this));
             GetPath();
         }
 
