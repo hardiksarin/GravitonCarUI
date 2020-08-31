@@ -26,6 +26,13 @@
 
 
         </Grid.RowDefinitions>
+        <materialDesign:Snackbar
+            x:Name="SnackbarOne"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            HorizontalAlignment="Stretch"
+            Foreground="Red"
+            MessageQueue="{materialDesign:MessageQueue}" />
         <Label
             Grid.Column="1"
             Grid.ColumnSpan="2"
@@ -66,6 +73,7 @@
                 Grid.Row="1"
                 Grid.Column="1"
                 Grid.ColumnSpan="3" />
+
         </ScrollViewer>
 
 

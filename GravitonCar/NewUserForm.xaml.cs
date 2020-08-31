@@ -4,6 +4,7 @@ using GravitonCarLibrary.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,15 +21,90 @@ namespace GravitonCar
     /// <summary>
     /// Interaction logic for NewUserForm.xaml
     /// </summary>
-    public partial class NewUserForm : UserControl
+    public partial class NewUserForm : UserControl, INotifyPropertyChanged
     {
+
+        private string _fyllName;
+        private string _username;
+        private string _designation;
+        private string _userMobile;
+        private string _password;
+        private string _confirmpassword;
+
+
+
+        public string FullName
+        {
+            get { return _fyllName; }
+            set { _fyllName = value;
+                OnPropertyChanged("FullName");
+            }
+        }
+
+        public string Username
+        {
+            get { return _username; }
+            set { _username = value;
+                OnPropertyChanged("Username");
+            }
+        }
+ 
+
+        public string Designation
+        {
+            get { return _designation; }
+            set { _designation = value;
+                OnPropertyChanged("Designation");
+            }
+        }
+
+        public string UserMobile
+        {
+            get { return _userMobile; }
+            set { _userMobile = value;
+                OnPropertyChanged("UserMobile");
+            }
+        }
+
+        public string Password
+        {
+            get { return _password; }
+            set { _password = value;
+                OnPropertyChanged("Password");
+            }
+        }
+
+        public string ConfirmPassword {
+            get { return _confirmpassword; }
+            set { _confirmpassword = value;
+                OnPropertyChanged("ConfirmPassword");
+            }
+        }
+
+
+
+
+
+
+
+
+
+
         IScreenRequester callingForm;
         List<string> userAccess = new List<string>() {"Admin", "Employee" };
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public NewUserForm(IScreenRequester caller)
         {
             InitializeComponent();
             callingForm = caller;
             WireUpList();
+        }
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         private void WireUpList()

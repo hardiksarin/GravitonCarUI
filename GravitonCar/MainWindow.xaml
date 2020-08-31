@@ -105,12 +105,13 @@
                             Click="Button_Click"
                             Content="Admin"
                             Foreground="White" />
-
                         <Button
-                            x:Name="ButtonPopUpQuit"
-                            Click="ButtonPopUpQuit_Click"
-                            Content="Quit App"
+                            x:Name="LogoutButton"
+                            Content="Logout"
                             Foreground="White" />
+
+
+                       
                         <materialDesign:PackIcon
                             Width="30"
                             Height="30"
@@ -121,6 +122,7 @@
                             Foreground="White"
                             Kind="Shutdown"
                             MouseDown="PackIcon_MouseDown" />
+                       
                     </DockPanel>
                 </materialDesign:PopupBox>
             </StackPanel>
