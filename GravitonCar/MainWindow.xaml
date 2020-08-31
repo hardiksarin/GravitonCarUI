@@ -100,6 +100,15 @@
                         <!--<Button x:Name="PaymentVoucherCreate" Foreground="White" Content="Payment Voucher" ></Button>
                         <Button  Foreground="White" Content="Receipt Voucher" ></Button>
                         <Button  Foreground="White" Content="Contra Voucher"></Button>-->
+                        <materialDesign:PackIcon
+                            Width="30"
+                            Height="30"
+                            Margin="10"
+                            HorizontalAlignment="Right"
+                            Background="Transparent"
+                            Cursor="Hand"
+                            Foreground="White"
+                            Kind="Home" />
                         <Button
                             x:Name="AdminPanelButton"
                             Click="Button_Click"
@@ -107,12 +116,12 @@
                             Foreground="White" />
                         <Button
                             x:Name="LogoutButton"
+                            Click="LogoutButton_Click"
                             Content="Logout"
-                            Foreground="White"
-                            Click="LogoutButton_Click"/>
+                            Foreground="White" />
 
 
-                       
+
                         <materialDesign:PackIcon
                             Width="30"
                             Height="30"
@@ -123,11 +132,11 @@
                             Foreground="White"
                             Kind="Shutdown"
                             MouseDown="PackIcon_MouseDown" />
-                       
+
                     </DockPanel>
                 </materialDesign:PopupBox>
             </StackPanel>
-            
+
         </Grid>
         <!--<Grid x:Name="GridMenu" Width="60" HorizontalAlignment="Left" Background="CornflowerBlue"  >
             <StackPanel>

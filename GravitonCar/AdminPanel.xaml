@@ -31,13 +31,25 @@
             Grid.Column="1"
             Grid.ColumnSpan="3"
             HorizontalAlignment="Stretch"
-            Foreground="DarkOrange"
             HorizontalContentAlignment="Center"
+            Foreground="DarkOrange"
             MessageQueue="{materialDesign:MessageQueue}" />
-        <Label
-            Grid.Column="1"
-            Grid.ColumnSpan="2"
+        <materialDesign:PackIcon
+            Grid.Row="1"
+            Grid.Column="0"
+            Width="50"
+            Height="70"
             Margin="5"
+            VerticalAlignment="Top"
+            Background="Transparent"
+            Cursor="Hand"
+            Foreground="#00c6ff"
+            Kind="ChevronLeft" />
+        <Label
+            Grid.Column="0"
+            Grid.ColumnSpan="4"
+            Margin="5"
+            HorizontalAlignment="Center"
             Content="User Management"
             FontSize="40"
             FontWeight="Regular"
@@ -59,10 +71,7 @@
                 <TextBlock Text="New User" />
             </Button>
         </materialDesign:Badged>
-        <GridSplitter
-            Grid.Column="0"
-            Width="1"
-            HorizontalAlignment="Right" />
+
         <ScrollViewer
             Grid.Row="1"
             Grid.Column="1"

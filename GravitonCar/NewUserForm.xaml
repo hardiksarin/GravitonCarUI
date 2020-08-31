@@ -35,6 +35,17 @@
                 </Grid.Background>
 
             </Grid>
+            <materialDesign:PackIcon
+                Grid.Row="1"
+                Grid.Column="0"
+                Width="50"
+                Height="70"
+                Margin="0,13"
+                Background="Transparent"
+                Cursor="Hand"
+                Foreground="White"
+                Kind="ChevronLeft" />
+
             <Label
                 Grid.Column="1"
                 Grid.ColumnSpan="2"
