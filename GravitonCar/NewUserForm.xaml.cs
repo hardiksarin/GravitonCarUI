@@ -107,6 +107,8 @@ namespace GravitonCar
                         user.permissions = JsonConvert.SerializeObject(u);
                     }
 
+                    user.is_active = true;
+
                     try
                     {
                         GlobalConfig.Connection.CreateUser(user);

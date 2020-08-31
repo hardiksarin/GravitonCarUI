@@ -506,7 +506,7 @@ namespace GravitonCarLibrary.DataAccess
             List<UserModel> output = new List<UserModel>();
             using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
             {
-                output = connection.Query<UserModel>($"select * from login where username = '{username}' and password = '{password}'").ToList();
+                output = connection.Query<UserModel>($"select * from login where username = '{username}' and password = '{password}' and is_active = 't'").ToList();
                 if(output.Count != 0)
                 {
                     return output[0];
@@ -520,7 +520,7 @@ namespace GravitonCarLibrary.DataAccess
             List<UserModel> output = new List<UserModel>();
             using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
             {
-                output = connection.Query<UserModel>($"select * from login").ToList();
+                output = connection.Query<UserModel>($"select * from login where is_active = 't'").ToList();
                 return output;
             }
         }
@@ -529,7 +529,7 @@ namespace GravitonCarLibrary.DataAccess
         {
             using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
             {
-                int id = connection.ExecuteScalar<int>($"insert into login values(default,'{user.full_name}','{user.username}','{user.designation}','{user.user_mobile}','{user.password}','{user.permissions}')");
+                int id = connection.ExecuteScalar<int>($"insert into login values(default,'{user.full_name}','{user.username}','{user.designation}','{user.user_mobile}','{user.password}','{user.permissions}','{user.is_active}')");
                 return user;
             }
         }
@@ -565,7 +565,7 @@ namespace GravitonCarLibrary.DataAccess
         {
             using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
             {
-                connection.ExecuteScalar($"update login set full_name = '{user.full_name}', username = '{user.username}', designation = '{user.designation}', user_mobile = '{user.user_mobile}', password = '{user.password}', permissions = '{user.permissions}' where user_id = {user.user_id}");
+                connection.ExecuteScalar($"update login set full_name = '{user.full_name}', username = '{user.username}', designation = '{user.designation}', user_mobile = '{user.user_mobile}', password = '{user.password}', permissions = '{user.permissions}', is_active = '{user.is_active}' where user_id = {user.user_id}");
             }
         }
 
