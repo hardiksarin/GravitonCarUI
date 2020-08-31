@@ -29,9 +29,10 @@
         <materialDesign:Snackbar
             x:Name="SnackbarOne"
             Grid.Column="1"
-            Grid.ColumnSpan="2"
+            Grid.ColumnSpan="3"
             HorizontalAlignment="Stretch"
-            Foreground="Red"
+            Foreground="DarkOrange"
+            HorizontalContentAlignment="Center"
             MessageQueue="{materialDesign:MessageQueue}" />
         <Label
             Grid.Column="1"
