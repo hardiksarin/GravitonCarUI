@@ -66,6 +66,9 @@
             FontWeight="UltraLight"
             Foreground="DarkGray" />
         <TextBox
+            Text="hardik"
+            FontSize="20"
+            VerticalContentAlignment="Bottom"
             x:Name="UsernameTextbox"
             IsEnabled="False"
             Grid.Row="1"
@@ -77,6 +80,8 @@
             x:Name="PasswordTextbox"
             TextChanged="PasswordTextbox_TextChanged"
             Grid.Row="2"
+            FontSize="20"
+            VerticalContentAlignment="Bottom"
             Width="350"
             Margin="10"
             HorizontalAlignment="Right"

@@ -221,7 +221,13 @@ namespace GravitonCar
             }
             else
             {
-                MessageBox.Show("Authorisation Failed!");
+                SnackbarOne.IsActive = true;
+                SnackbarOne.MessageQueue.Enqueue("Authorisation Failed", null,
+                    null,
+                    null,
+                    false,
+                    true,
+                    TimeSpan.FromSeconds(5));
             }
         }
 

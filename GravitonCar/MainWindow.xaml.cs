@@ -101,18 +101,14 @@ namespace GravitonCar
 */
         public void CtrShortcut1(Object sender, ExecutedRoutedEventArgs e)
         {
-            ButtonPopUpQuit.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+            Application.Current.Shutdown();
         }
 
         private void ButtonPopUpLogout_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
         }
-        private void ButtonPopUpQuit_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
-
+      
       
         private void PackIcon_MouseDown(object sender, MouseButtonEventArgs e)
         {

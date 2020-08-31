@@ -103,7 +103,22 @@
                 BorderBrush="Gray"
                 FontSize="15"
                 IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedPasswordFieldPasswordBoxEnabledComboBox}"
-                Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" />
+                Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}">
+                <TextBox.Text>
+                    <Binding
+                        Mode="TwoWay"
+                        Path="FullName"
+                        UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <rule:NonEmptyRule />
+                            <rule:OnlyAlphabetsRule />
+                            <local:MinimumCharacterRule MinimumCharacters="2" />
+                            <rule:MaximumCharacterRule MaximumCharacters="50" />
+
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
             <TextBox
                 x:Name="UsernameTextBox"
                 Grid.Column="1"
@@ -114,7 +129,22 @@
                 BorderBrush="Gray"
                 FontSize="15"
                 IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedPasswordFieldPasswordBoxEnabledComboBox}"
-                Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" />
+                Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}">
+                <TextBox.Text>
+                    <Binding
+                        Mode="TwoWay"
+                        Path="Username"
+                        UpdateSourceTrigger="LostFocus">
+                        <Binding.ValidationRules>
+                            <rule:NonEmptyRule />
+                            <local:MinimumCharacterRule MinimumCharacters="2" />
+                            <rule:MaximumCharacterRule MaximumCharacters="100" />
+                            <rule:EmailValidationRules />
+
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
             <TextBox
                 Name="DesignationTextBox"
                 Grid.Column="1"
@@ -125,7 +155,22 @@
                 BorderBrush="Gray"
                 FontSize="15"
                 IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedPasswordFieldPasswordBoxEnabledComboBox}"
-                Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" />
+                Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}">
+                <TextBox.Text>
+                    <Binding
+                        Mode="TwoWay"
+                        Path="Designation"
+                        UpdateSourceTrigger="LostFocus">
+                        <Binding.ValidationRules>
+                            <rule:NonEmptyRule />
+                            <rule:OnlyAlphabetsRule />
+                            <local:MinimumCharacterRule MinimumCharacters="2" />
+                            <rule:MaximumCharacterRule MaximumCharacters="50" />
+
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
 
             <TextBox
                 x:Name="PhoneNumberTextbox"
@@ -137,7 +182,20 @@
                 BorderBrush="Gray"
                 FontSize="15"
                 IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedPasswordFieldPasswordBoxEnabledComboBox}"
-                Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" />
+                Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}">
+                <TextBox.Text>
+                    <Binding
+                        Mode="TwoWay"
+                        Path="UserMobile"
+                        UpdateSourceTrigger="LostFocus">
+                        <Binding.ValidationRules>
+                            <rule:NonEmptyRule />
+                            <rule:FixedLengthRule FixedCharacters="10" TypeOfData="Digits" />
+                            <rule:OnlyNumericRule />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
 
             <TextBox
                 x:Name="PasswordTextbox"
@@ -148,8 +206,21 @@
                 materialDesign:HintAssist.Hint="Password"
                 BorderBrush="Gray"
                 FontSize="15"
-                IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedPasswordFieldPasswordBoxEnabledComboBox}"
-                Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" />
+                Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}">
+                <TextBox.Text>
+                    <Binding
+                        Mode="TwoWay"
+                        Path="Password"
+                        UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <rule:PasswordValidationRule />
+                            <rule:MaximumCharacterRule MaximumCharacters="15" />
+                            <local:MinimumCharacterRule MinimumCharacters="8" />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+
+            </TextBox>
             <PasswordBox
                 x:Name="ConfirmPasswordBox"
                 Grid.Column="1"
@@ -159,7 +230,20 @@
                 materialDesign:HintAssist.Hint="Confirm Password"
                 FontSize="15"
                 IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedPasswordFieldPasswordBoxEnabledComboBox}"
-                Style="{StaticResource MaterialDesignOutlinedPasswordFieldPasswordBox}" />
+                Style="{StaticResource MaterialDesignOutlinedPasswordFieldPasswordBox}">
+                <PasswordBox.PasswordChar>
+                    <Binding
+                        Mode="TwoWay"
+                        Path="Password"
+                        UpdateSourceTrigger="LostFocus">
+                        <Binding.ValidationRules>
+                            <rule:PasswordValidationRule />
+                            <rule:MaximumCharacterRule MaximumCharacters="15" />
+                            <local:MinimumCharacterRule MinimumCharacters="8" />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </PasswordBox.PasswordChar>
+            </PasswordBox>
 
             <ComboBox
                 x:Name="UserAccessCombobox"
@@ -170,6 +254,7 @@
                 materialDesign:HintAssist.Hint="User Access"
                 BorderBrush="Gray"
                 FontSize="15"
+                IsEditable="False"
                 IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedPasswordFieldPasswordBoxEnabledComboBox}"
                 Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
 
@@ -180,11 +265,12 @@
                 Margin="155,680,0,0"
                 VerticalAlignment="Top"
                 VerticalContentAlignment="Center"
+                Click="Button_Click"
                 FontSize="20"
                 FontWeight="Light"
                 Foreground="White"
                 Style="{StaticResource MaterialDesignRaisedLightButton}"
-                ToolTip="Resource name: MaterialDesignRaisedLightButton" Click="Button_Click">
+                ToolTip="Resource name: MaterialDesignRaisedLightButton">
                 Create
                 <Button.Background>
 

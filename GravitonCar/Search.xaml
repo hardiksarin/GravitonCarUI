@@ -48,6 +48,25 @@
                 Opacity="0.56"
                 Text="100"
                 TextAlignment="Left" />
+            <materialDesign:PackIcon
+                Kind="Refresh"
+                Background="Transparent"
+                Cursor="Hand"
+                 Grid.Row="1"
+                Grid.Column="1"
+                Width="40"
+                Height="50"
+                Margin="130,40"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top">
+                <materialDesign:PackIcon.Foreground>
+
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Offset="0.0" Color="#00c6ff" />
+                        <GradientStop Offset="1.0" Color="#0072ff" />
+                    </LinearGradientBrush>
+                </materialDesign:PackIcon.Foreground>
+            </materialDesign:PackIcon>
 
             <Button
                 Grid.Row="1"
