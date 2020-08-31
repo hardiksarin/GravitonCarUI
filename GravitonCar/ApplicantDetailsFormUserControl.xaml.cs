@@ -284,7 +284,13 @@ namespace GravitonCar
             }
             else
             {
-                MessageBox.Show("Please Complete The Form To Proceed");
+                SnackbarFive.IsActive = true;
+                SnackbarFive.MessageQueue.Enqueue("Please Complete The Form To Proceed", null,
+                    null,
+                    null,
+                    false,
+                    true,
+                    TimeSpan.FromSeconds(5));
             }
         }
 

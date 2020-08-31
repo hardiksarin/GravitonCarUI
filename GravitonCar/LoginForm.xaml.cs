@@ -43,7 +43,13 @@ namespace GravitonCar
             if(user == null)
             {
                 //Incorrect Username or Password
-                MessageBox.Show("Incorrect Username or Password");
+                SnackbarTwo.IsActive = true;
+                SnackbarTwo.MessageQueue.Enqueue(" Incorrect Username or Password", null,
+                    null,
+                    null,
+                    false,
+                    true,
+                    TimeSpan.FromSeconds(5));
             }
             else
             {

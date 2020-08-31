@@ -194,19 +194,37 @@ namespace GravitonCar
                     }
                     catch (Exception a)
                     {
-                        MessageBox.Show(a.Message);
+                        SnackbarThree.IsActive = true;
+                        SnackbarThree.MessageQueue.Enqueue(a.Message, null,
+                            null,
+                            null,
+                            false,
+                            true,
+                            TimeSpan.FromSeconds(5));
                     }
                 }
                 else
                 {
                     //Password mismatch
-                    MessageBox.Show("Password mismatch!");
+                    SnackbarThree.IsActive = true;
+                    SnackbarThree.MessageQueue.Enqueue("Password mismatch!", null,
+                        null,
+                        null,
+                        false,
+                        true,
+                        TimeSpan.FromSeconds(5));
                 }
             }
             else
             {
                 //Empty field
-                MessageBox.Show("Please fill all the fields!");
+                SnackbarThree.IsActive = true;
+                SnackbarThree.MessageQueue.Enqueue("Please fill all the fields!", null,
+                    null,
+                    null,
+                    false,
+                    true,
+                    TimeSpan.FromSeconds(5));
             }
         }
 

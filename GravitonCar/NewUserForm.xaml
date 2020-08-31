@@ -171,6 +171,14 @@
                     </Binding>
                 </TextBox.Text>
             </TextBox>
+            <materialDesign:Snackbar
+                x:Name="SnackbarThree"
+                Grid.Column="1"
+                Grid.ColumnSpan="3"
+                HorizontalAlignment="Stretch"
+                HorizontalContentAlignment="Center"
+                Foreground="DarkOrange"
+                MessageQueue="{materialDesign:MessageQueue}" />
 
             <TextBox
                 x:Name="PhoneNumberTextbox"

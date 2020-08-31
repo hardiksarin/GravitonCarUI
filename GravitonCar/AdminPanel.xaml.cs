@@ -218,7 +218,13 @@ namespace GravitonCar
                 CardsWrapper.Children.Clear();
                 LoadUserList();
                 UserListBuilder();
-                MessageBox.Show("User Disabled");
+                SnackbarOne.IsActive = true;
+                SnackbarOne.MessageQueue.Enqueue("User Disabled", null,
+                    null,
+                    null,
+                    false,
+                    true,
+                    TimeSpan.FromSeconds(5));
             }
             else
             {

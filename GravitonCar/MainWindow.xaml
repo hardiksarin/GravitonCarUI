@@ -126,6 +126,7 @@
                     </DockPanel>
                 </materialDesign:PopupBox>
             </StackPanel>
+            
         </Grid>
         <!--<Grid x:Name="GridMenu" Width="60" HorizontalAlignment="Left" Background="CornflowerBlue"  >
             <StackPanel>

@@ -1286,11 +1286,24 @@ namespace GravitonCar
             try
             {
                 GlobalConfig.Connection.CreateCar(model, MainWindow.user);
-                MessageBox.Show("New KYC Created!");
+                SnackbarFour.IsActive = true;
+                SnackbarFour.MessageQueue.Enqueue(" New KYC Created!", null,
+                    null,
+                    null,
+                    false,
+                    true,
+                    TimeSpan.FromSeconds(5));
+
             }
             catch (Exception a)
-            {
-                MessageBox.Show(a.Message);
+            {   
+                SnackbarFour.IsActive = true;
+                SnackbarFour.MessageQueue.Enqueue(a.Message, null,
+                    null,
+                    null,
+                    false,
+                    true,
+                    TimeSpan.FromSeconds(5));
             }
             WriteJson(output);
             callingForm.SearchScreen();

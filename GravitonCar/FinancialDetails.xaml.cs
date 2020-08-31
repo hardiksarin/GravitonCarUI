@@ -540,7 +540,14 @@ namespace GravitonCar
             }
             else
             {
-                MessageBox.Show("Please enter all fields");
+                SnackbarSeven.IsActive = true;
+                SnackbarSeven.MessageQueue.Enqueue("Please enter all fields", null,
+                    null,
+                    null,
+                    false,
+                    true,
+                    TimeSpan.FromSeconds(5));
+
             }
         }
 

@@ -54,6 +54,14 @@
 
 
                 </Grid.RowDefinitions>
+                <materialDesign:Snackbar
+                    x:Name="SnackbarSix"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="5"
+                    HorizontalAlignment="Stretch"
+                    HorizontalContentAlignment="Center"
+                    Foreground="DarkOrange"
+                    MessageQueue="{materialDesign:MessageQueue}" />
                 <TextBlock
                     Grid.Row="1"
                     Grid.Column="1"

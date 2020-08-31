@@ -84,6 +84,14 @@
             <!--  should disable on 2nd transition...  -->
 
 
+            <materialDesign:Snackbar
+                x:Name="SnackbarFour"
+                Grid.Column="0"
+                Grid.ColumnSpan="5"
+                HorizontalAlignment="Stretch"
+                HorizontalContentAlignment="Center"
+                Foreground="DarkOrange"
+                MessageQueue="{materialDesign:MessageQueue}" />
 
 
             <materialDesign:PackIcon
