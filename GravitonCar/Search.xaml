@@ -49,6 +49,7 @@
                 Text="100"
                 TextAlignment="Left" />
             <materialDesign:PackIcon
+                MouseDown="PackIcon_MouseDown"
                 Kind="Refresh"
                 Background="Transparent"
                 Cursor="Hand"
