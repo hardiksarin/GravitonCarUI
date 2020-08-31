@@ -205,5 +205,12 @@ namespace GravitonCar
             GridPrincipal.Children.Clear();
             GridPrincipal.Children.Add(new AdminPanel(this));
         }
+
+        private void LogoutButton_Click(object sender, RoutedEventArgs e)
+        {
+            LoginForm form = new LoginForm();
+            this.Close();
+            form.Show();
+        }
     }
 }

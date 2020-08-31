@@ -108,7 +108,8 @@
                         <Button
                             x:Name="LogoutButton"
                             Content="Logout"
-                            Foreground="White" />
+                            Foreground="White"
+                            Click="LogoutButton_Click"/>
 
 
                        
