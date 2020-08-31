@@ -21,7 +21,7 @@ namespace GravitonCar
     /// <summary>
     /// Interaction logic for NewUserForm.xaml
     /// </summary>
-    public partial class NewUserForm : UserControl, INotifyPropertyChanged
+    public partial class NewUserForm : UserControl, INotifyPropertyChanged, IValidateError
     {
 
         private string _fyllName;
@@ -97,7 +97,9 @@ namespace GravitonCar
 
         public NewUserForm(IScreenRequester caller)
         {
+            DataContext = this;
             InitializeComponent();
+            ApplicantDetailsFormUserControl.errorForm = this;
             callingForm = caller;
             WireUpList();
         }
@@ -183,6 +185,8 @@ namespace GravitonCar
                         user.permissions = JsonConvert.SerializeObject(u);
                     }
 
+                    user.is_active = true;
+
                     try
                     {
                         GlobalConfig.Connection.CreateUser(user);
@@ -204,6 +208,16 @@ namespace GravitonCar
                 //Empty field
                 MessageBox.Show("Please fill all the fields!");
             }
+        }
+
+        public void DisableButton()
+        {
+            CreateButton.IsEnabled = false;
+        }
+
+        public void EnableButton()
+        {
+            CreateButton.IsEnabled = true;
         }
     }
 }

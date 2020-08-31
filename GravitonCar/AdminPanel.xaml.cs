@@ -212,12 +212,13 @@ namespace GravitonCar
                         thisUser = user;
                     }
                 }
-                //Delete thisUser
-                GlobalConfig.Connection.DeleteUser(thisUser);
+                //Disable this thisUser
+                thisUser.is_active = false;
+                GlobalConfig.Connection.UpdateUserPassword(thisUser);
                 CardsWrapper.Children.Clear();
                 LoadUserList();
                 UserListBuilder();
-                MessageBox.Show("User Deleted");
+                MessageBox.Show("User Disabled");
             }
             else
             {

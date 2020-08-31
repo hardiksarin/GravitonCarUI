@@ -259,6 +259,7 @@
                 Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
 
             <Button
+                x:Name="CreateButton"
                 Grid.Row="1"
                 Grid.Column="1"
                 Height="40"
