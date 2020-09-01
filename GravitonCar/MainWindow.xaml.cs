@@ -28,6 +28,7 @@ namespace GravitonCar
         JObject permission;
         public static UserModel user = new UserModel();
         public static string userPermission;
+        public static MainWindow parent;
         public MainWindow(UserModel userModel)
         {
             InitializeComponent();
@@ -37,6 +38,7 @@ namespace GravitonCar
             GridPrincipal.Children.Clear();
             GridPrincipal.Children.Add(new Search(this));
             GetPath();
+            parent = this;
         }
 
         private void CheckPermission()
