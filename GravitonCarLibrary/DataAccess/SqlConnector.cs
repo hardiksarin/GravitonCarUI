@@ -417,7 +417,7 @@ namespace GravitonCarLibrary.DataAccess
 
 
         //CAR
-        public void CreateCar(CarModel model)
+        public void CreateCar(CarModel model, UserModel user)
         {
             CreateDocument(model.documentModel);
             CreateApplicant(model.applicantModel);
@@ -428,6 +428,13 @@ namespace GravitonCarLibrary.DataAccess
             {
                 CreateLoan(loan);
             }
+
+            KYCLogModel log = new KYCLogModel();
+            log.user_id = user.user_id;
+            log.related_pan = model.documentModel.document_pan;
+            log.related_aadhar = model.documentModel.document_aadhar;
+
+            CreateKYCLog(log);
         }
 
         public CarModel GetCar_ById(string aadhar, string pan)
@@ -488,6 +495,95 @@ namespace GravitonCarLibrary.DataAccess
             {
                 output = connection.Query<LoanModel>($"select * from loan where account_realtedpan = '{pan}' and account_realtedaadhar = '{aadhar}'").ToList();
                 return output;
+            }
+        }
+
+
+        //User
+
+        public UserModel GetUserModel(string username, string password)
+        {
+            List<UserModel> output = new List<UserModel>();
+            using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
+            {
+                output = connection.Query<UserModel>($"select * from login where username = '{username}' and password = '{password}' and is_active = 't'").ToList();
+                if(output.Count != 0)
+                {
+                    return output[0];
+                }
+                return null;
+            }
+        }
+
+        public List<UserModel> GetUser_All()
+        {
+            List<UserModel> output = new List<UserModel>();
+            using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
+            {
+                output = connection.Query<UserModel>($"select * from login where is_active = 't'").ToList();
+                return output;
+            }
+        }
+
+        public UserModel CreateUser(UserModel user)
+        {
+            using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
+            {
+                int id = connection.ExecuteScalar<int>($"insert into login values(default,'{user.full_name}','{user.username}','{user.designation}','{user.user_mobile}','{user.password}','{user.permissions}','{user.is_active}')");
+                return user;
+            }
+        }
+
+        public void DeleteUser(UserModel user)
+        {
+            using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
+            {
+                connection.ExecuteScalar<int>($"delete from login where user_id = {user.user_id}");
+            }
+        }
+
+
+        //User KYC Log
+        public void CreateKYCLog(KYCLogModel model)
+        {
+            using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
+            {
+                connection.ExecuteScalar<int>($"insert into user_kyc_log values(default,{model.user_id},'{model.related_aadhar}','{model.related_pan}',default)");
+            }
+        }
+
+        public int GetCount_USer(int user_id, string date)
+        {
+            using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
+            {
+                int count =  connection.ExecuteScalar<int>($"select count(user_id) from user_kyc_log where user_id = {user_id} and kyc_date = '{date}'");
+                return count;
+            }
+        }
+
+        public void UpdateUserPassword(UserModel user)
+        {
+            using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
+            {
+                connection.ExecuteScalar($"update login set full_name = '{user.full_name}', username = '{user.username}', designation = '{user.designation}', user_mobile = '{user.user_mobile}', password = '{user.password}', permissions = '{user.permissions}', is_active = '{user.is_active}' where user_id = {user.user_id}");
+            }
+        }
+
+        public UserModel GetUser_ByPan(string aadhar, string pan)
+        {
+            List<KYCLogModel> userList = new List<KYCLogModel>();
+            KYCLogModel user = new KYCLogModel();
+            using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
+            {
+                userList = connection.Query<KYCLogModel>($"select * from user_kyc_log where related_aadhar = '{aadhar}' and related_pan = '{pan}'").ToList();
+                user = userList[0];
+
+                UserModel u = new UserModel();
+                List<UserModel> uList = new List<UserModel>();
+                uList = connection.Query<UserModel>($"select * from login where user_id = {user.user_id}").ToList();
+                u = uList[0];
+
+                return u;
             }
         }
     }

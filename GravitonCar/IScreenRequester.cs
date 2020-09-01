@@ -17,5 +17,7 @@ namespace GravitonCar
         void DisplayScreen(CarModel model);
         void SetSystemPath(string path);
         void SearchScreen();
+        void NewUser();
+        void AdminPanel();
     }
 }

@@ -1,5 +1,6 @@
 ﻿using GravitonCarLibrary;
 using GravitonCarLibrary.Models;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -24,13 +25,34 @@ namespace GravitonCar
     /// </summary>
     public partial class MainWindow : Window,IScreenRequester
     {
-        public MainWindow()
+        JObject permission;
+        public static UserModel user = new UserModel();
+        public static string userPermission;
+        public MainWindow(UserModel userModel)
         {
             InitializeComponent();
-            GlobalConfig.InitializeConnections();
+            user = userModel;
+            CheckPermission();
+            //GlobalConfig.InitializeConnections();
             GridPrincipal.Children.Clear();
             GridPrincipal.Children.Add(new Search(this));
             GetPath();
+        }
+
+        private void CheckPermission()
+        {
+            permission = JObject.Parse(user.permissions);
+            //var obj = permission["Admin"];
+            bool isAdminTrue = permission.SelectToken("Admin").Value<bool>();
+
+            if (isAdminTrue)
+            {
+                userPermission = "Admin";
+            }
+            else
+            {
+                userPermission = "";
+            }
         }
 
         private void GetPath()
@@ -79,18 +101,14 @@ namespace GravitonCar
 */
         public void CtrShortcut1(Object sender, ExecutedRoutedEventArgs e)
         {
-            ButtonPopUpQuit.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+            Application.Current.Shutdown();
         }
 
         private void ButtonPopUpLogout_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
         }
-        private void ButtonPopUpQuit_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
-
+      
       
         private void PackIcon_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -158,6 +176,46 @@ namespace GravitonCar
         }
 
         public void SearchScreen()
+        {
+            GridPrincipal.Children.Clear();
+            GridPrincipal.Children.Add(new Search(this));
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (userPermission == "Admin")
+            {
+                GridPrincipal.Children.Clear();
+                GridPrincipal.Children.Add(new AdminPanel(this));
+            }
+            else
+            {
+
+                
+                MessageBox.Show("Access Denied");
+            }
+        }
+
+        public void NewUser()
+        {
+            GridPrincipal.Children.Clear();
+            GridPrincipal.Children.Add(new NewUserForm(this));
+        }
+
+        public void AdminPanel()
+        {
+            GridPrincipal.Children.Clear();
+            GridPrincipal.Children.Add(new AdminPanel(this));
+        }
+
+        private void LogoutButton_Click(object sender, RoutedEventArgs e)
+        {
+            LoginForm form = new LoginForm();
+            this.Close();
+            form.Show();
+        }
+
+        private void PackIcon_MouseDown_1(object sender, MouseButtonEventArgs e)
         {
             GridPrincipal.Children.Clear();
             GridPrincipal.Children.Add(new Search(this));

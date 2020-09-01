@@ -1,13 +1,17 @@
-﻿<Window x:Class="GravitonCar.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        
-
-        mc:Ignorable="d"
-        Title="Graviton" Height="800" Width="1000" SizeToContent="Manual"  WindowStartupLocation="CenterScreen" Icon="GravitonLogo.ico" >
+﻿<Window
+    x:Class="GravitonCar.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Graviton"
+    Width="1000"
+    Height="800"
+    Icon="GravitonLogo.ico"
+    SizeToContent="Manual"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
 
 
 
@@ -52,32 +56,88 @@
     </Window.CommandBindings>-->
 
     <Grid>
-        <Grid x:Name="GridPrincipal" Margin="0 40 0 0" Background="White"></Grid>
-        
+        <Grid
+            x:Name="GridPrincipal"
+            Margin="0,40,0,0"
+            Background="White" />
 
 
-        <Grid Height="40" VerticalAlignment="Top" >
+
+        <Grid Height="40" VerticalAlignment="Top">
             <Grid.Background>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="#00c6ff" Offset="0.0" />
-                    <GradientStop Color="#0072ff" Offset="1.0" />
+                    <GradientStop Offset="0.0" Color="#00c6ff" />
+                    <GradientStop Offset="1.0" Color="#0072ff" />
                 </LinearGradientBrush>
             </Grid.Background>
-            <TextBlock HorizontalAlignment="Center" Text="THE THREE FINANCE" Foreground="White" VerticalAlignment="Center" FontWeight="Light" FontSize="30" ></TextBlock>
-            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal">
-                <TextBlock Text="VT Road" Foreground="White" VerticalAlignment="Center" FontWeight="Light" FontSize="18" ></TextBlock>
-                <materialDesign:PopupBox Margin="5" Foreground="LightGoldenrodYellow" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" >
-                    <DockPanel Margin="0,0,0,-10" Width="740" Height="auto" Background="#FF3399FF" >
+            <TextBlock
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontSize="30"
+                FontWeight="Light"
+                Foreground="White"
+                Text="THE THREE FINANCE" />
+            <StackPanel
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                Orientation="Horizontal">
+                <TextBlock
+                    VerticalAlignment="Center"
+                    FontSize="18"
+                    FontWeight="Light"
+                    Foreground="White"
+                    Text="VT Road" />
+                <materialDesign:PopupBox
+                    Margin="5"
+                    Foreground="LightGoldenrodYellow"
+                    PlacementMode="BottomAndAlignRightEdges"
+                    StaysOpen="False">
+                    <DockPanel
+                        Width="740"
+                        Height="auto"
+                        Margin="0,0,0,-10"
+                        Background="#FF3399FF">
                         <!--<Button x:Name="PaymentVoucherCreate" Foreground="White" Content="Payment Voucher" ></Button>
                         <Button  Foreground="White" Content="Receipt Voucher" ></Button>
-                        <Button  Foreground="White" Content="Contra Voucher"></Button>
-                        <Button  Foreground="White" Content="Journal Voucher"></Button>-->
+                        <Button  Foreground="White" Content="Contra Voucher"></Button>-->
+                        <materialDesign:PackIcon
+                            Width="30"
+                            Height="30"
+                            Margin="10"
+                            MouseDown="PackIcon_MouseDown_1"
+                            HorizontalAlignment="Right"
+                            Background="Transparent"
+                            Cursor="Hand"
+                            Foreground="White"
+                            Kind="Home" />
+                        <Button
+                            x:Name="AdminPanelButton"
+                            Click="Button_Click"
+                            Content="Admin"
+                            Foreground="White" />
+                        <Button
+                            x:Name="LogoutButton"
+                            Click="LogoutButton_Click"
+                            Content="Logout"
+                            Foreground="White" />
 
-                        <Button Foreground="White" x:Name="ButtonPopUpQuit" Content="Quit App" Click="ButtonPopUpQuit_Click" ></Button>
-                        <materialDesign:PackIcon  Background="Transparent"  Cursor="Hand"  Margin="10"  Foreground="White" Kind="Shutdown" Width="30" Height="30" HorizontalAlignment="Right" MouseDown="PackIcon_MouseDown"></materialDesign:PackIcon>
+
+
+                        <materialDesign:PackIcon
+                            Width="30"
+                            Height="30"
+                            Margin="10"
+                            HorizontalAlignment="Right"
+                            Background="Transparent"
+                            Cursor="Hand"
+                            Foreground="White"
+                            Kind="Shutdown"
+                            MouseDown="PackIcon_MouseDown" />
+
                     </DockPanel>
                 </materialDesign:PopupBox>
             </StackPanel>
+
         </Grid>
         <!--<Grid x:Name="GridMenu" Width="60" HorizontalAlignment="Left" Background="CornflowerBlue"  >
             <StackPanel>
@@ -90,13 +150,15 @@
                     </Button>
                 </Grid>
                 <ListView Name="ListViewMenu" Foreground="White" Background="CornflowerBlue" ScrollViewer.HorizontalScrollBarVisibility="Disabled"  SelectedIndex="0">
-                    --><!--<ListView.ItemContainerStyle>
+        -->
+        <!--<ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="BorderThickness" Value="0"/>
                             <Setter Property="Margin" Value="0"/>
                             <Setter Property="Padding" Value="20"/>
                         </Style>
-                    </ListView.ItemContainerStyle>--><!--
+                    </ListView.ItemContainerStyle>-->
+        <!--
                     <ListViewItem Height="60">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Margin="10" Kind="NotebookMultiple" Width="30" Height="30"></materialDesign:PackIcon>

@@ -161,5 +161,11 @@ namespace GravitonCar
         {
             callingForm.ApplicantForm();
         }
+
+        private void PackIcon_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            callingForm.SearchScreen();
+            //LoadListData();
+        }
     }
 }

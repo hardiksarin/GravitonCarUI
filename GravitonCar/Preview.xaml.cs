@@ -1088,16 +1088,44 @@ namespace GravitonCar
             }
 
             //In hand Income
-            model.accountModel.account_inhandsalary = int.Parse(InHandMonthlyIcomeTextBox.Text);
+            if (InHandMonthlyIcomeTextBox.Text.Length != 0)
+            {
+                model.accountModel.account_inhandsalary = int.Parse(InHandMonthlyIcomeTextBox.Text);
+            }
+            else
+            {
+                model.accountModel.account_inhandsalary = 0;
+            }
 
             //Bank Name
-            model.accountModel.account_bankname = BankNameTextBox.Text;
+            if (BankNameTextBox.Text.Length != 0)
+            {
+                model.accountModel.account_bankname = BankNameTextBox.Text;
+            }
+            else
+            {
+                model.accountModel.account_bankname = "";
+            }
 
             //IFSC 
-            model.accountModel.account_ifsc = IFSCTextBox.Text;
+            if (IFSCTextBox.Text.Length != 0)
+            {
+                model.accountModel.account_ifsc = IFSCTextBox.Text;
+            }
+            else
+            {
+                model.accountModel.account_ifsc = "";
+            }
 
             //Accounnt Number
-            model.accountModel.account_number = AccountNumberTextBox.Text;
+            if (AccountNumberTextBox.Text.Length != 0)
+            {
+                model.accountModel.account_number = AccountNumberTextBox.Text;
+            }
+            else
+            {
+                model.accountModel.account_number = "";
+            }
 
             //Loans
             model.loanModel = loanModels;
@@ -1285,12 +1313,25 @@ namespace GravitonCar
             string output = JsonConvert.SerializeObject(model);
             try
             {
-                GlobalConfig.Connection.CreateCar(model);
-                MessageBox.Show("New KYC Created!");
+                GlobalConfig.Connection.CreateCar(model, MainWindow.user);
+                SnackbarFour.IsActive = true;
+                SnackbarFour.MessageQueue.Enqueue(" New KYC Created!", null,
+                    null,
+                    null,
+                    false,
+                    true,
+                    TimeSpan.FromSeconds(5));
+
             }
             catch (Exception a)
-            {
-                MessageBox.Show(a.Message);
+            {   
+                SnackbarFour.IsActive = true;
+                SnackbarFour.MessageQueue.Enqueue(a.Message, null,
+                    null,
+                    null,
+                    false,
+                    true,
+                    TimeSpan.FromSeconds(5));
             }
             WriteJson(output);
             callingForm.SearchScreen();
