@@ -144,7 +144,8 @@ namespace GravitonCar
 
             PackIcon deleteIcon = new PackIcon();
             string name = user.full_name.Split(' ').First();
-            deleteIcon.Name = $"{name}_{user.designation}_delete";
+            string desig = user.designation.Split(' ').First();
+            deleteIcon.Name = $"{name}_{desig}_delete";
             deleteIcon.Kind = PackIconKind.Delete;
             deleteIcon.HorizontalAlignment = HorizontalAlignment.Right;
             deleteIcon.VerticalAlignment = VerticalAlignment.Center;
@@ -158,7 +159,7 @@ namespace GravitonCar
             cardGrid.Children.Add(deleteIcon);
 
             PackIcon lockIcon = new PackIcon();
-            lockIcon.Name = $"{name}_{user.designation}_lock";
+            lockIcon.Name = $"{name}_{desig}_lock";
             lockIcon.Kind = PackIconKind.Lock;
             lockIcon.HorizontalAlignment = HorizontalAlignment.Right;
             lockIcon.VerticalAlignment = VerticalAlignment.Center;
