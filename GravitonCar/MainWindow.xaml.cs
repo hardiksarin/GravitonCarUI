@@ -214,5 +214,11 @@ namespace GravitonCar
             this.Close();
             form.Show();
         }
+
+        private void PackIcon_MouseDown_1(object sender, MouseButtonEventArgs e)
+        {
+            GridPrincipal.Children.Clear();
+            GridPrincipal.Children.Add(new Search(this));
+        }
     }
 }

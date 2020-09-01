@@ -237,5 +237,10 @@ namespace GravitonCar
         {
             CreateButton.IsEnabled = true;
         }
+
+        private void PackIcon_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            callingForm.AdminPanel();
+        }
     }
 }

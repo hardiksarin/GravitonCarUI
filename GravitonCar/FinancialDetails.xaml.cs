@@ -685,11 +685,19 @@ namespace GravitonCar
             {
                 model.accountModel.account_inhandsalary = int.Parse(InHandMonthlyIcomeTextBox.Text);
             }
+            else
+            {
+                model.accountModel.account_inhandsalary = 0;
+            }
 
             //Bank Name
             if (BankNameTextBox.Text.Length != 0)
             {
                 model.accountModel.account_bankname = BankNameTextBox.Text;
+            }
+            else
+            {
+                model.accountModel.account_bankname = "";
             }
 
             //IFSC 
@@ -697,17 +705,25 @@ namespace GravitonCar
             {
                 model.accountModel.account_ifsc = IFSCTextBox.Text;
             }
+            else
+            {
+                model.accountModel.account_ifsc = "";
+            }
 
             //Accounnt Number
             if (AccountNumberTextBox.Text.Length != 0)
             {
                 model.accountModel.account_number = AccountNumberTextBox.Text;
             }
+            else
+            {
+                model.accountModel.account_number = "";
+            }
 
             //Loans
             if (loanModels.Count != 0)
             {
-                model.loanModel = loanModels; 
+                model.loanModel = loanModels;
             }
 
         }
@@ -739,7 +755,7 @@ namespace GravitonCar
                     output = false;
                 } 
             }
-            if (InHandMonthlyIcomeTextBox.Text.Length == 0)
+            /*if (InHandMonthlyIcomeTextBox.Text.Length == 0)
             {
                 output = false;
             }
@@ -754,7 +770,7 @@ namespace GravitonCar
             if(AccountNumberTextBox.Text.Length == 0)
             {
                 output = false;
-            }
+            }*/
 
             return output;
         }

@@ -989,10 +989,10 @@
                         Path="AccountSalary"
                         UpdateSourceTrigger="LostFocus">
                         <Binding.ValidationRules>
-                            <rule:OnlyNumericRule />
+                            <!--<rule:OnlyNumericRule />
                             <rule:NonEmptyRule />
                             <rule:MaximumCharacterRule MaximumCharacters="12" />
-                            <local:MinimumCharacterRule MinimumCharacters="4" />
+                            <local:MinimumCharacterRule MinimumCharacters="4" />-->
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -1016,10 +1016,10 @@
                         Path="AccountBankName"
                         UpdateSourceTrigger="LostFocus">
                         <Binding.ValidationRules>
-                            <rule:OnlyAlphabetsRule />
+                            <!--<rule:OnlyAlphabetsRule />
                             <rule:NonEmptyRule />
                             <local:MinimumCharacterRule MinimumCharacters="2" />
-                            <rule:MaximumCharacterRule MaximumCharacters="100" />
+                            <rule:MaximumCharacterRule MaximumCharacters="100" />-->
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -1043,10 +1043,10 @@
                         Path="AccountNumber"
                         UpdateSourceTrigger="LostFocus">
                         <Binding.ValidationRules>
-                            <rule:OnlyNumericRule />
+                            <!--<rule:OnlyNumericRule />
                             <rule:NonEmptyRule />
                             <local:MinimumCharacterRule MinimumCharacters="11" />
-                            <rule:MaximumCharacterRule MaximumCharacters="16" />
+                            <rule:MaximumCharacterRule MaximumCharacters="16" />-->
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -1071,8 +1071,8 @@
                         Path="AccountIfsc"
                         UpdateSourceTrigger="LostFocus">
                         <Binding.ValidationRules>
-                            <rule:NonEmptyRule />
-                            <rule:FixedLengthRule FixedCharacters="11" TypeOfData="Characters" />
+                            <!--<rule:NonEmptyRule />
+                            <rule:FixedLengthRule FixedCharacters="11" TypeOfData="Characters" />-->
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>

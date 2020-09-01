@@ -41,6 +41,7 @@
                 Width="50"
                 Height="70"
                 Margin="0,13"
+                MouseDown="PackIcon_MouseDown"
                 Background="Transparent"
                 Cursor="Hand"
                 Foreground="White"
