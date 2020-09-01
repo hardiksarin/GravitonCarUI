@@ -28,6 +28,7 @@ namespace GravitonCar
             callingForm = caller;
             userModel = user;
             pack = icon;
+            this.Owner = MainWindow.parent;
         }
 
 

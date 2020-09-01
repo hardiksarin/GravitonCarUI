@@ -30,6 +30,7 @@ namespace GravitonCar
             userModel = user;
             icon = packIcon;
             wireupData();
+            this.Owner = MainWindow.parent;
         }
 
         private void wireupData()
