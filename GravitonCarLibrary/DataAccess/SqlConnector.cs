@@ -576,14 +576,20 @@ namespace GravitonCarLibrary.DataAccess
             using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
             {
                 userList = connection.Query<KYCLogModel>($"select * from user_kyc_log where related_aadhar = '{aadhar}' and related_pan = '{pan}'").ToList();
-                user = userList[0];
+                if(userList.Count != 0)
+                {
+                    user = userList[0];
+                    UserModel u = new UserModel();
+                    List<UserModel> uList = new List<UserModel>();
+                    uList = connection.Query<UserModel>($"select * from login where user_id = {user.user_id}").ToList();
+                    u = uList[0];
 
-                UserModel u = new UserModel();
-                List<UserModel> uList = new List<UserModel>();
-                uList = connection.Query<UserModel>($"select * from login where user_id = {user.user_id}").ToList();
-                u = uList[0];
-
-                return u;
+                    return u;
+                }
+                else
+                {
+                    return null;
+                }
             }
         }
     }
