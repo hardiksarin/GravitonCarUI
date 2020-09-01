@@ -246,5 +246,10 @@ namespace GravitonCar
                 GlobalConfig.Connection.UpdateUserPassword(user);
             }
         }
+
+        private void PackIcon_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            callingForm.SearchScreen();
+        }
     }
 }

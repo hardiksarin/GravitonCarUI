@@ -101,7 +101,8 @@ namespace GravitonCar
 */
         public void CtrShortcut1(Object sender, ExecutedRoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            GridPrincipal.Children.Clear();
+            GridPrincipal.Children.Add(new Search(this));
         }
 
         private void ButtonPopUpLogout_Click(object sender, RoutedEventArgs e)
@@ -219,6 +220,11 @@ namespace GravitonCar
         {
             GridPrincipal.Children.Clear();
             GridPrincipal.Children.Add(new Search(this));
+        }
+
+        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+
         }
     }
 }

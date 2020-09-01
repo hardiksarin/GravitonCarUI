@@ -17,43 +17,16 @@
 
 
 
-    <!--<Window.Resources>
-
+    <Window.Resources>
         <RoutedUICommand x:Key="Ctr1" Text="Another Text" />
-        <Storyboard x:Key="MenuOpen">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
-                <EasingDoubleKeyFrame KeyTime="0" Value="60"></EasingDoubleKeyFrame>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="200"></EasingDoubleKeyFrame>
-            </DoubleAnimationUsingKeyFrames>
-
-        </Storyboard>
-        <Storyboard x:Key="MenuClose">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
-                <EasingDoubleKeyFrame KeyTime="0" Value="200"></EasingDoubleKeyFrame>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="60"></EasingDoubleKeyFrame>
-            </DoubleAnimationUsingKeyFrames>
-
-        </Storyboard>
     </Window.Resources>
-    <Window.Triggers>
-        <EventTrigger RoutedEvent="Button.Click" SourceName="ButtonOpenMenu">
-            <BeginStoryboard Storyboard="{StaticResource MenuOpen}">
-
-            </BeginStoryboard>
-        </EventTrigger>
-        <EventTrigger RoutedEvent="Button.Click" SourceName="ButtonCloseMenu">
-            <BeginStoryboard Storyboard="{StaticResource MenuClose}">
-
-            </BeginStoryboard>
-        </EventTrigger>
-    </Window.Triggers>
 
     <Window.InputBindings>
-        <KeyBinding Key="F1" Modifiers="Ctrl" Command="{StaticResource Ctr1}" />
+        <KeyBinding Key="H" Modifiers="Ctrl" Command="{StaticResource Ctr1}" />
     </Window.InputBindings>
     <Window.CommandBindings>
         <CommandBinding Command="{StaticResource Ctr1}" Executed="CtrShortcut1" />
-    </Window.CommandBindings>-->
+    </Window.CommandBindings>
 
     <Grid>
         <Grid

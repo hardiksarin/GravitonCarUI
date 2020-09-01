@@ -40,6 +40,7 @@
             Width="50"
             Height="70"
             Margin="5"
+            MouseDown="PackIcon_MouseDown"
             VerticalAlignment="Top"
             Background="Transparent"
             Cursor="Hand"
