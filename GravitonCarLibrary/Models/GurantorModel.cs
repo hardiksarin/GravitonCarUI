@@ -8,7 +8,6 @@ namespace GravitonCarLibrary.Models
 {
   public  class GurantorModel
     {
-
         /// <summary>
         /// First Name of the gurantor,Max Length 50 
         /// </summary>
@@ -28,7 +27,7 @@ namespace GravitonCarLibrary.Models
         /// <summary>
         /// Mobile Number of the gurantor
         /// </summary>
-        public int gurantor_mobile { get; set; }
+        public string gurantor_mobile { get; set; }
         /// <summary>
         /// Relationship of the Applicant With the gurantor
         /// </summary>

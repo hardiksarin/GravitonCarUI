@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,7 +40,7 @@ namespace GravitonCarLibrary.Models
         /// <summary>
         /// Pincode of the Applicant, Fixed Length 6
         /// </summary>
-        public int applicant_pincode { get; set; }
+        public string applicant_pincode { get; set; }
         /// <summary>
         ///  Current Address of the Applicant,Max Length 300
         /// </summary>
@@ -47,11 +48,11 @@ namespace GravitonCarLibrary.Models
         /// <summary>
         /// Mobile Number of the Applicant
         /// </summary>
-        public int applicant_mobile { get; set; }
+        public string applicant_mobile { get; set; }
         /// <summary>
         /// Office Number of the Applicant
         /// </summary>
-        public int applicant_officeno { get; set; }
+        public string applicant_officeno { get; set; }
         /// <summary>
         /// Designation of the Applicant,Max Length 20 
         /// </summary>
@@ -100,6 +101,15 @@ namespace GravitonCarLibrary.Models
         ///  Aadhar Id of the Applicant, Fixed Length 12
         /// </summary>
         public string applicant_aadhar { get; set; }
-    
+
+        public string DisplaySearch { 
+            get 
+            {
+                string output = "";
+                output = $"{applicant_firstname}   :   {applicant_aadhar}";
+                return output;
+            } 
+        }
+
     }
 }

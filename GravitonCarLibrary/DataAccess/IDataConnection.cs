@@ -10,10 +10,13 @@ namespace GravitonCarLibrary.DataAccess
     public interface IDataConnection
     {
 
+        
+
         //Account
         AccountModel CreateAccount(AccountModel model);
         void UpdateAccount(AccountModel model);
         List<AccountModel> GetAccounts_All();
+        AccountModel GetAccount_ById(string aadhar, string pan);
         //Account
 
         //Acquaintance
@@ -29,6 +32,7 @@ namespace GravitonCarLibrary.DataAccess
         List<ApplicantModel> GetApplicant_All();
         void UpdateApplicant(ApplicantModel model);
         ApplicantModel CreateApplicant(ApplicantModel model);
+        List<ApplicantModel> GetApplicant_ById(string aadhar, string pan);
         //Applicant
 
         //Caste
@@ -51,6 +55,7 @@ namespace GravitonCarLibrary.DataAccess
         List<DocumentModel> GetDocument_All();
         void UpdateDocument(DocumentModel model);
         DocumentModel CreateDocument(DocumentModel model);
+        List<DocumentModel> GetDocument_ById(string aadhar, string pan);
 
         //Documents
 
@@ -68,6 +73,7 @@ namespace GravitonCarLibrary.DataAccess
         List<GurantorModel> GetGurantor_All();
         void UpdateGurantor(GurantorModel model);
         GurantorModel CreateGurantor(GurantorModel model);
+        List<GurantorModel> GetGurantor_ById(string aadhar, string pan);
 
 
 
@@ -91,6 +97,7 @@ namespace GravitonCarLibrary.DataAccess
         List<LoanModel> GetLoan_All();
         void UpdateLoan(LoanModel model);
         LoanModel CreateLoan(LoanModel model);
+        List<LoanModel> GetLoan_ById(string aadhar, string pan);
 
 
         //Loan
@@ -102,6 +109,17 @@ namespace GravitonCarLibrary.DataAccess
         LoanTypeModel CreateLoanType(LoanTypeModel model);
 
         //LoanType
+
+        //Login
+        UserModel GetUserModel(string username, string password);
+        void UpdateUserPassword(UserModel user);
+        List<UserModel> GetUser_All();
+        UserModel CreateUser(UserModel user);
+        void DeleteUser(UserModel user);
+        UserModel GetUser_ByPan(string aadhar, string pan);
+        //Login
+
+
         //Maried Status
 
         List<MarriedStatusModel> GetMarried_All();
@@ -123,6 +141,13 @@ namespace GravitonCarLibrary.DataAccess
         //Progress
 
 
+        //CAR
+        void CreateCar(CarModel model, UserModel user);
+        CarModel GetCar_ById(string aadhar, string pan);
+
+        //User KYC Log
+        void CreateKYCLog(KYCLogModel model);
+        int GetCount_USer(int user_id, string date);
 
     }
 }

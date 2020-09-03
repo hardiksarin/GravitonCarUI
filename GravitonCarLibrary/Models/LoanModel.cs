@@ -19,15 +19,15 @@ namespace GravitonCarLibrary.Models
         /// <summary>
         /// Amount Of the Loan
         /// </summary>
-        public int loan_amount { get; set; }
+        public double loan_amount { get; set; }
         /// <summary>
         /// Emi of the Loan
         /// </summary>
-        public int loan_emi { get; set; }
+        public double loan_emi { get; set; }
         /// <summary>
         /// Closure Date of the Loan
         /// </summary>
-        public int loan_closuredate { get; set; }
+        public string loan_closuredate { get; set; }
         /// <summary>
         /// Type Of Loan
         /// </summary>
@@ -35,11 +35,11 @@ namespace GravitonCarLibrary.Models
         /// <summary>
         /// Pan Related To the Loan, Fix length 10
         /// </summary>
-        public string loan_relatedpan { get; set; }
+        public string account_realtedpan { get; set; }
         /// <summary>
         /// Aadhar Related to the Loan,Fix length 12
         /// </summary>
-        public string loan_relatedaadhar { get; set; }
+        public string account_realtedaadhar { get; set; }
 
 
     }

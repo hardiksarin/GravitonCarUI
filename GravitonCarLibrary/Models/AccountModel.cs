@@ -20,7 +20,7 @@ namespace GravitonCarLibrary.Models
         /// <summary>
         /// Account Number of the Bank account, Max Length 50
         /// </summary>
-        public int account_number { get; set; }
+        public string account_number { get; set; }
         /// <summary>
         /// In Hand Salary of the Applicant, Max Length 30
         /// </summary>
@@ -28,11 +28,11 @@ namespace GravitonCarLibrary.Models
         /// <summary>
         /// Pan Related To the Applicant, Fix length 10
         /// </summary>
-        public string account_relatedpan { get; set; }
+        public string account_realtedpan { get; set; }
         /// <summary>
         /// Aadhar Related to the Applicant,Fix length 12
         /// </summary>
-        public string account_relatedaadhar { get; set; }
+        public string account_realtedaadhar { get; set; }
         
        
     }

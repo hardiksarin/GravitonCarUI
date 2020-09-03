@@ -17,7 +17,7 @@ namespace GravitonCarLibrary.DataAccess
         {
             using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
             {
-                int id = connection.ExecuteScalar<int>($"insert into account values(default,'{model.account_bankname}','{model.account_ifsc}','{model.account_number}','{model.account_inhandsalary}','{model.account_relatedpan}','{model.account_relatedaadhar}')");
+                int id = connection.ExecuteScalar<int>($"insert into account values('{model.account_bankname}','{model.account_ifsc}','{model.account_number}','{model.account_inhandsalary}','{model.account_realtedpan}','{model.account_realtedaadhar}')");
                 return model;
             }
         }
@@ -26,7 +26,7 @@ namespace GravitonCarLibrary.DataAccess
         {
             using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
             {
-                connection.ExecuteScalar($"update account set account_bankname = '{model.account_bankname}', account_ifsc = '{model.account_ifsc}', account_number = {model.account_number}, account_inhandsalary = {model.account_inhandsalary}, account_relatedpan = {model.account_relatedpan}, account_relatedaadhar = '{model.account_relatedaadhar}'");
+                connection.ExecuteScalar($"update account set account_bankname = '{model.account_bankname}', account_ifsc = '{model.account_ifsc}', account_number = {model.account_number}, account_inhandsalary = {model.account_inhandsalary}, account_relatedpan = {model.account_realtedpan}, account_relatedaadhar = '{model.account_realtedaadhar}'");
             }
         }
 
@@ -78,7 +78,7 @@ namespace GravitonCarLibrary.DataAccess
         {
             using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
             {
-                int id = connection.ExecuteScalar<int>($"insert into applicant values(default,'{model.applicant_firstname}','{model.applicant_middlename}','{model.applicant_lastname}','{model.applicant_acquaintancename}'," +
+                int id = connection.ExecuteScalar<int>($"insert into applicant values('{model.applicant_firstname}','{model.applicant_middlename}','{model.applicant_lastname}','{model.applicant_acquaintancename}'," +
                     $"'{model.applicant_dob}','{model.applicant_state}','{model.applicant_district}','{model.applicant_pincode}','{model.applicant_currentaddress}','{model.applicant_mobile}','{model.applicant_officeno}'," +
                     $"'{model.applicant_desgination}','{model.applicant_education}','{model.applicant_employername}','{model.applicant_officeaddress}','{model.applicant_nearestbranch}','{model.applicant_distance}'," +
                     $"'{model.applicant_acquaintanceid}','{model.applicant_maritalstatusid}','{model.applicant_casteid}','{model.applicant_categoryid}','{model.applicant_pan}','{model.applicant_aadhar}')");
@@ -196,7 +196,7 @@ namespace GravitonCarLibrary.DataAccess
         {
             using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
             {
-                int id = connection.ExecuteScalar<int>($"insert into document values(default,'{model.document_pan}','{model.document_aadhar}','{model.document_optional}','{model.document_cibil}','{model.document_remark}','{model.document_id}','{model.progress_id}')");
+                int id = connection.ExecuteScalar<int>($"insert into document values('{model.document_pan}','{model.document_aadhar}','{model.document_optional}',{model.document_cibil},'{model.document_remark}',{model.document_id})");
                 return model;
             }
         }
@@ -258,7 +258,7 @@ namespace GravitonCarLibrary.DataAccess
         {
             using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
             {
-                int id = connection.ExecuteScalar<int>($"insert into gurantor values(default,'{model.gurantor_firstname}','{model.gurantor_middlename}','{model.gurantor_lastname}','{model.gurantor_currentaddress}','{model.gurantor_mobile}','{model.gurantor_relation}','{model.gurantor_realtedpan}','{model.gurantor_realtedaadhar}','{model.gurantortype_id}')");
+                int id = connection.ExecuteScalar<int>($"insert into gurantor values('{model.gurantor_firstname}','{model.gurantor_middlename}','{model.gurantor_lastname}','{model.gurantor_currentaddress}','{model.gurantor_mobile}','{model.gurantor_relation}','{model.gurantor_realtedpan}','{model.gurantor_realtedaadhar}',{model.gurantortype_id})");
                 return model;
             }
         }
@@ -310,7 +310,7 @@ namespace GravitonCarLibrary.DataAccess
         {
             using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
             {
-                connection.ExecuteScalar($"update loan set loan_id = '{model.loan_id}', loan_bankname = '{model.loan_bankname}',loan_amount = '{model.loan_amount}', loan_emi = '{model.loan_emi}',loan_closuredate = '{model.loan_closuredate}', loan_type = '{model.loan_type}', loan_relatedpan = '{model.loan_relatedpan}', loan_relatedaadhar = '{model.loan_relatedaadhar}'");
+                connection.ExecuteScalar($"update loan set loan_id = '{model.loan_id}', loan_bankname = '{model.loan_bankname}',loan_amount = '{model.loan_amount}', loan_emi = '{model.loan_emi}',loan_closuredate = '{model.loan_closuredate}', loan_type = '{model.loan_type}', loan_relatedpan = '{model.account_realtedpan}', loan_relatedaadhar = '{model.account_realtedaadhar}'");
             }
         }
 
@@ -318,7 +318,7 @@ namespace GravitonCarLibrary.DataAccess
         {
             using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
             {
-                int id = connection.ExecuteScalar<int>($"insert into loan values(default,'{model.loan_id}','{model.loan_bankname}','{model.loan_amount}','{model.loan_emi}','{model.loan_closuredate}','{model.loan_closuredate}','{model.loan_type}','{model.loan_relatedpan}','{model.loan_relatedaadhar}')");
+                int id = connection.ExecuteScalar<int>($"insert into loan values(default,'{model.loan_bankname}',{model.loan_amount},{model.loan_emi},'2020-06-30',{model.loan_type},'{model.account_realtedpan}','{model.account_realtedaadhar}')");
                 return model;
             }
         }
@@ -414,6 +414,183 @@ namespace GravitonCarLibrary.DataAccess
                 return model;
             }
         }
-        //Progress
+
+
+        //CAR
+        public void CreateCar(CarModel model, UserModel user)
+        {
+            CreateDocument(model.documentModel);
+            CreateApplicant(model.applicantModel);
+            CreateGurantor(model.gurantorModel);
+            CreateAccount(model.accountModel);
+
+            foreach (LoanModel loan in model.loanModel)
+            {
+                CreateLoan(loan);
+            }
+
+            KYCLogModel log = new KYCLogModel();
+            log.user_id = user.user_id;
+            log.related_pan = model.documentModel.document_pan;
+            log.related_aadhar = model.documentModel.document_aadhar;
+
+            CreateKYCLog(log);
+        }
+
+        public CarModel GetCar_ById(string aadhar, string pan)
+        {
+            CarModel model = new CarModel();
+            model.documentModel = GetDocument_ById(aadhar, pan)[0];
+            model.applicantModel = GetApplicant_ById(aadhar, pan)[0];
+            model.gurantorModel = GetGurantor_ById(aadhar, pan)[0];
+            model.accountModel = GetAccount_ById(aadhar, pan);
+            model.loanModel = GetLoan_ById(aadhar, pan);
+            return model;
+        }
+
+        public AccountModel GetAccount_ById(string aadhar, string pan)
+        {
+            List<AccountModel> output = new List<AccountModel>();
+            using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
+            {
+                output = connection.Query<AccountModel>($"select * from account where account_realtedpan = '{pan}' and account_realtedaadhar = '{aadhar}'").ToList();
+                return output[0];
+            }
+        }
+
+        public List<DocumentModel> GetDocument_ById(string aadhar, string pan)
+        {
+            List<DocumentModel> output = new List<DocumentModel>();
+            using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
+            {
+                output = connection.Query<DocumentModel>($"select * from document where document_pan = '{pan}' and document_aadhar = '{aadhar}'").ToList();
+                return output;
+            }
+        }
+
+        public List<ApplicantModel> GetApplicant_ById(string aadhar, string pan)
+        {
+            List<ApplicantModel> output = new List<ApplicantModel>();
+            using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
+            {
+                output = connection.Query<ApplicantModel>($"select * from applicant where applicant_pan = '{pan}' and applicant_aadhar = '{aadhar}'").ToList();
+                return output;
+            }
+        }
+
+        public List<GurantorModel> GetGurantor_ById(string aadhar, string pan)
+        {
+            List<GurantorModel> output = new List<GurantorModel>();
+            using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
+            {
+                output = connection.Query<GurantorModel>($"select * from gurantor where gurantor_realtedpan = '{pan}' and gurantor_realtedaadhar = '{aadhar}'").ToList();
+                return output;
+            }
+        }
+
+        public List<LoanModel> GetLoan_ById(string aadhar, string pan)
+        {
+            List<LoanModel> output = new List<LoanModel>();
+            using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
+            {
+                output = connection.Query<LoanModel>($"select * from loan where account_realtedpan = '{pan}' and account_realtedaadhar = '{aadhar}'").ToList();
+                return output;
+            }
+        }
+
+
+        //User
+
+        public UserModel GetUserModel(string username, string password)
+        {
+            List<UserModel> output = new List<UserModel>();
+            using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
+            {
+                output = connection.Query<UserModel>($"select * from login where username = '{username}' and password = '{password}' and is_active = 't'").ToList();
+                if(output.Count != 0)
+                {
+                    return output[0];
+                }
+                return null;
+            }
+        }
+
+        public List<UserModel> GetUser_All()
+        {
+            List<UserModel> output = new List<UserModel>();
+            using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
+            {
+                output = connection.Query<UserModel>($"select * from login where is_active = 't'").ToList();
+                return output;
+            }
+        }
+
+        public UserModel CreateUser(UserModel user)
+        {
+            using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
+            {
+                int id = connection.ExecuteScalar<int>($"insert into login values(default,'{user.full_name}','{user.username}','{user.designation}','{user.user_mobile}','{user.password}','{user.permissions}','{user.is_active}')");
+                return user;
+            }
+        }
+
+        public void DeleteUser(UserModel user)
+        {
+            using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
+            {
+                connection.ExecuteScalar<int>($"delete from login where user_id = {user.user_id}");
+            }
+        }
+
+
+        //User KYC Log
+        public void CreateKYCLog(KYCLogModel model)
+        {
+            using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
+            {
+                connection.ExecuteScalar<int>($"insert into user_kyc_log values(default,{model.user_id},'{model.related_aadhar}','{model.related_pan}',default)");
+            }
+        }
+
+        public int GetCount_USer(int user_id, string date)
+        {
+            using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
+            {
+                int count =  connection.ExecuteScalar<int>($"select count(user_id) from user_kyc_log where user_id = {user_id} and kyc_date = '{date}'");
+                return count;
+            }
+        }
+
+        public void UpdateUserPassword(UserModel user)
+        {
+            using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
+            {
+                connection.ExecuteScalar($"update login set full_name = '{user.full_name}', username = '{user.username}', designation = '{user.designation}', user_mobile = '{user.user_mobile}', password = '{user.password}', permissions = '{user.permissions}', is_active = '{user.is_active}' where user_id = {user.user_id}");
+            }
+        }
+
+        public UserModel GetUser_ByPan(string aadhar, string pan)
+        {
+            List<KYCLogModel> userList = new List<KYCLogModel>();
+            KYCLogModel user = new KYCLogModel();
+            using (IDbConnection connection = new NpgsqlConnection(GlobalConfig.getDatabaseConnectionString()))
+            {
+                userList = connection.Query<KYCLogModel>($"select * from user_kyc_log where related_aadhar = '{aadhar}' and related_pan = '{pan}'").ToList();
+                if(userList.Count != 0)
+                {
+                    user = userList[0];
+                    UserModel u = new UserModel();
+                    List<UserModel> uList = new List<UserModel>();
+                    uList = connection.Query<UserModel>($"select * from login where user_id = {user.user_id}").ToList();
+                    u = uList[0];
+
+                    return u;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
     }
 }
