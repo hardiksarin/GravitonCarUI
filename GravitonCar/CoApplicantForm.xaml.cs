@@ -41,7 +41,7 @@ namespace GravitonCar
         {
             get { return _gurantor_middlename; }
             set { _gurantor_middlename = value;
-                OnPropertyChanged("GurantorFirstname");
+                OnPropertyChanged("GurantorMiddlename");
             }
         }
 
@@ -49,7 +49,7 @@ namespace GravitonCar
         {
             get { return _gurantor_lastname; }
             set { _gurantor_lastname = value;
-                OnPropertyChanged("GurantorFirstname");
+                OnPropertyChanged("GurantorLastname");
             }
         }
 
@@ -57,7 +57,7 @@ namespace GravitonCar
         {
             get { return _gurantor_currentaddress; }
             set { _gurantor_currentaddress = value;
-                OnPropertyChanged("GurantorFirstname");
+                OnPropertyChanged("GurantorCurrentAddress");
             }
         }
 
@@ -65,7 +65,7 @@ namespace GravitonCar
         {
             get { return _gurantor_mobile; }
             set { _gurantor_mobile = value;
-                OnPropertyChanged("GurantorFirstname");
+                OnPropertyChanged("GurantorMobile");
             }
         }
 
@@ -73,7 +73,7 @@ namespace GravitonCar
         {
             get { return _gurantor_relation; }
             set { _gurantor_relation = value;
-                OnPropertyChanged("GurantorFirstname");
+                OnPropertyChanged("GurantorRelation");
             }
         }
 
@@ -158,27 +158,27 @@ namespace GravitonCar
             //First, Middle and Last Name
             if (model.gurantorModel.gurantor_firstname != null)
             {
-                FirstNameTextBox.Text = model.gurantorModel.gurantor_firstname; 
+                GurantorFirstname = model.gurantorModel.gurantor_firstname;
             }
             if (model.gurantorModel.gurantor_middlename != null)
             {
-                MiddleNameTextBox.Text = model.gurantorModel.gurantor_middlename; 
+                GurantorMiddlename = model.gurantorModel.gurantor_middlename; 
             }
             if (model.gurantorModel.gurantor_lastname != null)
             {
-                LastNameTextBox.Text = model.gurantorModel.gurantor_lastname; 
+                GurantorLastname = model.gurantorModel.gurantor_lastname;
             }
 
             //Mobile
             if (model.gurantorModel.gurantor_mobile != null)
             {
-                MobilNumberTextBox.Text = model.gurantorModel.gurantor_mobile; 
+                GurantorMobile = model.gurantorModel.gurantor_mobile; 
             }
 
             //Relationship
             if (model.gurantorModel.gurantor_relation != null)
             {
-                RelationshipTextBox.Text = model.gurantorModel.gurantor_relation; 
+                GurantorRelation = model.gurantorModel.gurantor_relation; 
             }
 
             //Office Address Checkbox
@@ -189,11 +189,11 @@ namespace GravitonCar
             {
                 if(AddressChecked == true)
                 {
-                    OfficeAddressTextBlock.Text = model.applicantModel.applicant_currentaddress;
+                    GurantorCurrentAddress = model.applicantModel.applicant_currentaddress;
                 }
                 else
                 {
-                    OfficeAddressTextBlock.Text = model.gurantorModel.gurantor_currentaddress;
+                    GurantorCurrentAddress = model.gurantorModel.gurantor_currentaddress;
                 }
             }
         }
@@ -208,72 +208,71 @@ namespace GravitonCar
             }
 
             //First, Middle and Last Name
-            if (FirstNameTextBox.Text.Length != 0)
+            if (GurantorFirstname != null)
             {
-                model.gurantorModel.gurantor_firstname = FirstNameTextBox.Text;
+                model.gurantorModel.gurantor_firstname = GurantorFirstname;
             }
-            if (MiddleNameTextBox.Text.Length != 0)
+            if (GurantorMiddlename != null)
             {
-                model.gurantorModel.gurantor_middlename = MiddleNameTextBox.Text;
+                model.gurantorModel.gurantor_middlename = GurantorMiddlename;
             }
             else
             {
                 model.gurantorModel.gurantor_middlename = "";
             }
-            if (LastNameTextBox.Text.Length != 0)
+            if (GurantorLastname != null)
             {
-                model.gurantorModel.gurantor_lastname = LastNameTextBox.Text;
+                model.gurantorModel.gurantor_lastname = GurantorLastname;
             }
 
             //Mobile
-            if (MobilNumberTextBox.Text.Length != 0)
+            if (GurantorMobile != null)
             {
-                model.gurantorModel.gurantor_mobile = MobilNumberTextBox.Text;
+                model.gurantorModel.gurantor_mobile = GurantorMobile;
             }
 
             //Relationship
-            if (RelationshipTextBox.Text.Length != 0)
+            if (GurantorRelation != null)
             {
-                model.gurantorModel.gurantor_relation = RelationshipTextBox.Text;
+                model.gurantorModel.gurantor_relation = GurantorRelation;
             }
 
             //Office Address
-            if (OfficeAddressTextBlock.Text.Length != 0)
+            if (GurantorCurrentAddress != null)
             {
-                model.gurantorModel.gurantor_currentaddress = OfficeAddressTextBlock.Text;
+                model.gurantorModel.gurantor_currentaddress = GurantorCurrentAddress;
             }
         }
 
         private bool ValidateCoapplicantForm()
         {
-            bool output = true;
 
             if(GurantorComboBox.SelectedItem == null)
             {
-                output = false;
+                return false;
             }
-            if(FirstNameTextBox.Text.Length == 0)
+            if(GurantorFirstname == null)
             {
-                output = false;
+                return false;
             }          
-            if(LastNameTextBox.Text.Length == 0)
+            if(GurantorLastname == null)
             {
-                output = false;
+                return false;
             }
-            if(MobilNumberTextBox.Text.Length == 0)
+            if(GurantorMobile == null)
             {
-                output = false;
+                return false;
             }
-            if(RelationshipTextBox.Text.Length == 0)
+            if(GurantorRelation == null)
             {
-                output = false;
+                return false;
             }
-            if(OfficeAddressTextBlock.Text.Length == 0)
+            if(GurantorCurrentAddress == null)
             {
-                output = false;
+                return false;
             }
 
-            return output;
+            return true;
         }
 
         public void DisableButton()

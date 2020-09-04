@@ -487,25 +487,24 @@ namespace GravitonCar
         /// <returns></returns>
         private bool ValidateNewLoanForms(NewLoanModel model)
         {
-            bool output = true;
 
             if (model.LoanTypeLabel.SelectedItem == null)
             {
-                output = false;
+                return false;
             }
             if (model.LoanBankNameLabel.Text.Length == 0)
             {
-                output = false;
+                return false;
             }
             if (model.LoanAmountLabel.Text.Length == 0)
             {
-                output = false;
+                return false;
             }
             if (model.LoanEmiAmountLabel.Text.Length == 0)
             {
-                output = false;
+                return false;
             }
-            return output;
+            return true;
         }
 
         private void ReviewButton_Click(object sender, RoutedEventArgs e)
@@ -556,17 +555,17 @@ namespace GravitonCar
             //Aadhar and Pan
             if (model.documentModel.document_aadhar != null)
             {
-                AadharNumberTextBox.Text = model.documentModel.document_aadhar; 
+                DocumentAadhar = model.documentModel.document_aadhar; 
             }
             if (model.documentModel.document_pan != null)
             {
-                PanNumberTextBox.Text = model.documentModel.document_pan; 
+                DocumentPan = model.documentModel.document_pan; 
             }
 
             //Cibil Score
             if (model.documentModel.document_cibil != 0)
             {
-                CibilScoreTextBox.Text = model.documentModel.document_cibil.ToString(); 
+                DocumentCibil = model.documentModel.document_cibil;
             }
 
             //Optional ID
@@ -589,24 +588,24 @@ namespace GravitonCar
             //In hand Income
             if (model.accountModel.account_inhandsalary != 0)
             {
-                InHandMonthlyIcomeTextBox.Text = model.accountModel.account_inhandsalary.ToString(); 
+                AccountSalary = model.accountModel.account_inhandsalary;
             }
 
             //Bank Name
             if (model.accountModel.account_bankname != null)
             {
-                BankNameTextBox.Text = model.accountModel.account_bankname; 
+                AccountBankName = model.accountModel.account_bankname; 
             }
 
             //IFSC
             if (model.accountModel.account_ifsc != null)
             {
-                IFSCTextBox.Text = model.accountModel.account_ifsc;
+                AccountIfsc = model.accountModel.account_ifsc;
             }
             //Accounnt Number
             if (model.accountModel.account_number != null)
             {
-                AccountNumberTextBox.Text = model.accountModel.account_number; 
+                AccountNumber = model.accountModel.account_number; 
             }
 
             //Loans
@@ -647,26 +646,26 @@ namespace GravitonCar
         private void WireUpForm()
         {
             //Aadhar and Pan
-            if (AadharNumberTextBox.Text.Length != 0)
+            if (DocumentAadhar != null)
             {
-                model.documentModel.document_aadhar = AadharNumberTextBox.Text;
-                model.applicantModel.applicant_aadhar = AadharNumberTextBox.Text;
-                model.gurantorModel.gurantor_realtedaadhar = AadharNumberTextBox.Text;
-                model.accountModel.account_realtedaadhar = AadharNumberTextBox.Text;
+                model.documentModel.document_aadhar = DocumentAadhar;
+                model.applicantModel.applicant_aadhar = DocumentAadhar;
+                model.gurantorModel.gurantor_realtedaadhar = DocumentAadhar;
+                model.accountModel.account_realtedaadhar = DocumentAadhar;
             }
 
-            if (PanNumberTextBox.Text.Length != 0)
+            if (DocumentPan != null)
             {
-                model.documentModel.document_pan = PanNumberTextBox.Text;
-                model.applicantModel.applicant_pan = PanNumberTextBox.Text;
-                model.gurantorModel.gurantor_realtedpan = PanNumberTextBox.Text;
-                model.accountModel.account_realtedpan = PanNumberTextBox.Text;
+                model.documentModel.document_pan = DocumentPan;
+                model.applicantModel.applicant_pan = DocumentPan;
+                model.gurantorModel.gurantor_realtedpan = DocumentPan;
+                model.accountModel.account_realtedpan = DocumentPan;
             }
 
             //Cibil Score
-            if (CibilScoreTextBox.Text.Length != 0)
+            if (DocumentCibil != 0)
             {
-                model.documentModel.document_cibil = int.Parse(CibilScoreTextBox.Text);
+                model.documentModel.document_cibil = DocumentCibil;
             }
 
             //Optional ID
@@ -681,9 +680,9 @@ namespace GravitonCar
             }
 
             //In hand Income
-            if (InHandMonthlyIcomeTextBox.Text.Length != 0)
+            if (AccountSalary != 0)
             {
-                model.accountModel.account_inhandsalary = int.Parse(InHandMonthlyIcomeTextBox.Text);
+                model.accountModel.account_inhandsalary = AccountSalary;
             }
             else
             {
@@ -691,9 +690,9 @@ namespace GravitonCar
             }
 
             //Bank Name
-            if (BankNameTextBox.Text.Length != 0)
+            if (AccountBankName != null)
             {
-                model.accountModel.account_bankname = BankNameTextBox.Text;
+                model.accountModel.account_bankname = AccountBankName;
             }
             else
             {
@@ -701,9 +700,9 @@ namespace GravitonCar
             }
 
             //IFSC 
-            if (IFSCTextBox.Text.Length != 0)
+            if (AccountIfsc != null)
             {
-                model.accountModel.account_ifsc = IFSCTextBox.Text;
+                model.accountModel.account_ifsc = AccountIfsc;
             }
             else
             {
@@ -711,9 +710,9 @@ namespace GravitonCar
             }
 
             //Accounnt Number
-            if (AccountNumberTextBox.Text.Length != 0)
+            if (AccountNumber != null)
             {
-                model.accountModel.account_number = AccountNumberTextBox.Text;
+                model.accountModel.account_number = AccountNumber;
             }
             else
             {
@@ -730,29 +729,28 @@ namespace GravitonCar
 
         private bool ValidateFinancialForm()
         {
-            bool output = true;
 
             if(AadharNumberTextBox.Text.Length == 0)
             {
-                output = false;
+                return false;
             }
             if(PanNumberTextBox.Text.Length == 0)
             {
-                output = false;
+                return false;
             }
             if(CibilScoreTextBox.Text.Length == 0)
             {
-                output = false;
+                return false;
             }
             if(OptionalIdTypeComboBox.SelectedItem == null)
             {
-                output = false;
+                return false;
             }
             if (OptionalIdDetailsTextBox.IsEnabled)
             {
                 if (OptionalIdDetailsTextBox.Text.Length == 0)
                 {
-                    output = false;
+                    return false;
                 } 
             }
             /*if (InHandMonthlyIcomeTextBox.Text.Length == 0)
@@ -772,7 +770,7 @@ namespace GravitonCar
                 output = false;
             }*/
 
-            return output;
+            return true;
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)

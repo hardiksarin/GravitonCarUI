@@ -298,22 +298,22 @@ namespace GravitonCar
         {
             //First, Middle and Last Name
       
-            model.applicantModel.applicant_firstname = FirstNameTextBox.Text;
+            model.applicantModel.applicant_firstname = ApplicantFirstname;
             if (MiddleNameTextBox.Text.Length != 0)
             {
-                model.applicantModel.applicant_middlename = MiddleNameTextBox.Text;
+                model.applicantModel.applicant_middlename = ApplicantMiddlename;
             }
             else
             {
                 model.applicantModel.applicant_middlename = "";
             }
-            model.applicantModel.applicant_lastname = LastNameTextBox.Text;
+            model.applicantModel.applicant_lastname = ApplicantLastname;
 
             //Get Aquaintance
 
             AcquaintanceModel temp = (AcquaintanceModel)AcquaintanceComboBox.SelectedItem;
             model.applicantModel.applicant_acquaintanceid = temp.acquaintance_id;
-            model.applicantModel.applicant_acquaintancename = AcquaintanceNameTextBox.Text;
+            model.applicantModel.applicant_acquaintancename = ApplicantAcquaintance;
 
             /*
             DOB - DatePicker
@@ -356,31 +356,31 @@ namespace GravitonCar
             model.applicantModel.applicant_district = (string)DistrictComboBox.SelectedItem;
 
             //Pincode
-            model.applicantModel.applicant_pincode = PincodeTextBox.Text;
+            model.applicantModel.applicant_pincode = ApplicantPincode;
 
             //Address
-            model.applicantModel.applicant_currentaddress = AddressTextBlock.Text;
+            model.applicantModel.applicant_currentaddress = ApplicantCurrentAddress;
 
             //Mobile Number
-            model.applicantModel.applicant_mobile = MobileNumberTextBox.Text;
+            model.applicantModel.applicant_mobile = ApplicantMobile;
 
             //Office Number
-            model.applicantModel.applicant_officeno = OfficeNumberTextBox.Text;
+            model.applicantModel.applicant_officeno = ApplicantOfficeNo;
 
             //Designation
-            model.applicantModel.applicant_desgination = DesignationTextBox.Text;
+            model.applicantModel.applicant_desgination = ApplicantDesignation;
 
             //Education
             model.applicantModel.applicant_education = (string)EducationComboBox.SelectedItem;
 
             //Employer Name
-            model.applicantModel.applicant_employername = EmployerNameTextBox.Text;
+            model.applicantModel.applicant_employername = ApplicantEmployer;
 
             //Office Address
-            model.applicantModel.applicant_officeaddress = OfficeAddressTextBlock.Text;
+            model.applicantModel.applicant_officeaddress = ApplicantOfficeAddress;
 
             //Distance to NE
-            model.applicantModel.applicant_distance = int.Parse(DistanceToNeTextBox.Text);
+            model.applicantModel.applicant_distance = ApplicantDistance;
 
             //Nearest Branch
             model.applicantModel.applicant_nearestbranch = (string)NearestBranchComboBox.SelectedItem;
@@ -390,85 +390,85 @@ namespace GravitonCar
         {
             bool output = true;
 
-            if(FirstNameTextBox.Text.Length == 0)
+            if(ApplicantFirstname == null)
             {
-                output = false;
+                return false;
             }
-            if(LastNameTextBox.Text.Length == 0)
+            if(ApplicantLastname == null)
             {
-                output = false;
+                return false;
             }
             if(AcquaintanceComboBox.SelectedItem == null)
             {
-                output = false;
+                return false;
             }
-            if(AcquaintanceNameTextBox.Text.Length == 0)
+            if(ApplicantAcquaintance == null)
             {
-                output = false;
+                return false;
             }
             if(DatePicker.SelectedDate == null)
             {
-                output = false;
+                return false;
             }
             if(MaritalStatusComboBox.SelectedItem == null)
             {
-                output = false;
+                return false;
             }
             if(CasteComboBox.SelectedItem == null)
             {
-                output = false;
+                return false;
             }
             if(CategoryComboBox.SelectedItem == null)
             {
-                output = false;
+                return false;
             }
             if(StateComboBox.SelectedItem == null)
             {
-                output = false;
+                return false;
             }
             if(DistrictComboBox.SelectedItem == null)
             {
-                output = false;
+                return false;
             }
-            if(PincodeTextBox.Text.Length == 0)
+            if(ApplicantPincode == null)
             {
-                output = false;
+                return false;
             }
-            if(AddressTextBlock.Text.Length == 0)
+            if(ApplicantCurrentAddress == null)
             {
-                output = false;
+                return false;
             }
-            if(MobileNumberTextBox.Text.Length == 0)
+            if(ApplicantMobile == null)
             {
-                output = false;
+                return false;
             }
-            if(OfficeNumberTextBox.Text.Length == 0)
+            if(ApplicantOfficeNo == null)
             {
-                output = false;
+                return false;
             }
-            if(DesignationTextBox.Text.Length == 0)
+            if(ApplicantDesignation == null)
             {
-                output = false;
+                return false;
             }
             if(EducationComboBox.SelectedItem == null)
             {
-                output = false;
+                return false;
             }
-            if(EmployerNameTextBox.Text.Length == 0)
+            if(ApplicantEmployer == null)
             {
-                output = false;
+                return false;
             }
-            if(OfficeAddressTextBlock.Text.Length == 0)
+            if(ApplicantOfficeAddress == null)
             {
-                output = false;
+                return false;
             }
-            if(DistanceToNeTextBox.Text.Length == 0)
+            if(ApplicantDistance == 0)
             {
-                output = false;
+                return false;
             }
             if(NearestBranchComboBox.SelectedItem == null)
             {
-                output = false;
+                return false;
             }
 
             return output;

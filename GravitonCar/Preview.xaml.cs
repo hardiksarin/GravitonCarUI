@@ -252,7 +252,7 @@ namespace GravitonCar
             set
             {
                 _gurantor_middlename = value;
-                OnPropertyChanged("GurantorFirstname");
+                OnPropertyChanged("GurantorMiddlename");
             }
         }
 
@@ -262,7 +262,7 @@ namespace GravitonCar
             set
             {
                 _gurantor_lastname = value;
-                OnPropertyChanged("GurantorFirstname");
+                OnPropertyChanged("GurantorLastname");
             }
         }
 
@@ -272,7 +272,7 @@ namespace GravitonCar
             set
             {
                 _gurantor_currentaddress = value;
-                OnPropertyChanged("GurantorFirstname");
+                OnPropertyChanged("GurantorCurrentAddress");
             }
         }
 
@@ -282,7 +282,7 @@ namespace GravitonCar
             set
             {
                 _gurantor_mobile = value;
-                OnPropertyChanged("GurantorFirstname");
+                OnPropertyChanged("GurantorMobile");
             }
         }
 
@@ -292,7 +292,7 @@ namespace GravitonCar
             set
             {
                 _gurantor_relation = value;
-                OnPropertyChanged("GurantorFirstname");
+                OnPropertyChanged("GurantorRelation");
             }
         }
 
@@ -720,12 +720,14 @@ namespace GravitonCar
         {
             //First, Middle and Last Name
 
-            FirstNameTextBox.Text = model.applicantModel.applicant_firstname;
+            ApplicantFirstname = model.applicantModel.applicant_firstname;
+
             if (model.applicantModel.applicant_middlename != null)
             {
-                MiddleNameTextBox.Text = model.applicantModel.applicant_middlename; 
+                ApplicantMiddlename = model.applicantModel.applicant_middlename; 
             }
-            LastNameTextBox.Text = model.applicantModel.applicant_lastname;
+
+            ApplicantLastname = model.applicantModel.applicant_lastname;
 
             //Get Aquaintance
             foreach (AcquaintanceModel acquaintance in Search.acquaintanceList)
@@ -736,7 +738,7 @@ namespace GravitonCar
                 }
             }
 
-            AcquaintanceNameTextBox.Text = model.applicantModel.applicant_acquaintancename;
+            ApplicantAcquaintance = model.applicantModel.applicant_acquaintancename;
 
             /*
             DOB - DatePicker
@@ -801,31 +803,31 @@ namespace GravitonCar
             DistrictComboBox.SelectedItem = model.applicantModel.applicant_district;
 
             //Pincode
-            PincodeTextBox.Text = model.applicantModel.applicant_pincode;
+            ApplicantPincode = model.applicantModel.applicant_pincode;
 
             //Address
-            AddressTextBlock.Text = model.applicantModel.applicant_currentaddress;
+            ApplicantCurrentAddress = model.applicantModel.applicant_currentaddress;
 
             //Mobile Number
-            MobileNumberTextBox.Text = model.applicantModel.applicant_mobile;
+            ApplicantMobile = model.applicantModel.applicant_mobile;
 
             //Office Number
-            OfficeNumberTextBox.Text = model.applicantModel.applicant_officeno;
+            ApplicantOfficeNo = model.applicantModel.applicant_officeno;
 
             //Designation
-            DesignationTextBox.Text = model.applicantModel.applicant_desgination;
+            ApplicantDesignation = model.applicantModel.applicant_desgination;
 
             //Education
             EducationComboBox.SelectedItem = model.applicantModel.applicant_education;
 
             //Employer Name
-            EmployerNameTextBox.Text = model.applicantModel.applicant_employername;
+            ApplicantEmployer = model.applicantModel.applicant_employername;
 
             //Office Address
-            OfficeAddressTextBlock.Text = model.applicantModel.applicant_officeaddress;
+            ApplicantOfficeAddress = model.applicantModel.applicant_officeaddress;
 
             //Distance to NE
-            DistanceToNeTextBox.Text = model.applicantModel.applicant_distance.ToString();
+            ApplicantDistance = model.applicantModel.applicant_distance;
 
             //Nearest Branch
             NearestBranchComboBox.SelectedItem = model.applicantModel.applicant_nearestbranch;
@@ -843,31 +845,33 @@ namespace GravitonCar
             }
 
             //First, Middle and Last Name
-            FirstNameApplicantTextBox.Text = model.gurantorModel.gurantor_firstname;
+            GurantorFirstname = model.gurantorModel.gurantor_firstname;
+
             if (model.gurantorModel.gurantor_middlename != null)
             {
-                MiddleNameApplicantTextBox.Text = model.gurantorModel.gurantor_middlename; 
+                GurantorMiddlename = model.gurantorModel.gurantor_middlename; 
             }
-            LastNameApplicantTextBox.Text = model.gurantorModel.gurantor_lastname;
+
+            GurantorLastname = model.gurantorModel.gurantor_lastname;
 
             //Mobile
-            MobilNumberApplicantTextBox.Text = model.gurantorModel.gurantor_mobile;
+            GurantorMobile = model.gurantorModel.gurantor_mobile;
 
             //Relationship
-            RelationshipApplicantTextBox.Text = model.gurantorModel.gurantor_relation;
+            GurantorRelation = model.gurantorModel.gurantor_relation;
 
             //Office Address
-            OfficeAddressApplicantTextBlock.Text = model.gurantorModel.gurantor_currentaddress;
+            GurantorCurrentAddress = model.gurantorModel.gurantor_currentaddress;
         }
 
         private void WireUpFinancialForm()
         {
             //Aadhar and Pan
-            AadharNumberTextBox.Text = model.documentModel.document_aadhar;
-            PanNumberTextBox.Text = model.documentModel.document_pan;
+            DocumentAadhar = model.documentModel.document_aadhar;
+            DocumentPan = model.documentModel.document_pan;
 
             //Cibil Score
-            CibilScoreTextBox.Text = model.documentModel.document_cibil.ToString();
+            DocumentCibil = model.documentModel.document_cibil;
 
             //Optional ID
             foreach (DocumentTypeModel document in Search.documentModels)
@@ -886,16 +890,16 @@ namespace GravitonCar
             }
 
             //In hand Income
-            InHandMonthlyIcomeTextBox.Text = model.accountModel.account_inhandsalary.ToString();
+            AccountSalary = model.accountModel.account_inhandsalary;
 
             //Bank Name
-            BankNameTextBox.Text = model.accountModel.account_bankname;
+            AccountBankName = model.accountModel.account_bankname;
 
             //IFSC
-            IFSCTextBox.Text = model.accountModel.account_ifsc;
+            AccountIfsc = model.accountModel.account_ifsc;
 
             //Accounnt Number
-            AccountNumberTextBox.Text = model.accountModel.account_number;
+            AccountNumber = model.accountModel.account_number;
 
             //Loans
             foreach (LoanModel loan in model.loanModel)
@@ -909,22 +913,22 @@ namespace GravitonCar
         {
             //First, Middle and Last Name
 
-            model.applicantModel.applicant_firstname = FirstNameTextBox.Text;
+            model.applicantModel.applicant_firstname = ApplicantFirstname;
             if (MiddleNameTextBox.Text.Length != 0)
             {
-                model.applicantModel.applicant_middlename = MiddleNameTextBox.Text;
+                model.applicantModel.applicant_middlename = ApplicantMiddlename;
             }
             else
             {
                 model.applicantModel.applicant_middlename = "";
             }
-            model.applicantModel.applicant_lastname = LastNameTextBox.Text;
+            model.applicantModel.applicant_lastname = ApplicantLastname;
 
             //Get Aquaintance
 
             AcquaintanceModel temp = (AcquaintanceModel)AcquaintanceComboBox.SelectedItem;
             model.applicantModel.applicant_acquaintanceid = temp.acquaintance_id;
-            model.applicantModel.applicant_acquaintancename = AcquaintanceNameTextBox.Text;
+            model.applicantModel.applicant_acquaintancename = ApplicantAcquaintance;
 
             /*
             DOB - DatePicker
@@ -970,31 +974,31 @@ namespace GravitonCar
             model.applicantModel.applicant_district = (string)DistrictComboBox.SelectedItem;
 
             //Pincode
-            model.applicantModel.applicant_pincode = PincodeTextBox.Text;
+            model.applicantModel.applicant_pincode = ApplicantPincode;
 
             //Address
-            model.applicantModel.applicant_currentaddress = AddressTextBlock.Text;
+            model.applicantModel.applicant_currentaddress = ApplicantCurrentAddress;
 
             //Mobile Number
-            model.applicantModel.applicant_mobile = MobileNumberTextBox.Text;
+            model.applicantModel.applicant_mobile = ApplicantMobile;
 
             //Office Number
-            model.applicantModel.applicant_officeno = OfficeNumberTextBox.Text;
+            model.applicantModel.applicant_officeno = ApplicantOfficeNo;
 
             //Designation
-            model.applicantModel.applicant_desgination = DesignationTextBox.Text;
+            model.applicantModel.applicant_desgination = ApplicantDesignation;
 
             //Education
             model.applicantModel.applicant_education = (string)EducationComboBox.SelectedItem;
 
             //Employer Name
-            model.applicantModel.applicant_employername = EmployerNameTextBox.Text;
+            model.applicantModel.applicant_employername = ApplicantEmployer;
 
             //Office Address
-            model.applicantModel.applicant_officeaddress = OfficeAddressTextBlock.Text;
+            model.applicantModel.applicant_officeaddress = ApplicantOfficeAddress;
 
             //Distance to NE
-            model.applicantModel.applicant_distance = int.Parse(DistanceToNeTextBox.Text);
+            model.applicantModel.applicant_distance = ApplicantDistance;
 
             //Nearest Branch
             model.applicantModel.applicant_nearestbranch = (string)NearestBranchComboBox.SelectedItem;
@@ -1007,25 +1011,25 @@ namespace GravitonCar
             model.gurantorModel.gurantortype_id = gurantorTypeModel.gurantortype_id;
 
             //First, Middle and Last Name
-            model.gurantorModel.gurantor_firstname = FirstNameApplicantTextBox.Text;
+            model.gurantorModel.gurantor_firstname = GurantorFirstname;
             if (MiddleNameApplicantTextBox.Text.Length != 0)
             {
-                model.gurantorModel.gurantor_middlename = MiddleNameApplicantTextBox.Text;
+                model.gurantorModel.gurantor_middlename = GurantorMiddlename;
             }
             else
             {
                 model.gurantorModel.gurantor_middlename = "";
             }
-            model.gurantorModel.gurantor_lastname = LastNameApplicantTextBox.Text;
+            model.gurantorModel.gurantor_lastname = GurantorLastname;
 
             //Mobile
-            model.gurantorModel.gurantor_mobile = MobilNumberApplicantTextBox.Text;
+            model.gurantorModel.gurantor_mobile = GurantorMobile;
 
             //Relationship
-            model.gurantorModel.gurantor_relation = RelationshipApplicantTextBox.Text;
+            model.gurantorModel.gurantor_relation = GurantorRelation;
 
             //Office Address
-            model.gurantorModel.gurantor_currentaddress = OfficeAddressApplicantTextBlock.Text;
+            model.gurantorModel.gurantor_currentaddress = GurantorCurrentAddress;
         }
 
         private void SaveLoanDetails()
@@ -1059,20 +1063,20 @@ namespace GravitonCar
         {
             SaveLoanDetails();
             //Aadhar and Pan
-            model.documentModel.document_aadhar = AadharNumberTextBox.Text;
-            model.documentModel.document_pan = PanNumberTextBox.Text;
+            model.documentModel.document_aadhar = DocumentAadhar;
+            model.documentModel.document_pan = DocumentPan;
 
-            model.applicantModel.applicant_aadhar = AadharNumberTextBox.Text;
-            model.applicantModel.applicant_pan = PanNumberTextBox.Text;
+            model.applicantModel.applicant_aadhar = DocumentAadhar;
+            model.applicantModel.applicant_pan = DocumentPan;
 
-            model.gurantorModel.gurantor_realtedaadhar = AadharNumberTextBox.Text;
-            model.gurantorModel.gurantor_realtedpan = PanNumberTextBox.Text;
+            model.gurantorModel.gurantor_realtedaadhar = DocumentAadhar;
+            model.gurantorModel.gurantor_realtedpan = DocumentPan;
 
-            model.accountModel.account_realtedaadhar = AadharNumberTextBox.Text;
-            model.accountModel.account_realtedpan = PanNumberTextBox.Text;
+            model.accountModel.account_realtedaadhar = DocumentAadhar;
+            model.accountModel.account_realtedpan = DocumentPan;
 
             //Cibil Score
-            model.documentModel.document_cibil = int.Parse(CibilScoreTextBox.Text);
+            model.documentModel.document_cibil = DocumentCibil;
 
             //Optional ID
             DocumentTypeModel documentType = (DocumentTypeModel)OptionalIdTypeComboBox.SelectedItem;
@@ -1090,7 +1094,7 @@ namespace GravitonCar
             //In hand Income
             if (InHandMonthlyIcomeTextBox.Text.Length != 0)
             {
-                model.accountModel.account_inhandsalary = int.Parse(InHandMonthlyIcomeTextBox.Text);
+                model.accountModel.account_inhandsalary = AccountSalary;
             }
             else
             {
@@ -1100,7 +1104,7 @@ namespace GravitonCar
             //Bank Name
             if (BankNameTextBox.Text.Length != 0)
             {
-                model.accountModel.account_bankname = BankNameTextBox.Text;
+                model.accountModel.account_bankname = AccountBankName;
             }
             else
             {
@@ -1110,7 +1114,7 @@ namespace GravitonCar
             //IFSC 
             if (IFSCTextBox.Text.Length != 0)
             {
-                model.accountModel.account_ifsc = IFSCTextBox.Text;
+                model.accountModel.account_ifsc = AccountIfsc;
             }
             else
             {
@@ -1120,7 +1124,7 @@ namespace GravitonCar
             //Accounnt Number
             if (AccountNumberTextBox.Text.Length != 0)
             {
-                model.accountModel.account_number = AccountNumberTextBox.Text;
+                model.accountModel.account_number = AccountNumber;
             }
             else
             {
