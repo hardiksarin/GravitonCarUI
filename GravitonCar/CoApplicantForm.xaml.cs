@@ -267,7 +267,7 @@ namespace GravitonCar
             {
                 return false;
             }
-            if(GurantorCurrentAddress == null)
+            if(OfficeAddressTextBlock.Text.Length == 0)
             {
                 return false;
             }
