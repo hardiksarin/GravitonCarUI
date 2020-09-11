@@ -22,7 +22,10 @@
     </Window.Resources>
 
     <Window.InputBindings>
-        <KeyBinding Key="H" Modifiers="Ctrl" Command="{StaticResource Ctr1}" />
+        <KeyBinding
+            Key="H"
+            Command="{StaticResource Ctr1}"
+            Modifiers="Ctrl" />
     </Window.InputBindings>
     <Window.CommandBindings>
         <CommandBinding Command="{StaticResource Ctr1}" Executed="CtrShortcut1" />
@@ -77,12 +80,18 @@
                             Width="30"
                             Height="30"
                             Margin="10"
-                            MouseDown="PackIcon_MouseDown_1"
                             HorizontalAlignment="Right"
                             Background="Transparent"
                             Cursor="Hand"
                             Foreground="White"
-                            Kind="Home" />
+                            Kind="Home"
+                            MouseDown="PackIcon_MouseDown_1" />
+                        <Button
+                            x:Name="UserProfile"
+                            Click="UserProfile_Click"
+                            Content="Profile"
+                            Foreground="White" />
+
                         <Button
                             x:Name="AdminPanelButton"
                             Click="Button_Click"
