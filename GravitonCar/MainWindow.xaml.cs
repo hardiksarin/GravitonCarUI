@@ -36,7 +36,7 @@ namespace GravitonCar
             CheckPermission();
             //GlobalConfig.InitializeConnections();
             GridPrincipal.Children.Clear();
-            GridPrincipal.Children.Add(new Search(this));
+            GridPrincipal.Children.Add(new UserProfile());
             GetPath();
             parent = this;
         }
@@ -227,6 +227,12 @@ namespace GravitonCar
         private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
         {
 
+        }
+
+        private void UserProfile_Click(object sender, RoutedEventArgs e)
+        {
+            GridPrincipal.Children.Clear();
+            GridPrincipal.Children.Add(new UserProfile());
         }
     }
 }
