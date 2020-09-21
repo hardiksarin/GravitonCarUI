@@ -1,7 +1,10 @@
 ﻿using GravitonCarLibrary;
 using GravitonCarLibrary.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -22,6 +25,9 @@ namespace GravitonCar
     {
         List<string> searchList = new List<string>();
         List<ApplicantModel> applicantList = new List<ApplicantModel>();
+        List<string> searchBoxList = new List<string>();
+        public static List<string> aadharList = new List<string>();
+        public static List<string> panList = new List<string>();
         public static List<MarriedStatusModel> maritalStatusList = new List<MarriedStatusModel>();
         public static List<AcquaintanceModel> acquaintanceList = new List<AcquaintanceModel>();
         public static List<CasteModel> casteList = new List<CasteModel>();
@@ -40,18 +46,18 @@ namespace GravitonCar
             LoadListData();
             //WireUpList();
             //GetSearchList();
-            CarNumber.Text = applicantList.Count.ToString();
+            CarNumber.Text = searchBoxList.Count.ToString();
         }
 
-        private void LoadListData()
+        private async void LoadListData()
             
         {
             try {
-                if (applicantList.Count == 0)
+                if (searchBoxList.Count == 0)
                 {
-                    applicantList = GlobalConfig.Connection.GetApplicant_All(); 
+                    //applicantList = GlobalConfig.Connection.GetApplicant_All();
+                    searchBoxList = GlobalConfig.Connection.GetSearchNameList(MainWindow.user.jwtToken);
                 }
-
             }
             catch(Exception e)
             {
@@ -59,7 +65,56 @@ namespace GravitonCar
                     Environment.Exit(0);
             }
 
-            try
+            if (maritalStatusList.Count == 0)
+            {
+                string comboBoxData = await GlobalConfig.Connection.GetComboBoxDataAsync(MainWindow.user.jwtToken);
+
+                if (comboBoxData != null)
+                {
+                    JObject obj = JObject.Parse(comboBoxData);
+                    if (maritalStatusList.Count == 0)
+                    {
+                        maritalStatusList = JsonConvert.DeserializeObject<List<MarriedStatusModel>>(obj["MaritalStatusModel"].ToString());
+                    }
+                    if (acquaintanceList.Count == 0)
+                    {
+                        acquaintanceList = JsonConvert.DeserializeObject<List<AcquaintanceModel>>(obj["AcquaintanceModel"].ToString());
+                    }
+                    if (casteList.Count == 0)
+                    {
+                        casteList = JsonConvert.DeserializeObject<List<CasteModel>>(obj["CasteModel"].ToString());
+                    }
+                    if (categoryList.Count == 0)
+                    {
+                        categoryList = JsonConvert.DeserializeObject<List<CategoryModel>>(obj["CategoryModel"].ToString());
+                    }
+
+                    if (gurantorType.Count == 0)
+                    {
+                        gurantorType = JsonConvert.DeserializeObject<List<GurantorTypeModel>>(obj["GurantortypeModel"].ToString());
+                    }
+
+                    if (loanTypes.Count == 0)
+                    {
+                        loanTypes = JsonConvert.DeserializeObject<List<LoanTypeModel>>(obj["LoantypeModel"].ToString());
+                    }
+                    if (documentModels.Count == 0)
+                    {
+                        documentModels = JsonConvert.DeserializeObject<List<DocumentTypeModel>>(obj["DocumenttypeModel"].ToString());
+                    }
+                } 
+            }
+
+            if(aadharList.Count == 0)
+            {
+                aadharList = await GlobalConfig.Connection.GetAadharListAsync(MainWindow.user.jwtToken);
+            }
+            
+            if(panList.Count == 0)
+            {
+                panList = await GlobalConfig.Connection.GetPanListAsync(MainWindow.user.jwtToken);
+            }
+            /*try
             {
                 if (maritalStatusList.Count == 0)
                 {
@@ -95,7 +150,7 @@ namespace GravitonCar
             catch (Exception e)
             {
                 MessageBox.Show("Exception : " + e);
-            }
+            }*/
 
         }
 
@@ -123,9 +178,9 @@ namespace GravitonCar
                 //ListBoxItems.Items.Clear();
                 ListBoxItems.ItemsSource = null;
                 ListBoxItems.Items.Clear();
-                foreach (ApplicantModel str in applicantList)
+                foreach (string str in searchBoxList)
                 {
-                    if (str.DisplaySearch.Contains(CommentTextBox.Text))
+                    if (str.Contains(CommentTextBox.Text))
                     {
                         ListBoxItems.Items.Add(str);
                     }
@@ -152,9 +207,18 @@ namespace GravitonCar
 
         private void ListBoxItems_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ApplicantModel applicant = (ApplicantModel)ListBoxItems.SelectedItem;
-            CarModel model = GetCar(applicant.applicant_pan, applicant.applicant_aadhar);
-            callingForm.DisplayScreen(model);
+            string applicant = (string)ListBoxItems.SelectedItem;
+            //CarModel model = GetCar(applicant.applicant_pan, applicant.applicant_aadhar);
+            string aadhar = applicant.Split(':').Last().Trim();
+            CarModel model = GlobalConfig.Connection.GetKycDataAPI(MainWindow.user.jwtToken, aadhar);
+            if (model != null)
+            {
+                callingForm.DisplayScreen(model);
+            }
+            else
+            {
+                MessageBox.Show("error");
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

@@ -12,19 +12,20 @@ namespace GravitonCar.Validators
 {
    public class AadharUniqueRule : ValidationRule
     {
-        List<DocumentModel> documents = new List<DocumentModel>();
+        //List<DocumentModel> documents = new List<DocumentModel>();
+        List<string> aadharList = new List<string>();
 
         public AadharUniqueRule()
         {
-            documents = GlobalConfig.Connection.GetDocument_All();
+            aadharList = Search.aadharList;
         }
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
             string v = value as string;
 
-            foreach (DocumentModel document in documents)
+            foreach (string aadhar in aadharList)
             {
-                if (document.document_aadhar == v)
+                if (aadhar == v)
                 {
                     ApplicantDetailsFormUserControl.errorForm.DisableButton();
 

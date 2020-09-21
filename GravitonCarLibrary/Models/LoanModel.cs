@@ -27,7 +27,7 @@ namespace GravitonCarLibrary.Models
         /// <summary>
         /// Closure Date of the Loan
         /// </summary>
-        public string loan_closuredate { get; set; }
+        public string loan_closuredate { get; set; } = "2020-06-30";
         /// <summary>
         /// Type Of Loan
         /// </summary>

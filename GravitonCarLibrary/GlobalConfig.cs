@@ -18,16 +18,21 @@ namespace GravitonCarLibrary
         }
         public static string getDatabaseConnectionString()
         {
-            string server = "thethreefinanceprod.chohi5ea8jhs.ap-south-1.rds.amazonaws.com";
+            string server = "mydb.ctmbums33jwn.ap-south-1.rds.amazonaws.com";
             string port = "5432";
-            string user = "kugelblitzroot";
-            string password = "Ashish3099";
-            string database = "the3fProductionServer";
+            string user = "postgres";
+            string password = "postgres";
+            string database = "postgres";
 
             string connectionString = String.Format("Server={0};Port={1};" +
                     "User Id={2};Password={3};Database={4};",
                     server, port, user, password, database);
             return connectionString;
+        }
+
+        public static string getApiConnection()
+        {
+            return "http://ec2-18-216-173-230.us-east-2.compute.amazonaws.com:2017";
         }
 
         public static string json = @"{

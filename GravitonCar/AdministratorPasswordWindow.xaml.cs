@@ -35,7 +35,9 @@ namespace GravitonCar
         private void getAdminData()
         {
             string password = AdminPasswordTextBox.Password;
-            if (password.Equals(userModel.password))
+            callingForm.GetAdminPassword(password , pack);
+            this.Close();
+            /*if (password.Equals(userModel.password))
             {
                 callingForm.GetAdminPassword(true, pack);
                 this.Close();
@@ -44,7 +46,7 @@ namespace GravitonCar
             {
                 callingForm.GetAdminPassword(false, pack);
                 this.Close();
-            }
+            }*/
         }
 
         private void SubmitButton_Click(object sender, RoutedEventArgs e)

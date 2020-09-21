@@ -96,7 +96,6 @@
                 Margin="00,90,00,0"
                 HorizontalContentAlignment="Stretch"
                 Cursor="Hand"
-                DisplayMemberPath="DisplaySearch"
                 FontSize="25"
                 FontWeight="UltraLight"
                 ForceCursor="True"

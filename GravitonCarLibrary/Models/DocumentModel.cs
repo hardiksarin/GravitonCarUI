@@ -11,7 +11,7 @@ namespace GravitonCarLibrary.Models
         /// <summary>
         /// Id Of The Document 
         /// </summary>
-        public int progress_id { get; set; }
+        public int progress_id { get; set; } = 1;
         /// <summary>
         /// Progress Id 
         /// </summary>

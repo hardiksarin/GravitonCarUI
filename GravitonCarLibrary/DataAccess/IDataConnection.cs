@@ -1,4 +1,5 @@
-﻿using GravitonCarLibrary.Models;
+﻿using GravitonCar.Models;
+using GravitonCarLibrary.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +34,8 @@ namespace GravitonCarLibrary.DataAccess
         void UpdateApplicant(ApplicantModel model);
         ApplicantModel CreateApplicant(ApplicantModel model);
         List<ApplicantModel> GetApplicant_ById(string aadhar, string pan);
+
+        List<string> GetSearchNameList(string token);
         //Applicant
 
         //Caste
@@ -117,6 +120,11 @@ namespace GravitonCarLibrary.DataAccess
         UserModel CreateUser(UserModel user);
         void DeleteUser(UserModel user);
         UserModel GetUser_ByPan(string aadhar, string pan);
+
+
+        UserModel GetUsermodelAPI(LoginCredentials credentials);
+        Task<bool> CreateUserAsync(UserModel user);
+        List<UserModel> GetActiveUserAPI(string token);
         //Login
 
 
@@ -144,10 +152,20 @@ namespace GravitonCarLibrary.DataAccess
         //CAR
         void CreateCar(CarModel model, UserModel user);
         CarModel GetCar_ById(string aadhar, string pan);
+        CarModel GetKycDataAPI(string token, string aadhar);
+
+        Task<bool> CreateCarAsync(string token, CarModel car);
 
         //User KYC Log
         void CreateKYCLog(KYCLogModel model);
         int GetCount_USer(int user_id, string date);
+
+
+        //Other Data
+        Task<string> GetComboBoxDataAsync(string token);
+        Task<List<string>> GetAadharListAsync(string token);
+        Task<List<string>> GetPanListAsync(string token);
+        bool DisableUser(string token, int user_id, string username, string password);
 
     }
 }

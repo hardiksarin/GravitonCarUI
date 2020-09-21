@@ -1,4 +1,5 @@
-﻿using GravitonCarLibrary;
+﻿using GravitonCar.Models;
+using GravitonCarLibrary;
 using GravitonCarLibrary.Models;
 using System;
 using System.Collections.Generic;
@@ -36,9 +37,13 @@ namespace GravitonCar
             string username = UsernameTextbox.Text;
             string password = PasswordTextbox.Password;
 
+            LoginCredentials loginCredentials = new LoginCredentials(username, password);
+
             UserModel user = new UserModel();
 
-            user = GlobalConfig.Connection.GetUserModel(username, password);
+            //user = GlobalConfig.Connection.GetUserModel(username, password);
+
+            user = GlobalConfig.Connection.GetUsermodelAPI(loginCredentials);
 
             if(user == null)
             {

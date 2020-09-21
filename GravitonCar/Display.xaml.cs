@@ -772,12 +772,12 @@ namespace GravitonCar
             */
 
             string dobTemp = model.applicantModel.applicant_dob;
-            string x = model.applicantModel.applicant_dob.Split(' ').First();
+            /*string x = model.applicantModel.applicant_dob.Split(' ').First();
 
             string[] xlist = x.Split('/');
-            string d = $"{xlist[1]}-{xlist[0]}-{xlist[2]}";
+            string d = $"{xlist[1]}-{xlist[0]}-{xlist[2]}";*/
 
-            DateTime dobDate = DateTime.Parse(d);
+            DateTime dobDate = DateTime.Parse(model.applicantModel.applicant_dob);
             DatePicker.SelectedDate = dobDate;
 
             string today = DateTime.Today.ToString().Split(' ').First();

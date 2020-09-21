@@ -36,7 +36,8 @@ namespace GravitonCar
 
         private void LoadUserList()
         {
-            allUsers = GlobalConfig.Connection.GetUser_All();
+            //allUsers = GlobalConfig.Connection.GetUser_All();
+            allUsers = GlobalConfig.Connection.GetActiveUserAPI(MainWindow.user.jwtToken);
         }
 
         private void UserListBuilder()
@@ -182,9 +183,9 @@ namespace GravitonCar
             form.Show();
         }
 
-        void lockIconOnClick(object sender, MouseButtonEventArgs e)
+        void lockIconOnClick(object sender, MouseButtonEventArgs e)  
         {
-            PackIcon icon = (PackIcon)sender;
+            /*PackIcon icon = (PackIcon)sender;
             string iconName = icon.Name.Split('_').First();
             UserModel thisUser = new UserModel();
             foreach (UserModel u in allUsers)
@@ -196,13 +197,12 @@ namespace GravitonCar
                 }
             }
             UserCredenitalsWindow form = new UserCredenitalsWindow(this, thisUser, icon);
-            form.Show();    
+            form.Show(); */
+            MessageBox.Show("Feature under Development");
         }
 
-        public void GetAdminPassword(bool isAdmin, PackIcon icon)
+        public void GetAdminPassword(string enteredPassword, PackIcon icon)
         {
-            if (isAdmin)
-            {
                 string iconName = icon.Name.Split('_').First();
                 UserModel thisUser = new UserModel();
                 foreach (UserModel user in allUsers)
@@ -214,29 +214,32 @@ namespace GravitonCar
                     }
                 }
                 //Disable this thisUser
-                thisUser.is_active = false;
-                GlobalConfig.Connection.UpdateUserPassword(thisUser);
-                CardsWrapper.Children.Clear();
-                LoadUserList();
-                UserListBuilder();
-                SnackbarOne.IsActive = true;
-                SnackbarOne.MessageQueue.Enqueue("User Disabled", null,
-                    null,
-                    null,
-                    false,
-                    true,
-                    TimeSpan.FromSeconds(5));
-            }
-            else
-            {
-                SnackbarOne.IsActive = true;
-                SnackbarOne.MessageQueue.Enqueue("Authorisation Failed", null,
-                    null,
-                    null,
-                    false,
-                    true,
-                    TimeSpan.FromSeconds(5));
-            }
+                /*thisUser.is_active = false;
+                GlobalConfig.Connection.UpdateUserPassword(thisUser);*/
+
+                if(GlobalConfig.Connection.DisableUser(MainWindow.user.jwtToken, thisUser.user_id, MainWindow.user.username, enteredPassword))
+                {
+                    CardsWrapper.Children.Clear();
+                    LoadUserList();
+                    UserListBuilder();
+                    SnackbarOne.IsActive = true;
+                    SnackbarOne.MessageQueue.Enqueue("User Disabled", null,
+                        null,
+                        null,
+                        false,
+                        true,
+                        TimeSpan.FromSeconds(5));
+                }
+                else
+                {
+                    SnackbarOne.IsActive = true;
+                    SnackbarOne.MessageQueue.Enqueue("Authorisation Failed", null,
+                        null,
+                        null,
+                        false,
+                        true,
+                        TimeSpan.FromSeconds(5));
+                }
         }
 
         public void UserCredentials(bool isChanged, UserModel user, PackIcon icon)

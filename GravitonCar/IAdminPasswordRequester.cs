@@ -7,6 +7,6 @@ namespace GravitonCar
 {
     public interface IAdminPasswordRequester
     {
-        void GetAdminPassword(bool isAdmin, PackIcon icon);
+        void GetAdminPassword(string enteredPassword, PackIcon icon);
     }
 }

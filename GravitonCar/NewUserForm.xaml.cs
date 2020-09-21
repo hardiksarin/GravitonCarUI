@@ -151,7 +151,7 @@ namespace GravitonCar
             return output;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
             if (ValidateForm())
             {
@@ -187,7 +187,23 @@ namespace GravitonCar
 
                     user.is_active = true;
 
-                    try
+                    if(await GlobalConfig.Connection.CreateUserAsync(user))
+                    {
+                        MessageBox.Show("User Created!");
+                        callingForm.AdminPanel();
+                    }
+                    else
+                    {
+                        SnackbarThree.IsActive = true;
+                        SnackbarThree.MessageQueue.Enqueue("Internal Server Error", null,
+                            null,
+                            null,
+                            false,
+                            true,
+                            TimeSpan.FromSeconds(5));
+                    }
+
+                    /*try
                     {
                         GlobalConfig.Connection.CreateUser(user);
                         callingForm.AdminPanel();
@@ -201,7 +217,7 @@ namespace GravitonCar
                             false,
                             true,
                             TimeSpan.FromSeconds(5));
-                    }
+                    }*/
                 }
                 else
                 {

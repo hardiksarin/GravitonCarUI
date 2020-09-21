@@ -1305,13 +1305,13 @@ namespace GravitonCar
             return LoanEmiAmount;
         }
 
-        private void SubmitButton_Click(object sender, RoutedEventArgs e)
+        private async void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
             SaveApplicantForm();
             SaveGurantorForm();
             SaveFinancialForm();
             string output = JsonConvert.SerializeObject(model);
-            try
+            /*try
             {
                 GlobalConfig.Connection.CreateCar(model, MainWindow.user);
                 SnackbarFour.IsActive = true;
@@ -1332,11 +1332,35 @@ namespace GravitonCar
                     false,
                     true,
                     TimeSpan.FromSeconds(5));
+            }*/
+            if(await GlobalConfig.Connection.CreateCarAsync(MainWindow.user.jwtToken, model))
+            {
+                SnackbarFour.IsActive = true;
+                SnackbarFour.MessageQueue.Enqueue(" New KYC Created!", null,
+                    null,
+                    null,
+                    false,
+                    true,
+                    TimeSpan.FromSeconds(5));
+            }
+            else
+            {
+                SnackbarFour.IsActive = true;
+                SnackbarFour.MessageQueue.Enqueue("Internal Server Error!", null,
+                    null,
+                    null,
+                    false,
+                    true,
+                    TimeSpan.FromSeconds(5));
             }
             WriteJson(output);
             callingForm.SearchScreen();
         }
 
+        /// <summary>
+        /// Writes KYC form data to a text file in json format.
+        /// </summary>
+        /// <param name="json"></param>
         private void WriteJson(string json)
         {
             try

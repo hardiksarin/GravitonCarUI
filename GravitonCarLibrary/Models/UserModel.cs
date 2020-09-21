@@ -16,5 +16,6 @@ namespace GravitonCarLibrary.Models
         public string password { get; set; }
         public string permissions { get; set; }
         public bool is_active { get; set; }
+        public string jwtToken { get; set; }
     }
 }
