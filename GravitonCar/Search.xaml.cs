@@ -201,7 +201,7 @@ namespace GravitonCar
         private CarModel GetCar(string pan, string aadhar)
         {
             CarModel car = new CarModel();
-            car = GlobalConfig.Connection.GetCar_ById(aadhar, pan);
+            //car = GlobalConfig.Connection.GetCar_ById(aadhar, pan);
             return car;
         }
 

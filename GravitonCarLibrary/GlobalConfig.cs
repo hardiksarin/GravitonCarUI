@@ -32,7 +32,8 @@ namespace GravitonCarLibrary
 
         public static string getApiConnection()
         {
-            return "http://ec2-18-216-173-230.us-east-2.compute.amazonaws.com:2017";
+            //return "http://ec2-18-216-173-230.us-east-2.compute.amazonaws.com:2017";
+            return "https://jaa172gmsl.execute-api.ap-south-1.amazonaws.com/dev";
         }
 
         public static string json = @"{

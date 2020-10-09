@@ -21,29 +21,46 @@ using System.Windows.Shapes;
 namespace GravitonCar
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Static base structure of the software
     /// </summary>
     public partial class MainWindow : Window,IScreenRequester
     {
-        JObject permission;
+        
+        /// <summary>
+        /// User whose session is this.
+        /// </summary>
         public static UserModel user = new UserModel();
+        /// <summary>
+        /// Access permission of this user
+        /// </summary>
         public static string userPermission;
         public static MainWindow parent;
         public MainWindow(UserModel userModel)
         {
             InitializeComponent();
             user = userModel;
-            CheckPermission();
-            //GlobalConfig.InitializeConnections();
-            GridPrincipal.Children.Clear();
-            GridPrincipal.Children.Add(new Search(this));
+            CheckPermission(user.permissions);
+            InitializeMainGrid();
             GetPath();
             parent = this;
         }
 
-        private void CheckPermission()
+        /// <summary>
+        /// Sets the homepage to search screen
+        /// </summary>
+        private void InitializeMainGrid()
         {
-            permission = JObject.Parse(user.permissions);
+            GridPrincipal.Children.Clear();
+            GridPrincipal.Children.Add(new Search(this));
+        }
+
+        /// <summary>
+        /// Updates the user permission to userPermission variable
+        /// </summary>
+        /// <param name="user_permission"></param>
+        private void CheckPermission(string user_permission)
+        {
+            JObject permission = JObject.Parse(user_permission);
             //var obj = permission["Admin"];
             bool isAdminTrue = permission.SelectToken("Admin").Value<bool>();
 
@@ -57,6 +74,10 @@ namespace GravitonCar
             }
         }
 
+        /// <summary>
+        /// Reads the file path from path.txt after
+        /// checking whether it exists..
+        /// </summary>
         private void GetPath()
         {
             if (!File.Exists("Path.txt"))
@@ -82,37 +103,35 @@ namespace GravitonCar
                 {
                     MessageBox.Show("Exception " + e.Message);
                 }
-                finally
-                {
-                    Debug.WriteLine("Executing finally block.");
-                }
             }
         }
 
-      /*  private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
-        {
-            ButtonOpenMenu.Visibility = Visibility.Collapsed;
-            ButtonCloseMenu.Visibility = Visibility.Visible;
-        }
-
-        private void ButtonCloseMenu_Click(object sender, RoutedEventArgs e)
-        {
-            ButtonOpenMenu.Visibility = Visibility.Visible;
-            ButtonCloseMenu.Visibility = Visibility.Collapsed;
-        }
-*/
+        /// <summary>
+        /// Shortcut for home (Ctrl + h)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void CtrShortcut1(Object sender, ExecutedRoutedEventArgs e)
         {
             GridPrincipal.Children.Clear();
             GridPrincipal.Children.Add(new Search(this));
         }
 
+        /// <summary>
+        /// Quit BUtton
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ButtonPopUpLogout_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
         }
       
-      
+        /// <summary>
+        /// Shutdown Button Handler
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PackIcon_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (MessageBox.Show("Do you want to close?", "", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
@@ -121,13 +140,11 @@ namespace GravitonCar
 
         public void CoApplicantForm(CarModel model)
         {
-            //GridPrincipal.Children.Clear();
             GridPrincipal.Children.Add(new CoApplicantForm(this, model));
         }
 
         public void FinancialScreen(CarModel model)
         {
-            //GridPrincipal.Children.Clear();
             GridPrincipal.Children.Add(new FinancialDetails(this, model));
         }
 
@@ -184,6 +201,11 @@ namespace GravitonCar
             GridPrincipal.Children.Add(new Search(this));
         }
 
+        /// <summary>
+        /// Admin Button Handler
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (userPermission == "Admin")
@@ -211,6 +233,11 @@ namespace GravitonCar
             GridPrincipal.Children.Add(new AdminPanel(this));
         }
 
+        /// <summary>
+        /// User Logged out
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LogoutButton_Click(object sender, RoutedEventArgs e)
         {
             LoginForm form = new LoginForm();
@@ -218,15 +245,16 @@ namespace GravitonCar
             form.Show();
         }
 
+        /// <summary>
+        /// For refreshing the search screen
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PackIcon_MouseDown_1(object sender, MouseButtonEventArgs e)
         {
             GridPrincipal.Children.Clear();
             GridPrincipal.Children.Add(new Search(this));
         }
 
-        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-
-        }
     }
 }

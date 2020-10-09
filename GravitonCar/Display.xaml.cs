@@ -456,18 +456,18 @@ namespace GravitonCar
 
         private void LoadListData()
         {
-            maritalStatusList = GlobalConfig.Connection.GetMarried_All();
-            acquaintanceList = GlobalConfig.Connection.GetAcquaintance_All();
-            casteList = GlobalConfig.Connection.GetCaste_All();
-            categoryList = GlobalConfig.Connection.GetCategory_All();
+            maritalStatusList = Search.maritalStatusList;
+            acquaintanceList = Search.acquaintanceList;
+            casteList = Search.casteList;
+            categoryList = Search.categoryList;
 
-            gurantorType = GlobalConfig.Connection.GetGurantorType_All();
+            gurantorType = Search.gurantorType;
 
-            loanTypes = GlobalConfig.Connection.GetLoanType_All();
-            documentModels = GlobalConfig.Connection.GetDocumentType_All();
+            loanTypes = Search.loanTypes;
+            documentModels = Search.documentModels;
 
             UserModel user = new UserModel();
-            user = GlobalConfig.Connection.GetUser_ByPan(model.documentModel.document_aadhar, model.documentModel.document_pan);
+            //user = GlobalConfig.Connection.GetUser_ByPan(model.documentModel.document_aadhar, model.documentModel.document_pan);
             if(user != null)
             {
                 SubmittedByLabel.Text = $"Submitted By : {user.full_name}";
@@ -1335,7 +1335,7 @@ namespace GravitonCar
             SaveFinancialForm();
             string output = JsonConvert.SerializeObject(model);
             Debug.WriteLine(output);
-            GlobalConfig.Connection.CreateCar(model, MainWindow.user);
+            //GlobalConfig.Connection.CreateCar(model, MainWindow.user);
         }
 
         public void DisableButton()

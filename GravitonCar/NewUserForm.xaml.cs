@@ -81,15 +81,6 @@ namespace GravitonCar
             }
         }
 
-
-
-
-
-
-
-
-
-
         IScreenRequester callingForm;
         List<string> userAccess = new List<string>() {"Admin", "Employee" };
 

@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace GravitonCar
 {
     /// <summary>
-    /// Interaction logic for LoginForm.xaml
+    /// Login Handler Class
     /// </summary>
     public partial class LoginForm : Window
     {
@@ -26,26 +26,41 @@ namespace GravitonCar
             GlobalConfig.InitializeConnections();
         }
 
+        /// <summary>
+        /// Quit Button
+        /// Closes the complete software after confirming
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PackIcon_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (MessageBox.Show("Do you want to close?", "", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 Environment.Exit(0);
         }
 
+        /// <summary>
+        ///Login Button Handler
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string username = UsernameTextbox.Text;
-            string password = PasswordTextbox.Password;
-
-            LoginCredentials loginCredentials = new LoginCredentials(username, password);
+            //Get User MOdel From Login credentials
+            //Validate user model
 
             UserModel user = new UserModel();
+            user = ProcessLogin();
 
-            //user = GlobalConfig.Connection.GetUserModel(username, password);
+            ValidateUser(user);
+        }
 
-            user = GlobalConfig.Connection.GetUsermodelAPI(loginCredentials);
-
-            if(user == null)
+        /// <summary>
+        /// Validates User and navigate to homepage
+        /// </summary>
+        /// <param name="user"></param>
+        private void ValidateUser(UserModel user)
+        {
+            if (user == null)
             {
                 //Incorrect Username or Password
                 SnackbarTwo.IsActive = true;
@@ -63,6 +78,24 @@ namespace GravitonCar
                 //form.Closed += (s, args) => this.Close();
                 form.Show();
             }
+        }
+
+        /// <summary>
+        /// Login Button
+        /// Sends User and Password for verification
+        /// Recieves User model if credentials match in database
+        /// </summary>
+        /// <returns></returns>
+        private UserModel ProcessLogin()
+        {
+            string username = UsernameTextbox.Text;
+            string password = PasswordTextbox.Password;
+            UserModel user = new UserModel();
+            LoginCredentials loginCredentials = new LoginCredentials(username, password);
+
+            user = GlobalConfig.Connection.GetUsermodelAPI(loginCredentials);
+
+            return user;
         }
     }
 }

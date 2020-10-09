@@ -41,7 +41,7 @@ namespace GravitonCar
         {
             get { return _gurantor_middlename; }
             set { _gurantor_middlename = value;
-                OnPropertyChanged("GurantorFirstname");
+                OnPropertyChanged("GurantorMiddlename");
             }
         }
 
@@ -49,7 +49,7 @@ namespace GravitonCar
         {
             get { return _gurantor_lastname; }
             set { _gurantor_lastname = value;
-                OnPropertyChanged("GurantorFirstname");
+                OnPropertyChanged("GurantorLastname");
             }
         }
 
@@ -57,7 +57,7 @@ namespace GravitonCar
         {
             get { return _gurantor_currentaddress; }
             set { _gurantor_currentaddress = value;
-                OnPropertyChanged("GurantorFirstname");
+                OnPropertyChanged("GurantorCurrentAddress");
             }
         }
 
@@ -65,7 +65,7 @@ namespace GravitonCar
         {
             get { return _gurantor_mobile; }
             set { _gurantor_mobile = value;
-                OnPropertyChanged("GurantorFirstname");
+                OnPropertyChanged("GurantorMobile");
             }
         }
 
@@ -73,7 +73,7 @@ namespace GravitonCar
         {
             get { return _gurantor_relation; }
             set { _gurantor_relation = value;
-                OnPropertyChanged("GurantorFirstname");
+                OnPropertyChanged("GurantorRelation");
             }
         }
 

@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 namespace GravitonCar
 {
     /// <summary>
-    /// Interaction logic for AdministratorPasswordWindow.xaml
+    /// Gets the admin password and returns with it
     /// </summary>
     public partial class AdministratorPasswordWindow : Window
     {
@@ -31,29 +31,23 @@ namespace GravitonCar
             this.Owner = MainWindow.parent;
         }
 
-
+        /// <summary>
+        /// Gets password and returns to Admin Panel
+        /// </summary>
         private void getAdminData()
         {
             string password = AdminPasswordTextBox.Password;
             callingForm.GetAdminPassword(password , pack);
             this.Close();
-            /*if (password.Equals(userModel.password))
-            {
-                callingForm.GetAdminPassword(true, pack);
-                this.Close();
-            }
-            else
-            {
-                callingForm.GetAdminPassword(false, pack);
-                this.Close();
-            }*/
         }
 
+        //On Submit
         private void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
             getAdminData();
         }
 
+        //On Quit
         private void QuitButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();

@@ -18,7 +18,7 @@ using System.Windows.Shapes;
 namespace GravitonCar
 {
     /// <summary>
-    /// Interaction logic for AdminPanel.xaml
+    /// Admin Panel for Admin
     /// </summary>
     public partial class AdminPanel : UserControl, IAdminPasswordRequester, IUserCredentialRequester
     {
@@ -29,17 +29,23 @@ namespace GravitonCar
         {
             InitializeComponent();
             callingForm = caller;
-            getTodayesDate();
+            getTodaysDate();
             LoadUserList();
             UserListBuilder();
         }
 
+        /// <summary>
+        /// Get Active User List
+        /// </summary>
         private void LoadUserList()
         {
             //allUsers = GlobalConfig.Connection.GetUser_All();
             allUsers = GlobalConfig.Connection.GetActiveUserAPI(MainWindow.user.jwtToken);
         }
 
+        /// <summary>
+        /// Creates user cards for display
+        /// </summary>
         private void UserListBuilder()
         {
             foreach (UserModel u in allUsers)
@@ -49,7 +55,10 @@ namespace GravitonCar
             }
         }
 
-        private void getTodayesDate()
+        /// <summary>
+        /// Get Todays date
+        /// </summary>
+        private void getTodaysDate()
         {
             if (todaysDate == null)
             {
@@ -61,6 +70,11 @@ namespace GravitonCar
             }
         }
 
+        /// <summary>
+        /// Gets the count of KYC's filled by the user today
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         private int getCarCount(int id)
         {
             return GlobalConfig.Connection.GetCount_USer(id, todaysDate);
@@ -71,6 +85,11 @@ namespace GravitonCar
             callingForm.NewUser();
         }
 
+        /// <summary>
+        /// Dynamically creates a wpf card
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="count"></param>
         private void CreateCard(UserModel user, int count)
         {
             Card card = new Card();
@@ -176,6 +195,11 @@ namespace GravitonCar
             CardsWrapper.Children.Add(card);
         }
 
+        /// <summary>
+        /// OPens a window to get admin authentication for deleting the user
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void deleteIconOnClick(object sender, MouseButtonEventArgs e)
         {
             PackIcon icon = (PackIcon)sender;
@@ -201,6 +225,11 @@ namespace GravitonCar
             MessageBox.Show("Feature under Development");
         }
 
+        /// <summary>
+        /// Finds the  user and disable it
+        /// </summary>
+        /// <param name="enteredPassword"></param>
+        /// <param name="icon"></param>
         public void GetAdminPassword(string enteredPassword, PackIcon icon)
         {
                 string iconName = icon.Name.Split('_').First();
@@ -242,15 +271,26 @@ namespace GravitonCar
                 }
         }
 
+        /// <summary>
+        /// Depricated
+        /// </summary>
+        /// <param name="isChanged"></param>
+        /// <param name="user"></param>
+        /// <param name="icon"></param>
         public void UserCredentials(bool isChanged, UserModel user, PackIcon icon)
         {
             if (isChanged)
             {
                 //update user
-                GlobalConfig.Connection.UpdateUserPassword(user);
+                //GlobalConfig.Connection.UpdateUserPassword(user);
             }
         }
 
+        /// <summary>
+        /// NAvigates to Search Screen
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PackIcon_MouseDown(object sender, MouseButtonEventArgs e)
         {
             callingForm.SearchScreen();
