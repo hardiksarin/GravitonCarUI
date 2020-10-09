@@ -1,0 +1,901 @@
+﻿<UserControl
+    x:Class="GravitonCar.AutoLoanFIForm1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:GravitonCar"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:rule="clr-namespace:GravitonCar.Validators"
+    d:DesignHeight="760"
+    d:DesignWidth="940"
+    Background="White"
+    mc:Ignorable="d">
+    <ScrollViewer x:Name="myscrollview" VerticalScrollBarVisibility="Hidden">
+
+        <Grid x:Name="print">
+
+
+
+
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="20" />
+
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20" />
+
+                <RowDefinition Height="AUTO" />
+                <RowDefinition Height="AUTO" />
+                <RowDefinition Height="AUTO" />
+                <RowDefinition Height="AUTO" />
+                <RowDefinition Height="AUTO" />
+                <RowDefinition Height="AUTO" />
+                <RowDefinition Height="AUTO" />
+                <RowDefinition Height="AUTO" />
+                <RowDefinition Height="AUTO" />
+                <RowDefinition Height="AUTO" />
+                <RowDefinition Height="AUTO" />
+                <RowDefinition Height="AUTO" />
+                <RowDefinition Height="AUTO" />
+                <RowDefinition Height="AUTO" />
+                <RowDefinition Height="AUTO" />
+                <RowDefinition Height="AUTO" />
+                <RowDefinition Height="AUTO" />
+                <RowDefinition Height="AUTO" />
+                <RowDefinition Height="AUTO" />
+                <RowDefinition Height="AUTO" />
+                <RowDefinition Height="AUTO" />
+                <RowDefinition Height="AUTO" />
+                <RowDefinition Height="AUTO" />
+                <RowDefinition Height="AUTO" />
+                <RowDefinition Height="AUTO" />
+
+                <RowDefinition Height="AUTO" />
+
+                <RowDefinition Height="20" />
+
+
+            </Grid.RowDefinitions>
+            <materialDesign:Snackbar
+                x:Name="SnackbarFive"
+                Grid.Column="0"
+                Grid.ColumnSpan="5"
+                HorizontalAlignment="Stretch"
+                HorizontalContentAlignment="Center"
+                Foreground="DarkOrange"
+                MessageQueue="{materialDesign:MessageQueue}" />
+
+
+            <Grid
+                Grid.Row="2"
+                Grid.Column="1"
+                Margin="0,0,0,50"
+                Opacity="0.7">
+                <Grid.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Offset="0.0" Color="#00c6ff" />
+                        <GradientStop Offset="1.0" Color="#0072ff" />
+                    </LinearGradientBrush>
+                </Grid.Background>
+            </Grid>
+            <Label
+                Grid.Row="2"
+                Grid.Column="1"
+                Margin="0,0,0,50"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Content="General Details"
+                FontSize="30"
+                FontWeight="UltraLight"
+                Foreground="White" />
+            <TextBlock
+                Grid.Row="1"
+                Grid.Column="1"
+                Height="80"
+                Margin="0,0,0,00"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                FontSize="40"
+                FontWeight="Light"
+                Foreground="#FF3399FF"
+                Text="Field Investigation Form" />
+            <TextBlock
+                Grid.Row="1"
+                Grid.Column="1"
+                Height="80"
+                Margin="180,45,0,00"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                FontSize="30"
+                FontWeight="Normal"
+                Foreground="#4b4b4b"
+                Text="Auto Loan" />
+            <Separator
+                Grid.Row="1"
+                Grid.Column="1"
+                Margin="0,140,0,0"
+                Background="Gray" />
+            <!--  should disable on 2nd transition...  -->
+
+
+
+            <Label
+                Grid.Row="1"
+                Grid.Column="1"
+                Margin="0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Content="1 / 2"
+                FontSize="40"
+                FontWeight="Light"
+                Foreground="#4b4b4b" />
+
+            <ComboBox
+                x:Name="SourceTypeComboBox"
+                Grid.Row="3"
+                Grid.Column="1"
+                Width="200"
+                Margin="5,25,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                materialDesign:HintAssist.Hint="Source Type"
+                materialDesign:HintAssist.HintOpacity=".56"
+                BorderBrush="Gray"
+                FontSize="20"
+                FontWeight="Light"
+                Foreground="#4b4b4b"
+                IsEditable="False" />
+
+            <TextBox
+                x:Name="AgentNameTextBox"
+                Grid.Row="3"
+                Grid.Column="1"
+                Width="200"
+                Margin="00,5,0,0"
+                HorizontalAlignment="Center"
+                materialDesign:HintAssist.Hint="Agent Name"
+                BorderBrush="Gray"
+                FontSize="20"
+                FontWeight="Light"
+                Foreground="#4b4b4b"
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}">
+                <TextBox.Text>
+                    <Binding
+                        Mode="TwoWay"
+                        Path="ApplicantLastname"
+                        UpdateSourceTrigger="LostFocus">
+                        <Binding.ValidationRules>
+                            <rule:OnlyAlphabetsRule />
+                            <rule:NonEmptyRule />
+                            <local:MinimumCharacterRule MinimumCharacters="2" />
+                            <rule:MaximumCharacterRule MaximumCharacters="50" />
+
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <DatePicker
+                Name="DatePicker"
+                Grid.Row="3"
+                Grid.Column="1"
+                Width="auto"
+                Margin="5,15,0,0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                materialDesign:HintAssist.Hint="Date Of Birth  "
+                BorderBrush="Gray"
+                DisplayDate="10-12-2020"
+                FontSize="18"
+                FontWeight="Light"
+                Foreground="#4b4b4b"
+                IsTodayHighlighted="True"
+                Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+
+
+            <TextBox
+                x:Name="FullNameTextBox"
+                Grid.Row="4"
+                Grid.Column="1"
+                Width="500"
+                Margin="00,50,0,0"
+                HorizontalAlignment="Left"
+                materialDesign:HintAssist.Hint="Full Name"
+                BorderBrush="Gray"
+                FontSize="20"
+                FontWeight="Light"
+                Foreground="#4b4b4b"
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}">
+                <TextBox.Text>
+                    <Binding
+                        Mode="TwoWay"
+                        Path="ApplicantLastname"
+                        UpdateSourceTrigger="LostFocus">
+                        <Binding.ValidationRules>
+                            <rule:OnlyAlphabetsRule />
+                            <rule:NonEmptyRule />
+                            <local:MinimumCharacterRule MinimumCharacters="2" />
+                            <rule:MaximumCharacterRule MaximumCharacters="50" />
+
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox
+                x:Name="ClientMobileTextBox"
+                Grid.Row="4"
+                Grid.Column="1"
+                Width="200"
+                Margin="0,50,0,0"
+                HorizontalAlignment="Right"
+                materialDesign:HintAssist.Hint="Mobile Number"
+                BorderBrush="Gray"
+                FontSize="20"
+                FontWeight="Light"
+                Foreground="#4b4b4b"
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}">
+                <TextBox.Text>
+                    <Binding
+                        Mode="TwoWay"
+                        Path="ApplicantLastname"
+                        UpdateSourceTrigger="LostFocus">
+                        <Binding.ValidationRules>
+                            <rule:OnlyAlphabetsRule />
+                            <rule:NonEmptyRule />
+                            <local:MinimumCharacterRule MinimumCharacters="2" />
+                            <rule:MaximumCharacterRule MaximumCharacters="50" />
+
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox
+                x:Name="LoanAmountTextBox"
+                Grid.Row="5"
+                Grid.Column="1"
+                Width="200"
+                Margin="0,50,0,0"
+                HorizontalAlignment="Left"
+                materialDesign:HintAssist.Hint="Loan Amount Required "
+                BorderBrush="Gray"
+                FontSize="20"
+                FontWeight="Light"
+                Foreground="#4b4b4b"
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}">
+                <TextBox.Text>
+                    <Binding
+                        Mode="TwoWay"
+                        Path="ApplicantLastname"
+                        UpdateSourceTrigger="LostFocus">
+                        <Binding.ValidationRules>
+                            <rule:OnlyAlphabetsRule />
+                            <rule:NonEmptyRule />
+                            <local:MinimumCharacterRule MinimumCharacters="2" />
+                            <rule:MaximumCharacterRule MaximumCharacters="50" />
+
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+
+
+
+
+            <Grid
+                Grid.Row="9"
+                Grid.Column="1"
+                Margin="0,50,0,0"
+                Opacity="0.7">
+                <Grid.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Offset="0.0" Color="#00c6ff" />
+                        <GradientStop Offset="1.0" Color="#0072ff" />
+                    </LinearGradientBrush>
+                </Grid.Background>
+            </Grid>
+
+
+            <Label
+                Grid.Row="9"
+                Grid.Column="1"
+                Margin="0,50,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Content="Residence Investigation Data "
+                FontSize="30"
+                FontWeight="UltraLight"
+                Foreground="White" />
+
+
+
+
+
+            <TextBox
+                x:Name="ClientAddressTextBox"
+                Grid.Row="10"
+                Grid.Column="1"
+                Width="850"
+                MinHeight="50"
+                MaxHeight="80"
+                Margin="5,50,0,0"
+                HorizontalAlignment="Left"
+                materialDesign:HintAssist.Hint="House Address"
+                BorderBrush="Gray"
+                FontSize="20"
+                FontWeight="Light"
+                Foreground="#4b4b4b"
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                TextWrapping="Wrap"
+                VerticalScrollBarVisibility="Auto">
+                <TextBox.Text>
+                    <Binding
+                        Mode="TwoWay"
+                        Path="ApplicantCurrentAddress"
+                        UpdateSourceTrigger="LostFocus">
+                        <Binding.ValidationRules>
+                            <rule:NonEmptyRule />
+                            <local:MinimumCharacterRule MinimumCharacters="10" />
+                            <rule:MaximumCharacterRule MaximumCharacters="300" />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox
+                x:Name="ClientHouseLandmarkTextBox"
+                Grid.Row="12"
+                Grid.Column="1"
+                Width="850"
+                MinHeight="50"
+                MaxHeight="80"
+                Margin="5,50,0,0"
+                HorizontalAlignment="Left"
+                materialDesign:HintAssist.Hint="House Landmark"
+                BorderBrush="Gray"
+                FontSize="20"
+                FontWeight="Light"
+                Foreground="#4b4b4b"
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                TextWrapping="Wrap"
+                VerticalScrollBarVisibility="Auto">
+                <TextBox.Text>
+                    <Binding
+                        Mode="TwoWay"
+                        Path="ApplicantCurrentAddress"
+                        UpdateSourceTrigger="LostFocus">
+                        <Binding.ValidationRules>
+                            <rule:NonEmptyRule />
+                            <local:MinimumCharacterRule MinimumCharacters="10" />
+                            <rule:MaximumCharacterRule MaximumCharacters="300" />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBox
+                Name="TotalFamilyMembersTextBox"
+                Grid.Row="13"
+                Grid.Column="1"
+                Width="200"
+                Margin="5,50,0,0"
+                HorizontalAlignment="Left"
+                materialDesign:HintAssist.Hint="Total Family Members"
+                BorderBrush="Gray"
+                FontSize="20"
+                FontWeight="Light"
+                Foreground="#4b4b4b"
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}">
+                <TextBox.Text>
+                    <Binding
+                        Mode="TwoWay"
+                        Path="ApplicantMobile"
+                        UpdateSourceTrigger="LostFocus">
+                        <Binding.ValidationRules>
+                            <rule:NonEmptyRule />
+                            <rule:FixedLengthRule FixedCharacters="10" TypeOfData="Digits" />
+                            <rule:OnlyNumericRule />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBox
+                Name="EarningFamilyMembersTextBox"
+                Grid.Row="13"
+                Grid.Column="1"
+                Width="200"
+                Margin="5,50,0,0"
+                HorizontalAlignment="Center"
+                materialDesign:HintAssist.Hint="Earning Members"
+                BorderBrush="Gray"
+                FontSize="20"
+                FontWeight="Light"
+                Foreground="#4b4b4b"
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}">
+                <TextBox.Text>
+                    <Binding
+                        Mode="TwoWay"
+                        Path="ApplicantMobile"
+                        UpdateSourceTrigger="LostFocus">
+                        <Binding.ValidationRules>
+                            <rule:NonEmptyRule />
+                            <rule:FixedLengthRule FixedCharacters="10" TypeOfData="Digits" />
+                            <rule:OnlyNumericRule />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <ComboBox
+                Name="HomeAddressAccesibilityCombobox"
+                Grid.Row="13"
+                Grid.Column="1"
+                Width="200"
+                Margin="5,60,0,0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                materialDesign:HintAssist.Hint="Home Accesibility"
+                materialDesign:HintAssist.HintOpacity=".56"
+                BorderBrush="Gray"
+                FontSize="20"
+                FontWeight="Light"
+                Foreground="#4b4b4b"
+                IsEditable="False" />
+
+            <TextBox
+                x:Name="ClientHomeAddressTextBox"
+                Grid.Row="14"
+                Grid.Column="1"
+                Width="850"
+                MinHeight="50"
+                MaxHeight="80"
+                Margin="5,50,0,0"
+                HorizontalAlignment="Left"
+                materialDesign:HintAssist.Hint="Home Address"
+                BorderBrush="Gray"
+                FontSize="20"
+                FontWeight="Light"
+                Foreground="#4b4b4b"
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                TextWrapping="Wrap"
+                VerticalScrollBarVisibility="Auto">
+                <TextBox.Text>
+                    <Binding
+                        Mode="TwoWay"
+                        Path="ApplicantCurrentAddress"
+                        UpdateSourceTrigger="LostFocus">
+                        <Binding.ValidationRules>
+                            <rule:NonEmptyRule />
+                            <local:MinimumCharacterRule MinimumCharacters="10" />
+                            <rule:MaximumCharacterRule MaximumCharacters="300" />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBox
+                x:Name="ClientHomeLandmarkTextBox"
+                Grid.Row="15"
+                Grid.Column="1"
+                Width="850"
+                MinHeight="50"
+                MaxHeight="80"
+                Margin="5,50,0,0"
+                HorizontalAlignment="Left"
+                materialDesign:HintAssist.Hint="Home Landmark"
+                BorderBrush="Gray"
+                FontSize="20"
+                FontWeight="Light"
+                Foreground="#4b4b4b"
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                TextWrapping="Wrap"
+                VerticalScrollBarVisibility="Auto">
+                <TextBox.Text>
+                    <Binding
+                        Mode="TwoWay"
+                        Path="ApplicantCurrentAddress"
+                        UpdateSourceTrigger="LostFocus">
+                        <Binding.ValidationRules>
+                            <rule:NonEmptyRule />
+                            <local:MinimumCharacterRule MinimumCharacters="10" />
+                            <rule:MaximumCharacterRule MaximumCharacters="300" />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <ComboBox
+                Name="LocalityTypeCombobox"
+                Grid.Row="16"
+                Grid.Column="1"
+                Width="200"
+                Margin="5,60,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                materialDesign:HintAssist.Hint="Locality Type"
+                materialDesign:HintAssist.HintOpacity=".56"
+                BorderBrush="Gray"
+                FontSize="20"
+                FontWeight="Light"
+                Foreground="#4b4b4b"
+                IsEditable="False" />
+
+            <ComboBox
+                Name="AddressProofDurationCombobox"
+                Grid.Row="16"
+                Grid.Column="1"
+                Width="200"
+                Margin="5,60,0,0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                materialDesign:HintAssist.Hint="Address Proof"
+                materialDesign:HintAssist.HintOpacity=".56"
+                BorderBrush="Gray"
+                FontSize="20"
+                FontWeight="Light"
+                Foreground="#4b4b4b"
+                IsEditable="False" />
+
+            <ComboBox
+                Name="HouseConditionDurationCombobox"
+                Grid.Row="16"
+                Grid.Column="1"
+                Width="200"
+                Margin="5,60,0,0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                materialDesign:HintAssist.Hint="House Condition"
+                materialDesign:HintAssist.HintOpacity=".56"
+                BorderBrush="Gray"
+                FontSize="20"
+                FontWeight="Light"
+                Foreground="#4b4b4b"
+                IsEditable="False" />
+
+            <TextBox
+                x:Name="AcquaintanceNameTextBox"
+                Grid.Row="17"
+                Grid.Column="1"
+                Width="200"
+                MinHeight="50"
+                MaxHeight="80"
+                Margin="5,50,0,0"
+                HorizontalAlignment="Left"
+                materialDesign:HintAssist.Hint="Acquaintance's Name"
+                BorderBrush="Gray"
+                FontSize="20"
+                FontWeight="Light"
+                Foreground="#4b4b4b"
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                TextWrapping="Wrap"
+                VerticalScrollBarVisibility="Auto">
+                <TextBox.Text>
+                    <Binding
+                        Mode="TwoWay"
+                        Path="ApplicantCurrentAddress"
+                        UpdateSourceTrigger="LostFocus">
+                        <Binding.ValidationRules>
+                            <rule:NonEmptyRule />
+                            <local:MinimumCharacterRule MinimumCharacters="10" />
+                            <rule:MaximumCharacterRule MaximumCharacters="300" />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBox
+                x:Name="AcquaintancePhoneTextBox"
+                Grid.Row="17"
+                Grid.Column="1"
+                Width="200"
+                MinHeight="50"
+                MaxHeight="80"
+                Margin="5,50,0,0"
+                HorizontalAlignment="Center"
+                materialDesign:HintAssist.Hint="Acquaintance's Phone"
+                BorderBrush="Gray"
+                FontSize="20"
+                FontWeight="Light"
+                Foreground="#4b4b4b"
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                TextWrapping="Wrap"
+                VerticalScrollBarVisibility="Auto">
+                <TextBox.Text>
+                    <Binding
+                        Mode="TwoWay"
+                        Path="ApplicantCurrentAddress"
+                        UpdateSourceTrigger="LostFocus">
+                        <Binding.ValidationRules>
+                            <rule:NonEmptyRule />
+                            <local:MinimumCharacterRule MinimumCharacters="10" />
+                            <rule:MaximumCharacterRule MaximumCharacters="300" />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <Grid
+                Grid.Row="18"
+                Grid.Column="1"
+                Margin="0,50,0,0"
+                Opacity="0.7">
+                <Grid.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Offset="0.0" Color="#00c6ff" />
+                        <GradientStop Offset="1.0" Color="#0072ff" />
+                    </LinearGradientBrush>
+                </Grid.Background>
+            </Grid>
+
+
+            <Label
+                Grid.Row="18"
+                Grid.Column="1"
+                Margin="0,50,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Content="WorkPlace Investigation Data "
+                FontSize="30"
+                FontWeight="UltraLight"
+                Foreground="White" />
+
+            <TextBox
+                x:Name="ClientEmployerNameTextBox"
+                Grid.Row="19"
+                Grid.Column="1"
+                Width="850"
+                MinHeight="50"
+                MaxHeight="80"
+                Margin="5,50,0,0"
+                HorizontalAlignment="Left"
+                materialDesign:HintAssist.Hint="Employer Name"
+                BorderBrush="Gray"
+                FontSize="20"
+                FontWeight="Light"
+                Foreground="#4b4b4b"
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                TextWrapping="Wrap"
+                VerticalScrollBarVisibility="Auto">
+                <TextBox.Text>
+                    <Binding
+                        Mode="TwoWay"
+                        Path="ApplicantCurrentAddress"
+                        UpdateSourceTrigger="LostFocus">
+                        <Binding.ValidationRules>
+                            <rule:NonEmptyRule />
+                            <local:MinimumCharacterRule MinimumCharacters="10" />
+                            <rule:MaximumCharacterRule MaximumCharacters="300" />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+
+            <TextBox
+                x:Name="ClientOfficeAddressTextBox"
+                Grid.Row="20"
+                Grid.Column="1"
+                Width="850"
+                MinHeight="50"
+                MaxHeight="80"
+                Margin="5,50,0,0"
+                HorizontalAlignment="Left"
+                materialDesign:HintAssist.Hint="Office Address"
+                BorderBrush="Gray"
+                FontSize="20"
+                FontWeight="Light"
+                Foreground="#4b4b4b"
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                TextWrapping="Wrap"
+                VerticalScrollBarVisibility="Auto">
+                <TextBox.Text>
+                    <Binding
+                        Mode="TwoWay"
+                        Path="ApplicantCurrentAddress"
+                        UpdateSourceTrigger="LostFocus">
+                        <Binding.ValidationRules>
+                            <rule:NonEmptyRule />
+                            <local:MinimumCharacterRule MinimumCharacters="10" />
+                            <rule:MaximumCharacterRule MaximumCharacters="300" />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBox
+                x:Name="ClientOfficeLandmarkTextBox"
+                Grid.Row="21"
+                Grid.Column="1"
+                Width="850"
+                MinHeight="50"
+                MaxHeight="80"
+                Margin="5,50,0,0"
+                HorizontalAlignment="Left"
+                materialDesign:HintAssist.Hint="Office Landmark"
+                BorderBrush="Gray"
+                FontSize="20"
+                FontWeight="Light"
+                Foreground="#4b4b4b"
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                TextWrapping="Wrap"
+                VerticalScrollBarVisibility="Auto">
+                <TextBox.Text>
+                    <Binding
+                        Mode="TwoWay"
+                        Path="ApplicantCurrentAddress"
+                        UpdateSourceTrigger="LostFocus">
+                        <Binding.ValidationRules>
+                            <rule:NonEmptyRule />
+                            <local:MinimumCharacterRule MinimumCharacters="10" />
+                            <rule:MaximumCharacterRule MaximumCharacters="300" />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBox
+                x:Name="ClientDesignationTextBox"
+                Grid.Row="22"
+                Grid.Column="1"
+                Width="200"
+                MinHeight="50"
+                MaxHeight="80"
+                Margin="5,50,0,0"
+                HorizontalAlignment="Left"
+                materialDesign:HintAssist.Hint="Designation"
+                BorderBrush="Gray"
+                FontSize="20"
+                FontWeight="Light"
+                Foreground="#4b4b4b"
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                TextWrapping="Wrap"
+                VerticalScrollBarVisibility="Auto">
+                <TextBox.Text>
+                    <Binding
+                        Mode="TwoWay"
+                        Path="ApplicantCurrentAddress"
+                        UpdateSourceTrigger="LostFocus">
+                        <Binding.ValidationRules>
+                            <rule:NonEmptyRule />
+                            <local:MinimumCharacterRule MinimumCharacters="10" />
+                            <rule:MaximumCharacterRule MaximumCharacters="300" />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBox
+                x:Name="ClientCurrentJobDurationTextBox"
+                Grid.Row="22"
+                Grid.Column="1"
+                Width="200"
+                MinHeight="50"
+                MaxHeight="80"
+                Margin="5,50,0,0"
+                HorizontalAlignment="Center"
+                materialDesign:HintAssist.Hint="Job Duration"
+                BorderBrush="Gray"
+                FontSize="20"
+                FontWeight="Light"
+                Foreground="#4b4b4b"
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                TextWrapping="Wrap"
+                VerticalScrollBarVisibility="Auto">
+                <TextBox.Text>
+                    <Binding
+                        Mode="TwoWay"
+                        Path="ApplicantCurrentAddress"
+                        UpdateSourceTrigger="LostFocus">
+                        <Binding.ValidationRules>
+                            <rule:NonEmptyRule />
+                            <local:MinimumCharacterRule MinimumCharacters="10" />
+                            <rule:MaximumCharacterRule MaximumCharacters="300" />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBox
+                x:Name="ClientInHandSalaryTextBox"
+                Grid.Row="22"
+                Grid.Column="1"
+                Width="200"
+                MinHeight="50"
+                MaxHeight="80"
+                Margin="5,50,0,0"
+                HorizontalAlignment="Right"
+                materialDesign:HintAssist.Hint="Inhand Salary"
+                BorderBrush="Gray"
+                FontSize="20"
+                FontWeight="Light"
+                Foreground="#4b4b4b"
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                TextWrapping="Wrap"
+                VerticalScrollBarVisibility="Auto">
+                <TextBox.Text>
+                    <Binding
+                        Mode="TwoWay"
+                        Path="ApplicantCurrentAddress"
+                        UpdateSourceTrigger="LostFocus">
+                        <Binding.ValidationRules>
+                            <rule:NonEmptyRule />
+                            <local:MinimumCharacterRule MinimumCharacters="10" />
+                            <rule:MaximumCharacterRule MaximumCharacters="300" />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <ComboBox
+                Name="ClientWorkplaceConditionCombobox"
+                Grid.Row="23"
+                Grid.Column="1"
+                Width="200"
+                Margin="5,60,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                materialDesign:HintAssist.Hint="Office Condition"
+                materialDesign:HintAssist.HintOpacity=".56"
+                BorderBrush="Gray"
+                FontSize="20"
+                FontWeight="Light"
+                Foreground="#4b4b4b"
+                IsEditable="False" />
+            <ComboBox
+                Name="WorkplaceAddressAccesibilityCombobox"
+                Grid.Row="23"
+                Grid.Column="1"
+                Width="200"
+                Margin="5,60,0,0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                materialDesign:HintAssist.Hint="Office Accesibility"
+                materialDesign:HintAssist.HintOpacity=".56"
+                BorderBrush="Gray"
+                FontSize="20"
+                FontWeight="Light"
+                Foreground="#4b4b4b"
+                IsEditable="False" />
+
+            <Button
+                x:Name="NextButton"
+                Grid.Row="24"
+                Grid.Column="1"
+                Width="200"
+                Height="60"
+                Margin="60"
+                HorizontalAlignment="Right"
+                Background="#03a9f4"
+                BorderBrush="Transparent"
+                Content="Next"
+                FontSize="30"
+                FontWeight="Light"
+                Foreground="#ffffff" />
+            <Button
+                x:Name="QuitButton"
+                Grid.Row="24"
+                Grid.Column="1"
+                Width="200"
+                Height="60"
+                Margin="60"
+                HorizontalAlignment="Left"
+                Background="LightGray"
+                BorderBrush="Transparent"
+                Content="Quit"
+                FontSize="30"
+                FontWeight="Light"
+                Foreground="#ffffff" />
+
+
+
+
+
+        </Grid>
+
+    </ScrollViewer>
+
+</UserControl>
