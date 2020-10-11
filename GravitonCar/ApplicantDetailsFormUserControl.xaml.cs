@@ -250,6 +250,7 @@ namespace GravitonCar
             NearestBranchComboBox.ItemsSource = Search.branchesList;
 
         }
+
         private void PrintButton_Click(object sender, RoutedEventArgs e)
         {
             try

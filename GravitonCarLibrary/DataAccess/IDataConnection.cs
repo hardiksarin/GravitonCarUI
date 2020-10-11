@@ -17,14 +17,14 @@ namespace GravitonCarLibrary.DataAccess
 
 
         //API
-        List<string> GetSearchNameList(string token);
-        Task<bool> CreateCarAsync(string token, CarModel car);
+        List<string> GetSearchNameList(string token);               //done
+        Task<bool> CreateCarAsync(string token, CarModel car);      //done
         CarModel GetKycDataAPI(string token, string aadhar);
-        Task<string> GetComboBoxDataAsync(string token);
-        Task<List<string>> GetAadharListAsync(string token);
-        Task<List<string>> GetPanListAsync(string token);
+        Task<string> GetComboBoxDataAsync(string token);            //done
+        Task<List<string>> GetAadharListAsync(string token);        //done
+        Task<List<string>> GetPanListAsync(string token);           //done
         bool DisableUser(string token, int user_id, string username, string password);
-        UserModel GetUsermodelAPI(LoginCredentials credentials);
+        UserModel GetUsermodelAPI(LoginCredentials credentials);        //done
         Task<bool> CreateUserAsync(UserModel user);
         List<UserModel> GetActiveUserAPI(string token);
 
