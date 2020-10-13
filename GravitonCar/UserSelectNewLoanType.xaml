@@ -39,7 +39,8 @@
                 Cursor="Hand"
                 IsChecked="True"
                 Style="{StaticResource MaterialDesignFlatPrimaryToggleButton}"
-                ToolTip="Auto Loan">
+                ToolTip="Auto Loan"
+                Click="RadioButton_Click">
 
                 <materialDesign:PackIcon
                     Width="160"

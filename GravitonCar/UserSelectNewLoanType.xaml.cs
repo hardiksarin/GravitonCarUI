@@ -22,5 +22,10 @@ namespace GravitonCar
         {
             InitializeComponent();
         }
+
+        private void RadioButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("heyyy");
+        }
     }
 }

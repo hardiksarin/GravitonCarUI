@@ -22,7 +22,7 @@ namespace GravitonCar
         {
             InitializeComponent();
             UserProfileLoans.Children.Clear();
-            UserProfileLoans.Children.Add(new UserProfileLoans());
+            UserProfileLoans.Children.Add(new UserSelectNewLoanType());
         }
     }
 }
